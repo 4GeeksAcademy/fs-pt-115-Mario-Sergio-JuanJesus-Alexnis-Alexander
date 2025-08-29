@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
-from ..models import User, db
+from ..models.user_model import User
+from ..model_config import db
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 user_bp = Blueprint('user', __name__, url_prefix='/user')
@@ -31,6 +32,7 @@ def sign_up():
 
     return jsonify({'msg': 'Usuario creado'}), 200
 
+
 @user_bp.route('/login', methods=['POST'])
 def user_login():
     data = request.get_json()
@@ -53,7 +55,59 @@ def user_login():
     else:
         return jsonify({'msg': 'Email o contraseña invalidos'}), 400
     
-
-
-
     
+@user_bp.route('/profile', methods=['GET'])
+@jwt_required()
+def show_user():
+    user_id = get_jwt_identity()
+    user = User.query.get(int(user_id))
+     
+    if not user:
+        return jsonify({'msg': 'Usuario no encontrado'}), 404
+    
+    return jsonify(user.serialize()),200
+
+
+@user_bp.route('/', methods=['PUT'])
+@jwt_required()
+def upgrade_user():
+    user_id = get_jwt_identity()
+    user = db.session.get(User, int(user_id))
+    data = request.get_json()
+
+    if not user:
+        return jsonify({'msg': 'Usuario no encontrado'}), 404
+    
+    user.username = data.get('username', user.username)
+    user.email = data.get('email', user.email)
+
+    db.session.commit()
+
+    return jsonify({'msg': 'Usuario modificado correctamente'}, user.serialize())
+
+
+@user_bp.route('/', methods=['DELETE'])
+@jwt_required()
+def delete_user():
+    user_id = get_jwt_identity()
+    user = db.session.get(User, int(user_id))
+
+    if not user:
+        return jsonify({'msg': 'Usuario no encontrado'}), 404
+    
+    db.session.delete(user)
+    db.commit()
+
+    return jsonify({'msg': 'Usuario eliminado'})
+
+
+# @user_bp.route('/', methods=['GET'])
+# def all_user():
+#     users = User.query.all()
+
+#     if not users:
+#         return jsonify({'msg': 'No hay ningun usuario registrado'})
+    
+#     db.session.commit()
+
+#     return jsonify([u.serialize() for u in users]), 200
