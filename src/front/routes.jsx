@@ -24,7 +24,7 @@ export const router = createBrowserRouter(
       
         {/* AQUI TODAS LAS RUTAS PUBLICAS: */}
         <Route index element={ <Home/>}/>
-      
+        
       </Route>
 
 
