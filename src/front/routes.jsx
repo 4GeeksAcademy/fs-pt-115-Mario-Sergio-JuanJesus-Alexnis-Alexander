@@ -20,9 +20,9 @@ export const router = createBrowserRouter(
     <Route element={ <RootLayout/> }>
 
       {/* TODAS LAS RUTAS PUBLICAS (TODO LO QUE SE PUEDE VER SIN TENER QUE ESTAR LOGEADO) */}
-      <Route path='/' element={ <PublicLayout/> }>
+      <Route element={ <PublicLayout/> }>
       
-        {/* AQUI TODAS LAS RUTAS PUBLICAS: */}
+        {/* AQUI LAS RUTAS PUBLICAS: */}
         <Route index element={ <Home/>}/>
         
       </Route>
@@ -34,7 +34,7 @@ export const router = createBrowserRouter(
       <Route element={ <UserLayout/> }>
 
           {/* METER AQUI LAS RUTAS COMO ESTAN LAS DE SIGNUP Y LOGIN: */}
-
+          
 
       </Route>
 
@@ -43,8 +43,8 @@ export const router = createBrowserRouter(
 
       {/* AQUI SOLO LAS RUTAS DE LOGIN Y REGISTER */}
       <Route element={ <AuthLayout/> }>
-        <Route path='signup' element={ <SignupPage/> }/>
-        <Route path='login' element={ <LoginPage/> }/>
+        <Route path='/signup' element={ <SignupPage/> }/>
+        <Route path='/login' element={ <LoginPage/> }/>
       </Route>
       
 
