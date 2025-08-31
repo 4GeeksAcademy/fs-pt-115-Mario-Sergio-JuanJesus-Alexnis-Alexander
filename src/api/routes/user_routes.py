@@ -25,12 +25,13 @@ def sign_up():
     if user_exist:
         return jsonify({'message': 'El usuario ya existe'}), 400
     
-    new_user = User(email= data['email'], username= data['username'])
+    new_user = User(email= email, username= username)
     new_user.set_password(data['password'])
     db.session.add(new_user)
     db.session.commit()
+    token = create_access_token(str(new_user.id))
 
-    return jsonify({'msg': 'Usuario creado'}), 200
+    return jsonify({'msg': 'Usuario creado', 'token': token}), 200
 
 
 @user_bp.route('/login', methods=['POST'])
@@ -43,13 +44,13 @@ def user_login():
         return jsonify({'msg': 'Rellene todos los campos por favor'}), 400
     
     user = db.session.execute(db.select(User).where(
-        User.email == data['email']
+        User.email == email
     )).scalar_one_or_none()
 
     if not user:
         return jsonify({'msg': 'Email o contraseña invalidos'}), 400
     
-    if user.check_password(data['password']):
+    if user.check_password(password):
         token = create_access_token(identity= str(user.id))
         return jsonify({'msg': 'Inicio de sesión correcto', 'token': token})
     else:
