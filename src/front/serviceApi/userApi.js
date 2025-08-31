@@ -7,7 +7,7 @@ export const signUp = async (newUser) => {
         headers: {
             'Content-Type': 'application-json'
         },
-        bdy: JSON.stringify(newUser)
+        body: JSON.stringify(newUser)
     })
     const data = await response.json()
     if (!response.ok) {
