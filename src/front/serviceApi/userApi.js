@@ -44,10 +44,9 @@ export const userLogin = async (loginUser) => {
     if (!response.ok) {
         return {
             success: false,
-            error: 'Error desconocido' || error.msg
+            error: error.msg || data.error || 'Error desconocido'
         }
     }
-    
     
     return {
         success: true,
@@ -56,7 +55,9 @@ export const userLogin = async (loginUser) => {
     }
 
     } catch (error) {
-         return { error: error.msg }
+         return { error: error.msg,
+            success: false
+          }
     }
     
 }

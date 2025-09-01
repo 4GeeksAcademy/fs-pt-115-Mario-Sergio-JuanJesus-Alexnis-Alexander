@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 export const Navbar = () => {
-  const { token } = useAuth()
-  const [haveToken, setHaveToken] = useState(false);
-  const location = useLocation();
+  const { token, logOut } = useAuth()
+  const navigate = useNavigate()
 
+  const handleLogout = () => {
+    logOut()
+    navigate('/')
+  }
+  
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -51,16 +55,14 @@ export const Navbar = () => {
             </form>
           ) : (
             <form className="d-flex gap-2 ms-auto me-5">
-              <Link to={"/"}>
+             
                 <button
-                  onClick={() =>
-                    localStorage.removeItem("token", setHaveToken(false))
-                  }
+                  onClick={handleLogout}
                   className="btn btn-success"
                 >
                   Cerrar sesión
                 </button>
-              </Link>
+              
               <Link to={"/user/profile"}>
                 <button className="btn btn-primary">Perfil</button>
               </Link>

@@ -1,47 +1,50 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userLogin } from "../../serviceApi/userApi";
 import { useAuth } from "../../hooks/useAuth";
 
 export const LoginPage = () => {
-
-  const [input, setInput] = useState({})
-  const [error, setError] = useState(null)
-  const { login, loading } = useAuth()
-  const navigate = useNavigate()
+  const [input, setInput] = useState({});
+  const [error, setError] = useState(null);
+  const { login, loading } = useAuth();
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
-    const { name, value } = e.target
-    const userInput = {...input, [name]: value}
-    setInput(userInput)
-  }
+    const { name, value } = e.target;
+    const userInput = { ...input, [name]: value };
+    setInput(userInput);
+  };
 
   const handleOnSubmit = async (e) => {
-    e.preventDefault()
+  e.preventDefault();
 
-    login(input.email, input.password)
-
-
-    // const loginData = await userLogin({
-    //   email: input.email,
-    //   password: input.password})
-   
-    
-    // if (!loginData.success) {
-    //   return setError(loginData.error || 'Email y/o contraseña incorrecta')
-    // }
-    // localStorage.setItem('token', loginData.token)
-    navigate('/')
+  if (!input.email || !input.password) {
+    return setError('Por favor, rellena todos los campos');
   }
+
+  console.log('Calling login...'); // Debug
+  const data = await login(input.email, input.password);
+  console.log('Login returned:', data); // Debug
+  
+  if (!data || !data.success) {
+    console.log('Login failed:', data); // Debug
+    return setError(data?.error || "Email y/o contraseña incorrecta");
+  }
+  
+  console.log('Login successful, about to navigate'); // Debug
+  setError(null);
+  navigate("/");
+  console.log('Navigate called'); // Debug
+};
 
   if (loading) {
-    return <div>Cargando..........</div>
+    return <div>Cargando..........</div>;
   }
 
-  
-
   return (
-    <form onSubmit={handleOnSubmit} className="container w-50 mt-5 bg-light p-3 rounded-3 ">
+    <form
+      onSubmit={handleOnSubmit}
+      className="container w-50 mt-5 bg-light p-3 rounded-3 "
+    >
       <div className="mb-3">
         <h2 className="text-center">Iniciar sesión</h2>
         <label htmlFor="email" className="form-label">
@@ -51,7 +54,7 @@ export const LoginPage = () => {
           type="email"
           className="form-control"
           name="email"
-          onChange={(e)=> handleOnChange(e)}
+          onChange={(e) => handleOnChange(e)}
         />
       </div>
       <div className="mb-3">
@@ -62,7 +65,7 @@ export const LoginPage = () => {
           type="password"
           className="form-control"
           name="password"
-          onChange={(e)=> handleOnChange(e)}
+          onChange={(e) => handleOnChange(e)}
         />
       </div>
       <div className="mb-3 form-check">
@@ -75,9 +78,7 @@ export const LoginPage = () => {
           Recordarme
         </label>
       </div>
-      {
-        error && <div className="alert alert-danger">{error}</div>
-      }
+      {error && <div className="alert alert-danger">{error}</div>}
       <button type="submit" className="btn btn-primary">
         Entrar
       </button>
