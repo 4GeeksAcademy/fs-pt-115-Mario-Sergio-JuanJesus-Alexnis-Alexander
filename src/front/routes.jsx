@@ -13,6 +13,7 @@ import { AuthLayout } from "./layout/Auth.layout";
 import { SignupPage } from "./pages/auth/Signup.page";
 import { LoginPage } from "./pages/auth/Login.page";
 import { Home } from "./pages/publics/Home.page";
+import { ProfilePage } from "./pages/user/Profile.page";
 
 
 export const router = createBrowserRouter(
@@ -33,8 +34,8 @@ export const router = createBrowserRouter(
       {/* TODAS LAS RUTAS CUANDO EL USUARIO ESTA LOGEADO (MIS PERSONAJES, MIS CAMPAÑAS, PERFIL...) */}
       <Route element={ <UserLayout/> }>
 
-          {/* METER AQUI LAS RUTAS COMO ESTAN LAS DE SIGNUP Y LOGIN: */}
-          
+          {/* METER AQUI LAS RUTAS: */}
+          <Route path="user/profile" element={ <ProfilePage/> }/>
 
       </Route>
 

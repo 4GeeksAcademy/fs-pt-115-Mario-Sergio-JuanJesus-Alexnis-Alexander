@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export const Navbar = () => {
+  const { token } = useAuth()
+  const [haveToken, setHaveToken] = useState(false);
+  const location = useLocation();
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid ms-5">
@@ -33,14 +40,32 @@ export const Navbar = () => {
               🔍
             </button>
           </div>
-          <form className="d-flex gap-2 ms-auto me-5">
-            <Link to={"/signup"}>
-              <button className="btn btn-success">Registrarse</button>
-            </Link>
-            <Link to={"/login"}>
-              <button className="btn btn-primary">Iniciar sesion</button>
-            </Link>
-          </form>
+          {!token ? (
+            <form className="d-flex gap-2 ms-auto me-5">
+              <Link to={"/signup"}>
+                <button className="btn btn-success">Registrarse</button>
+              </Link>
+              <Link to={"/login"}>
+                <button className="btn btn-primary">Iniciar sesion</button>
+              </Link>
+            </form>
+          ) : (
+            <form className="d-flex gap-2 ms-auto me-5">
+              <Link to={"/"}>
+                <button
+                  onClick={() =>
+                    localStorage.removeItem("token", setHaveToken(false))
+                  }
+                  className="btn btn-success"
+                >
+                  Cerrar sesión
+                </button>
+              </Link>
+              <Link to={"/user/profile"}>
+                <button className="btn btn-primary">Perfil</button>
+              </Link>
+            </form>
+          )}
         </div>
       </div>
     </nav>

@@ -1,29 +1,68 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { userLogin } from "../../serviceApi/userApi";
+import { useAuth } from "../../hooks/useAuth";
+
 export const LoginPage = () => {
+
+  const [input, setInput] = useState({})
+  const [error, setError] = useState(null)
+  const { login, loading } = useAuth()
+  const navigate = useNavigate()
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target
+    const userInput = {...input, [name]: value}
+    setInput(userInput)
+  }
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault()
+
+    login(input.email, input.password)
+
+
+    // const loginData = await userLogin({
+    //   email: input.email,
+    //   password: input.password})
+   
+    
+    // if (!loginData.success) {
+    //   return setError(loginData.error || 'Email y/o contraseña incorrecta')
+    // }
+    // localStorage.setItem('token', loginData.token)
+    navigate('/')
+  }
+
+  if (loading) {
+    return <div>Cargando..........</div>
+  }
+
+  
+
   return (
-    <form className="container w-50 mt-5 bg-light p-3 rounded-3 ">
+    <form onSubmit={handleOnSubmit} className="container w-50 mt-5 bg-light p-3 rounded-3 ">
       <div className="mb-3">
         <h2 className="text-center">Iniciar sesión</h2>
-        <label htmlFor="exampleInputEmail1" className="form-label">
-          Email address
+        <label htmlFor="email" className="form-label">
+          Email
         </label>
         <input
           type="email"
           className="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
+          name="email"
+          onChange={(e)=> handleOnChange(e)}
         />
-        <div id="emailHelp" className="form-text">
-          We'll never share your email with anyone else.
-        </div>
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleInputPassword1" className="form-label">
-          Password
+        <label htmlFor="password" className="form-label">
+          Contraseña
         </label>
         <input
           type="password"
           className="form-control"
-          id="exampleInputPassword1"
+          name="password"
+          onChange={(e)=> handleOnChange(e)}
         />
       </div>
       <div className="mb-3 form-check">
@@ -33,11 +72,14 @@ export const LoginPage = () => {
           id="exampleCheck1"
         />
         <label className="form-check-label" htmlFor="exampleCheck1">
-          Check me out
+          Recordarme
         </label>
       </div>
+      {
+        error && <div className="alert alert-danger">{error}</div>
+      }
       <button type="submit" className="btn btn-primary">
-        Submit
+        Entrar
       </button>
     </form>
   );
