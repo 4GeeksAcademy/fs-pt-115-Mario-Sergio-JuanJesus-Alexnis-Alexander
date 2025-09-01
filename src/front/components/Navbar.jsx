@@ -5,10 +5,10 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid ms-5">
         <Link to={"/"}>
-          <a className="navbar-brand" href="#">
+          <div className="navbar-brand">
             <span className="ms-4">__D&D__</span> <br />
             <span className="ms-0">Master of Infinity</span>
-          </a>
+          </div>
         </Link>
         <button
           className="navbar-toggler"

@@ -12,7 +12,7 @@ import { UserLayout } from "./layout/User.layout";
 import { AuthLayout } from "./layout/Auth.layout";
 import { SignupPage } from "./pages/auth/Signup.page";
 import { LoginPage } from "./pages/auth/Login.page";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/publics/Home.page";
 
 
 export const router = createBrowserRouter(
