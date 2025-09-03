@@ -1,19 +1,20 @@
 from . import db
 from sqlalchemy import String, Boolean, Integer, Text, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
+from typing import Optional
 
 class Spell(db.Model):
     spell_id: Mapped[int] = mapped_column(primary_key=True)
     spell: Mapped[str] = mapped_column(String(255), nullable=False)
     level: Mapped[str] = mapped_column(String(255), nullable=False)
-    casting_time: Mapped[int] = mapped_column(Integer)
-    reaction_condition: Mapped[str] = mapped_column(Text)
-    components_material: Mapped[str] = mapped_column(String(255))
-    range_distance: Mapped[int] = mapped_column(Integer)
-    duration: Mapped[int] = mapped_column(Integer)
-    is_ritual: Mapped[bool] = mapped_column(Boolean)
-    has_scaling: Mapped[bool] = mapped_column(Boolean)
-    scaling_type: Mapped[str] = mapped_column(String(255))
+    casting_time: Mapped[Optional[int]] = mapped_column(Integer)
+    reaction_condition: Mapped[Optional[str]]= mapped_column(Text)
+    components_material: Mapped[Optional[str]] = mapped_column(String(255))
+    range_distance: Mapped[Optional[int]] = mapped_column(Integer)
+    duration: Mapped[Optional[int]] = mapped_column(Integer)
+    is_ritual: Mapped[Optional[bool]] = mapped_column(Boolean)
+    has_scaling: Mapped[Optional[bool]] = mapped_column(Boolean)
+    scaling_type: Mapped[Optional[str]] = mapped_column(String(255))
 
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
