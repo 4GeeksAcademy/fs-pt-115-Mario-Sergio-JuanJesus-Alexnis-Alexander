@@ -21,19 +21,14 @@ export const LoginPage = () => {
     return setError('Por favor, rellena todos los campos');
   }
 
-  console.log('Calling login...'); // Debug
   const data = await login(input.email, input.password);
-  console.log('Login returned:', data); // Debug
   
   if (!data || !data.success) {
-    console.log('Login failed:', data); // Debug
     return setError(data?.error || "Email y/o contraseña incorrecta");
   }
-  
-  console.log('Login successful, about to navigate'); // Debug
   setError(null);
   navigate("/");
-  console.log('Navigate called'); // Debug
+
 };
 
   if (loading) {

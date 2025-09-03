@@ -12,14 +12,18 @@ export const AuthProvider = ( {children} ) => {
 
     const login = async (email, password) => {
         setLoading(true);
+        
+        
         try {
             const data = await userLogin({email, password});
             if (data.success) {
             setToken(data.token);
             setUser(data.user);
+            console.log(data.user);
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
             return { success: true };
+            
         } else {
             setUser(null);
             setToken(null);
