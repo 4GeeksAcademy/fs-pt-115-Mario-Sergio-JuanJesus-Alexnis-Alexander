@@ -33,7 +33,7 @@ export const LoginPage = () => {
   if (loading) {
     return (
       <div className="position-relative" style={{height: '100vh'}}>
-        <div class="position-absolute top-50 start-50 translate-middle fs-2">
+        <div className="position-absolute top-50 start-50 translate-middle fs-2">
           ⌛⌛⌛⌛...Cargando....⌛⌛⌛⌛
         </div>
       </div>
