@@ -31,7 +31,8 @@ def sign_up():
     db.session.commit()
     token = create_access_token(str(new_user.id))
 
-    return jsonify({'msg': 'Usuario creado', 'token': token}), 200
+    return jsonify({'msg': 'Usuario creado',
+                    'token': token}), 200
 
 
 @user_bp.route('/login', methods=['POST'])
@@ -52,7 +53,9 @@ def user_login():
     
     if user.check_password(password):
         token = create_access_token(identity= str(user.id))
-        return jsonify({'msg': 'Inicio de sesión correcto', 'token': token})
+        return jsonify({'msg': 'Inicio de sesión correcto',
+                        'user': user.serialize(),
+                        'token': token})
     else:
         return jsonify({'msg': 'Email o contraseña invalidos'}), 400
     
