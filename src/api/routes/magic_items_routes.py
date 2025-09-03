@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.magic_items_model import MagicsItems
 from ..model_config import db
-from flask_jwt_extended import get_jwt_identity, jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
-magics_items_bp = Blueprint('user', __name__, url_prefix='/user/magics-items')
+magics_items_bp = Blueprint('magic_items', __name__, url_prefix='/user/magics-items')
 
 CORS(magics_items_bp)
 
@@ -34,6 +34,7 @@ def show_magic_item_id(magic_item_id):
 @magics_items_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_magic_item():
+    user_id = get_jwt_identity()
 
     # ***Campos obligatorios***
     data = request.get_json()
@@ -44,7 +45,7 @@ def create_magic_item():
     description = data.get('description')
 
     if not name or not rarity or not base_item_type or not attunement_description or not description:
-        return jsonify({'error': 'Rellena todos los campos obligatorios'}), 400
+        return jsonify({'error': 'Rellena los campos obligatorios'}), 400
 
     # ***Campos opcionales***
     version = data.get('version')
@@ -69,7 +70,8 @@ def create_magic_item():
         str_requirement = str_requirement,
         stealth_check = stealth_check,
         base_weapon = base_weapon,
-        requires_attunement = requires_attunement
+        requires_attunement = requires_attunement,
+        user_id = user_id
     )
 
     db.session.add(new_magic_item)
@@ -96,7 +98,7 @@ def update_magic_item(magic_item_id):
     item.description = data.get('description', item.description)
 
     if not item.name or not item.rarity or not item.base_item_type or not item.attunement_description or not item.description:
-        return jsonify({'error': 'Rellena todos los campos obligatorios'}), 400
+        return jsonify({'error': 'Rellena los campos obligatorios'}), 400
 
     # ***Campos opcionales***
     item.version = data.get('version', item.version)
@@ -115,7 +117,7 @@ def update_magic_item(magic_item_id):
 
 @magics_items_bp.route('/<int:magic_item_id>', methods=['DELETE'])
 @jwt_required()
-def update_magic_item(magic_item_id):
+def delete_magic_item(magic_item_id):
     item = db.session.get(MagicsItems, magic_item_id)
 
     if not item:
