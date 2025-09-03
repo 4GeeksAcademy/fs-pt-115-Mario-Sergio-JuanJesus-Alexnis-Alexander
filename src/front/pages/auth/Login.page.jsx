@@ -15,24 +15,29 @@ export const LoginPage = () => {
   };
 
   const handleOnSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!input.email || !input.password) {
-    return setError('Por favor, rellena todos los campos');
-  }
+    if (!input.email || !input.password) {
+      return setError("Por favor, rellena todos los campos");
+    }
 
-  const data = await login(input.email, input.password);
-  
-  if (!data || !data.success) {
-    return setError(data?.error || "Email y/o contraseña incorrecta");
-  }
-  setError(null);
-  navigate("/");
+    const data = await login(input.email, input.password);
 
-};
+    if (!data || !data.success) {
+      return setError(data?.error || "Email y/o contraseña incorrecta");
+    }
+    setError(null);
+    navigate("/");
+  };
 
   if (loading) {
-    return <div>Cargando..........</div>;
+    return (
+      <div className="position-relative" style={{height: '100vh'}}>
+        <div class="position-absolute top-50 start-50 translate-middle fs-2">
+          ⌛⌛⌛⌛...Cargando....⌛⌛⌛⌛
+        </div>
+      </div>
+    );
   }
 
   return (
