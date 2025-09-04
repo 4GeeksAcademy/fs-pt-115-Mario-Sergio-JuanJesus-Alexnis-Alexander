@@ -30,7 +30,6 @@ export const signUp = async (newUser) => {
 }
 
 export const userLogin = async (loginUser) => {
-    console.log(loginUser);
     
     try {
         const response = await fetch(`${urlApi}/api/user/login`, {
