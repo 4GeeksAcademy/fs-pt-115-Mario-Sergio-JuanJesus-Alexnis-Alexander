@@ -1,6 +1,6 @@
 from . import db
 from sqlalchemy import String, Boolean, Integer, Text, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Optional
 
 class Spell(db.Model):
@@ -33,3 +33,4 @@ class Spell(db.Model):
             "scaling_type": self.scaling_type,
             "user_id": self.user_id
         }
+

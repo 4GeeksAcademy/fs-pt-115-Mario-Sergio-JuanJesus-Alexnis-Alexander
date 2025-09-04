@@ -3,6 +3,7 @@ from . import db
 from .magic_items_model import MagicsItems
 from sqlalchemy import String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from .spell_model import Spell
 from flask_bcrypt import generate_password_hash, check_password_hash
 
 
@@ -25,6 +26,8 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
     
+    spell:Mapped[List["Spell"]] = relationship()
+    
     def serialize(self):
         return {
             "id": self.id,
@@ -34,5 +37,6 @@ class User(db.Model):
             "full_name": self.full_name,
             "gender": self.gender,
             "phone": self.phone,
+            "spells": [spell.serialize() for spell in self.spell]
             'magics_items': [item.serialize() for item in self.magics_items]
         }
