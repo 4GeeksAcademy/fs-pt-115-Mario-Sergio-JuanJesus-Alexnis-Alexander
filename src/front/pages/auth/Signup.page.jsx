@@ -23,6 +23,10 @@ export const SignupPage = () => {
       password: input.password,
     });
 
+    if (!newUserData.success) {
+      setError(newUserData.error || 'Esta cuenta ya existe, por favor inicia sesión')
+    }
+
     localStorage.setItem("token", newUserData.token);
 
     if (newUserData.success) {

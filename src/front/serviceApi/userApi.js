@@ -14,7 +14,7 @@ export const signUp = async (newUser) => {
     if (!response.ok) {
         return {
             success: false,
-            error: 'Error desconocido' || error.msg
+            error: data.msg || data.message || 'Error desconocido' 
         }
     }
     return {
