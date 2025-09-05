@@ -1,4 +1,4 @@
-export const FormMAgicItems = () => {
+export const FormMagicItems = () => {
   return (
     <form className="row g-3">
       <div className="col-md-6">

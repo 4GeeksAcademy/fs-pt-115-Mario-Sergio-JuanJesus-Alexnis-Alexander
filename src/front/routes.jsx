@@ -14,6 +14,9 @@ import { SignupPage } from "./pages/auth/Signup.page";
 import { LoginPage } from "./pages/auth/Login.page";
 import { Home } from "./pages/publics/Home.page";
 import { ProfilePage } from "./pages/user/Profile.page";
+import { Formspell } from "./pages/user/Formspell.page";
+import { FormMagicItems } from "./components/FormMagicsItems";
+import { MagicItemPage } from "./pages/user/MagicItem.page";
 
 
 export const router = createBrowserRouter(
@@ -36,7 +39,9 @@ export const router = createBrowserRouter(
 
           {/* METER AQUI LAS RUTAS: */}
           <Route path="user/profile" element={ <ProfilePage/> }/>
-
+          <Route path="user/create-spell" element={ <Formspell/> }/>
+          <Route path="user/create-magit-item" element={ <MagicItemPage/> }/>
+          
       </Route>
 
 
