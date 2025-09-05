@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { userLogin } from "../serviceApi/userApi";
+import { signUp, userLogin } from "../serviceApi/userApi";
 
 const AuthContext = createContext();
 
@@ -29,7 +29,6 @@ export const AuthProvider = ({ children }) => {
         };
       }
     } catch (error) {
-      console.log(error);
       setUser(null);
       setToken(null);
       return { 
@@ -45,8 +44,28 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  const authSignUp = async (username, email, password) => {
+    setLoading(true)
+
+    try {
+      const data = await signUp({username, email, password})
+      setToken(data.token);
+      setUser(data.user);
+      localStorage.setItem("token", data.token);
+      return { success: true }
+      
+    } catch (error) {
+      setUser(null);
+      setToken(null);
+      return { 
+        success: false || "Registro fallido" };
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ token, user, loading, login, logOut }}>
+    <AuthContext.Provider value={{ token, user, loading, login, logOut, authSignUp }}>
       {children}
     </AuthContext.Provider>
   );

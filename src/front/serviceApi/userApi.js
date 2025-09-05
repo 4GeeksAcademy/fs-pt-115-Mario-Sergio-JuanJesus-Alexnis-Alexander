@@ -10,7 +10,6 @@ export const signUp = async (newUser) => {
         body: JSON.stringify(newUser)
     })
     const data = await response.json()
-    console.log(response);
     if (!response.ok) {
         return {
             success: false,
