@@ -16,14 +16,13 @@ export const LoginPage = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-
-    if (!input.email || !input.password) {
-      return setError("Por favor, rellena todos los campos");
-    }
-
     const data = await login(input.email, input.password);
-
-    navigate("/");
+    if (data.success) {
+      navigate("/");
+    } else {
+      setError(data.error || 'Email y/o contraseña incorectos')
+    }
+    
   };
 
   if (loading) {

@@ -46,11 +46,7 @@ export const userLogin = async (loginUser) => {
         }
     }
     
-    return {
-        success: true,
-        data: data,
-        token: data.token
-    }
+    return data
 
     } catch (error) {
          return { error: error.msg,
