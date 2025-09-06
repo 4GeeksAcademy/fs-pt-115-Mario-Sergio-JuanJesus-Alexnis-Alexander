@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    setToken(null);
+    setToken(null); 
     setUser(null);
   };
 
@@ -49,11 +49,19 @@ export const AuthProvider = ({ children }) => {
 
     try {
       const data = await signUp({username, email, password})
-      setToken(data.token);
-      setUser(data.user);
-      localStorage.setItem("token", data.token);
-      return { success: true }
-      
+      if (data.success) {
+        setToken(data.token);
+        setUser(data.user);
+        localStorage.setItem("token", data.token);
+        return { success: true };
+      } else {
+        setUser(null);
+        setToken(null);
+        return {
+          success: false,
+          error: data.error || "Registro fallido",
+        };
+      }
     } catch (error) {
       setUser(null);
       setToken(null);

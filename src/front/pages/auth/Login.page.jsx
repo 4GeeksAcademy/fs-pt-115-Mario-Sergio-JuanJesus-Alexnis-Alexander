@@ -23,10 +23,6 @@ export const LoginPage = () => {
 
     const data = await login(input.email, input.password);
 
-    if (!data || !data.success) {
-      return setError(data?.error || "Email y/o contraseña incorrecta");
-    }
-    setError(null);
     navigate("/");
   };
 
@@ -34,7 +30,7 @@ export const LoginPage = () => {
     return (
       <div className="position-relative" style={{height: '100vh'}}>
         <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛...Cargando....⌛⌛⌛⌛
+          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
         </div>
       </div>
     );
