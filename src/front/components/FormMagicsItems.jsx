@@ -29,7 +29,6 @@ export const FormMagicItems = () => {
 
   }
 
-  console.log(user);
   
 
   return (
