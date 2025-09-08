@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import { CollectionDropdown } from "./CollectionDropdown";
 
 export const Navbar = () => {
   const { token, logOut } = useAuth();
+  const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -69,9 +71,20 @@ export const Navbar = () => {
       </nav>
 
       <menu className="bg-secondary p-3 d-flex justify-content-center gap-3">
-        <button className="btn btn-lg bg-success fw-bold">
-          Mi colección ⬇️
-        </button>
+        <div style={{ position: "relative" }}>
+          <button
+            className="btn btn-lg bg-success fw-bold"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            Mi colección ⬇️
+          </button>
+
+          {/* El dropdown va AQUÍ dentro del div */}
+          <div className={showDropdown ? "" : "d-none"}>
+            <CollectionDropdown closeDropdown={() => setShowDropdown(false)} />
+          </div>
+        </div>
+
         <button className="btn btn-lg bg-success fw-bold">
           Reglas de juego ⬇️
         </button>
