@@ -25,11 +25,8 @@ export const FormMagicItems = () => {
       setInputs({})
       setError(null)
     }
-
-
   }
 
-  
 
   return (
     <div className="container my-5 bg-light">

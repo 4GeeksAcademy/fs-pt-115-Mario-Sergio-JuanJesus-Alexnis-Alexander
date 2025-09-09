@@ -33,3 +33,22 @@ export const createMagicItem = async (newMagicItem) => {
             error: error.message }
     }
 }
+
+export const showMagicItem = async () => {
+    try {
+        const response = await fetch(`${urlApi}/user/magics-items`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Autorizathion': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+
+        const data = await response.json()
+
+        
+
+    } catch (error) {
+        
+    }
+}
