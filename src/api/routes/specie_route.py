@@ -14,8 +14,8 @@ CORS(specie_bp)
 @jwt_required()
 def create_specie():
     data = request.get_json()
-    user_id = get_jwt_identity() #este user_id no se ilumina
-
+    user_id = get_jwt_identity()
+    
     specie = data.get("specie")
     short_description = data.get("short_description")
     group = data.get("group")
@@ -25,15 +25,16 @@ def create_specie():
     avatar = data.get ("avatar")
 
     if not specie:
-        return jsonify({'msg': 'Specie y Level sin requeridos'}), 400
+        return jsonify({'msg': 'Specie es requerida'}), 400
     
     new_specie = Specie(
+        specie=specie,
         short_description=short_description,
         group=group,
         description=description,
         trait_desc=trait_desc,
         trait=trait,
-        avatar=avatar
+        avatar=avatar,
         user_id=int(user_id)
     )
 
@@ -41,7 +42,7 @@ def create_specie():
     db.session.commit()
 
     return jsonify({'msg': 'Specie creada',
-                    'specie': new_specie}), 201
+                    'specie': new_specie}), 201 #aca seria new_specie.serialize() ??
 
 @specie_bp.route('/<int:specie_id>', methods=['GET'])
 @jwt_required()
@@ -70,8 +71,9 @@ def update_specie(specie_id):
     specie = Specie.query.get(specie_id)
     data = request.get_json()
     if not specie:
-        return jsonify({'msg': 'Specie no encontrada'}), 400
+        return jsonify({'msg': 'Specie no encontrada'}), 404
     
+    specie.specie = data.get("specie", specie.specie)
     specie.short_description = data.get("short_description", specie.short_description)
     specie.group = data.get("group", specie.group)
     specie.description = data.get("description", specie.description)
@@ -82,3 +84,6 @@ def update_specie(specie_id):
     db.session.commit()
 
     return jsonify({'msg': 'Specie modificada correctamente'}, specie.serialize()), 200
+    # o seria asi : 
+    # return jsonify({'msg': 'Specie modificada correctamente',
+    # 'specie': specie.serialize()}), 200
