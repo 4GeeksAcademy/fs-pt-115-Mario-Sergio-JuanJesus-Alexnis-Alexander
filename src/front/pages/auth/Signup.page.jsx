@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { signUp } from "../../serviceApi/userApi";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export const SignupPage = () => {
   const [input, setInput] = useState({});
   const [error, setError] = useState(null);
+  const { authSignUp, loading } = useAuth();
   const navigate = useNavigate();
 
   const handleOnSubmit = async (e) => {
@@ -17,16 +18,16 @@ export const SignupPage = () => {
       setError(null);
     }
 
-    const newUserData = await signUp({
-      username: input.username,
-      email: input.email,
-      password: input.password,
-    });
-
-    localStorage.setItem("token", newUserData.token);
+    const newUserData = await authSignUp(
+      input.username,
+      input.email,
+      input.password
+    );
 
     if (newUserData.success) {
       return navigate("/");
+    } else {
+      setError(newUserData.error || "Error en el registro");
     }
   };
 
@@ -35,6 +36,16 @@ export const SignupPage = () => {
     const infoNewUser = { ...input, [name]: value };
     setInput(infoNewUser);
   };
+
+  if (loading) {
+    return (
+      <div className="position-relative" style={{ height: "100vh" }}>
+        <div className="position-absolute top-50 start-50 translate-middle fs-2">
+          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form

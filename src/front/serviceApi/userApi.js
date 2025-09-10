@@ -10,11 +10,10 @@ export const signUp = async (newUser) => {
         body: JSON.stringify(newUser)
     })
     const data = await response.json()
-    console.log(response);
     if (!response.ok) {
         return {
             success: false,
-            error: 'Error desconocido' || error.msg
+            error: data.msg || data.message || 'Error desconocido' 
         }
     }
     return {
@@ -30,7 +29,6 @@ export const signUp = async (newUser) => {
 }
 
 export const userLogin = async (loginUser) => {
-    console.log(loginUser);
     
     try {
         const response = await fetch(`${urlApi}/api/user/login`, {
@@ -48,11 +46,7 @@ export const userLogin = async (loginUser) => {
         }
     }
     
-    return {
-        success: true,
-        data: data,
-        token: data.token
-    }
+    return data
 
     } catch (error) {
          return { error: error.msg,

@@ -16,14 +16,18 @@ def sign_up():
     password = data.get('password')
 
     if not username or not email or not password:
-        return jsonify({'msg': 'Rellene todos los campos por favor'}), 400
+        return jsonify({
+            'success': False,
+            'msg': 'Rellene todos los campos por favor'}), 400
     
     user_exist = db.session.execute(db.select(User).where(
         User.email == data['email']
     )).scalar_one_or_none()
 
     if user_exist:
-        return jsonify({'message': 'El usuario ya existe'}), 400
+        return jsonify({
+            'success': False,
+            'message': 'El usuario ya existe'}), 400
     
     new_user = User(email= email, username= username)
     new_user.set_password(data['password'])
@@ -31,8 +35,10 @@ def sign_up():
     db.session.commit()
     token = create_access_token(str(new_user.id))
 
-    return jsonify({'msg': 'Usuario creado',
-                    'token': token}), 200
+    return jsonify({
+        'success': True,
+        'msg': 'Usuario creado',
+        'token': token}), 200
 
 
 @user_bp.route('/login', methods=['POST'])
@@ -42,20 +48,26 @@ def user_login():
     password = data.get('password')
 
     if not email or not password:
-        return jsonify({'msg': 'Rellene todos los campos por favor'}), 400
+        return jsonify({
+            'success': False,
+            'msg': 'Rellene todos los campos por favor'}), 400
     
     user = db.session.execute(db.select(User).where(
         User.email == email
     )).scalar_one_or_none()
 
     if not user:
-        return jsonify({'msg': 'Email o contraseña invalidos'}), 400
+        return jsonify({
+            'success': False,
+            'msg': 'Email o contraseña invalidos'}), 400
     
     if user.check_password(password):
         token = create_access_token(identity= str(user.id))
-        return jsonify({'msg': 'Inicio de sesión correcto',
-                        'user': user.serialize(),
-                        'token': token})
+        return jsonify({
+            'success': True,
+            'msg': 'Inicio de sesión correcto',
+            'user': user.serialize(),
+            'token': token})
     else:
         return jsonify({'msg': 'Email o contraseña invalidos'}), 400
     
@@ -67,9 +79,13 @@ def show_user():
     user = User.query.get(int(user_id))
      
     if not user:
-        return jsonify({'msg': 'Usuario no encontrado'}), 404
+        return jsonify({
+            'success': False,
+            'msg': 'Usuario no encontrado'}), 404
     
-    return jsonify(user.serialize()),200
+    return jsonify({
+        'success': True,
+        'user': user.serialize()}),200
 
 
 @user_bp.route('/', methods=['PUT'])
@@ -80,14 +96,19 @@ def upgrade_user():
     data = request.get_json()
 
     if not user:
-        return jsonify({'msg': 'Usuario no encontrado'}), 404
+        return jsonify({
+            'success': False,
+            'msg': 'Usuario no encontrado'}), 404
     
     user.username = data.get('username', user.username)
     user.email = data.get('email', user.email)
 
     db.session.commit()
 
-    return jsonify({'msg': 'Usuario modificado correctamente'}, user.serialize())
+    return jsonify({
+        'success': True,
+        'msg': 'Usuario modificado correctamente',
+        'user': user.serialize()}), 200
 
 
 @user_bp.route('/', methods=['DELETE'])
@@ -102,7 +123,7 @@ def delete_user():
     db.session.delete(user)
     db.commit()
 
-    return jsonify({'msg': 'Usuario eliminado'})
+    return jsonify({'msg': 'Usuario eliminado'}), 200
 
 
 @user_bp.route('/', methods=['GET'])
@@ -110,7 +131,7 @@ def all_user():
     users = User.query.all()
 
     if not users:
-        return jsonify({'msg': 'No hay ningun usuario registrado'})
+        return jsonify({'msg': 'No hay ningun usuario registrado'}), 400
     
     db.session.commit()
 
