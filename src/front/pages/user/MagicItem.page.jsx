@@ -5,7 +5,6 @@ export const MagicItemPage = () => {
     return (
         <>
         <FormMagicItems/>
-        
         </>
     )
 }
