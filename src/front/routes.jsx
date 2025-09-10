@@ -16,7 +16,7 @@ import { Home } from "./pages/publics/Home.page";
 import { ProfilePage } from "./pages/user/Profile.page";
 import { Formspell } from "./pages/user/Formspell.page";
 import { CreateMagicItemPage } from "./pages/user/CreateMagicItem.page";
-import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.poage";
+import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.page";
 
 
 export const router = createBrowserRouter(
