@@ -39,7 +39,7 @@ def sign_up():
         'success': True,
         'msg': 'Usuario creado',
         'token': token,
-        'user': user_exist.setialize()}), 200
+        'user': new_user.serialize()}), 200
 
 
 @user_bp.route('/login', methods=['POST'])
