@@ -16,19 +16,14 @@ def create_specie():
     data = request.get_json()
     user_id = get_jwt_identity()
     
-    specie = data.get("specie")
     short_description = data.get("short_description")
     group = data.get("group")
     description = data.get("description")
     trait_desc = data.get("trait_desc")
     trait = data.get ("trait")
     avatar = data.get ("avatar")
-
-    if not specie:
-        return jsonify({'msg': 'Specie es requerida'}), 400
     
     new_specie = Specie(
-        specie=specie,
         short_description=short_description,
         group=group,
         description=description,
@@ -42,7 +37,7 @@ def create_specie():
     db.session.commit()
 
     return jsonify({'msg': 'Specie creada',
-                    'specie': new_specie}), 201 #aca seria new_specie.serialize() ??
+                    'specie': new_specie.serialize()}), 201
 
 @specie_bp.route('/<int:specie_id>', methods=['GET'])
 @jwt_required()
@@ -83,7 +78,5 @@ def update_specie(specie_id):
 
     db.session.commit()
 
-    return jsonify({'msg': 'Specie modificada correctamente'}, specie.serialize()), 200
-    # o seria asi : 
-    # return jsonify({'msg': 'Specie modificada correctamente',
-    # 'specie': specie.serialize()}), 200
+    return jsonify({'msg': 'Specie modificada correctamente',
+                  'specie': specie.serialize()}), 200

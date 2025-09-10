@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { CollectionDropdown } from "./CollectionDropdown";
+import { useState } from "react";
 
 export const Navbar = () => {
   const { token, logOut } = useAuth();

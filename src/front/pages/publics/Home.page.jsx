@@ -9,6 +9,5 @@ export const Home = () => {
 			<h1 className="text-center mt-5">D&D MASTERS OF INFINITY</h1>
 			<FormMagicItems/>
 			</>
-		</>
 	);
 }; 
