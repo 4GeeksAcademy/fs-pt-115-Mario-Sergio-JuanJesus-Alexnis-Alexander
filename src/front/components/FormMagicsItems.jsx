@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { createMagicItem } from "../serviceApi/magicItem.api";
-import { useAuth } from "../hooks/useAuth";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 export const FormMagicItems = () => {
 
-  const [input, setInputs] =  useState({})
-  const [error, setError] = useState(null)
-  const { user } = useAuth()
+  const [input, setInputs] =  useState({});
+  const { store, dispatch } = useGlobalReducer();
+  const [error, setError] = useState(null);
+
 
   const handleOnChange = (e) => {
     const { name, value} = e.target
@@ -18,6 +19,11 @@ export const FormMagicItems = () => {
     e.preventDefault()
     
     const dataMagicItem = await createMagicItem(input)
+    dispatch({
+      type: 'showMagicItem',
+      payload: dataMagicItem
+    })
+
 
     if (!dataMagicItem.success) {
        return setError(dataMagicItem?.error || 'Creación fallida')

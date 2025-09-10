@@ -1,6 +1,6 @@
 import { FormMagicItems } from "../../components/FormMagicsItems"
 
-export const MagicItemPage = () => {
+export const CreateMagicItemPage = () => {
 
     return (
         <>
