@@ -10,7 +10,6 @@ export const signUp = async (newUser) => {
         body: JSON.stringify(newUser)
     })
     const data = await response.json()
-    console.log(response);
     if (!response.ok) {
         return {
             success: false,
@@ -47,11 +46,7 @@ export const userLogin = async (loginUser) => {
         }
     }
     
-    return {
-        success: true,
-        data: data,
-        token: data.token
-    }
+    return data
 
     } catch (error) {
          return { error: error.msg,
