@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const CollectionDropdown = ({closeDropdown}) => {
+export const CollectionDropdown = ({ closeDropdown }) => {
   return (
     <>
       <div
@@ -55,7 +55,11 @@ export const CollectionDropdown = ({closeDropdown}) => {
           <Link to={""} className="ms-4">
             <button className="btn text-white">🔹 Crear monstruos</button>
           </Link>
-          <Link to={""} className="ms-4">
+          <Link
+            to={"/user/create-magit-item"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
             <button className="btn text-white">
               🔹 Crear articulos magicos
             </button>
