@@ -9,7 +9,6 @@ spell_bp = Blueprint('spell', __name__, url_prefix='/spells')
 
 CORS(spell_bp)
 
-
 @spell_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_spell():
