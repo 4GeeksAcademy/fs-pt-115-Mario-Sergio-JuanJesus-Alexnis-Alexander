@@ -86,6 +86,17 @@ class Char_attributes(db.Model):
         }
 
 
+class Spell(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    spell_lvl: Mapped[int] = mapped_column(nullable=False)
+    school:Mapped[str] = mapped_column(String(255), nullable=False)
+    cast_time:Mapped[str] = mapped_column(String(255), nullable=False)
+    duration:Mapped[str] = mapped_column(String(255), nullable=False)
+    range:Mapped[str] = mapped_column(String(255), nullable=False)
+    description:Mapped[Optional[str]] = mapped_column(String(255))
+
+
 class Proffesion(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
@@ -98,8 +109,25 @@ class Proffesion(db.Model):
     spell_link: Mapped[List["ProffesionSpell"]
                        ] = relationship(back_populates="proffesion")
 
+class ProffesionSpell(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    proffesion_id: Mapped[int] = mapped_column(ForeignKey("proffesion.id"))
+    spell_id: Mapped[int] = mapped_column(ForeignKey("spell.id"))
+
+    proffesion: Mapped[Proffesion] = relationship(
+        back_populates="spell_link"
+    )
+
+
 class ProffesionFeature(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
+    lvl_requirement: Mapped[int] = mapped_column(nullable=False)
+    proffesion_id: Mapped[int] = mapped_column(ForeignKey("proffesion.id"))
+
+    proffesion: Mapped[Proffesion] = relationship(
+        back_populates="features_link"
+    )
+
 
 class Subproffesion(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -108,15 +136,40 @@ class Subproffesion(db.Model):
     lvl_required: Mapped[int] = mapped_column(nullable=False)
 
     proffesion: Mapped[Proffesion] = relationship(
-        back_populates="subproffesions")
-    features_link: Mapped[List["SubproffesionFeature"]] = relationship()
+        back_populates="subproffesions"
+    )
+    features_link: Mapped[List["SubproffesionFeature"]] = relationship(
+        back_populates="subproffesion"
+    )
+
+
+class SubproffesionFeature(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    lvl_requirement: Mapped[int] = mapped_column(nullable=False)
+    subproffesion_id: Mapped[int] = mapped_column(ForeignKey("subproffesion.id"))
+
+    subproffesion: Mapped[Proffesion] = relationship(
+        back_populates="features_link"
+    )
+
 
 class Specie(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
 
-    subrace_link: Mapped[List["Subspecie"]] = relationship(back_populates="specie")
-    features_link: Mapped[List["SpecieFeature"]] = relationship(back_populates="specie")
+    subrace_link: Mapped[List["Subspecie"]
+                         ] = relationship(back_populates="specie")
+    features_link: Mapped[List["SpecieFeature"]
+                          ] = relationship(back_populates="specie")
+
+
+class SpecieFeature(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    specie_id: Mapped[int] = mapped_column(ForeignKey("specie.id"))
+    feature_id: Mapped[int] = mapped_column(ForeignKey("feature.id"))
+    lvl_required: Mapped[int] = mapped_column(nullable=False)
+
+
 
 class Subspecie(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -124,14 +177,27 @@ class Subspecie(db.Model):
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
 
     specie: Mapped["Specie"] = relationship(back_populates="subspecie")
-    
+
+
+
 class Feature(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
-    description: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    description: Mapped[str] = mapped_column(
+        String(255), nullable=False, unique=True)
 
-    proffesion_links: Mapped[List["ProffesionFeature"]] = relationship(back_populates= "feature")
-    subproffesion_links: Mapped[List["SubproffesionFeature"]] = relationship(back_populates= "feature")
-    specie_links: Mapped[List["SpecieFeature"]] = relationship(back_populates= "feature")
-    subspecie_links: Mapped[List["SubspecieFeature"]] = relationship(back_populates= "feature")
-    background_links: Mapped[List["BackgroundFeature"]] = relationship(back_populates= "feature")
+    proffesion_links: Mapped[List["ProffesionFeature"]
+                             ] = relationship(back_populates="feature")
+    subproffesion_links: Mapped[List["SubproffesionFeature"]] = relationship(
+        back_populates="feature")
+    specie_links: Mapped[List["SpecieFeature"]
+                         ] = relationship(back_populates="feature")
+    subspecie_links: Mapped[List["SubspecieFeature"]
+                            ] = relationship(back_populates="feature")
+    background_links: Mapped[List["BackgroundFeature"]
+                             ] = relationship(back_populates="feature")
+
+class Background(db.Model):
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True)
+    starting_items: Mapped[str] = mapped_column(String(255), nullable=False)
