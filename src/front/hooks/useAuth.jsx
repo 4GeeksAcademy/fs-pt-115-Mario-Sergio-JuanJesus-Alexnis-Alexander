@@ -8,13 +8,13 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const userData = localStorage.getItem("user");
-    if (userData) {
-      // El parse es ara poder leer el user que estaba como string
-      setUser(JSON.parse(userData)); 
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userData = localStorage.getItem("user");
+  //   if (userData) {
+  //     // El parse es ara poder leer el user que estaba como string
+  //     setUser(JSON.parse(userData)); 
+  //   }
+  // }, []);
 
   const login = async (email, password) => {
     setLoading(true);
