@@ -38,7 +38,8 @@ def sign_up():
     return jsonify({
         'success': True,
         'msg': 'Usuario creado',
-        'token': token}), 200
+        'token': token,
+        'user': user_exist.setialize()}), 200
 
 
 @user_bp.route('/login', methods=['POST'])
