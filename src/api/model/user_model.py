@@ -37,6 +37,6 @@ class User(db.Model):
             "full_name": self.full_name,
             "gender": self.gender,
             "phone": self.phone,
-            "spells": [spell.serialize() for spell in self.spell]
+            "spells": [spell.serialize() for spell in self.spell],
             'magics_items': [item.serialize() for item in self.magics_items]
         }
