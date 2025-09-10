@@ -18,7 +18,7 @@ export const signUp = async (newUser) => {
     }
     return {
         success: true,
-        data: data,
+        user: data.user,
         token: data.token
     }
 
