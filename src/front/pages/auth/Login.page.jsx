@@ -73,7 +73,9 @@ export const LoginPage = () => {
           Recordarme
         </label>
       </div>
-      {error && <div className="alert alert-danger">{error}</div>}
+      {
+        error && <div className="alert alert-danger">{error}</div>
+      }
       <button type="submit" className="btn btn-primary">
         Entrar
       </button>
