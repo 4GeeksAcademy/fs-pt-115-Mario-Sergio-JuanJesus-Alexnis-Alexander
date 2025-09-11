@@ -11,6 +11,11 @@ export default function storeReducer(store, action = {}) {
         ...store,
         magicsItems: action.payload
       };
+    case 'deleteMagicItem':
+      return {
+        ...store,
+        magicsItems: store.magicsItems.filter(item => item.id != action.payload)
+      };
     default:
       throw Error('Unknown action.');
   }    
