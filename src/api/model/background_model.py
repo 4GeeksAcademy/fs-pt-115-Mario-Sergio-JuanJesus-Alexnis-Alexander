@@ -27,7 +27,7 @@ class Background(db.Model):
     spell_list_extended: Mapped[str] = mapped_column(Text)
     contacts_list: Mapped[str] = mapped_column(Text)
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("user,id"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
     def serialize(self):
         return {

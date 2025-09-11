@@ -3,7 +3,7 @@ from flask_cors import CORS
 from ..model.user_model import User
 from ..model.spell_model import Spell
 from ..model.specie_model import Specie
-from ..modell.background_model import Background
+from ..model.background_model import Background
 from ..model_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 

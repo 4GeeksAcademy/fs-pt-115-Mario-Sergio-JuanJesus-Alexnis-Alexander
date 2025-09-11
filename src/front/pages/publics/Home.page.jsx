@@ -2,6 +2,7 @@
 import { FormMagicItems } from "../../components/FormMagicsItems";
 import { CollectionDropdown } from "../../components/CollectionDropdown";
 import { FormularioBackground } from "../../components/FormularioBackground";
+import { FormularioSubclasses } from "../../components/FormularioSubclasses";
 
 export const Home = () => {
 
