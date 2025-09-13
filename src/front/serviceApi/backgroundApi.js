@@ -2,11 +2,11 @@ const urlApi = import.meta.env.VITE_BACKEND_URL;
 
 export const createNewBackground = async (newBackground) => {
     try {
-        const response = await fetch (`${urlApi})api/background`, {
+        const response = await fetch (`${urlApi}/api/background`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
-                'Authorizacion': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(newBackground)
         })
