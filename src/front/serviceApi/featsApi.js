@@ -1,24 +1,24 @@
 const urlApi = import.meta.env.VITE_BACKEND_URL;
 
-export const createNewSpecie = async (newSpecie) => {
+export const createNewFeats = async (newFeats) => {
     try {
-        const response = await fetch (`${urlApi}/api/specie`, {
+        const response = await fetch (`${urlApi}/api/feats`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify(newSpecie)
+            body: JSON.stringify(newFeats)
         })
         const data = await response.json()
         if (!response.ok) {
-            return {
-                success: false,
-                error: data.error || 'Error al crear Specie'
+            return{
+                succes: false,
+                error: data.error || 'Error al crear Feats'
             }
         }
         return {
-            success: true,
+            succes: true,
             data: data,
             token: data.token
         }
@@ -27,10 +27,10 @@ export const createNewSpecie = async (newSpecie) => {
     }
 };
 
-export const getSpecieById = async (specieId) => {
+export const  getFeatsbyId = async (feats_id) => {
     try {
-        const response = await fetch (`${urlApi}/api/specie/${specieId}`, {
-            method: 'GET', 
+        const response = await fetch (`${urlApi}/api/feats/${feats_id}`, {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -39,7 +39,7 @@ export const getSpecieById = async (specieId) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al obtener las Species'
+                error: data.error || 'Error al obtener Feats'
             }
         }
         return{
@@ -51,9 +51,9 @@ export const getSpecieById = async (specieId) => {
     }
 };
 
-export const updateSpecie = async (specieId, updateData) => {
-    try{
-        const response = await fetch (`${urlApi}/api/specie/${specieId}`, {
+export const updateFeats = async (featsId, updateData) => {
+    try {
+        const response = await fetch (`${urlApi}/api/feats(${featsId})`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'aplication/json',
@@ -62,10 +62,10 @@ export const updateSpecie = async (specieId, updateData) => {
             body: JSON.stringify(updateData)
         })
         const data = await response.json();
-        if (!response.ok) {
+        if (!response.ok){
             return {
-                success: false,
-                error: data.error || 'Error al actualizar Specie'
+                succes: false,
+                error: data.error || 'Error al actualizar Feats'
             }
         }
         return {
@@ -77,9 +77,9 @@ export const updateSpecie = async (specieId, updateData) => {
     }
 };
 
-export const deleteSpecie = async (specieId) => {
+export const deleteFeats = async (featsId) => {
     try {
-        const response = await fetch (`${urlApi}/api/specie/${specieId}`, {
+        const response = await fetch (`${urlApi}/api/feats/${featsId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -89,14 +89,14 @@ export const deleteSpecie = async (specieId) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al eliminar Specie'                
+                error: data.error || 'Error al eliminar Feats'   
             }
         }
         return {
             success: true,
-            data: data            
+            data: data
         }
     } catch (error) {
         return {error: error.msg} || 'Error de conexión'
-    }
+    }    
 }
