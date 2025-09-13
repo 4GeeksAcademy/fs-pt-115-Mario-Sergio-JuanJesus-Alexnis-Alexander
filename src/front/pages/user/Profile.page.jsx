@@ -4,7 +4,7 @@ export const ProfilePage = () => {
     const { user } = useAuth()
 
     // ✅ AGREGAR ESTOS LOGS
-    console.log("=== INFORMACION PARA PROFILE ===");
+    console.log("***** INFORMACION PARA PROFILE *****");
     console.log("user completo:", user);
     
 

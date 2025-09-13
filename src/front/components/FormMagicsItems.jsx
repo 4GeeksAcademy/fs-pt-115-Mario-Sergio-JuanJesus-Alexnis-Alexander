@@ -1,32 +1,32 @@
 import { useState } from "react";
 import { createMagicItem } from "../serviceApi/magicItem.api";
-import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export const FormMagicItems = () => {
-
-  const [input, setInputs] =  useState({})
-  const [error, setError] = useState(null)
-  const { user } = useAuth()
+  const [input, setInputs] = useState({});
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleOnChange = (e) => {
-    const { name, value} = e.target
-    const formMagicsItems = {...input, [name]: value}
-    setInputs(formMagicsItems)
-  }
+    const { name, value } = e.target;
+    const formMagicsItems = { ...input, [name]: value };
+    setInputs(formMagicsItems);
+  };
 
   const handleOnSubmit = async (e) => {
-    e.preventDefault()
-    
-    const dataMagicItem = await createMagicItem(input)
+    e.preventDefault();
+
+    const dataMagicItem = await createMagicItem(input);
 
     if (!dataMagicItem.success) {
-       return setError(dataMagicItem?.error || 'Creación fallida')
+      return setError(dataMagicItem?.error || "Creación fallida");
     } else {
-      setInputs({})
-      setError(null)
+      setInputs({});
+      setError(null);
     }
-  }
 
+    navigate("/user/magics-items");
+  };
 
   return (
     <div className="container my-5 bg-light">
@@ -62,15 +62,13 @@ export const FormMagicItems = () => {
             Rareza <span className="text-danger fs-5">*</span>
           </label>
           <select
-            
             onChange={handleOnChange}
             name="rarity"
             className="form-select"
-            defaultValue=''
             required
           >
             <option value="">---</option>
-            <option value={'Común'}>Común</option>
+            <option value={"Común"}>Común</option>
             <option value={"Raro"}>Raro</option>
             <option value={"Muy raro"}>Muy raro</option>
             <option>...</option>
@@ -84,13 +82,12 @@ export const FormMagicItems = () => {
             onChange={handleOnChange}
             name="base_item_type"
             className="form-select"
-            defaultValue=''
             required
           >
-            <option value=''>---</option>
-            <option value={'Articulo'}>Articulo</option>
-            <option value={'Armadura'}>Armadura</option>
-            <option value={'Arma'}>Arma</option>
+            <option value="">---</option>
+            <option value={"Articulo"}>Articulo</option>
+            <option value={"Armadura"}>Armadura</option>
+            <option value={"Arma"}>Arma</option>
           </select>
         </div>
         <div className="col-md-4">
@@ -101,14 +98,13 @@ export const FormMagicItems = () => {
             onChange={handleOnChange}
             name="magic_item_type"
             className="form-select"
-            defaultValue=""
             required
           >
             <option value="">---</option>
-            <option value={'Anillo'}>Anillo</option>
-            <option value={'Poción'}>Poción</option>
-            <option value={'Varita'}>Varita</option>
-            <option value={'3'}>...</option>
+            <option value={"Anillo"}>Anillo</option>
+            <option value={"Poción"}>Poción</option>
+            <option value={"Varita"}>Varita</option>
+            <option value={"3"}>...</option>
           </select>
         </div>
         <div className="col-md-4">
@@ -119,12 +115,10 @@ export const FormMagicItems = () => {
             onChange={handleOnChange}
             name="base_armor"
             className="form-select"
-            defaultValue=''
           >
             <option value="">---</option>
             <option value="0">afa</option>
             <option value="1">acac</option>
-            
           </select>
         </div>
         <div className="col-md-4">
@@ -135,7 +129,6 @@ export const FormMagicItems = () => {
             onChange={handleOnChange}
             name="dex_bonus"
             className="form-select"
-            defaultValue=''
           >
             <option value="">---</option>
             <option value="0">afvavf</option>
@@ -161,11 +154,10 @@ export const FormMagicItems = () => {
             onChange={handleOnChange}
             name="stealth_check"
             className="form-select"
-            defaultValue=''
           >
             <option value="">---</option>
-            <option value={'Ninguno'}>Ninguno</option>
-            <option value={'Desventaja'}>Desventaja</option>
+            <option value={"Ninguno"}>Ninguno</option>
+            <option value={"Desventaja"}>Desventaja</option>
           </select>
         </div>
         <div className="col-md-4">
@@ -176,16 +168,16 @@ export const FormMagicItems = () => {
             onChange={handleOnChange}
             name="base_weapon"
             className="form-select"
-            defaultValue=""
           >
             <option value="">---</option>
-            <option value={'0'}>dfghd</option>
-            <option value={'1'}>ndndfg</option>
+            <option value={"0"}>dfghd</option>
+            <option value={"1"}>ndndfg</option>
           </select>
         </div>
         <div className="col-md-12">
           <label htmlFor="attunement_description" className="form-label">
-            Descripción de la sintonizacion <span className="text-danger fs-5">*</span>
+            Descripción de la sintonizacion{" "}
+            <span className="text-danger fs-5">*</span>
           </label>
           <input
             onChange={handleOnChange}
@@ -223,9 +215,7 @@ export const FormMagicItems = () => {
             required
           ></textarea>
         </div>
-        {
-          error && <div className="alert alert-danger">{error}</div>
-        }
+        {error && <div className="alert alert-danger">{error}</div>}
         <div className="col-12 text-center">
           <button type="submit" className="btn btn-primary mb-4 w-25">
             Crear objeto
