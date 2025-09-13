@@ -418,6 +418,7 @@ class Character(db.Model):
     features_link: Mapped[List["CharacterFeature"]] = relationship(
         back_populates="character", cascade="all, delete-orphan"
     )
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
 
 class AbilityScores(db.Model):
