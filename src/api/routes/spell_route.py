@@ -9,7 +9,6 @@ spell_bp = Blueprint('spell', __name__, url_prefix='/spells')
 
 CORS(spell_bp)
 
-
 @spell_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_spell():
@@ -48,7 +47,7 @@ def create_spell():
     db.session.commit()
 
     return jsonify({'msg': 'Spell creado',
-                    'spell': new_spell}), 201
+                    'spell': new_spell.serialize()}), 201
 
 
 @spell_bp.route('/<int:spell_id>', methods=['GET'])
@@ -103,4 +102,5 @@ def update_spell(spell_id):
 
     db.session.commit()
 
-    return jsonify({'msg': 'Spell modificado correctamente'}, spell.serialize()), 200
+    return jsonify({'msg': 'Spell modificado correctamente',
+                    'spell': spell.serialize()}), 200
