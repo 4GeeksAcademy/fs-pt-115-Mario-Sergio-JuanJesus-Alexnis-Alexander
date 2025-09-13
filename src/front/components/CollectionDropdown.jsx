@@ -17,21 +17,31 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
         <div className="row gap-1 p-3">
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">Mis personajes</button>
-          </Link>
-          <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">Mis campañas</button>
+            <button className="col-md-12 p-3 fw-bold">
+              Mis personajes
+            </button>
           </Link>
           <Link to={""}>
             <button className="col-md-12 p-3 fw-bold">
+              Mis campañas
+            </button>
+          </Link>
+          <Link to={"/user/magics-items"}>
+            <button
+            className="col-md-12 p-3 fw-bold" 
+            onClick={closeDropdown}>
               Mis articulos magicos
             </button>
           </Link>
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">Mis hechizos</button>
+            <button className="col-md-12 p-3 fw-bold">
+              Mis hechizos
+            </button>
           </Link>
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">Mis monstruos</button>
+            <button className="col-md-12 p-3 fw-bold">
+              Mis monstruos
+            </button>
           </Link>
         </div>
 
@@ -50,13 +60,15 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             onClick={closeDropdown}
             className="ms-4"
           >
-            <button className="btn text-white">🔹 Crear hechizos</button>
+            <button className="btn text-white">
+              🔹 Crear hechizos</button>
           </Link>
           <Link to={""} className="ms-4">
-            <button className="btn text-white">🔹 Crear monstruos</button>
+            <button className="btn text-white">
+              🔹 Crear monstruos</button>
           </Link>
           <Link
-            to={"/user/create-magit-item"}
+            to={"/user/create-magic-item"}
             onClick={closeDropdown}
             className="ms-4"
           >
@@ -65,7 +77,8 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             </button>
           </Link>
           <Link to={""} className="ms-4 mb-3">
-            <button className="btn text-white">🔹 Crear campañas</button>
+            <button className="btn text-white">
+              🔹 Crear campañas</button>
           </Link>
         </div>
       </div>

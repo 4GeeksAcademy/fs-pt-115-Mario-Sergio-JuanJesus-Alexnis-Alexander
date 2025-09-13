@@ -1,20 +1,20 @@
 const urlApi = import.meta.env.VITE_BACKEND_URL;
 
-export const createNewSpell =  async (newSpell) => {
+export const createNewSpecie = async (newSpecie) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells`, { 
+        const response = await fetch (`${urlApi}/api/specie`, {
             method: 'POST',
-            headers: {
+            headers:{
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify(newSpell)
+            body: JSON.stringify(newSpecie)
         })
         const data = await response.json()
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al crear Hechizo'
+                error: data.error || 'Error al crear Specie'
             }
         }
         return {
@@ -27,9 +27,9 @@ export const createNewSpell =  async (newSpell) => {
     }
 };
 
-export const getSpellById = async (spellId) => {
+export const getSpecieById = async (specieId) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells/${spellId}`, {
+        const response = await fetch (`${urlApi}/api/specie/${specieId}`, {
             method: 'GET', 
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -39,7 +39,7 @@ export const getSpellById = async (spellId) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al obtener los Hechizos'
+                error: data.error || 'Error al obtener las Species'
             }
         }
         return{
@@ -51,10 +51,9 @@ export const getSpellById = async (spellId) => {
     }
 };
 
-
-export const updateSpell = async (spellId, updateData ) => {
-    try {
-        const response = await fetch (`${urlApi}/api/spells/${spellId}`, {
+export const updateSpecie = async (specieId, updateData) => {
+    try{
+        const response = await fetch (`${urlApi}/api/specie/${specieId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'aplication/json',
@@ -66,7 +65,7 @@ export const updateSpell = async (spellId, updateData ) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al actualizar el Hechizo'
+                error: data.error || 'Error al actualizar Specie'
             }
         }
         return {
@@ -74,13 +73,13 @@ export const updateSpell = async (spellId, updateData ) => {
             data: data
         }
     } catch (error) {
-        return { error: error.msg || 'Error de conexión' }
+        return {error: error.msg || 'Error de conexión'}
     }
-}
+};
 
-export const deleteSpell = async (spellId) => {
+export const deleteSpecie = async (specieId) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells/${spellId}`, {
+        const response = await fetch (`${urlApi}/api/specie/${specieId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -90,12 +89,12 @@ export const deleteSpell = async (spellId) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al eliminar el Hechizo'
+                error: data.error || 'Error al eliminar Specie'                
             }
         }
         return {
             success: true,
-            data: data
+            data: data            
         }
     } catch (error) {
         return {error: error.msg} || 'Error de conexión'

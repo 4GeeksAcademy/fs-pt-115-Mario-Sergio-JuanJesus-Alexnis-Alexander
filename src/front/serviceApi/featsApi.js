@@ -1,24 +1,24 @@
 const urlApi = import.meta.env.VITE_BACKEND_URL;
 
-export const createNewSpell =  async (newSpell) => {
+export const createNewFeats = async (newFeats) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells`, { 
+        const response = await fetch (`${urlApi}/api/feats`, {
             method: 'POST',
-            headers: {
+            headers:{
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify(newSpell)
+            body: JSON.stringify(newFeats)
         })
         const data = await response.json()
         if (!response.ok) {
-            return {
-                success: false,
-                error: data.error || 'Error al crear Hechizo'
+            return{
+                succes: false,
+                error: data.error || 'Error al crear Feats'
             }
         }
         return {
-            success: true,
+            succes: true,
             data: data,
             token: data.token
         }
@@ -27,10 +27,10 @@ export const createNewSpell =  async (newSpell) => {
     }
 };
 
-export const getSpellById = async (spellId) => {
+export const  getFeatsbyId = async (feats_id) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells/${spellId}`, {
-            method: 'GET', 
+        const response = await fetch (`${urlApi}/api/feats/${feats_id}`, {
+            method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -39,7 +39,7 @@ export const getSpellById = async (spellId) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al obtener los Hechizos'
+                error: data.error || 'Error al obtener Feats'
             }
         }
         return{
@@ -51,10 +51,9 @@ export const getSpellById = async (spellId) => {
     }
 };
 
-
-export const updateSpell = async (spellId, updateData ) => {
+export const updateFeats = async (featsId, updateData) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells/${spellId}`, {
+        const response = await fetch (`${urlApi}/api/feats(${featsId})`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'aplication/json',
@@ -63,10 +62,10 @@ export const updateSpell = async (spellId, updateData ) => {
             body: JSON.stringify(updateData)
         })
         const data = await response.json();
-        if (!response.ok) {
+        if (!response.ok){
             return {
-                success: false,
-                error: data.error || 'Error al actualizar el Hechizo'
+                succes: false,
+                error: data.error || 'Error al actualizar Feats'
             }
         }
         return {
@@ -74,13 +73,13 @@ export const updateSpell = async (spellId, updateData ) => {
             data: data
         }
     } catch (error) {
-        return { error: error.msg || 'Error de conexión' }
+        return {error: error.msg || 'Error de conexión'}
     }
-}
+};
 
-export const deleteSpell = async (spellId) => {
+export const deleteFeats = async (featsId) => {
     try {
-        const response = await fetch (`${urlApi}/api/spells/${spellId}`, {
+        const response = await fetch (`${urlApi}/api/feats/${featsId}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -90,7 +89,7 @@ export const deleteSpell = async (spellId) => {
         if (!response.ok) {
             return {
                 success: false,
-                error: data.error || 'Error al eliminar el Hechizo'
+                error: data.error || 'Error al eliminar Feats'   
             }
         }
         return {
@@ -99,5 +98,5 @@ export const deleteSpell = async (spellId) => {
         }
     } catch (error) {
         return {error: error.msg} || 'Error de conexión'
-    }
+    }    
 }
