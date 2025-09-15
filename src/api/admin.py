@@ -5,7 +5,7 @@ from .model_config import db
 from .model.user_model import User
 from .model.spell_model import Spell
 from .model.magic_items_model import MagicsItems
-from .model.character_model import Character
+from .model.character_model import *
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
@@ -17,6 +17,7 @@ def setup_admin(app):
     # Add your models here, for example this is how we add a the User model to the admin
     admin.add_view(ModelView(User, db.session))
     admin.add_view(ModelView(Character, db.session))
+    admin.add_view(ModelView(Proffesion, db.session))
 
     # You can duplicate that line to add mew models
     # admin.add_view(ModelView(YourModelName, db.session))

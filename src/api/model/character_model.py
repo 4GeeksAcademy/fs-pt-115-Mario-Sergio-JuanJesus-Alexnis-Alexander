@@ -370,8 +370,8 @@ class Character(db.Model):
     id: Mapped[int] = mapped_column(
         primary_key=True
     )
-    name: Mapped[str] = mapped_column(Text, nullable=False)
-    lvl: Mapped[int] = mapped_column(Integer, nullable=False)
+    name: Mapped[str] = mapped_column(String, nullable=False)
+    lvl: Mapped[int] = mapped_column(Integer, nullable=False, default=1)
     xp: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     proffesion_id: Mapped[int] = mapped_column(
         ForeignKey("proffesion.id"), nullable=False
@@ -388,13 +388,13 @@ class Character(db.Model):
     background_id: Mapped[int] = mapped_column(
         ForeignKey("background.id"), nullable=False
     )
-    alingment: Mapped[Optional[str]] = mapped_column(Text)
+    alingment: Mapped[Optional[str]] = mapped_column(String,default="True Neutral")
     CA: Mapped[int] = mapped_column(Integer, nullable=False, default=10)
     speed: Mapped[int] = mapped_column(Integer, nullable=False, default=30)
     initiative: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
     hp_max: Mapped[int] = mapped_column(Integer, nullable=False)
     hp_current: Mapped[int] = mapped_column(Integer, nullable=False)
-    language: Mapped[dict] = mapped_column(JSONB, default=list)
+    language: Mapped[dict] = mapped_column(JSONB, default=["common"])
     proficiencies: Mapped[dict] = mapped_column(JSONB, default=dict)
 
     proffesion: Mapped[Proffesion] = relationship()

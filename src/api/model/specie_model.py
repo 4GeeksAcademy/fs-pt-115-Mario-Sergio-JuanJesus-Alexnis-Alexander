@@ -1,5 +1,5 @@
 from . import db
-from sqlalchemy import Integer, Text, String, Image, ForeignKey
+from sqlalchemy import Integer, Text, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from typing import Optional
 
@@ -10,7 +10,7 @@ class Specie(db.Model):
     description: Mapped[Optional[str]]= mapped_column(Text)
     trait_desc: Mapped[Optional[str]]= mapped_column(Text)
     trait: Mapped[Optional[str]]= mapped_column(String(255))
-    avatar: Mapped[Optional[Image]]= mapped_column(Image)
+    avatar: Mapped[Optional[str]]= mapped_column(String(255))
 
     user_id: Mapped[int]= mapped_column(ForeignKey("user.id"))
 
