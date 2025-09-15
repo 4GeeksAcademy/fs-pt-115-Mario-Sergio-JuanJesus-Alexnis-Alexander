@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { CollectionDropdown } from "./CollectionDropdown";
 import { useState } from "react";
+import styles from "../styles/components/navbar.module.css";
 
 export const Navbar = () => {
   const { token, logOut } = useAuth();
@@ -15,12 +16,18 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav
+        className="navbar navbar-expand-lg"
+        style={{ backgroundColor: "black" }}
+      >
         <div className="container-fluid ms-5">
           <Link to={"/"}>
             <div className="navbar-brand">
-              <span className="ms-4">__D&D__</span> <br />
-              <span className="ms-0">Master of Infinity</span>
+              <img
+                className={styles.logoNavbar}
+                src="src/front/assets/img/logo-navbar.png"
+                alt="logo"
+              />
             </div>
           </Link>
           <button
@@ -35,24 +42,35 @@ export const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="d-flex ms-5" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                🔍
-              </button>
+            <div className="d-flex justify-content-center flex-grow-1">
+              <menu className={styles.dropdown}>
+                <div style={{ position: "relative" }}>
+                  <button
+                    className={styles.button}
+                    onClick={() => setShowDropdown(!showDropdown)}
+                  >
+                    Mi colección 🔻
+                  </button>
+
+                  {/* DROPDOWN AQUI */}
+                  <div className={showDropdown ? "" : "d-none"}>
+                    <CollectionDropdown
+                      closeDropdown={() => setShowDropdown(false)}
+                    />
+                  </div>
+                </div>
+
+                <button className={styles.button}>Reglas de juego 🔻</button>
+              </menu>
             </div>
+
             {!token ? (
-              <form className="d-flex gap-2 ms-auto me-5">
+              <form className="d-flex gap-2">
                 <Link to={"/signup"}>
-                  <button className="btn btn-success">Registrarse</button>
+                  <button className={styles.button}>Registrarse</button>
                 </Link>
                 <Link to={"/login"}>
-                  <button className="btn btn-primary">Iniciar sesion</button>
+                  <button className={styles.button}>Iniciar sesion</button>
                 </Link>
               </form>
             ) : (
@@ -69,26 +87,6 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
-
-      <menu className="bg-secondary p-3 d-flex justify-content-center gap-3">
-        <div style={{ position: "relative" }}>
-          <button
-            className="btn btn-lg bg-success fw-bold"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            Mi colección ⬇️
-          </button>
-
-          {/* El dropdown va AQUÍ dentro del div */}
-          <div className={showDropdown ? "" : "d-none"}>
-            <CollectionDropdown closeDropdown={() => setShowDropdown(false)} />
-          </div>
-        </div>
-
-        <button className="btn btn-lg bg-success fw-bold">
-          Reglas de juego ⬇️
-        </button>
-      </menu>
     </>
   );
 };

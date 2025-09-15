@@ -1,0 +1,9 @@
+.imageBackground {
+    background-image: url('src/front/assets/img/fondo-home.webp');
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
