@@ -1,26 +1,40 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { CollectionDropdown } from "./CollectionDropdown";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "../styles/components/navbar.module.css";
 
 export const Navbar = () => {
   const { token, logOut } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const timeDropdown = useRef(null);
 
   const handleLogout = () => {
     logOut();
     navigate("/");
   };
 
+  const handleMouseLeave = () => {
+    timeDropdown.current = setTimeout(() => {
+      setShowDropdown(false);
+    }, 200);
+  };
+
+  const handleMouseEnter = () => {
+    if (timeDropdown.current) {
+      clearTimeout(timeDropdown.current);
+    }
+    setShowDropdown(true);
+  };
+
   return (
     <>
       <nav
         className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "black" }}
+        style={{ backgroundColor: "black", position: "relative" }}
       >
-        <div className="container-fluid ms-5">
+        <div className="container-fluid ms-2">
           <Link to={"/"}>
             <div className="navbar-brand">
               <img
@@ -42,26 +56,40 @@ export const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="d-flex justify-content-center flex-grow-1">
-              <menu className={styles.dropdown}>
-                <div style={{ position: "relative" }}>
-                  <button
-                    className={styles.button}
-                    onClick={() => setShowDropdown(!showDropdown)}
-                  >
-                    Mi colección 🔻
-                  </button>
+            <div
+              className="d-flex justify-content-center flex-grow-1"
+              
+            >
+              <menu className={styles.btnDropdown}>
+                <div
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <button className={styles.button}>Mi colección 🔻</button>
 
-                  {/* DROPDOWN AQUI */}
-                  <div className={showDropdown ? "" : "d-none"}>
-                    <CollectionDropdown
-                      closeDropdown={() => setShowDropdown(false)}
-                    />
-                  </div>
+                  
                 </div>
 
                 <button className={styles.button}>Reglas de juego 🔻</button>
               </menu>
+              
+              {/* DROPDOWN DE MI COLECCION AQUI */}
+              <div
+                className={showDropdown ? "" : "d-none"}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  zIndex: 1000,
+                }}
+              >
+                <CollectionDropdown
+                  closeDropdown={() => setShowDropdown(false)}
+                />
+              </div>
             </div>
 
             {!token ? (
@@ -75,12 +103,12 @@ export const Navbar = () => {
               </form>
             ) : (
               <form className="d-flex gap-2 ms-auto me-5">
-                <button onClick={handleLogout} className="btn btn-success">
+                <button onClick={handleLogout} className={styles.button}>
                   Cerrar sesión
                 </button>
 
                 <Link to={"/user/profile"}>
-                  <button className="btn btn-primary">Perfil</button>
+                  <button className={styles.button}>Perfil</button>
                 </Link>
               </form>
             )}
