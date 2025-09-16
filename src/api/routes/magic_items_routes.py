@@ -13,7 +13,7 @@ CORS(magics_items_bp)
 @jwt_required()
 def show_magics_items():
     user_id = get_jwt_identity()
-    magics_items = MagicsItems.filter_by(user_id=user_id).all()
+    magics_items = MagicsItems.query.filter_by(user_id=user_id).all()
 
     if not magics_items:
         return jsonify({'error': 'No hay ningun item magico'}), 404
