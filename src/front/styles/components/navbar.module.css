@@ -1,3 +1,8 @@
+#navbar {
+  position: relative;
+  background-color: rgba(16, 13, 13, 0.9);
+}
+
 .logoNavbar {
   width: 6rem;
   height: 3rem;
@@ -18,7 +23,6 @@
 }
 
 .btnDropdown {
-  background-color: black;
   margin: 0;
   padding: 10px;
   display: flex;

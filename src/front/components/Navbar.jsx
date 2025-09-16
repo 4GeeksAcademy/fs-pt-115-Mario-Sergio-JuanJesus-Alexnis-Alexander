@@ -32,7 +32,7 @@ export const Navbar = () => {
     <>
       <nav
         className="navbar navbar-expand-lg"
-        style={{ backgroundColor: "black", position: "relative" }}
+        id={styles.navbar}
       >
         <div className="container-fluid ms-2">
           <Link to={"/"}>
@@ -45,7 +45,7 @@ export const Navbar = () => {
             </div>
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler bg-warning"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -66,10 +66,7 @@ export const Navbar = () => {
                   onMouseLeave={handleMouseLeave}
                 >
                   <button className={styles.button}>Mi colección 🔻</button>
-
-                  
                 </div>
-
                 <button className={styles.button}>Reglas de juego 🔻</button>
               </menu>
               
