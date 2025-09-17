@@ -13,12 +13,12 @@ export const createNewFeats = async (newFeats) => {
         const data = await response.json()
         if (!response.ok) {
             return{
-                succes: false,
+                success: false,
                 error: data.error || 'Error al crear Feats'
             }
         }
         return {
-            succes: true,
+            success: true,
             data: data,
             token: data.token
         }
@@ -64,12 +64,12 @@ export const updateFeats = async (featsId, updateData) => {
         const data = await response.json();
         if (!response.ok){
             return {
-                succes: false,
+                success: false,
                 error: data.error || 'Error al actualizar Feats'
             }
         }
         return {
-            succes: true,
+            success: true,
             data: data
         }
     } catch (error) {
