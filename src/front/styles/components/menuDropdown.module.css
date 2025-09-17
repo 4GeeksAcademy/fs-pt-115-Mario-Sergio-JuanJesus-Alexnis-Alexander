@@ -1,9 +1,10 @@
 .dropdown {
   width: 90vw;
   background-color: rgb(31, 30, 30);
+  
 }
 
-.charButton {
+.charactersBtn {
   border-radius: 10px;
   color: white;
   width: 20rem;
@@ -12,13 +13,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+  border: none;
+  transition: transform 0.3s ease;
 }
 
-.charButton:hover {
-  transform: scale(1.25);
+.charactersBtn:hover {
+  background-size: 28rem;
 }
 
-.charButton img {
-    transition: transform 0.3 ease;
-}
 

@@ -66,9 +66,9 @@ export const Navbar = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button className={styles.button}>Mi colección 🔻</button>
+                <span className={styles.button}>Mi colección 🔻</span>
                 </div>
-                <button className={styles.button}>Reglas de juego 🔻</button>
+                <span className={styles.button}>Reglas de juego 🔻</span>
               </menu>
               
               {/* DROPDOWN DE MI COLECCION AQUI */}
