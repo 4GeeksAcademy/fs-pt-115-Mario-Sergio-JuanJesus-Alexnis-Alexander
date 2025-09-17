@@ -68,7 +68,8 @@ def user_login():
             'success': True,
             'msg': 'Inicio de sesión correcto',
             'user': user.serialize(),
-            'token': token})
+            'token': token
+            })
     else:
         return jsonify({'msg': 'Email o contraseña invalidos'}), 400
     

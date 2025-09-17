@@ -43,7 +43,11 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
         <div className="row gap-3 p-2">
           <h3 className="text-white text-start ms-2">Creaciones:</h3>
-          <Link to={""} className="ms-4">
+          <Link
+            to={"user/create-character"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
             <button className="btn text-white text-center">
               🔹 Crear personajes
             </button>
@@ -108,6 +112,32 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             <button className="btn text-white">
               🔹 Crear Hazañas
             </button>
+          </Link>
+        </div>
+        <div className="row gap-3 p-2">
+          <Link to={"user/create-feat"} className="ms-4 ">
+            <button className="btn text-white">
+              🔹 Crear atributo</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear transfondo</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear raza</button>
+          </Link>
+          <Link to={""} className="ms-4 ">
+            <button className="btn text-white">
+              🔹 Crear subraza</button>
+          </Link>
+          <Link to={""} className="ms-4 ">
+            <button className="btn text-white">
+              🔹 Crear clase</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear subclase</button>
           </Link>
         </div>
       </div>

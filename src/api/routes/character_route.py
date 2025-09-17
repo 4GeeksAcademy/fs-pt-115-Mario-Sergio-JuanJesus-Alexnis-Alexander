@@ -4,7 +4,7 @@ from ..model.character_model import Character
 from ..model_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
-character_bp = Blueprint('character', __name__,url_prefix='/character')
+character_bp = Blueprint('character', __name__,url_prefix='/user/character')
 
 CORS(character_bp)
 
