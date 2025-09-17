@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import styles from "../styles/components/navbar.module.css";
 
 export const Navbar = () => {
-  const { token, logOut } = useAuth();
+  const { token, logOut, user } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const timeDropdown = useRef(null);
@@ -14,6 +14,7 @@ export const Navbar = () => {
     logOut();
     navigate("/");
   };
+  
 
   const handleMouseLeave = () => {
     timeDropdown.current = setTimeout(() => {
@@ -105,7 +106,7 @@ export const Navbar = () => {
                 </button>
 
                 <Link to={"/user/profile"}>
-                  <button className={styles.button}>Perfil</button>
+                  <button className={styles.button}>{user.username}</button>
                 </Link>
               </form>
             )}

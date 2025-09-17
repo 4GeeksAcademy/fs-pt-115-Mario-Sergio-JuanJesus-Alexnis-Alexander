@@ -1,5 +1,24 @@
 .dropdown {
-    width: 90vw;
-    background-color: rgb(31, 30, 30);
-    
+  width: 90vw;
+  background-color: rgb(31, 30, 30);
 }
+
+.charButton {
+  border-radius: 10px;
+  color: white;
+  width: 20rem;
+  height: 8rem;
+  background-image: url("https://imgs.search.brave.com/KN5hLk53eAwUh5wiJCHB2U_ppp2aR8LXqi1qUX1Td0k/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9wNC53/YWxscGFwZXJiZXR0/ZXIuY29tL3dhbGxw/YXBlci82MzMvODk2/LzYyL2FjdGlvbi1h/ZHZlbnR1cmUtZHJh/Z29uLWRyYWdvbnMt/d2FsbHBhcGVyLXBy/ZXZpZXcuanBn");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.charButton:hover {
+  transform: scale(1.25);
+}
+
+.charButton img {
+    transition: transform 0.3 ease;
+}
+
