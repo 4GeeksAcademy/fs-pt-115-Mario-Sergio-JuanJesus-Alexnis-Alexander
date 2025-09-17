@@ -29,12 +29,12 @@ export const FormMagicItems = () => {
   };
 
   return (
-    <div className="container my-5 bg-light">
-      <h2 className="text-center p-3">Crea tu item Magico</h2>
+    <div className="container col-md-8 my-5 basic-form">
+      <h2 className="text-center p-3 fw-bold">Create your Magic Item</h2>
       <form onSubmit={handleOnSubmit} className="row g-3">
         <div className="col-md-6">
           <label htmlFor="name" className="form-label">
-            Nombre <span className="text-danger fs-5">*</span>
+            Name <span className="text-danger fs-5">*</span>
           </label>
           <input
             onChange={handleOnChange}
@@ -47,7 +47,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-md-6">
           <label htmlFor="version" className="form-label">
-            Versión
+            Version
           </label>
           <input
             onChange={handleOnChange}
@@ -59,7 +59,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-6">
           <label htmlFor="rarity" className="form-label">
-            Rareza <span className="text-danger fs-5">*</span>
+            Rarity <span className="text-danger fs-5">*</span>
           </label>
           <select
             onChange={handleOnChange}
@@ -68,15 +68,15 @@ export const FormMagicItems = () => {
             required
           >
             <option value="">---</option>
-            <option value={"Común"}>Común</option>
-            <option value={"Raro"}>Raro</option>
-            <option value={"Muy raro"}>Muy raro</option>
+            <option value={"Common"}>Common</option>
+            <option value={"Rare"}>Rare</option>
+            <option value={"Very rare"}>Very rare</option>
             <option>...</option>
           </select>
         </div>
         <div className="col-6">
           <label htmlFor="base_item_type" className="form-label">
-            Tipo de artículo base <span className="text-danger fs-5">*</span>
+            Base Item Type <span className="text-danger fs-5">*</span>
           </label>
           <select
             onChange={handleOnChange}
@@ -85,14 +85,14 @@ export const FormMagicItems = () => {
             required
           >
             <option value="">---</option>
-            <option value={"Articulo"}>Articulo</option>
-            <option value={"Armadura"}>Armadura</option>
-            <option value={"Arma"}>Arma</option>
+            <option value={"Articulo"}>Item</option>
+            <option value={"Armadura"}>Armor</option>
+            <option value={"Arma"}>Weapon</option>
           </select>
         </div>
         <div className="col-md-4">
           <label htmlFor="magic_item_type" className="form-label">
-            Tipo de objeto mágico <span className="text-danger fs-5">*</span>
+            Magic Item Type <span className="text-danger fs-5">*</span>
           </label>
           <select
             onChange={handleOnChange}
@@ -109,7 +109,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-md-4">
           <label htmlFor="base_armor" className="form-label">
-            Armadura base
+            Base armor
           </label>
           <select
             onChange={handleOnChange}
@@ -137,7 +137,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-md-4">
           <label htmlFor="str_requirement" className="form-label">
-            Str. Requisito
+            Str. Requirement
           </label>
           <input
             onChange={handleOnChange}
@@ -148,7 +148,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-md-4">
           <label htmlFor="stealth_check" className="form-label">
-            Comprobación sigilosa
+            Stealth Check
           </label>
           <select
             onChange={handleOnChange}
@@ -162,7 +162,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-md-4">
           <label htmlFor="base_weapon" className="form-label">
-            Arma base
+            Base Weapon
           </label>
           <select
             onChange={handleOnChange}
@@ -174,9 +174,22 @@ export const FormMagicItems = () => {
             <option value={"1"}>ndndfg</option>
           </select>
         </div>
+        <div className="col-12">
+          <div className="form-check">
+            <input
+              onChange={handleOnChange}
+              className="form-check-input"
+              type="checkbox"
+              name="requires_attunement"
+            />
+            <label className="form-check-label" htmlFor="requires_attunement">
+              Requires Attunement
+            </label>
+          </div>
+        </div>
         <div className="col-md-12">
           <label htmlFor="attunement_description" className="form-label">
-            Descripción de la sintonizacion{" "}
+            Attunement Description{" "}
             <span className="text-danger fs-5">*</span>
           </label>
           <input
@@ -188,29 +201,15 @@ export const FormMagicItems = () => {
             required
           />
         </div>
-        <div className="col-12">
-          <div className="form-check">
-            <input
-              onChange={handleOnChange}
-              className="form-check-input"
-              type="checkbox"
-              name="requires_attunement"
-            />
-            <label className="form-check-label" htmlFor="requires_attunement">
-              Requiere sintonización
-            </label>
-          </div>
-        </div>
         <div className="col-md-12">
           <label htmlFor="description" className="form-label">
-            Descripción <span className="text-danger fs-5">*</span>
+            Description <span className="text-danger fs-5">*</span>
           </label>
           <textarea
             onChange={handleOnChange}
             className="form-control"
             name="description"
-            rows="10"
-            cols="100"
+            rows="5"
             placeholder="Ingresa la descripción aquí..."
             required
           ></textarea>

@@ -1,9 +1,13 @@
-.character-form {
+.basic-form {
     font-family: 'Courier New', Courier, monospace;
     border: 64px solid transparent;              
-    border-image: url("../front/assets/img/form-background.jpg") 90 fill round;
-    height: 80vh;
-    padding: 2rem;                         
+    border-image: url("../front/assets/img/form-background.png") 90 fill round;
+    height: 100vh;
+    background-size: cover;                  
     background: #ffffff00;                        
     border-radius: 12px;                        
+}
+body {
+    background-image: url("../front/assets/img/builder1k.jpg");
+    background-repeat: no-repeat;
 }

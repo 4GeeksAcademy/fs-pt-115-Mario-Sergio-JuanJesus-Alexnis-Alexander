@@ -1,18 +1,11 @@
 import { Link } from "react-router-dom";
+import styles from '../styles/components/menuDropdown.module.css'
 
 export const CollectionDropdown = ({ closeDropdown }) => {
   return (
     <>
       <div
-        className="d-flex justify-content-between bg-dark mt-5 rounded"
-        style={{
-          top: "100%",
-          zIndex: "1001",
-          position: "absolute",
-          transform: "translateX(-50%)",
-          width: "60vw",
-          marginLeft: "15rem",
-        }}
+        className={`${styles.dropdown} d-flex justify-content-between rounded`}
       >
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
         <div className="row gap-1 p-3">
@@ -80,9 +73,45 @@ export const CollectionDropdown = ({ closeDropdown }) => {
               🔹 Crear articulos magicos
             </button>
           </Link>
-          <Link to={""} className="ms-4 ">
+          <Link to={""} className="ms-4">
             <button className="btn text-white">
               🔹 Crear campañas</button>
+          </Link>
+          <Link
+            to={"/user/create-background"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Background
+            </button>
+          </Link>
+          <Link
+            to={"/user/create-specie"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Especie
+            </button>
+          </Link>
+          <Link
+            to={"/user/create-subclasses"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Sub-clase
+            </button>
+          </Link>
+          <Link
+            to={"/user/create-feats"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Hazañas
+            </button>
           </Link>
         </div>
         <div className="row gap-3 p-2">

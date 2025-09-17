@@ -1,6 +1,6 @@
 export const FormularioFeats = () => {
   return (
-    <div className="container my-5">
+    <div className="container col-md-8 my-5 bg-light basic-form">
       <h2 className="text-center mb-4">FORMULARIO FEATS</h2>
       <form className="row g-3">
 

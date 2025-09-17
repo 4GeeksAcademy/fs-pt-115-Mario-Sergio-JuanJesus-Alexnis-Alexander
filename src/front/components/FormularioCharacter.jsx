@@ -13,7 +13,7 @@ export const FormularioCharacter = () => {
     }, [])
 
     return (
-        <div className="container col-md-8 my-5 bg-light character-form">
+        <div className="container col-md-5 my-5 basic-form">
             <form className="row g-4">
                 <h1>Create your Character</h1>
                 <div className="col-md-8">
