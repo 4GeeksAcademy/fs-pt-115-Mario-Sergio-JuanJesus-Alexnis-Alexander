@@ -1,0 +1,9 @@
+.imageBackground {
+    background-image: url('https://imgs.search.brave.com/mRtTXJBkb9FF05XKly24iJBDW_qJq4TIMd3KHrG48qI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXIuZm9yZnVu/LmNvbS9mZXRjaC8y/ZS8yZTRjYzFjYTgy/MDY5NWZkZTg0NmE5/YzU1MDZlOWFlZS5q/cGVn');
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

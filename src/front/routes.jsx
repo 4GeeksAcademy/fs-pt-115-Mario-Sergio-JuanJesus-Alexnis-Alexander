@@ -17,6 +17,10 @@ import { ProfilePage } from "./pages/user/Profile.page";
 import { Formspell } from "./pages/user/Formspell.page";
 import { CreateMagicItemPage } from "./pages/user/CreateMagicItem.page";
 import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.page";
+import { FormularioBackground } from "./components/FormularioBackground";
+import { FormularioSpecie } from "./components/FormularioSpecie";
+import { FormularioSubclasses } from "./components/FormularioSubclasses";
+import { FormularioFeats } from "./components/FormularioFeats";
 
 
 export const router = createBrowserRouter(
@@ -42,6 +46,10 @@ export const router = createBrowserRouter(
           <Route path="user/create-spell" element={ <Formspell/> }/>
           <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
           <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
+          <Route path="user/create-background" element={ <FormularioBackground/> }/>
+          <Route path="user/create-specie" element={ <FormularioSpecie/> }/>
+          <Route path="user/create-subclasses" element={ <FormularioSubclasses/> }/>
+          <Route path="user/create-feats" element={ <FormularioFeats/> }/>
           
       </Route>
 

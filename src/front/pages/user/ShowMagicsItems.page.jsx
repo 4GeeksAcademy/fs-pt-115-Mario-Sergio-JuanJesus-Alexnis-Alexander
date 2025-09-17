@@ -20,10 +20,9 @@ export const ShowMagicsItemsPage = () => {
       payload: responseApi.data,
     });
     setLoading(false);
-    console.log("***DATOS PARA EXTRAER***");
-    console.log(store.magicsItems);
   };
-
+  console.log("***DATOS PARA EXTRAER***");
+  console.log(store.magicsItems);
   useEffect(() => {
     getMagicsApi();
   }, []);
