@@ -30,7 +30,7 @@ export const FormMagicItems = () => {
 
   return (
     <div className="container my-5 bg-light">
-      <h2 className="text-center p-3">Crea tu itém Magico</h2>
+      <h2 className="text-center p-3">Crea tu item Magico</h2>
       <form onSubmit={handleOnSubmit} className="row g-3">
         <div className="col-md-6">
           <label htmlFor="name" className="form-label">

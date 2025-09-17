@@ -1,6 +1,6 @@
 export const FormularioFeats = () => {
-    return (
-        <div className="container my-5">
+  return (
+    <div className="container my-5">
       <h2 className="text-center mb-4">FORMULARIO FEATS</h2>
       <form className="row g-3">
 
@@ -12,7 +12,7 @@ export const FormularioFeats = () => {
           <label htmlFor="featVersion" className="form-label">Version</label>
           <input type="text" className="form-control" id="featVersion" name="version" />
         </div>
-        
+
         <div className="col-12 mt-3">
           <label htmlFor="description" className="form-label">Description</label>
           <textarea className="form-control" id="description" rows="5" name="description"></textarea>
@@ -39,5 +39,5 @@ export const FormularioFeats = () => {
         </div>
       </form>
     </div>
-    );
+  );
 };

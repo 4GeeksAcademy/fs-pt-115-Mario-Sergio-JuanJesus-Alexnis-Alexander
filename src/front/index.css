@@ -1,0 +1,9 @@
+.character-form {
+    font-family: 'Courier New', Courier, monospace;
+    border: 64px solid transparent;              
+    border-image: url("../front/assets/img/form-background.jpg") 90 fill round;
+    height: 80vh;
+    padding: 2rem;                         
+    background: #ffffff00;                        
+    border-radius: 12px;                        
+}
