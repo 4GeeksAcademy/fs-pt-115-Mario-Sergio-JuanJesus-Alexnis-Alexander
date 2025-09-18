@@ -73,6 +73,40 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const userInfo = async () => {
+    setLoading(true);
+    const urlApi = import.meta.env.VITE_BACKEND_URL;
+
+    try {
+      const response = await fetch(`${urlApi}/api/user/profile`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al traer información");
+        
+      }
+
+      const data = await response.json()
+
+      setUser(data.user)
+    } catch (error) {
+      console.error(error.message);
+      
+    } finally {
+      setLoading(false)
+    }
+  } 
+
+  useEffect(()=> {
+    if (token) {
+      userInfo()
+    }
+  }, [token])
+
   return (
     <AuthContext.Provider
       value={{ token, user, loading, login, logOut, authSignUp }}

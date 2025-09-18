@@ -14,11 +14,13 @@
   background-size: cover;
   background-position: center center;
   border: none;
-  transition: transform 0.3s ease;
+  
 }
 
 .charactersBtn:hover {
-  background-size: 28rem;
+  transform: scale(1);
+  transition: all 2s ease-in-out 0.1s;
+  /* background-size: 28rem; */
 }
 
 
