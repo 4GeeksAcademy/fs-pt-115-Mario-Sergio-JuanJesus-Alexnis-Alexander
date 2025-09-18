@@ -76,7 +76,10 @@ export const CollectionDropdown = ({ closeDropdown }) => {
               🔹 Crear articulos magicos
             </button>
           </Link>
-          <Link to={""} className="ms-4 mb-3">
+          <Link 
+            to={"/user/create-campaign"} 
+            onClick={closeDropdown}
+            className="ms-4 mb-3">
             <button className="btn text-white">
               🔹 Crear campañas</button>
           </Link>

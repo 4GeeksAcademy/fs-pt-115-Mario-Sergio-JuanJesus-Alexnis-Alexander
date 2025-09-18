@@ -17,6 +17,7 @@ import { ProfilePage } from "./pages/user/Profile.page";
 import { Formspell } from "./pages/user/Formspell.page";
 import { CreateMagicItemPage } from "./pages/user/CreateMagicItem.page";
 import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.page";
+import { PageFormCampaign } from "./pages/Campaign/PageFormCampaign";
 
 
 export const router = createBrowserRouter(
@@ -42,7 +43,7 @@ export const router = createBrowserRouter(
           <Route path="user/create-spell" element={ <Formspell/> }/>
           <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
           <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
-          
+          <Route path="user/create-campaign" element={ <PageFormCampaign/>}/>
       </Route>
 
 

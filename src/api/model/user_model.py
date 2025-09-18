@@ -8,7 +8,6 @@ from .spell_model import Spell
 from flask_bcrypt import generate_password_hash, check_password_hash
 
 
-
 class User(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(String(120), nullable=False)
