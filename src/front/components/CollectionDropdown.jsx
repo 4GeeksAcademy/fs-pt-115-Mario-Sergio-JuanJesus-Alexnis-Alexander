@@ -54,32 +54,43 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     <>
       <main className={styles.dropdown}>
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
-        <div className={styles.dropLeft}>
+        <section className={styles.dropLeft}>
           <Link to={""}>
-            <button className={styles.charactersBtn}>Mis personajes</button>
-          </Link>
-          <Link to={""}>
-            <button className={styles.campaignsBtn}>Mis campañas</button>
-          </Link>
-          <Link to={"/user/magics-items"}>
-            <button className={styles.magicsBtn} onClick={closeDropdown}>
-              Mis articulos magicos
+            <button className={styles.charactersBtn}>
+              <span className={styles.titleBtn}>MIS PERSONAJES</span>
             </button>
           </Link>
           <Link to={""}>
-            <button className={styles.spellsBtn}>Mis hechizos</button>
+            <button className={styles.campaignsBtn}>
+              <span className={styles.titleBtn}>MIS CAMPAÑAS</span>
+            </button>
+          </Link>
+          <Link to={"/user/magics-items"}>
+            <button className={styles.magicsBtn} onClick={closeDropdown}>
+              <span className={styles.titleBtn}> MIS ARTICULOS MAGICOS </span>
+            </button>
           </Link>
           <Link to={""}>
-            <button className={styles.monstersBtn}>Mis monstruos</button>
+            <button className={styles.spellsBtn}>
+              <span className={styles.titleBtn}>MIS HECHIZOS</span>
+            </button>
           </Link>
           <Link to={""}>
-            <button className={styles.diceBtn}>Mis dados</button>
+            <button className={styles.monstersBtn}>
+              <span className={styles.titleBtn}>MIS MONSTRUOS</span>
+            </button>
           </Link>
-        </div>
+          <Link to={""}>
+            <button className={styles.diceBtn}>
+              <span className={styles.titleBtn}>MIS DADOS</span>
+            </button>
+          </Link>
+        </section>
+
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
 
         <section>
-          <h3 className="text-white">Creaciones:</h3>
+          <h3 className="text-white mt-2">Creaciones:</h3>
           <div className={styles.dropRight}>
             {creationsList.map((item, index) => (
               <Link

@@ -14,6 +14,12 @@
   gap: 10px;
 }
 
+.titleBtn {
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
 .charactersBtn,
 .campaignsBtn,
 .magicsBtn,
@@ -23,6 +29,23 @@
   width: 15rem;
   height: 8rem;
   border-radius: 10px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end; 
+  align-items: center; 
+  padding: 10px; 
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.titleBtn {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  padding: 3px;
   color: white;
 }
 
@@ -35,14 +58,72 @@
 }
 
 .charactersBtn:hover {
-  transform: scale(1);
-  transition: all 2s ease-in-out 0.1s;
    background-size: 28rem;
+}
+
+.campaignsBtn{
+  background-image: url("https://imgs.search.brave.com/0kC03zU1rZiMS_6VM-QbbWGkEn43gTHHcyLvVCw5CzU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wNC53/YWxscGFwZXJiZXR0/ZXIuY29tL3dhbGxw/YXBlci81ODAvNzQ3/LzY3Ni9iYWxkdXIt/cy1nYXRlLTMtbGFy/aWFuLXN0dWRpb3Mt/ZHVuZ2VvbnMtYW5k/LWRyYWdvbnMtNGst/Z2FtaW5nLWhkLXdh/bGxwYXBlci1wcmV2/aWV3LmpwZw");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.campaignsBtn:hover {
+   background-size: 16rem;
+}
+
+.magicsBtn{
+  background-image: url("https://imgs.search.brave.com/bZdmu7YV7W0HWp5hVDIeqgETg945ZbYm5Uwu7FuSEwI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/Zm90b3MtcHJlbWl1/bS9waW50dXJhLWRy/YWdvbi1zaWVuZG8t/dG9tYWRhLWZhYnJp/Y2EtZHJhZ29uLWZv/bmRvXzEyNjI3ODEt/MTgyOTY3LmpwZz9z/ZW10PWFpc19oeWJy/aWQmdz03NDA");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.magicsBtn:hover {
+   background-size: 16rem;
+}
+
+.monstersBtn{
+  background-image: url("https://imgs.search.brave.com/lvZQorwkCA1_8AspU2LifkO4mpLOt6tCe0qGLzacbwk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wNC53/YWxscGFwZXJiZXR0/ZXIuY29tL3dhbGxw/YXBlci84NTcvNTQ2/LzQ3MS9mYW50YXN5/LWR1bmdlb25zLWFu/ZC1kcmFnb25zLXdh/bGxwYXBlci1wcmV2/aWV3LmpwZw");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.monstersBtn:hover {
+   background-size: 16rem;
+}
+
+.spellsBtn{
+  background-image: url("https://imgs.search.brave.com/sY-pUuW1fS1J-4Oxw4ptJNf1l82HQ2f4v3pF2Z8XUQg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Y3VsdHR1cmUuY29t/L3BpY3MvMjAyMS8x/MC9kcmFnb25lcy15/LW1hem1vcnJhcy1j/dWFsZXMtc29uLWxv/cy1tZWpvcmVzLWhl/Y2hpem9zLWRlbC1q/dWVnby0xLndlYnA");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.spellsBtn:hover {
+   background-size: 17rem;
+}
+
+.diceBtn{
+  background-image: url("https://imgs.search.brave.com/2RCbzal7XqVay34gVqUw1IUqJoQN1TOwvfLoBUUXvLs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wNC53/YWxscGFwZXJiZXR0/ZXIuY29tL3dhbGxw/YXBlci81NDkvNi81/MjIvZDIwLWRpY2Ut/bnVtYmVycy1nb2xk/LXdhbGxwYXBlci1w/cmV2aWV3LmpwZw");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.diceBtn:hover {
+   background-size: 16rem;
 }
 
 .dropRight {
   padding: 1rem;
-  gap: 10px;
+  gap: 8px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
