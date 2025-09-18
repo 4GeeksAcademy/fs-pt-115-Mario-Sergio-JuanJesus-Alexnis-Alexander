@@ -1,9 +1,9 @@
 export const FormularioSpell = () => {
     return (
-        <div className="container">
-            <form className="row mt-5 border border-secondary-emphasis border-1">
+        <div className="container col-md-8 my-5 basic-form">
+            <form className="row ">
                 <div className="p-2">
-                    <h5>Formulario Homebrews Spells</h5>
+                    <h5 className="fw-bold">Formulario Homebrews Spells</h5>
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="inputCard" className="form-label">
@@ -35,7 +35,7 @@ export const FormularioSpell = () => {
                     <label htmlFor="School" className="form-label">
                         Spell School
                     </label>
-                    <input
+                    <select
                         type="number"
                         placeholder=""
                         className="form-control"
@@ -84,8 +84,19 @@ export const FormularioSpell = () => {
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         Components
+                    </label><br />
+                    <label htmlFor="" className="form-label">
+                        V
+                    <input type="checkbox" required="" className="m-2" value={0}/>
                     </label>
-                    <input type="checkbox" required="" />
+                    <label htmlFor="" className="form-label">
+                        S
+                    <input type="checkbox" required="" className="m-2" value={1}/>
+                    </label>
+                    <label htmlFor="" className="form-label">
+                        M
+                    <input type="checkbox" required="" className="m-2" value={2}/>
+                    </label>
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
@@ -103,7 +114,7 @@ export const FormularioSpell = () => {
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         Spell Range Type
-                    </label>
+                    </label><br />
                     <select name="Type" id="Type" className="form-Type">
                         <option selected="" disabled="">
                             Options
@@ -141,7 +152,7 @@ export const FormularioSpell = () => {
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         Duration
-                    </label>
+                    </label><br />
                     <select name="time" id="time" className="form-time">
                         <option selected="" disabled="">
                             Options

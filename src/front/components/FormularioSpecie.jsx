@@ -1,6 +1,6 @@
 export const FormularioSpecie = () => {
     return (
-        <div className="container">
+        <div className="container col-md-8 my-5 bg-light basic-form">
             <form className="row mt-5 border border-secondary-emphasis border-1">
                 <div className="p-2">
                     <h5>FORMULARIO SPECIES</h5>

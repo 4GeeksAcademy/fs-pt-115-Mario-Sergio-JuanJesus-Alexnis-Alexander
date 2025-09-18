@@ -1,15 +1,12 @@
-
-import { FormMagicItems } from "../../components/FormMagicsItems";
-import { CollectionDropdown } from "../../components/CollectionDropdown";
-import { FormularioBackground } from "../../components/FormularioBackground";
-import { FormularioSubclasses } from "../../components/FormularioSubclasses";
-import { FormularioFeats } from "../../components/FormularioFeats";
+import styles from "../../styles/page/home.module.css";
 
 export const Home = () => {
 
 	return (
 		<>
-			<h1 className="text-center mt-5">D&D MASTERS OF INFINITY</h1>
+			<div className={styles.imageBackground}>
+			<h1 className="text-center text-white mt-5 fw-bold">Bienvenido a <br></br> D&D MASTERS OF INFINITY</h1>
+			</div>
 		</>
 	);
 }; 
