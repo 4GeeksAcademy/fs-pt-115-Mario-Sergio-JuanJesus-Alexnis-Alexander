@@ -10,12 +10,12 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
         <div className="row gap-1 p-3">
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">
+            <button className={`col-md-12 p-3 fw-bold ${styles.charactersBtn}`}>
               Mis personajes
             </button>
           </Link>
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">
+            <button className={`col-md-12 p-3 fw-bold ${styles.campaignsBtn}`}>
               Mis campañas
             </button>
           </Link>

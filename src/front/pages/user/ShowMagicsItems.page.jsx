@@ -41,6 +41,7 @@ export const ShowMagicsItemsPage = () => {
     );
   }
 
+
   return (
     <>
       <h1 className="text-center mt-5">
@@ -52,7 +53,7 @@ export const ShowMagicsItemsPage = () => {
             <MagicItemCard key={magicItem.id} item={magicItem} />
           ))
         ) : (
-          <h1 className="text-center mt-5">
+          <h1 className="text-center text-white mt-5">
             ***** No tienes ningun articulo creado *****
           </h1>
         )}
