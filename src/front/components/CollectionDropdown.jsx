@@ -1,146 +1,123 @@
 import { Link } from "react-router-dom";
-import styles from '../styles/components/menuDropdown.module.css'
+import styles from "../styles/components/menuDropdown.module.css";
 
 export const CollectionDropdown = ({ closeDropdown }) => {
+  const creationsList = [
+    {
+      to: "user/create-character",
+      text: " Crear personajes",
+      styles: styles.createBtn,
+    },
+    {
+      to: "user/create-spell",
+      text: " Crear hechizos",
+      styles: styles.createBtn,
+    },
+    {
+      to: "user/create-magic-item",
+      text: " Crear articulos magicos",
+      styles: styles.createBtn,
+    },
+    { to: "", text: " Crear monstruos", styles: styles.createBtn },
+    { to: "", text: " Crear campañas", styles: styles.createBtn },
+    {
+      to: "user/create-background",
+      text: " Crear transfondo",
+      styles: styles.createBtn,
+    },
+    {
+      to: "user/create-specie",
+      text: " Crear especies",
+      styles: styles.createBtn,
+    },
+    {
+      to: "user/create-subclasses",
+      text: " Crear subclase",
+      styles: styles.createBtn,
+    },
+    {
+      to: "user/create-feats",
+      text: " Crear hazañas",
+      styles: styles.createBtn,
+    },
+    {
+      to: "user/create-feat",
+      text: " Crear atributo",
+      styles: styles.createBtn,
+    },
+    { to: "", text: " Crear raza", styles: styles.createBtn },
+    { to: "", text: " Crear subraza", styles: styles.createBtn },
+    { to: "", text: " Crear clase", styles: styles.createBtn },
+  ];
+
   return (
     <>
-      <div
-        className={`${styles.dropdown} d-flex justify-content-between rounded`}
-      >
+      <main className={styles.dropdown}>
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
-        <div className="row gap-1 p-3">
+        <div className={styles.dropLeft}>
           <Link to={""}>
-            <button className={`col-md-12 p-3 fw-bold ${styles.charactersBtn}`}>
-              Mis personajes
-            </button>
+            <button className={styles.charactersBtn}>Mis personajes</button>
           </Link>
           <Link to={""}>
-            <button className={`col-md-12 p-3 fw-bold ${styles.campaignsBtn}`}>
-              Mis campañas
-            </button>
+            <button className={styles.campaignsBtn}>Mis campañas</button>
           </Link>
           <Link to={"/user/magics-items"}>
-            <button
-              className="col-md-12 p-3 fw-bold"
-              onClick={closeDropdown}>
+            <button className={styles.magicsBtn} onClick={closeDropdown}>
               Mis articulos magicos
             </button>
           </Link>
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">
-              Mis hechizos
-            </button>
+            <button className={styles.spellsBtn}>Mis hechizos</button>
           </Link>
           <Link to={""}>
-            <button className="col-md-12 p-3 fw-bold">
-              Mis monstruos
-            </button>
+            <button className={styles.monstersBtn}>Mis monstruos</button>
+          </Link>
+          <Link to={""}>
+            <button className={styles.diceBtn}>Mis dados</button>
           </Link>
         </div>
-
-        <hr className="tex-danger border border-danger border-3" />
-
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
-        <div className="row gap-3 p-2">
-          <h3 className="text-white text-start ms-2">Creaciones:</h3>
-          <Link
-            to={"user/create-character"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white text-center">
-              🔹 Crear personajes
-            </button>
-          </Link>
-          <Link
-            to={"user/create-spell"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white">
-              🔹 Crear hechizos</button>
-          </Link>
-          <Link to={""} className="ms-4">
-            <button className="btn text-white">
-              🔹 Crear monstruos</button>
-          </Link>
-          <Link
-            to={"/user/create-magic-item"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white">
-              🔹 Crear articulos magicos
-            </button>
-          </Link>
-          <Link to={""} className="ms-4">
-            <button className="btn text-white">
-              🔹 Crear campañas</button>
-          </Link>
-          <Link
-            to={"/user/create-background"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white">
-              🔹 Crear Background
-            </button>
-          </Link>
-          <Link
-            to={"/user/create-specie"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white">
-              🔹 Crear Especie
-            </button>
-          </Link>
-          <Link
-            to={"/user/create-subclasses"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white">
-              🔹 Crear Sub-clase
-            </button>
-          </Link>
-          <Link
-            to={"/user/create-feats"}
-            onClick={closeDropdown}
-            className="ms-4"
-          >
-            <button className="btn text-white">
-              🔹 Crear Hazañas
-            </button>
-          </Link>
-        </div>
-        <div className="row gap-3 p-2">
-          <Link to={"user/create-feat"} className="ms-4 ">
-            <button className="btn text-white">
-              🔹 Crear atributo</button>
-          </Link>
-          <Link to={""} className="ms-4">
-            <button className="btn text-white">
-              🔹 Crear transfondo</button>
-          </Link>
-          <Link to={""} className="ms-4">
-            <button className="btn text-white">
-              🔹 Crear raza</button>
-          </Link>
-          <Link to={""} className="ms-4 ">
-            <button className="btn text-white">
-              🔹 Crear subraza</button>
-          </Link>
-          <Link to={""} className="ms-4 ">
-            <button className="btn text-white">
-              🔹 Crear clase</button>
-          </Link>
-          <Link to={""} className="ms-4">
-            <button className="btn text-white">
-              🔹 Crear subclase</button>
-          </Link>
-        </div>
-      </div>
+
+        <section>
+          <h3 className="text-white">Creaciones:</h3>
+          <div className={styles.dropRight}>
+            {creationsList.map((item, index) => (
+              <Link
+                key={index}
+                to={item.to}
+                onClick={closeDropdown}
+                className={item.styles}
+              >
+                <span className="">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="11"
+                      fill="none"
+                      stroke="#F1C40F"
+                      stroke-width="2"
+                    />
+
+                    <path
+                      d="M12 6v12M6 12h12"
+                      stroke="#F1C40F"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  {item.text}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 };

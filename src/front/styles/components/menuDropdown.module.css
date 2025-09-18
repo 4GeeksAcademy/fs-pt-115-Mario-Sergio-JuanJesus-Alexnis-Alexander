@@ -1,26 +1,57 @@
 .dropdown {
-  width: 90vw;
+  width: 80vw;
   background-color: rgb(31, 30, 30);
-  
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.dropLeft {
+  display: grid;
+  grid-column: 1;
+  padding: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.charactersBtn,
+.campaignsBtn,
+.magicsBtn,
+.spellsBtn,
+.monstersBtn,
+.diceBtn {
+  width: 15rem;
+  height: 8rem;
+  border-radius: 10px;
+  color: white;
 }
 
 .charactersBtn {
-  border-radius: 10px;
-  color: white;
-  width: 20rem;
-  height: 8rem;
   background-image: url("https://imgs.search.brave.com/KN5hLk53eAwUh5wiJCHB2U_ppp2aR8LXqi1qUX1Td0k/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9wNC53/YWxscGFwZXJiZXR0/ZXIuY29tL3dhbGxw/YXBlci82MzMvODk2/LzYyL2FjdGlvbi1h/ZHZlbnR1cmUtZHJh/Z29uLWRyYWdvbnMt/d2FsbHBhcGVyLXBy/ZXZpZXcuanBn");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   border: none;
-  
 }
 
 .charactersBtn:hover {
   transform: scale(1);
   transition: all 2s ease-in-out 0.1s;
-  /* background-size: 28rem; */
+   background-size: 28rem;
 }
 
+.dropRight {
+  padding: 1rem;
+  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+}
+
+.createBtn {
+  color: white;
+  width: 100%;
+  text-decoration: none;
+
+}
 
