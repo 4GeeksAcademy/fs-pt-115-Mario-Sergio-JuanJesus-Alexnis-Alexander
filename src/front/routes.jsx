@@ -23,6 +23,7 @@ import { CreateFeatPage } from "./pages/user/CreateFeat.page";
 import { CreateBackgroundPage } from "./pages/user/CreateBackground.page";
 import { CreateSpeciePage } from "./pages/user/CreateSpecie.page";
 import { CreateSubclassPage } from "./pages/user/CreateSubclass.page";
+import { ShowCharactersPage } from "./pages/user/ShowCharacters";
 
 
 export const router = createBrowserRouter(
@@ -51,6 +52,7 @@ export const router = createBrowserRouter(
           <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
           <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
           <Route path="user/create-campaign" element={ <PageFormCampaign/>}/>
+          <Route path="user/characters" element={ <ShowCharactersPage/> }/>
           <Route path="user/create-background" element={ <CreateBackgroundPage/> }/>
           <Route path="user/create-specie" element={ <CreateSpeciePage/> }/>
           <Route path="user/create-subclasses" element={ <CreateSubclassPage/> }/>

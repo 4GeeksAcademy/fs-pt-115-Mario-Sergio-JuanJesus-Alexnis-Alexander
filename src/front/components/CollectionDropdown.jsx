@@ -19,7 +19,6 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       styles: styles.createBtn,
     },
     { to: "", text: " Crear monstruos", styles: styles.createBtn },
-    { to: "", text: " Crear campañas", styles: styles.createBtn },
     {
       to: "user/create-background",
       text: " Crear transfondo",
@@ -32,7 +31,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     },
     {
       to: "user/create-subclasses",
-      text: " Crear subclase",
+      text: " Crear clase",
       styles: styles.createBtn,
     },
     {
@@ -40,14 +39,6 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       text: " Crear hazañas",
       styles: styles.createBtn,
     },
-    {
-      to: "user/create-feat",
-      text: " Crear atributo",
-      styles: styles.createBtn,
-    },
-    { to: "", text: " Crear raza", styles: styles.createBtn },
-    { to: "", text: " Crear subraza", styles: styles.createBtn },
-    { to: "", text: " Crear clase", styles: styles.createBtn },
   ];
 
   return (
@@ -55,8 +46,8 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       <main className={styles.dropdown}>
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
         <section className={styles.dropLeft}>
-          <Link to={""}>
-            <button className={styles.charactersBtn}>
+          <Link to={"/user/characters"}>
+            <button className={styles.charactersBtn} onClick={closeDropdown}>
               <span className={styles.titleBtn}>MIS PERSONAJES</span>
             </button>
           </Link>
@@ -190,7 +181,48 @@ export const CollectionDropdown = ({ closeDropdown }) => {
               🔹 Crear subclase</button>
           </Link>
         </div>
-      </div>
+      <div>
+
+        <section>
+          <h3 className="text-white mt-2">Creaciones:</h3>
+          <div className={styles.dropRight}>
+            {creationsList.map((item, index) => (
+              <Link
+                key={index}
+                to={item.to}
+                onClick={closeDropdown}
+                className={item.styles}
+              >
+                <span className="">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="11"
+                      fill="none"
+                      stroke="#F1C40F"
+                      strokeWidth="2"
+                    />
+
+                    <path
+                      d="M12 6v12M6 12h12"
+                      stroke="#F1C40F"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  {item.text}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </main>
     </>
   );
 };

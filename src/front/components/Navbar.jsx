@@ -3,6 +3,7 @@ import { useAuth } from "../hooks/useAuth";
 import { CollectionDropdown } from "./CollectionDropdown";
 import { useRef, useState } from "react";
 import styles from "../styles/components/navbar.module.css";
+import Logo from "../assets/img/logo-navbar.png";
 
 export const Navbar = () => {
   const { token, logOut, user, loading } = useAuth();
@@ -46,7 +47,7 @@ export const Navbar = () => {
             <div className="navbar-brand">
               <img
                 className={styles.logoNavbar}
-                src="src/front/assets/img/logo-navbar.png"
+                src={Logo}
                 alt="logo"
               />
             </div>

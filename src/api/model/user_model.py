@@ -3,7 +3,6 @@ from . import db
 from .magic_items_model import MagicsItems
 from sqlalchemy import String, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .character_model import *
 from .spell_model import Spell
 from flask_bcrypt import generate_password_hash, check_password_hash
 
