@@ -79,7 +79,109 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         </section>
 
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
-
+        <div className="row gap-3 p-2">
+          <h3 className="text-white text-start ms-2">Creaciones:</h3>
+          <Link
+            to={"user/create-character"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white text-center">
+              🔹 Crear personajes
+            </button>
+          </Link>
+          <Link
+            to={"user/create-spell"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear hechizos</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear monstruos</button>
+          </Link>
+          <Link
+            to={"/user/create-magic-item"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear articulos magicos
+            </button>
+          </Link>
+          <Link 
+            to={"/user/create-campaign"} 
+            onClick={closeDropdown}
+            className="ms-4 mb-3">
+            <button className="btn text-white">
+              🔹 Crear campañas</button>
+          </Link>
+          <Link
+            to={"/user/create-background"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Background
+            </button>
+          </Link>
+          <Link
+            to={"/user/create-specie"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Especie
+            </button>
+          </Link>
+          <Link
+            to={"/user/create-subclasses"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Sub-clase
+            </button>
+          </Link>
+          <Link
+            to={"/user/create-feats"}
+            onClick={closeDropdown}
+            className="ms-4"
+          >
+            <button className="btn text-white">
+              🔹 Crear Hazañas
+            </button>
+          </Link>
+        </div>
+        <div className="row gap-3 p-2">
+          <Link to={"user/create-feat"} className="ms-4 ">
+            <button className="btn text-white">
+              🔹 Crear atributo</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear transfondo</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear raza</button>
+          </Link>
+          <Link to={""} className="ms-4 ">
+            <button className="btn text-white">
+              🔹 Crear subraza</button>
+          </Link>
+          <Link to={""} className="ms-4 ">
+            <button className="btn text-white">
+              🔹 Crear clase</button>
+          </Link>
+          <Link to={""} className="ms-4">
+            <button className="btn text-white">
+              🔹 Crear subclase</button>
+          </Link>
+        </div>
+      <div>
         <section>
           <h3 className="text-white mt-2">Creaciones:</h3>
           <div className={styles.dropRight}>
@@ -119,7 +221,9 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             ))}
           </div>
         </section>
+      </div>
       </main>
+
     </>
   );
 };

@@ -18,6 +18,7 @@ import { Formspell } from "./pages/user/Formspell.page";
 import { CreateCharacterPage } from "./pages/user/CreateCharacter.page";
 import { CreateMagicItemPage } from "./pages/user/CreateMagicItem.page";
 import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.page";
+import { PageFormCampaign } from "./pages/user/CreateCampaign.page";
 import { CreateFeatPage } from "./pages/user/CreateFeat.page";
 import { CreateBackgroundPage } from "./pages/user/CreateBackground.page";
 import { CreateSpeciePage } from "./pages/user/CreateSpecie.page";
@@ -50,6 +51,7 @@ export const router = createBrowserRouter(
           <Route path="user/create-feat" element={ <CreateFeatPage/> }/>
           <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
           <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
+          <Route path="user/create-campaign" element={ <PageFormCampaign/>}/>
           <Route path="user/characters" element={ <ShowCharactersPage/> }/>
           <Route path="user/create-background" element={ <CreateBackgroundPage/> }/>
           <Route path="user/create-specie" element={ <CreateSpeciePage/> }/>
