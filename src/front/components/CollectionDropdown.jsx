@@ -182,7 +182,6 @@ export const CollectionDropdown = ({ closeDropdown }) => {
           </Link>
         </div>
       <div>
-
         <section>
           <h3 className="text-white mt-2">Creaciones:</h3>
           <div className={styles.dropRight}>
@@ -222,7 +221,9 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             ))}
           </div>
         </section>
+      </div>
       </main>
+
     </>
   );
 };
