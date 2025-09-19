@@ -1,6 +1,5 @@
 export const initialStore=()=>{
   return{
-    token:localStorage.getItem("token") || null,
     characters: [],
     magicsItems: [],
     classes: [],
@@ -11,12 +10,6 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case "set_token":
-      localStorage.setItem("token", action.payload);
-      return { ...store, token: action.payload };
-    case "logout":
-      localStorage.removeItem("token");
-      return { ...store, token: null };
     case 'set_classes':
       return{
         ...store,
