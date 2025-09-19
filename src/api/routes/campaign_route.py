@@ -53,6 +53,6 @@ def create_campaign():
 @jwt_required()
 def get_campaigns():
     user_id = get_jwt_identity()
-    qs = Campaign.query.filter_by(user_id=user_id).order_by(Campaign.id.desc())
-    campaigns = [c.serialize() for c in qs.all()]
-    return jsonify(campaigns), 200
+    campaign_list = Campaign.query.filter_by(user_id=user_id).all()
+
+    return jsonify([mi.serialize() for mi in campaign_list]), 200

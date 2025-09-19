@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { CampaignCard } from "../../components/CampaignCard";
+import { getCampaigns } from "../../serviceApi/campaignApi";
 
 export const ShowCampaignPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -9,9 +10,9 @@ export const ShowCampaignPage = () => {
 
   const getCampaignApi= async () => {
     setLoading(true);
-    const responseApi = await getAllCampaigns();
+    const responseApi = await getCampaigns();
     if (!responseApi.success) {
-      setError(responseApi.error || "Error al traer articulos magicos");
+      setError(responseApi.error || "Error al traer campañas");
       return;
     }
     dispatch({
@@ -21,13 +22,13 @@ export const ShowCampaignPage = () => {
     setLoading(false);
   };
   console.log("***DATOS PARA EXTRAER***");
-  console.log(store.campaigns);
+  console.log(store.campaign);
   useEffect(() => {
     getCampaignApi();
   }, []);
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="text-center fs-2 fw-bold">{error}</div>;
   }
 
   if (loading) {
@@ -44,16 +45,16 @@ export const ShowCampaignPage = () => {
   return (
     <>
       <h1 className="text-center mt-5">
-        Aqui esta tu lista de campaña
+        Tus campañas
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
-        {store.campaigns.length > 0 ? (
-          store.campaigns.map((campaign) => (
+        {store.campaign.length > 0 ? (
+          store.campaign.map((campaign) => (
             <CampaignCard key={campaign.id} item={campaign} />
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun articulo creado *****
+            ***** No tienes ninguna campaña creada *****
           </h1>
         )}
       </div>

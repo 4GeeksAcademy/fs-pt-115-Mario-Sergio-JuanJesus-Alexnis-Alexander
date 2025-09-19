@@ -6,13 +6,13 @@ export const createCampaign = async (campaignData) => {
   if (!token) return { success: false, error: "No autenticado" };
 
   try {
-    const response = await fetch(`${urlApi}/api/user/campaigns`, {  
-      method: 'POST',
+    const response = await fetch(`${urlApi}/api/user/campaigns`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(campaignData)
+      body: JSON.stringify(campaignData),
     });
 
     const contentType = response.headers.get("content-type");
@@ -23,11 +23,14 @@ export const createCampaign = async (campaignData) => {
     } else {
       // si el backend devolvió HTML, captura texto
       const text = await response.text();
-      return { success: false, error: `Respuesta no JSON (${response.status}): ${text}` };
+      return {
+        success: false,
+        error: `Respuesta no JSON (${response.status}): ${text}`,
+      };
     }
 
     if (!response.ok) {
-      return { success: false, error: data.error || 'Error al crear Campaña' };
+      return { success: false, error: data.error || "Error al crear Campaña" };
     }
 
     return { success: true, data, msg: data.msg };
@@ -38,16 +41,32 @@ export const createCampaign = async (campaignData) => {
 
 // Obtener campañas
 export const getCampaigns = async () => {
-  const token = localStorage.getItem("token");
   try {
-    const resp = await fetch(`${urlApi}/api/user/campaigns`, { 
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    const response = await fetch(`${urlApi}/api/user/campaigns`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     });
-    const data = await resp.json().catch(() => ({}));
-    if (!resp.ok) throw new Error(data?.error || "Error al obtener campañas");
-    return data;
-  } catch (err) {
-    console.error("❌ getCampaigns:", err.message);
-    throw err;
+
+    const data = await response.json();
+    
+
+    if (!response.ok) {
+      return {
+        success: false,
+        error: data.error,
+      };
+    }
+
+    return {
+      success: true,
+      data: data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
   }
 };
