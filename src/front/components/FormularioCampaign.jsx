@@ -17,7 +17,8 @@ const FormularioCampaign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await createCampaign(formData);
+      // enviamos también user_id = 1 (temporal)
+      const result = await createCampaign({ ...formData, user_id: 1 });
       alert("Campaña creada con éxito: " + result.name);
       setFormData({
         name: "",
@@ -35,7 +36,7 @@ const FormularioCampaign = () => {
     <div className="container my-5">
       <div className="card shadow-lg border-0 bg-dark text-light">
         <div className="card-header bg-danger text-center">
-          <h2 className="fw-bold text-uppercase m-0">⚔️ Crear Campaña ⚔️</h2>
+          <h2 className="fw-bold text-uppercase m-0">Crear Campaña</h2>
         </div>
         <div className="card-body p-4">
           <form onSubmit={handleSubmit}>
@@ -63,6 +64,7 @@ const FormularioCampaign = () => {
                 onChange={handleChange}
                 className="form-control bg-dark text-light border-danger"
                 rows="3"
+                required
               />
             </div>
 
@@ -77,6 +79,7 @@ const FormularioCampaign = () => {
                 value={formData.setting}
                 onChange={handleChange}
                 className="form-control bg-dark text-light border-danger"
+                required
               />
             </div>
 
@@ -91,6 +94,8 @@ const FormularioCampaign = () => {
                 value={formData.level}
                 onChange={handleChange}
                 className="form-control bg-dark text-light border-danger"
+                min="1"
+                required
               />
             </div>
 
@@ -105,6 +110,8 @@ const FormularioCampaign = () => {
                 value={formData.players}
                 onChange={handleChange}
                 className="form-control bg-dark text-light border-danger"
+                min="1"
+                required
               />
             </div>
 
@@ -114,7 +121,7 @@ const FormularioCampaign = () => {
                 type="submit"
                 className="btn btn-danger btn-lg px-5 fw-bold"
               >
-                🐉 Crear Campaña
+                Crear Campaña
               </button>
             </div>
           </form>
