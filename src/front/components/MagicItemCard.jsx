@@ -8,14 +8,14 @@ export const MagicItemCard = ({ item }) => {
 
   const handleDelete = async (id) => {
     setError(false);
-    const delteItemApi = await deleteMagicItem(id);
-    if (delteItemApi.success) {
+    const deleteItemApi = await deleteMagicItem(id);
+    if (deleteItemApi.success) {
       dispatch({
         type: "deleteMagicItem",
         payload: id,
       });
     } else {
-      setError(delteItemApi.error);
+      setError(deleteItemApi.error);
     }
   };
 
@@ -37,7 +37,7 @@ export const MagicItemCard = ({ item }) => {
           </div>
         </div>
         {error && (
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             {error}
           </div>
         )}

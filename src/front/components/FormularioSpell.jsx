@@ -1,9 +1,9 @@
 export const FormularioSpell = () => {
     return (
-        <div className="container">
-            <form className="row mt-5 border border-secondary-emphasis border-1">
+        <div className="container col-md-5 my-5 basic-form">
+            <h2 className="text-center fw-bold">Formulario Homebrews Spells</h2>
+            <form className="row fw-bold">
                 <div className="p-2">
-                    <h5>Formulario Homebrews Spells</h5>
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="inputCard" className="form-label">
@@ -35,14 +35,19 @@ export const FormularioSpell = () => {
                     <label htmlFor="School" className="form-label">
                         Spell School
                     </label>
-                    <input
-                        type="number"
-                        placeholder=""
-                        className="form-control"
+                    <select
+                        className="form-select"
                         id="School"
                         name="School"
                         required=""
-                    />
+                    >
+                    <option selected disabled value="">
+                            Selecciona...
+                        </option>
+                        <option value="a">Turn</option>
+                        <option value="b">Reaction</option>
+                        <option value="c">Hour</option>
+                    </select>
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
@@ -58,19 +63,20 @@ export const FormularioSpell = () => {
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
-                        Casting Time
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="inputCasting"
-                        name="inputCasting"
-                        required=""
-                    />
+                        Casting Type
+                    </label><br />
+                    <select id="spellCast" className="form-select" name="spell_cast">
+                        <option selected disabled value="">
+                            Selecciona...
+                        </option>
+                        <option value="a">Turn</option>
+                        <option value="b">Reaction</option>
+                        <option value="c">Hour</option>
+                    </select>
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
-                        Reaction Casting Time Description
+                        Reaction Description
                     </label>
                     <input
                         type="text"
@@ -84,12 +90,23 @@ export const FormularioSpell = () => {
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         Components
+                    </label><br />
+                    <label htmlFor="" className="form-label">
+                        V
+                        <input type="checkbox" required="" className="m-2" value={0} />
                     </label>
-                    <input type="checkbox" required="" />
+                    <label htmlFor="" className="form-label">
+                        S
+                        <input type="checkbox" required="" className="m-2" value={1} />
+                    </label>
+                    <label htmlFor="" className="form-label">
+                        M
+                        <input type="checkbox" required="" className="m-2" value={2} />
+                    </label>
                 </div>
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
-                        Material Components Description
+                        Material Description
                     </label>
                     <input
                         type="text"
@@ -103,8 +120,8 @@ export const FormularioSpell = () => {
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         Spell Range Type
-                    </label>
-                    <select name="Type" id="Type" className="form-Type">
+                    </label><br />
+                    <select name="Type" id="Type" className="form-select">
                         <option selected="" disabled="">
                             Options
                         </option>
@@ -141,8 +158,8 @@ export const FormularioSpell = () => {
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         Duration
-                    </label>
-                    <select name="time" id="time" className="form-time">
+                    </label><br />
+                    <select name="time" id="time" className="form-select">
                         <option selected="" disabled="">
                             Options
                         </option>
@@ -150,20 +167,7 @@ export const FormularioSpell = () => {
                         <option value={2}>-</option>
                     </select>
                 </div>
-                <div className="col-md-4 mb-3">
-                    <label htmlFor="" className="form-label">
-                        Description
-                    </label>
-                    <input
-                        type="text"
-                        placeholder=""
-                        className="form-control"
-                        id="Description"
-                        name="Description"
-                        required=""
-                    />
-                </div>
-                
+
                 <div className="col-md-4 mb-3">
                     <label htmlFor="" className="form-label">
                         At Higher Levels Scaling
@@ -194,6 +198,20 @@ export const FormularioSpell = () => {
                         id="Classes"
                         name="Classes"
                         required=""
+                    />
+                </div>
+                <div className="col-md-12 mb-3">
+                    <label htmlFor="" className="form-label">
+                        Description
+                    </label>
+                    <textarea
+                        type="text"
+                        placeholder=""
+                        className="form-control"
+                        id="Description"
+                        name="Description"
+                        required=""
+                        row="3"
                     />
                 </div>
             </form>

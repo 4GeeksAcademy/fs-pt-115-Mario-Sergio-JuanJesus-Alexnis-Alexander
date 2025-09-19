@@ -1,30 +1,59 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { CollectionDropdown } from "./CollectionDropdown";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import styles from "../styles/components/navbar.module.css";
+import Logo from "../assets/img/logo-navbar.png";
 
 export const Navbar = () => {
-  const { token, logOut } = useAuth();
+  const { token, logOut, user, loading } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const timeDropdown = useRef(null);
 
   const handleLogout = () => {
     logOut();
     navigate("/");
   };
 
+  const handleMouseLeave = () => {
+    timeDropdown.current = setTimeout(() => {
+      setShowDropdown(false);
+    }, 200);
+  };
+
+  const handleMouseEnter = () => {
+    if (timeDropdown.current) {
+      clearTimeout(timeDropdown.current);
+    }
+    setShowDropdown(true);
+  };
+
+  if (loading) {
+    return (
+      <div className="position-relative" style={{ height: "100vh" }}>
+        <div className="position-absolute top-50 start-50 translate-middle fs-2">
+          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid ms-5">
+      <nav className="navbar navbar-expand-lg" id={styles.navbar}>
+        <div className="container-fluid ms-2">
           <Link to={"/"}>
             <div className="navbar-brand">
-              <span className="ms-4">__D&D__</span> <br />
-              <span className="ms-0">Master of Infinity</span>
+              <img
+                className={styles.logoNavbar}
+                src={Logo}
+                alt="logo"
+              />
             </div>
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler bg-warning"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -35,60 +64,59 @@ export const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="d-flex ms-5" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                🔍
-              </button>
+            <div className="d-flex justify-content-center flex-grow-1">
+              <menu className={styles.btnDropdown}>
+                <div
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <span className={styles.button}>Mi colección 🔻</span>
+                </div>
+                <span className={styles.button}>Reglas de juego 🔻</span>
+              </menu>
+
+              {/* DROPDOWN DE MI COLECCION AQUI */}
+              <div
+                className={showDropdown ? "" : "d-none"}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  position: "absolute",
+                  top: "100%",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  zIndex: 1000,
+                }}
+              >
+                <CollectionDropdown
+                  closeDropdown={() => setShowDropdown(false)}
+                />
+              </div>
             </div>
-            {!token ? (
-              <form className="d-flex gap-2 ms-auto me-5">
+
+            {!user ? (
+              <form className="d-flex gap-2">
                 <Link to={"/signup"}>
-                  <button className="btn btn-success">Registrarse</button>
+                  <button className={styles.button}>Registrarse</button>
                 </Link>
                 <Link to={"/login"}>
-                  <button className="btn btn-primary">Iniciar sesion</button>
+                  <button className={styles.button}>Iniciar sesion</button>
                 </Link>
               </form>
             ) : (
               <form className="d-flex gap-2 ms-auto me-5">
-                <button onClick={handleLogout} className="btn btn-success">
+                <button onClick={handleLogout} className={styles.button}>
                   Cerrar sesión
                 </button>
 
                 <Link to={"/user/profile"}>
-                  <button className="btn btn-primary">Perfil</button>
+                  <button className={styles.button}>{user.username}</button>
                 </Link>
               </form>
             )}
           </div>
         </div>
       </nav>
-
-      <menu className="bg-secondary p-3 d-flex justify-content-center gap-3">
-        <div style={{ position: "relative" }}>
-          <button
-            className="btn btn-lg bg-success fw-bold"
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            Mi colección ⬇️
-          </button>
-
-          {/* El dropdown va AQUÍ dentro del div */}
-          <div className={showDropdown ? "" : "d-none"}>
-            <CollectionDropdown closeDropdown={() => setShowDropdown(false)} />
-          </div>
-        </div>
-
-        <button className="btn btn-lg bg-success fw-bold">
-          Reglas de juego ⬇️
-        </button>
-      </menu>
     </>
   );
 };

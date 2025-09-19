@@ -7,15 +7,14 @@ from .spell_model import Spell
 from flask_bcrypt import generate_password_hash, check_password_hash
 
 
-
 class User(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(String(120), nullable=False)
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False)
-    birthdate: Mapped[Optional[str]]
-    full_name: Mapped[Optional[str]]
-    phone: Mapped[Optional[str]]
-    gender: Mapped[Optional[str]]
+    birthdate: Mapped[Optional[str]] = mapped_column(String(10), nullable=True)
+    full_name: Mapped[Optional[str]] = mapped_column(String(120), nullable=True)
+    phone: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
+    gender: Mapped[Optional[str]] = mapped_column(String(10), nullable=True)
     password: Mapped[str] = mapped_column(nullable=False)
 
     magics_items: Mapped[List["MagicsItems"]] = relationship()
@@ -27,6 +26,8 @@ class User(db.Model):
         return check_password_hash(self.password, password)
     
     spell:Mapped[List["Spell"]] = relationship()
+    
+    character:Mapped[List["Character"]] = relationship()
     
     def serialize(self):
         return {

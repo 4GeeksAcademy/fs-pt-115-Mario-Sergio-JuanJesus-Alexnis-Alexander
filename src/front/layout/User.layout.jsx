@@ -6,7 +6,7 @@ export const UserLayout = () => {
     const { token, user } = useAuth();
 
 
-    if (!token || !user) {
+    if (!token ) {
         return <Navigate to={'/login'}/>
     }
 

@@ -8,14 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const userData = localStorage.getItem("user");
-  //   if (userData) {
-  //     // El parse es ara poder leer el user que estaba como string
-  //     setUser(JSON.parse(userData)); 
-  //   }
-  // }, []);
-
   const login = async (email, password) => {
     setLoading(true);
 
@@ -26,7 +18,6 @@ export const AuthProvider = ({ children }) => {
         setToken(data.token);
         setUser(data.user);
         localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
         return { success: true };
       } else {
         setUser(null);
@@ -81,6 +72,40 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
+  const userInfo = async () => {
+    setLoading(true);
+    const urlApi = import.meta.env.VITE_BACKEND_URL;
+
+    try {
+      const response = await fetch(`${urlApi}/api/user/profile`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al traer información");
+        
+      }
+
+      const data = await response.json()
+
+      setUser(data.user)
+    } catch (error) {
+      console.error(error.message);
+      
+    } finally {
+      setLoading(false)
+    }
+  } 
+
+  useEffect(()=> {
+    if (token) {
+      userInfo()
+    }
+  }, [token])
 
   return (
     <AuthContext.Provider
