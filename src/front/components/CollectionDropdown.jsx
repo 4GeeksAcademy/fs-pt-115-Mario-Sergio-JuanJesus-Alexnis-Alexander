@@ -56,7 +56,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
               <span className={styles.titleBtn}>MIS PERSONAJES</span>
             </button>
           </Link>
-          <Link to={""}>
+          <Link to={"/user/campaigns"}>
             <button className={styles.campaignsBtn}>
               <span className={styles.titleBtn}>MIS CAMPAÑAS</span>
             </button>

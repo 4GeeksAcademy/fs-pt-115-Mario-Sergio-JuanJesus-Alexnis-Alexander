@@ -1,42 +1,72 @@
-const API_URL = import.meta.env.VITE_BACKEND_URL;
+const urlApi = import.meta.env.VITE_BACKEND_URL;
 
 // Crear campaña
 export const createCampaign = async (campaignData) => {
-    try {
-        console.log("API_URL:", API_URL);
-        console.log("Full URL:", `${API_URL}/api/campaigns`);
-        const resp = await fetch(`${API_URL}/api/campaigns`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(campaignData),
-        });
-        console.log("Response status:", resp.status);
-        console.log("Response headers:", resp.headers);
-        // Obtener el texto crudo de la respuesta primero
-        const responseText = await resp.text();
-        console.log("Raw response:", responseText);
-        if (!resp.ok) {
-            throw new Error(`HTTP ${resp.status}: ${responseText}`);
-        }
-        // Intentar parsear como JSON
-        return JSON.parse(responseText);
-    } catch (err) {
-        console.error(":x: Error en createCampaign:", err.message);
-        throw err;
+  const token = localStorage.getItem("token");
+  if (!token) return { success: false, error: "No autenticado" };
+
+  try {
+    const response = await fetch(`${urlApi}/api/user/campaigns`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(campaignData),
+    });
+
+    const contentType = response.headers.get("content-type");
+    let data;
+
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      // si el backend devolvió HTML, captura texto
+      const text = await response.text();
+      return {
+        success: false,
+        error: `Respuesta no JSON (${response.status}): ${text}`,
+      };
     }
+
+    if (!response.ok) {
+      return { success: false, error: data.error || "Error al crear Campaña" };
+    }
+
+    return { success: true, data, msg: data.msg };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
 };
-
-
 
 // Obtener campañas
 export const getCampaigns = async () => {
   try {
-    const resp = await fetch(`${API_URL}/campaigns`);
-    if (!resp.ok) throw new Error("Error al obtener campañas");
-    return await resp.json();
-  } catch (err) {
-    console.error("❌ Error en getCampaigns:", err.message);
-    throw err;
+    const response = await fetch(`${urlApi}/api/user/campaigns`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const data = await response.json();
+    
+
+    if (!response.ok) {
+      return {
+        success: false,
+        error: data.error,
+      };
+    }
+
+    return {
+      success: true,
+      data: data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
   }
 };
-
