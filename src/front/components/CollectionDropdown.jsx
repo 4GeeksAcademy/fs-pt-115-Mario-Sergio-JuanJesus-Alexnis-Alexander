@@ -40,11 +40,6 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       text: " Crear hazañas",
       styles: styles.createBtn,
     },
-    {
-      to: "user/create-feat",
-      text: " Crear atributo",
-      styles: styles.createBtn,
-    },
     { to: "", text: " Crear raza", styles: styles.createBtn },
     { to: "", text: " Crear subraza", styles: styles.createBtn },
     { to: "", text: " Crear clase", styles: styles.createBtn },
