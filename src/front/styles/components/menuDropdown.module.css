@@ -123,7 +123,7 @@ a {
 
 .dropRight {
   padding: 1rem;
-  gap: 8px;
+  gap: 25px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 

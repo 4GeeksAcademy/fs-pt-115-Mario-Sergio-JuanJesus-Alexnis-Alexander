@@ -1,10 +1,34 @@
 import { useEffect, useState } from "react"
-import { getBackgrounds, getClasses, getRaces } from "../serviceApi/characterApi"
+import { createCharacter, getBackgrounds, getClasses, getRaces } from "../serviceApi/characterApi"
 import useGlobalReducer from "../hooks/useGlobalReducer"
-import { element } from "prop-types"
+import { useNavigate } from "react-router-dom";
 
 export const FormularioCharacter = () => {
     const { store, dispatch } = useGlobalReducer()
+    const [input, setInputs] = useState({});
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        const formCharacter = { ...input, [name]: value };
+        setInputs(formCharacter);
+    };
+
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+
+        const dataCharacter = await createCharacter(input);
+
+        if (!dataCharacter.success) {
+            return setError(dataCharacter.error || "Creación fallida");
+        } else {
+            setInputs({});
+            setError(null);
+        }
+
+        navigate("/user/characters");
+    };
     useEffect(() => {
         getClasses(dispatch)
         getRaces(dispatch)
@@ -14,13 +38,14 @@ export const FormularioCharacter = () => {
 
     return (
         <div className="container col-md-5 my-5 basic-form">
-            <form className="row g-4">
+            <form onSubmit={handleOnSubmit} className="row g-4">
                 <h1>Create your Character</h1>
                 <div className="col-md-8">
                     <label htmlFor="name" className="form-label">
                         Name <span className="text-danger fs-5">*</span>
                     </label>
                     <input
+                        onChange={handleOnChange}
                         type="text"
                         className="form-control"
                         name="name"
@@ -33,13 +58,14 @@ export const FormularioCharacter = () => {
                         Class <span className="text-danger fs-5">*</span>
                     </label>
                     <select
-                        name="Clase"
+                        onChange={handleOnChange}
+                        name="class_name"
                         className="form-select"
                         required
                     >
                         <option value="">---</option>
                         {store.classes.map((element, index) => (
-                            <option key={index} value={index}>{element.name}</option>
+                            <option key={index} value={element.name}>{element.name}</option>
                         ))}
                     </select>
                 </div>
@@ -48,13 +74,14 @@ export const FormularioCharacter = () => {
                         Race <span className="text-danger fs-5">*</span>
                     </label>
                     <select
-                        name="Raza"
+                        onChange={handleOnChange}
+                        name="race_name"
                         className="form-select"
                         required
                     >
                         <option value="">---</option>
                         {store.races.map((element, index) => (
-                            <option key={index} value={index}>{element.name}</option>
+                            <option key={index} value={element.name}>{element.name}</option>
                         ))}
                     </select>
                 </div>
@@ -63,13 +90,14 @@ export const FormularioCharacter = () => {
                         Background <span className="text-danger fs-5">*</span>
                     </label>
                     <select
-                        name="Transfondo"
+                        onChange={handleOnChange}
+                        name="background_name"
                         className="form-select"
                         required
                     >
                         <option value="">---</option>
                         {store.backgrounds.map((element, index) => (
-                            <option key={index} value={index}>{element.name}</option>
+                            <option key={index} value={element.name}>{element.name}</option>
                         ))}
                     </select>
                 </div>
