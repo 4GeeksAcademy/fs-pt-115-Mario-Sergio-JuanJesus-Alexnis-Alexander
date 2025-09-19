@@ -1,9 +1,9 @@
 export const FormularioBackground = () => {
     return (
-        <div className="container col-md-8 my-5 bg-light basic-form">
-            <form className="row">
+        <div className="container col-md-5 my-5 basic-form">
+            <h2 className="text-center fw-bold">CREATE A NEW BACKGROUND</h2>
+            <form className="row fw-bold">
                 <div className="p-2">
-                    <h5>CREATE A NEW BACKGROUND</h5>
                 </div>
 
                 <div className="col-md-6 mb-3">
@@ -42,7 +42,7 @@ export const FormularioBackground = () => {
                         required
                     />
                 </div>
-                
+
                 <hr className="my-3" />
                 <div className="p-2">
                     <h6>Skills & Abilities</h6>
@@ -114,7 +114,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
-                
+
                 <hr className="my-3" />
                 <div className="p-2">
                     <h6>Specifics & Traits</h6>
@@ -164,7 +164,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
-                
+
                 <hr className="my-3" />
                 <div className="p-2">
                     <h6>Variants & Other Info</h6>

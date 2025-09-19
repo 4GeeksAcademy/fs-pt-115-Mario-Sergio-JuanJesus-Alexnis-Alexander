@@ -19,7 +19,6 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       styles: styles.createBtn,
     },
     { to: "", text: " Crear monstruos", styles: styles.createBtn },
-    { to: "", text: " Crear campañas", styles: styles.createBtn },
     {
       to: "user/create-background",
       text: " Crear transfondo",
@@ -32,7 +31,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     },
     {
       to: "user/create-subclasses",
-      text: " Crear subclase",
+      text: " Crear clase",
       styles: styles.createBtn,
     },
     {
@@ -40,9 +39,6 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       text: " Crear hazañas",
       styles: styles.createBtn,
     },
-    { to: "", text: " Crear raza", styles: styles.createBtn },
-    { to: "", text: " Crear subraza", styles: styles.createBtn },
-    { to: "", text: " Crear clase", styles: styles.createBtn },
   ];
 
   return (
@@ -50,8 +46,8 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       <main className={styles.dropdown}>
         {/* **** SECCION IZQUIERDA DEL DROPDOWN **** */}
         <section className={styles.dropLeft}>
-          <Link to={""}>
-            <button className={styles.charactersBtn}>
+          <Link to={"/user/characters"}>
+            <button className={styles.charactersBtn} onClick={closeDropdown}>
               <span className={styles.titleBtn}>MIS PERSONAJES</span>
             </button>
           </Link>
@@ -107,14 +103,14 @@ export const CollectionDropdown = ({ closeDropdown }) => {
                       r="11"
                       fill="none"
                       stroke="#F1C40F"
-                      stroke-width="2"
+                      strokeWidth="2"
                     />
 
                     <path
                       d="M12 6v12M6 12h12"
                       stroke="#F1C40F"
-                      stroke-width="2"
-                      stroke-linecap="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
                     />
                   </svg>
                   {item.text}

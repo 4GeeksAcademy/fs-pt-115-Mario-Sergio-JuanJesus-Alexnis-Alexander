@@ -1,30 +1,32 @@
 import { useEffect, useState } from "react";
 import { MagicItemCard } from "../../components/MagicItemCard";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
-import { getAllMagicItems } from "../../serviceApi/magicItem.api";
+import { getAllCharacters } from "../../serviceApi/characterApi";
+import { CharacterCard } from "../../components/CharacterCard";
 
-export const ShowMagicsItemsPage = () => {
+export const ShowCharactersPage = () => {
   const { store, dispatch } = useGlobalReducer();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getMagicsApi = async () => {
+  const getCharactersApi = async () => {
     setLoading(true);
-    const responseApi = await getAllMagicItems();
+    const responseApi = await getAllCharacters();
     if (!responseApi.success) {
-      setError(responseApi.error || "Error al traer articulos magicos");
+      setError(responseApi.error || "Error al traer personajes");
       return;
     }
     dispatch({
-      type: "showMagicItem",
+      type: "showCharacters",
       payload: responseApi.data,
     });
     setLoading(false);
+    
   };
   console.log("***DATOS PARA EXTRAER***");
-  console.log(store.magicsItems);
+  console.log(store.characters);
   useEffect(() => {
-    getMagicsApi();
+    getCharactersApi();
   }, []);
 
   if (error) {
@@ -45,16 +47,16 @@ export const ShowMagicsItemsPage = () => {
   return (
     <>
       <h1 className="text-center mt-5">
-        Aqui esta tu lista de articulos magicos
+        Tu lista de personajes
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
-        {store.magicsItems.length > 0 ? (
-          store.magicsItems.map((magicItem) => (
-            <MagicItemCard key={magicItem.id} item={magicItem} />
+        {store.characters.length > 0 ? (
+          store.characters.map((element) => (
+            <CharacterCard key={element.id} item={element} />
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun articulo creado *****
+            ***** No tienes ningun personaje creado *****
           </h1>
         )}
       </div>

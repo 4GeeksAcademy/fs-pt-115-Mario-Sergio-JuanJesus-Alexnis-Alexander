@@ -1,11 +1,11 @@
 export const FormularioSpecie = () => {
     return (
-        <div className="container col-md-8 my-5 bg-light basic-form">
-            <form className="row mt-5 border border-secondary-emphasis border-1">
+        <div className="container col-md-5 my-5 basic-form">
+            <h2 className="text-center fw-bold">CREATE A SPECIES</h2>
+            <form className="row fw-bold">
                 <div className="p-2">
-                    <h5>FORMULARIO SPECIES</h5>
                 </div>
-                
+
                 <div className="col-md-3 mb-3">
                     <label htmlFor="speciesName" className="form-label">
                         Name
@@ -58,10 +58,6 @@ export const FormularioSpecie = () => {
                         <option value="b">Grupo B</option>
                         <option value="c">Grupo C</option>
                     </select>
-                </div>
-                
-                <div className="p-2">
-                    <h6>Speeds</h6>
                 </div>
 
                 <div className="col-md-4 mb-3">
@@ -123,10 +119,6 @@ export const FormularioSpecie = () => {
                         name="speed_swimming"
                     />
                 </div>
-                
-                <div className="p-2">
-                    <h6>Descriptions and Traits</h6>
-                </div>
 
                 <div className="col-md-6 mb-3">
                     <label htmlFor="shortDescription" className="form-label">
@@ -136,7 +128,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="shortDescription"
                         name="short_description"
-                        rows="3"
+                        rows="2"
                     />
                 </div>
 
@@ -148,7 +140,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="description"
                         name="description"
-                        rows="3"
+                        rows="2"
                         required
                     />
                 </div>
@@ -193,10 +185,6 @@ export const FormularioSpecie = () => {
                         </label>
                     </div>
                 </div>
-                
-                <div className="p-2">
-                    <h6>Avatars</h6>
-                </div>
 
                 <div className="col-md-6 mb-3">
                     <label htmlFor="largeAvatar" className="form-label">
@@ -220,6 +208,9 @@ export const FormularioSpecie = () => {
                         id="portraitAvatar"
                         name="portrait_avatar"
                     />
+                </div>
+                <div className="col-12 text-center mt-4">
+                    <button type="submit" className="btn btn-primary">Create Specie</button>
                 </div>
             </form>
         </div>

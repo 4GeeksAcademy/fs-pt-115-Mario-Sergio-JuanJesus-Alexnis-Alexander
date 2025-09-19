@@ -1,6 +1,7 @@
 export const initialStore=()=>{
   return{
     token:localStorage.getItem("token") || null,
+    characters: [],
     magicsItems: [],
     classes: [],
     races: [],
@@ -40,6 +41,16 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         magicsItems: store.magicsItems.filter(item => item.id != action.payload)
+      };
+    case 'showCharacters':
+      return {
+        ...store,
+        characters: action.payload
+      };
+    case 'deleteCharacter':
+      return {
+        ...store,
+        characters: store.characters.filter(item => item.id != action.payload)
       };
     default:
       throw Error('Unknown action.');

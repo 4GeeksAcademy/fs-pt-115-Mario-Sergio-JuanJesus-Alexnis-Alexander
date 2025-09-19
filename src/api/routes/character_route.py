@@ -3,10 +3,17 @@ from flask_cors import CORS
 from ..model.character_model import Character
 from ..model_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
+from flask_cors import CORS
 
-character_bp = Blueprint('character', __name__, url_prefix='/user/character')
 
-CORS(character_bp)
+character_bp = Blueprint('character', __name__, url_prefix='/user/characters')
+
+CORS(character_bp,
+    resources={r"/*": {"origins": "https://psychic-yodel-45w4x56vgg9hq976-3000.app.github.dev"}},
+    allow_headers=["Content-Type", "Authorization"],
+    expose_headers=["Content-Type"],
+    methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+     )
 
 
 @character_bp.route('/', methods=["POST"])
@@ -48,7 +55,7 @@ def show_characters():
 @character_bp.route('/<int:character_id>', methods=['GET'])
 @jwt_required()
 def show_character_id(character_id):
-    item_id = Character.query.get(character_id)
+    item_id = db.session.get(character_id)
 
     if not item_id:
         return jsonify({'error': 'No hay ningun personaje con esa identificación'}), 400
