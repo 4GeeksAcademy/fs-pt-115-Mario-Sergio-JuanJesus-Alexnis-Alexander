@@ -1,127 +1,116 @@
-import { useState } from "react";
 import { createCampaign } from "../serviceApi/campaignApi";
+import { useEffect, useState } from "react"
+import { createCharacter, getBackgrounds, getClasses, getRaces } from "../serviceApi/characterApi"
+import useGlobalReducer from "../hooks/useGlobalReducer"
+import { useNavigate } from "react-router-dom";
 
-const FormularioCampaign = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    setting: "",
-    level: "",
-    players: "",
-  });
+export const FormularioCampaign = () => {
+  const { store, dispatch } = useGlobalReducer()
+  const [input, setInputs] = useState({});
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    const formCampaing = { ...input, [name]: value };
+    setInputs(formCampaing);
   };
 
-  const handleSubmit = async (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const result = await createCampaign(formData);
-      alert("Campaña creada con éxito: " + result.name);
-      setFormData({
-        name: "",
-        description: "",
-        setting: "",
-        level: "",
-        players: "",
-      });
-    } catch (err) {
-      alert("Error al crear campaña");
+
+    const dataCampaing = await createCampaign(input);
+
+    if (!dataCampaing.success) {
+      return setError(dataCampaing.error || "Creación fallida");
+    } else {
+      setInputs({});
+      setError(null);
     }
+
+    navigate("/user/campaigns");
   };
+  useEffect(() => {
+    getClasses(dispatch)
+    getRaces(dispatch)
+    getBackgrounds(dispatch)
+
+  }, [])
 
   return (
-    <div className="container my-5">
-      <div className="card shadow-lg border-0 bg-dark text-light">
-        <div className="card-header bg-danger text-center">
-          <h2 className="fw-bold text-uppercase m-0">⚔️ Crear Campaña ⚔️</h2>
+    <div className="container col-md-5 my-5 basic-form">
+      <form onSubmit={handleOnSubmit} className="row g-4">
+        <h1>Create your Campaings</h1>
+        <div className="col-md-8">
+          <label htmlFor="name" className="form-label">
+            Name <span className="text-danger fs-5">*</span>
+          </label>
+          <input
+            onChange={handleOnChange}
+            type="text"
+            className="form-control"
+            name="name"
+            placeholder="Introduce el nombre del personaje"
+            required
+          />
         </div>
-        <div className="card-body p-4">
-          <form onSubmit={handleSubmit}>
-            {/* Nombre */}
-            <div className="mb-3">
-              <label className="form-label fw-bold text-danger">Nombre</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="form-control bg-dark text-light border-danger"
-                required
-              />
-            </div>
-
-            {/* Descripción */}
-            <div className="mb-3">
-              <label className="form-label fw-bold text-danger">
-                Descripción
-              </label>
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleChange}
-                className="form-control bg-dark text-light border-danger"
-                rows="3"
-              />
-            </div>
-
-            {/* Escenario */}
-            <div className="mb-3">
-              <label className="form-label fw-bold text-danger">
-                Mundo / Escenario
-              </label>
-              <input
-                type="text"
-                name="setting"
-                value={formData.setting}
-                onChange={handleChange}
-                className="form-control bg-dark text-light border-danger"
-              />
-            </div>
-
-            {/* Nivel inicial */}
-            <div className="mb-3">
-              <label className="form-label fw-bold text-danger">
-                Nivel inicial
-              </label>
-              <input
-                type="number"
-                name="level"
-                value={formData.level}
-                onChange={handleChange}
-                className="form-control bg-dark text-light border-danger"
-              />
-            </div>
-
-            {/* Número de jugadores */}
-            <div className="mb-4">
-              <label className="form-label fw-bold text-danger">
-                Número de jugadores
-              </label>
-              <input
-                type="number"
-                name="players"
-                value={formData.players}
-                onChange={handleChange}
-                className="form-control bg-dark text-light border-danger"
-              />
-            </div>
-
-            {/* Botón */}
-            <div className="text-center">
-              <button
-                type="submit"
-                className="btn btn-danger btn-lg px-5 fw-bold"
-              >
-                🐉 Crear Campaña
-              </button>
-            </div>
-          </form>
+        <div className="col-md-8">
+          <label htmlFor="name" className="form-label">
+            Description <span className="text-danger fs-5">*</span>
+          </label>
+          <textarea
+            onChange={handleOnChange}
+            type="text"
+            className="form-control"
+            name="description"
+            placeholder="Introduce la descripción de la campaña"
+          />
         </div>
-      </div>
+        <div className="col-md-8">
+          <label htmlFor="name" className="form-label">
+            Settings <span className="text-danger fs-5">*</span>
+          </label>
+          <input
+            onChange={handleOnChange}
+            type="text"
+            name="settings"
+            className="form-control"
+            placeholder="Introduce el escenario de la campaña"
+          ></input>
+        </div>
+        <div className="col-md-8">
+          <label htmlFor="name" className="form-label">
+            Level <span className="text-danger fs-5">*</span>
+          </label>
+          <input
+            onChange={handleOnChange}
+            type="number"
+            name="level"
+            className="form-control"
+            required
+          ></input>
+        </div>
+        <div className="col-md-8">
+          <label htmlFor="name" className="form-label">
+            Players <span className="text-danger fs-5">*</span>
+          </label>
+          <input
+            onChange={handleOnChange}
+            type="number"
+            name="players"
+            className="form-control"
+            required
+          ></input>
+        </div>
+        <div className="col-md-8">
+          {error && <div className="alert alert-danger">{error}</div>}
+        </div>
+        <div className="col-12 text-center">
+          <button type="submit" className="btn border m-4">
+            Submit new Campaing
+          </button>
+        </div>
+      </form>
     </div>
-  );
-};
-
-export default FormularioCampaign;
+  )
+}

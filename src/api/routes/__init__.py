@@ -6,6 +6,7 @@ from .magic_items_routes import magics_items_bp
 from .spell_route import spell_bp
 from .specie_route import specie_bp
 from .character_route import character_bp
+from .campaign_route import campaign_bp
 
 
 api = Blueprint('api', __name__)
@@ -20,3 +21,4 @@ api.register_blueprint(magics_items_bp)
 api.register_blueprint(spell_bp)
 api.register_blueprint(specie_bp)
 api.register_blueprint(character_bp)
+api.register_blueprint(campaign_bp)
