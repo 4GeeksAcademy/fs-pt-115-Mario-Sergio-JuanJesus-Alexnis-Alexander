@@ -5,7 +5,7 @@ import { useRef, useState } from "react";
 import styles from "../styles/components/navbar.module.css";
 
 export const Navbar = () => {
-  const { token, logOut } = useAuth();
+  const { token, logOut, user, loading } = useAuth();
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const timeDropdown = useRef(null);
@@ -28,12 +28,19 @@ export const Navbar = () => {
     setShowDropdown(true);
   };
 
+  if (loading) {
+    return (
+      <div className="position-relative" style={{ height: "100vh" }}>
+        <div className="position-absolute top-50 start-50 translate-middle fs-2">
+          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
-      <nav
-        className="navbar navbar-expand-lg"
-        id={styles.navbar}
-      >
+      <nav className="navbar navbar-expand-lg" id={styles.navbar}>
         <div className="container-fluid ms-2">
           <Link to={"/"}>
             <div className="navbar-brand">
@@ -56,20 +63,17 @@ export const Navbar = () => {
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div
-              className="d-flex justify-content-center flex-grow-1"
-              
-            >
+            <div className="d-flex justify-content-center flex-grow-1">
               <menu className={styles.btnDropdown}>
                 <div
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button className={styles.button}>Mi colección 🔻</button>
+                  <span className={styles.button}>Mi colección 🔻</span>
                 </div>
-                <button className={styles.button}>Reglas de juego 🔻</button>
+                <span className={styles.button}>Reglas de juego 🔻</span>
               </menu>
-              
+
               {/* DROPDOWN DE MI COLECCION AQUI */}
               <div
                 className={showDropdown ? "" : "d-none"}
@@ -89,7 +93,7 @@ export const Navbar = () => {
               </div>
             </div>
 
-            {!token ? (
+            {!user ? (
               <form className="d-flex gap-2">
                 <Link to={"/signup"}>
                   <button className={styles.button}>Registrarse</button>
@@ -105,7 +109,7 @@ export const Navbar = () => {
                 </button>
 
                 <Link to={"/user/profile"}>
-                  <button className={styles.button}>Perfil</button>
+                  <button className={styles.button}>{user.username}</button>
                 </Link>
               </form>
             )}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-//import { createCampaign } from "../serviceApi/campaignApi";
+import { createCampaign } from "../serviceApi/campaignApi";
 
 const FormularioCampaign = () => {
   const [formData, setFormData] = useState({
@@ -32,68 +32,95 @@ const FormularioCampaign = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-3 border rounded">
-      <h3>Crear Campaña</h3>
+    <div className="container my-5">
+      <div className="card shadow-lg border-0 bg-dark text-light">
+        <div className="card-header bg-danger text-center">
+          <h2 className="fw-bold text-uppercase m-0">⚔️ Crear Campaña ⚔️</h2>
+        </div>
+        <div className="card-body p-4">
+          <form onSubmit={handleSubmit}>
+            {/* Nombre */}
+            <div className="mb-3">
+              <label className="form-label fw-bold text-danger">Nombre</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="form-control bg-dark text-light border-danger"
+                required
+              />
+            </div>
 
-      <div className="mb-2">
-        <label>Nombre</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="form-control"
-          required
-        />
+            {/* Descripción */}
+            <div className="mb-3">
+              <label className="form-label fw-bold text-danger">
+                Descripción
+              </label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className="form-control bg-dark text-light border-danger"
+                rows="3"
+              />
+            </div>
+
+            {/* Escenario */}
+            <div className="mb-3">
+              <label className="form-label fw-bold text-danger">
+                Mundo / Escenario
+              </label>
+              <input
+                type="text"
+                name="setting"
+                value={formData.setting}
+                onChange={handleChange}
+                className="form-control bg-dark text-light border-danger"
+              />
+            </div>
+
+            {/* Nivel inicial */}
+            <div className="mb-3">
+              <label className="form-label fw-bold text-danger">
+                Nivel inicial
+              </label>
+              <input
+                type="number"
+                name="level"
+                value={formData.level}
+                onChange={handleChange}
+                className="form-control bg-dark text-light border-danger"
+              />
+            </div>
+
+            {/* Número de jugadores */}
+            <div className="mb-4">
+              <label className="form-label fw-bold text-danger">
+                Número de jugadores
+              </label>
+              <input
+                type="number"
+                name="players"
+                value={formData.players}
+                onChange={handleChange}
+                className="form-control bg-dark text-light border-danger"
+              />
+            </div>
+
+            {/* Botón */}
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn btn-danger btn-lg px-5 fw-bold"
+              >
+                🐉 Crear Campaña
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-
-      <div className="mb-2">
-        <label>Descripción</label>
-        <textarea
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-
-      <div className="mb-2">
-        <label>Mundo / Escenario</label>
-        <input
-          type="text"
-          name="setting"
-          value={formData.setting}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-
-      <div className="mb-2">
-        <label>Nivel inicial</label>
-        <input
-          type="number"
-          name="level"
-          value={formData.level}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-
-      <div className="mb-2">
-        <label>Número de jugadores</label>
-        <input
-          type="number"
-          name="players"
-          value={formData.players}
-          onChange={handleChange}
-          className="form-control"
-        />
-      </div>
-
-      <button type="submit" className="btn btn-primary">
-        Crear
-      </button>
-    </form>
+    </div>
   );
 };
 

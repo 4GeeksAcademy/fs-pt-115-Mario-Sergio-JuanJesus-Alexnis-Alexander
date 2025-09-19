@@ -4,8 +4,8 @@ export const Home = () => {
 
 	return (
 		<>
-			<div className={styles.imageBackground}>
-			<h1 className="text-center text-white mt-5 fw-bold">Bienvenido a <br></br> D&D MASTERS OF INFINITY</h1>
+			<div className={styles.main}>
+			<h1 className={styles.title}>Bienvenido a <br></br> D&D MASTERS OF INFINITY</h1>
 			</div>
 		</>
 	);
