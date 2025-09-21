@@ -23,11 +23,16 @@ export const Navbar = () => {
     }, 200);
   };
 
-  const handleMouseEnter = (setDropdown) => {
-    if (timeDropdown.current) {
-      clearTimeout(timeDropdown.current);
-    }
-    setDropdown(true);
+  const handleMouseEnterCollection = () => {
+    if (timeDropdown.current) clearTimeout(timeDropdown.current);
+    setShowCollectionDropdown(true);
+    setShowRulesDropdown(false); 
+  };
+
+  const handleMouseEnterRules = () => {
+    if (timeDropdown.current) clearTimeout(timeDropdown.current);
+    setShowRulesDropdown(true);
+    setShowCollectionDropdown(false); 
   };
 
   return (
@@ -59,13 +64,13 @@ export const Navbar = () => {
           <div className="d-flex justify-content-center flex-grow-1">
             <menu className={styles.btnDropdown}>
               <div
-                onMouseEnter={() => handleMouseEnter(setShowCollectionDropdown)}
+                onMouseEnter={handleMouseEnterCollection}
                 onMouseLeave={() => handleMouseLeave(setShowCollectionDropdown)}
               >
                 <button className={styles.button}>Mi colección 🔻</button>
               </div>
               <div
-                onMouseEnter={() => handleMouseEnter(setShowRulesDropdown)}
+                onMouseEnter={handleMouseEnterRules}
                 onMouseLeave={() => handleMouseLeave(setShowRulesDropdown)}
               >
                 <button className={styles.button}>Reglas de juego 🔻</button>
@@ -75,9 +80,7 @@ export const Navbar = () => {
             {/* Dropdown de colección */}
             {showCollectionDropdown && (
               <div
-                onMouseEnter={() =>
-                  handleMouseEnter(setShowCollectionDropdown)
-                }
+                onMouseEnter={handleMouseEnterCollection}
                 onMouseLeave={() =>
                   handleMouseLeave(setShowCollectionDropdown)
                 }
@@ -98,7 +101,7 @@ export const Navbar = () => {
             {/* Dropdown de reglas */}
             {showRulesDropdown && (
               <div
-                onMouseEnter={() => handleMouseEnter(setShowRulesDropdown)}
+                onMouseEnter={handleMouseEnterRules}
                 onMouseLeave={() => handleMouseLeave(setShowRulesDropdown)}
                 style={{
                   position: "absolute",
