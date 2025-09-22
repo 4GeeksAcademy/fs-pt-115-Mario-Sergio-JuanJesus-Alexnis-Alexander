@@ -45,17 +45,24 @@ def sign_up():
 @user_bp.route('/login', methods=['POST'])
 def user_login():
     data = request.get_json()
-    email = data.get('email')
+    email_or_username = data.get('emailOrUsername')
     password = data.get('password')
 
-    if not email or not password:
+    is_email = '@' in email_or_username
+
+    if not email_or_username or not password:
         return jsonify({
             'success': False,
             'msg': 'Rellene todos los campos por favor'}), 400
     
-    user = db.session.execute(db.select(User).where(
-        User.email == email
-    )).scalar_one_or_none()
+    if is_email:
+        user = db.session.execute(db.select(User).where(
+            User.email == email_or_username
+        )).scalar_one_or_none()
+    else:
+        user = db.session.execute(db.select(User).where(
+            User.username == email_or_username
+        )).scalar_one_or_none()
 
     if not user:
         return jsonify({

@@ -5,7 +5,7 @@ import styles from "../../styles/page/logIn.module.css";
 
 export const LoginPage = () => {
   const [input, setInput] = useState({
-    email: "",
+    emailOrUsername: "",
     password: "",
   });
   const [error, setError] = useState(null);
@@ -22,7 +22,7 @@ export const LoginPage = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const data = await login(input.email, input.password, input.remember);
+    const data = await login(input.emailOrUsername, input.password);
     if (data.success) navigate("/");
     else setError(data.error || "Email and/or password incorrect");
   };
@@ -42,12 +42,12 @@ export const LoginPage = () => {
       <p className={styles.title}>Welcome back</p>
       <form className={styles.form} onSubmit={handleOnSubmit}>
         <input
-          type="email"
-          name="email"
-          value={input.email}
+          type="text"
+          name="emailOrUsername"
+          value={input.emailOrUsername}
           onChange={handleOnChange}
           className={styles.input}
-          placeholder="Email"
+          placeholder="Email or username"
         />
         <input
           type="password"
