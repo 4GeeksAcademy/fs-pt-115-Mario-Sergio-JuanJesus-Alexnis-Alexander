@@ -6,7 +6,7 @@ export const MagicItemCard = ({ item }) => {
   const { dispatch } = useGlobalReducer();
   const [error, setError] = useState(false);
 
-  const handleOnDelete = async (id) => {
+  const handleDelete = async (id) => {
     setError(false);
     const deleteItemApi = await deleteMagicItem(id);
     if (deleteItemApi.success) {
@@ -28,10 +28,9 @@ export const MagicItemCard = ({ item }) => {
 
           <div className="d-flex justify-content-start gap-2 mt-3">
             <button className="btn btn-primary" disabled>Detalles</button>
-            <button className="btn btn-primary" disabled>✏️</button>
             <button
               className="btn btn-primary"
-              onClick={() => handleOnDelete(item.id)}
+              onClick={() => handleDelete(item.id)}
             >
               ❌
             </button>

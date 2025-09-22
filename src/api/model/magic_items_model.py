@@ -9,7 +9,7 @@ class MagicsItems(db.Model):
     name: Mapped[str] = mapped_column(String(120), nullable=False)
     rarity: Mapped[str] = mapped_column(String(50), nullable=False)
     base_item_type: Mapped[str] = mapped_column(String(50), nullable=False)
-    attunement_description: Mapped[str] = mapped_column(Text, nullable=False)
+    attunement_description: Mapped[Optional[str]] = mapped_column(Text)
     description: Mapped[str] = mapped_column(Text, nullable=False)
     version: Mapped[Optional[str]] = mapped_column(String(50))
     magic_item_type: Mapped[Optional[str]] = mapped_column(String(50))
