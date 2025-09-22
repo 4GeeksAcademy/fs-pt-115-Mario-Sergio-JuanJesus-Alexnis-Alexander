@@ -37,6 +37,10 @@ export const FormularioFeats = () => {
         <div className="col-12 mt-4">
           <button type="submit" className="btn btn-primary">Submit</button>
         </div>
+
+        <div className="col-12 text-center mt-4">
+          <button type="submit" className="btn btn-primary">Create Feats</button>
+        </div>
       </form>
     </div>
   );
