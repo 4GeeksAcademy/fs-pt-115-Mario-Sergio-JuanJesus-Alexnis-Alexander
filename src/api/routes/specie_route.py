@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.user_model import User
 from ..model.specie_model import Specie
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
 specie_bp = Blueprint('specie', __name__, url_prefix='/specie')

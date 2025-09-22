@@ -1,10 +1,11 @@
-from flask import Flask, request, jsonify, Blueprint
+from flask import Flask, request, jsonify, Blueprint, render_template
 from flask_cors import CORS
 from ..model.user_model import User
-from ..model_config import db
+from ..extension_config import db, mail
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_mail import Message
 
-user_bp = Blueprint('user', __name__, url_prefix='/user')
+user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../templates')
 
 CORS(user_bp)
 
@@ -34,6 +35,17 @@ def sign_up():
     db.session.add(new_user)
     db.session.commit()
     token = create_access_token(str(new_user.id))
+
+    html_body = render_template('welcome.html', username= username)
+
+    message = Message(
+        subject = 'Welcome message',
+        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
+        recipients = [email],
+        html = html_body
+    )
+
+    mail.send(message)
 
     return jsonify({
         'success': True,

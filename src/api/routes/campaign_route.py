@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_cors import CORS
 from ..model.campaign_model import Campaign
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
 campaign_bp = Blueprint('campaign', __name__, url_prefix='/user/campaigns')
