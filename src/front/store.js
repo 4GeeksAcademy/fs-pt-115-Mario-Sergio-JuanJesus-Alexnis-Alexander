@@ -1,6 +1,7 @@
 export const initialStore=()=>{
   return{
     characters: [],
+    campaign: [],
     magicsItems: [],
     classes: [],
     races: [],
@@ -44,6 +45,16 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         characters: store.characters.filter(item => item.id != action.payload)
+      };
+    case 'showCampaign':
+      return {
+        ...store,
+        campaign: action.payload
+      };
+    case 'deleteCampaign':
+      return {
+        ...store,
+        campaign: store.campaign.filter(item => item.id != action.payload)
       };
     default:
       throw Error('Unknown action.');
