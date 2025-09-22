@@ -1,5 +1,5 @@
 export const FormularioSubclasses = () => {
-    return (
+  return (
     <div className="container col-md-5 my-5 basic-form">
       <h2 className="text-center mb-4 fw-bold">CREATE A SUBCLASS</h2>
       <form className="row g-3 fw-bold">
@@ -12,7 +12,7 @@ export const FormularioSubclasses = () => {
           <label htmlFor="subclassVersion" className="form-label">Version</label>
           <input type="text" className="form-control" id="subclassVersion" name="version" />
         </div>
-        
+
         <div className="col-12">
           <h5 className="mt-3">Descriptions</h5>
         </div>
@@ -100,7 +100,11 @@ export const FormularioSubclasses = () => {
         <div className="col-12 mt-4">
           <button type="submit" className="btn btn-primary">Submit</button>
         </div>
+
+        <div className="col-12 text-center mt-4">
+          <button type="submit" className="btn btn-primary">Create Subclasses</button>
+        </div>
       </form>
     </div>
-    );
+  );
 };
