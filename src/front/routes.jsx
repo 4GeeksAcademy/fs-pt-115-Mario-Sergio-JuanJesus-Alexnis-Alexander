@@ -17,12 +17,17 @@ import { ProfilePage } from "./pages/user/Profile.page";
 import { Formspell } from "./pages/user/Formspell.page";
 import { CreateCharacterPage } from "./pages/user/CreateCharacter.page";
 import { CreateMagicItemPage } from "./pages/user/CreateMagicItem.page";
-import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.page";
+import { PageFormCampaign } from "./pages/user/CreateCampaign.page";
 import { CreateFeatPage } from "./pages/user/CreateFeat.page";
 import { CreateBackgroundPage } from "./pages/user/CreateBackground.page";
 import { CreateSpeciePage } from "./pages/user/CreateSpecie.page";
 import { CreateSubclassPage } from "./pages/user/CreateSubclass.page";
-
+import { ShowMagicsItemsPage } from "./pages/user/ShowMagicsItems.page";
+import { ShowCharactersPage } from "./pages/user/ShowCharacters";
+import { ShowCampaignPage } from "./pages/user/ShowCampaign.page";
+import { WikiClasses } from "./components/Wiki/WikiClasses";
+import { WikiFeats } from "./components/Wiki/WikiFeats"; 
+import { WikiBackgrounds } from "./components/Wiki/WikiBackgrounds";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -48,11 +53,17 @@ export const router = createBrowserRouter(
           <Route path="user/create-character" element={ <CreateCharacterPage/> }/>
           <Route path="user/create-feat" element={ <CreateFeatPage/> }/>
           <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
-          <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
+          <Route path="user/create-campaign" element={ <PageFormCampaign/>}/>
           <Route path="user/create-background" element={ <CreateBackgroundPage/> }/>
           <Route path="user/create-specie" element={ <CreateSpeciePage/> }/>
           <Route path="user/create-subclasses" element={ <CreateSubclassPage/> }/>
           <Route path="user/create-feats" element={ <CreateFeatPage/> }/>
+          <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
+          <Route path="user/characters" element={ <ShowCharactersPage/> }/>
+          <Route path="user/campaigns" element={ <ShowCampaignPage/> }/>
+          <Route path="wiki/classes" element={<WikiClasses />} />
+          <Route path="wiki/feats" element={<WikiFeats />} />
+          <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
           
       </Route>
 

@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { CollectionDropdown } from "./CollectionDropdown";
+import { GameRulesDropdown } from "./GameRulesDropdown";
 import { useRef, useState } from "react";
 import styles from "../styles/components/navbar.module.css";
-import { GameRulesDropdown } from "./GameRulesDropdown";
+import Logo from "../assets/img/logo-navbar.png";
 
 export const Navbar = () => {
-  const { token, logOut } = useAuth();
+  const { token, logOut, user, loading } = useAuth();
   const [showCollectionDropdown, setShowCollectionDropdown] = useState(false);
   const [showRulesDropdown, setShowRulesDropdown] = useState(false);
   const navigate = useNavigate();
@@ -26,25 +27,31 @@ export const Navbar = () => {
   const handleMouseEnterCollection = () => {
     if (timeDropdown.current) clearTimeout(timeDropdown.current);
     setShowCollectionDropdown(true);
-    setShowRulesDropdown(false); 
+    setShowRulesDropdown(false);
   };
 
   const handleMouseEnterRules = () => {
     if (timeDropdown.current) clearTimeout(timeDropdown.current);
     setShowRulesDropdown(true);
-    setShowCollectionDropdown(false); 
+    setShowCollectionDropdown(false);
   };
+
+  if (loading) {
+    return (
+      <div className="position-relative" style={{ height: "100vh" }}>
+        <div className="position-absolute top-50 start-50 translate-middle fs-2">
+          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        </div>
+      </div>
+    );
+  }
 
   return (
     <nav className="navbar navbar-expand-lg" id={styles.navbar}>
       <div className="container-fluid ms-2">
         <Link to={"/"}>
           <div className="navbar-brand">
-            <img
-              className={styles.logoNavbar}
-              src="src/front/assets/img/logo-navbar.png"
-              alt="logo"
-            />
+            <img className={styles.logoNavbar} src={Logo} alt="logo" />
           </div>
         </Link>
 
@@ -118,7 +125,7 @@ export const Navbar = () => {
             )}
           </div>
 
-          {!token ? (
+          {!user ? (
             <form className="d-flex gap-2">
               <Link to={"/signup"}>
                 <button className={styles.button}>Registrarse</button>
@@ -133,7 +140,7 @@ export const Navbar = () => {
                 Cerrar sesión
               </button>
               <Link to={"/user/profile"}>
-                <button className={styles.button}>Perfil</button>
+                <button className={styles.button}>{user.username}</button>
               </Link>
             </form>
           )}

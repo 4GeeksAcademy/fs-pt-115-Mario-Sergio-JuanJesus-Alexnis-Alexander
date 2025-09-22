@@ -1,6 +1,7 @@
 export const initialStore=()=>{
   return{
-    token:localStorage.getItem("token") || null,
+    characters: [],
+    campaign: [],
     magicsItems: [],
     classes: [],
     races: [],
@@ -10,12 +11,6 @@ export const initialStore=()=>{
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
-    case "set_token":
-      localStorage.setItem("token", action.payload);
-      return { ...store, token: action.payload };
-    case "logout":
-      localStorage.removeItem("token");
-      return { ...store, token: null };
     case 'set_classes':
       return{
         ...store,
@@ -40,6 +35,26 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         magicsItems: store.magicsItems.filter(item => item.id != action.payload)
+      };
+    case 'showCharacters':
+      return {
+        ...store,
+        characters: action.payload
+      };
+    case 'deleteCharacter':
+      return {
+        ...store,
+        characters: store.characters.filter(item => item.id != action.payload)
+      };
+    case 'showCampaign':
+      return {
+        ...store,
+        campaign: action.payload
+      };
+    case 'deleteCampaign':
+      return {
+        ...store,
+        campaign: store.campaign.filter(item => item.id != action.payload)
       };
     default:
       throw Error('Unknown action.');

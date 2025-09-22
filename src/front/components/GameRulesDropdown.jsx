@@ -8,19 +8,18 @@ export const GameRulesDropdown = ({ closeDropdown }) => {
         <div className="row w-100">
           <div className="col-12 d-grid gap-3" style={{ gridTemplateColumns: "repeat(4, 1fr)", display: "grid" }}>
             
-            <Link to={"/wiki_classes"} onClick={closeDropdown}>
+            <Link to={"/wiki/classes"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Classes
               </button>
             </Link>
-
             <Link to={"/wiki_species"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Species
               </button>
             </Link>
 
-            <Link to={"/wiki_backgrounds"} onClick={closeDropdown}>
+            <Link to={"/wiki/backgrounds"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Backgrounds
               </button>
@@ -32,7 +31,7 @@ export const GameRulesDropdown = ({ closeDropdown }) => {
               </button>
             </Link>
 
-            <Link to={"/wiki_feats"} onClick={closeDropdown}>
+            <Link to={"/wiki/feats"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Feats
               </button>

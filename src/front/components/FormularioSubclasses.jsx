@@ -1,8 +1,8 @@
 export const FormularioSubclasses = () => {
     return (
-    <div className="container col-md-8 my-5 bg-light basic-form">
-      <h2 className="text-center mb-4">FORMULARIO CREATE A SUBCLASS</h2>
-      <form className="row g-3">
+    <div className="container col-md-5 my-5 basic-form">
+      <h2 className="text-center mb-4 fw-bold">CREATE A SUBCLASS</h2>
+      <form className="row g-3 fw-bold">
 
         <div className="col-md-6">
           <label htmlFor="subclassName" className="form-label">Name</label>
@@ -80,17 +80,13 @@ export const FormularioSubclasses = () => {
             <option>Through Meditation</option>
           </select>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-12">
           <label htmlFor="additionalSpecificSpells" className="form-label">Additional Specific Spells</label>
           <select id="additionalSpecificSpells" className="form-select" name="additional_specific_spells">
             <option selected disabled value="">Selecciona...</option>
             <option>Spell X</option>
             <option>Spell Y</option>
           </select>
-        </div>
-        
-        <div className="col-12">
-          <h5 className="mt-3">Avatars</h5>
         </div>
         <div className="col-md-6">
           <label htmlFor="avatar" className="form-label">Avatar</label>

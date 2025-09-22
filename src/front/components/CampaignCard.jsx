@@ -1,21 +1,21 @@
-import { deleteMagicItem } from "../serviceApi/magicItem.api";
+
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useState } from "react";
 
-export const MagicItemCard = ({ item }) => {
+export const CampaignCard = ({ item }) => {
   const { dispatch } = useGlobalReducer();
   const [error, setError] = useState(false);
 
   const handleOnDelete = async (id) => {
     setError(false);
-    const deleteItemApi = await deleteMagicItem(id);
-    if (deleteItemApi.success) {
+    const deleteCampaign = await deleteCampaign(id);
+    if (deleteCampaign.success) {
       dispatch({
-        type: "deleteMagicItem",
+        type: "deleteCampaign",
         payload: id,
       });
     } else {
-      setError(deleteItemApi.error);
+      setError(deleteCampaign.error);
     }
   };
 
@@ -24,7 +24,7 @@ export const MagicItemCard = ({ item }) => {
       <div className="card" style={{ width: "18rem" }}>
         <div className="card-body">
           <h5 className="card-title">Nombre: {item.name}</h5>
-          <h5 className="card-title">Tipo: {item.base_item_type}</h5>
+          <h5 className="card-title">Tipo: {item.level}</h5>
 
           <div className="d-flex justify-content-start gap-2 mt-3">
             <button className="btn btn-primary" disabled>Detalles</button>

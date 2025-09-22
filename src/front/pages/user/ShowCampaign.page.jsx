@@ -1,34 +1,34 @@
 import { useEffect, useState } from "react";
-import { MagicItemCard } from "../../components/MagicItemCard";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
-import { getAllMagicItems } from "../../serviceApi/magicItem.api";
+import { CampaignCard } from "../../components/CampaignCard";
+import { getCampaigns } from "../../serviceApi/campaignApi";
 
-export const ShowMagicsItemsPage = () => {
+export const ShowCampaignPage = () => {
   const { store, dispatch } = useGlobalReducer();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getMagicsApi = async () => {
+  const getCampaignApi= async () => {
     setLoading(true);
-    const responseApi = await getAllMagicItems();
+    const responseApi = await getCampaigns();
     if (!responseApi.success) {
-      setError(responseApi.error || "Error al traer articulos magicos");
+      setError(responseApi.error || "Error al traer campañas");
       return;
     }
     dispatch({
-      type: "showMagicItem",
+      type: "showCampaign",
       payload: responseApi.data,
     });
     setLoading(false);
   };
   console.log("***DATOS PARA EXTRAER***");
-  console.log(store.magicsItems);
+  console.log(store.campaign);
   useEffect(() => {
-    getMagicsApi();
+    getCampaignApi();
   }, []);
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="text-center fs-2 fw-bold">{error}</div>;
   }
 
   if (loading) {
@@ -45,16 +45,16 @@ export const ShowMagicsItemsPage = () => {
   return (
     <>
       <h1 className="text-center mt-5">
-        Aqui esta tu lista de articulos magicos
+        Tus campañas
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
-        {store.magicsItems.length > 0 ? (
-          store.magicsItems.map((magicItem) => (
-            <MagicItemCard key={magicItem.id} item={magicItem} />
+        {store.campaign.length > 0 ? (
+          store.campaign.map((campaign) => (
+            <CampaignCard key={campaign.id} item={campaign} />
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun articulo creado *****
+            ***** No tienes ninguna campaña creada *****
           </h1>
         )}
       </div>
