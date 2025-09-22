@@ -41,7 +41,7 @@ export const FormularioSpell = () => {
                         name="School"
                         required=""
                     >
-                    <option selected disabled value="">
+                    <option value="">
                             Selecciona...
                         </option>
                         <option value="a">Turn</option>
@@ -66,7 +66,7 @@ export const FormularioSpell = () => {
                         Casting Type
                     </label><br />
                     <select id="spellCast" className="form-select" name="spell_cast">
-                        <option selected disabled value="">
+                        <option  value="">
                             Selecciona...
                         </option>
                         <option value="a">Turn</option>
@@ -122,7 +122,7 @@ export const FormularioSpell = () => {
                         Spell Range Type
                     </label><br />
                     <select name="Type" id="Type" className="form-select">
-                        <option selected="" disabled="">
+                        <option >
                             Options
                         </option>
                         <option value={1}>-</option>
@@ -160,7 +160,7 @@ export const FormularioSpell = () => {
                         Duration
                     </label><br />
                     <select name="time" id="time" className="form-select">
-                        <option selected="" disabled="">
+                        <option >
                             Options
                         </option>
                         <option value={1}>-</option>
