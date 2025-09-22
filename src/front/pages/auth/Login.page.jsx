@@ -122,6 +122,7 @@ export const LoginPage = () => {
           </svg>
           <span>Log in with Google</span>
         </div>
+        {error && <div className="alert alert-danger">{error}</div>}
       </div>
     </div>
   );
