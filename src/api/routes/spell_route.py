@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.user_model import User
 from ..model.spell_model import Spell
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
 spell_bp = Blueprint('spell', __name__, url_prefix='/spells')

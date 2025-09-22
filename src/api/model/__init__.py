@@ -1,1 +1,1 @@
-from ..model_config import db
+from ..extension_config import db

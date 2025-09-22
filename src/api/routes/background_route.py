@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.user_model import User
 from ..model.background_model import Background
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
 background_bp = Blueprint('background', __name__, url_prefix='/background')
