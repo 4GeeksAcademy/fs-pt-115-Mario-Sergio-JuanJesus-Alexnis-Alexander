@@ -4,6 +4,9 @@ from ..model.user_model import User
 from ..extension_config import db, mail
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from flask_mail import Message
+import cloudinary
+import cloudinary.uploader
+from cloudinary import CloudinaryImage
 
 user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../templates')
 
@@ -146,6 +149,24 @@ def delete_user():
 
     return jsonify({'msg': 'Usuario eliminado'}), 200
 
+@user_bp.route('/upload-img', methods=['POST'])
+@jwt_required()
+def upload_image():
+    file = request.files.get('file')
+
+    if file:
+        upload_result = cloudinary.uploader.upload(file)
+        return jsonify(upload_result['secure_url']), 201
+    return jsonify({'msg': 'Image not found'}), 404
+
+    
+    
+    
+
+    
+
+
+
 
 @user_bp.route('/', methods=['GET'])
 def all_user():
@@ -157,3 +178,5 @@ def all_user():
     db.session.commit()
 
     return jsonify([u.serialize() for u in users]), 200
+
+
