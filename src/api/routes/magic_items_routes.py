@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.magic_items_model import MagicsItems
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 magics_items_bp = Blueprint('magic_items', __name__,

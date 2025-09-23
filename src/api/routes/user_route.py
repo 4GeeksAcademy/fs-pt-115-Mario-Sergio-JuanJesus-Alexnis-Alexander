@@ -1,10 +1,14 @@
-from flask import Flask, request, jsonify, Blueprint
+from flask import Flask, request, jsonify, Blueprint, render_template
 from flask_cors import CORS
 from ..model.user_model import User
-from ..model_config import db
+from ..extension_config import db, mail
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_mail import Message
+import cloudinary
+import cloudinary.uploader
+from cloudinary import CloudinaryImage
 
-user_bp = Blueprint('user', __name__, url_prefix='/user')
+user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../templates')
 
 CORS(user_bp)
 
@@ -35,6 +39,17 @@ def sign_up():
     db.session.commit()
     token = create_access_token(str(new_user.id))
 
+    html_body = render_template('welcome.html', username= username)
+
+    message = Message(
+        subject = 'Welcome message',
+        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
+        recipients = [email],
+        html = html_body
+    )
+
+    mail.send(message)
+
     return jsonify({
         'success': True,
         'msg': 'Usuario creado',
@@ -45,17 +60,24 @@ def sign_up():
 @user_bp.route('/login', methods=['POST'])
 def user_login():
     data = request.get_json()
-    email = data.get('email')
+    email_or_username = data.get('emailOrUsername')
     password = data.get('password')
 
-    if not email or not password:
+    is_email = '@' in email_or_username
+
+    if not email_or_username or not password:
         return jsonify({
             'success': False,
             'msg': 'Rellene todos los campos por favor'}), 400
     
-    user = db.session.execute(db.select(User).where(
-        User.email == email
-    )).scalar_one_or_none()
+    if is_email:
+        user = db.session.execute(db.select(User).where(
+            User.email == email_or_username
+        )).scalar_one_or_none()
+    else:
+        user = db.session.execute(db.select(User).where(
+            User.username == email_or_username
+        )).scalar_one_or_none()
 
     if not user:
         return jsonify({
@@ -127,6 +149,24 @@ def delete_user():
 
     return jsonify({'msg': 'Usuario eliminado'}), 200
 
+@user_bp.route('/upload-img', methods=['POST'])
+@jwt_required()
+def upload_image():
+    file = request.files.get('file')
+
+    if file:
+        upload_result = cloudinary.uploader.upload(file)
+        return jsonify(upload_result['secure_url']), 201
+    return jsonify({'msg': 'Image not found'}), 404
+
+    
+    
+    
+
+    
+
+
+
 
 @user_bp.route('/', methods=['GET'])
 def all_user():
@@ -138,3 +178,5 @@ def all_user():
     db.session.commit()
 
     return jsonify([u.serialize() for u in users]), 200
+
+
