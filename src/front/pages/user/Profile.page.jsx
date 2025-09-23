@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { uploadImg } from "../../serviceApi/userApi";
+import styles from "../../styles/page/profile.module.css";
 
 export const ProfilePage = () => {
   const { user, token, userInfo } = useAuth();
@@ -73,150 +74,69 @@ export const ProfilePage = () => {
 
   return (
     <>
-      <div
-        className="container-fluid"
-        style={{
-          backgroundColor: "#f8f9fa",
-          minHeight: "100vh",
-          paddingTop: "20px",
-        }}
-      >
+      <div className={`container-fluid ${styles.containerFluid}`}>
         <div className="container">
           {/* Título Principal */}
-          <h1
-            className="mb-4"
-            style={{
-              fontSize: "2.5rem",
-              fontWeight: "300",
-              color: "#343a40",
-              borderBottom: "3px solid #f1c40f",
-              paddingBottom: "10px",
-            }}
-          >
+          <h1 className={`mb-4 ${styles.mainTitle}`}>
             {user?.username}'s Profile
           </h1>
 
           {/* Contenedor Principal */}
-          <div className="row">
+          <div className="row justify-content-center">
             <div className="col-lg-8">
-              <div
-                className="bg-white rounded shadow-sm"
-                style={{ border: "1px solid #dee2e6" }}
-              >
+              <div className={`${styles.profileContainer}`}>
                 {/* Header del Perfil */}
-                <div
-                  className="d-flex align-items-center p-4"
-                  style={{ borderBottom: "1px solid #dee2e6" }}
-                >
+                <div className={styles.profileHeader}>
                   {/* Avatar */}
-                  <div className="me-4 position-relative">
+                  <div className={styles.avatarContainer}>
                     {loadingImg && (
-                        <p>
-                          Loading image{" "}
-                          <span
-                            className="spinner-border spinner-border-sm me-2"
-                            role="status"
-                            aria-hidden="true"
-                          ></span>
-                        </p>
-                      )}
+                      <p>
+                        Loading image{" "}
+                        <span
+                          className={styles.spinner}
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                      </p>
+                    )}
                     {user?.avatar ? (
                       <img
                         src={user?.avatar}
-                        style={{
-                          width: "90px",
-                          objectFit: "cover",
-                          objectPosition: "center",
-                          height: "100px",
-                          background:
-                            "linear-gradient(135deg, #f39c12, #f1c40f)",
-                          borderRadius: "8px",
-                          boxShadow: "0 2px 8px rgba(241, 196, 15, 0.3)",
-                        }}
+                        className={styles.avatarImage}
                         alt="userImg"
                       />
                     ) : (
-                      <div
-                        className="d-flex align-items-center justify-content-center"
-                        style={{
-                          width: "90px",
-                          height: "100px",
-                          background: "linear-gradient(135deg, #f39c12, #f1c40f)",
-                          borderRadius: "8px",
-                          fontSize: "2.5rem",
-                          fontWeight: "bold",
-                          color: "#2c3e50",
-                          boxShadow: "0 2px 8px rgba(241, 196, 15, 0.3)",
-                        }}
-                      >
+                      <div className={styles.avatarPlaceholder}>
                         {user?.username.charAt(0).toUpperCase()}
                       </div>
                     )}
-                    {/* Botón de editar avatar en la esquina */}
-                    <label
-                      className="position-absolute"
-                      style={{
-                        bottom: "-4px",
-                        right: "-4px",
-                        width: "28px",
-                        height: "28px",
-                        backgroundColor: "#28a745",
-                        borderRadius: "50%",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        cursor: "pointer",
-                        border: "2px solid white",
-                        boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-                        transition: "background-color 0.3s ease",
-                      }}
-                      onMouseEnter={(e) => e.target.style.backgroundColor = "#218838"}
-                      onMouseLeave={(e) => e.target.style.backgroundColor = "#28a745"}
-                    >
+                    {/* Botón de editar avatar */}
+                    <label className={styles.editAvatarButton}>
                       <input
                         type="file"
                         accept="image/*"
                         onChange={(e) => setFile(e.target.files[0])}
-                        style={{ display: "none" }}
                         name="avatar"
                       />
-                      <span style={{ fontSize: "12px" }}>✏️</span>
+                      <span>✏️</span>
                     </label>
                   </div>
-                  
 
                   {/* Info del Usuario */}
-                  <div className="flex-grow-1">
-                    <h2
-                      className="mb-1"
-                      style={{ fontSize: "1.8rem", fontWeight: "400" }}
-                    >
-                      {user?.username}
-                    </h2>
-                    <p className="text-muted mb-2">Registered Users</p>
-                    <p
-                      className="text-muted mb-0"
-                      style={{ fontSize: "0.875rem" }}
-                    >
+                  <div className={styles.userInfo}>
+                    <h2 className={styles.username}>{user?.username}</h2>
+                    <p className={styles.userRole}>Registered Users</p>
+                    <p className={styles.memberInfo}>
                       Member for {new Date().toLocaleDateString("es-ES")}
                     </p>
-                    <p className="text-muted" style={{ fontSize: "0.875rem" }}>
-                      Last active 5 hours ago
-                    </p>
+                    <p className={styles.lastActive}>Last active 5 hours ago</p>
                   </div>
 
                   {/* Botones de Acción */}
                   {!isEditing && (
-                    <div className="ms-3">
+                    <div>
                       <button
-                        className="btn btn-dark me-2"
-                        style={{ fontSize: "0.875rem", padding: "8px 16px" }}
-                      >
-                        My account
-                      </button>
-                      <button
-                        className="btn btn-dark"
-                        style={{ fontSize: "0.875rem", padding: "8px 16px" }}
+                        className={`btn ${styles.editBtn}`}
                         onClick={() => setIsEditing(true)}
                       >
                         Edit Profile
@@ -226,10 +146,10 @@ export const ProfilePage = () => {
                 </div>
 
                 {/* Contenido del Perfil */}
-                <div className="p-4">
+                <div className={styles.profileContent}>
                   {!isEditing ? (
                     <div>
-                      {/* Tabs */}
+                      {/* Pestañas */}
                       <ul
                         className="nav nav-tabs mb-4"
                         style={{ borderBottom: "2px solid #dee2e6" }}
@@ -243,9 +163,12 @@ export const ProfilePage = () => {
                             }
                             onClick={() => setActiveTab("info")}
                             style={{
-                              color: "#343a40",
-                              borderBottom: "2px solid #007bff",
-                              backgroundColor: "transparent",
+                              color:
+                                activeTab === "info" ? "black" : "#6c757d",
+                              borderBottom:
+                                activeTab === "info"
+                                  ? "2px solid #007bff"
+                                  : "2px solid transparent"
                             }}
                           >
                             Information
@@ -259,186 +182,121 @@ export const ProfilePage = () => {
                                 : "nav-link"
                             }
                             onClick={() => setActiveTab("activity")}
-                            style={{ color: "#6c757d" }}
+                            style={{
+                              color: activeTab === "activity" ? "black" : "#6c757d",
+                              borderBottom: activeTab === "activity" ? "2px solid #007bff" : "2px solid transparent"
+                            }}
                           >
                             Activity
                           </button>
                         </li>
                       </ul>
-
                       {activeTab === "info" && (
-                        /* Información del Usuario */
                         <div className="row">
                           <div className="col-md-6">
-                            <h5
-                              className="mb-3"
-                              style={{ color: "#343a40", fontWeight: "500" }}
-                            >
+                            <h5 className={styles.sectionTitle}>
                               Personal Information
                             </h5>
 
-                            <div className="mb-3">
-                              <label
-                                className="form-label text-muted"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
-                              >
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>
                                 USERNAME
                               </label>
-                              <p
-                                className="mb-0"
-                                style={{ fontSize: "0.95rem" }}
-                              >
+                              <p className={styles.infoValue}>
                                 {user?.username}
                               </p>
                             </div>
 
-                            <div className="mb-3">
-                              <label
-                                className="form-label text-muted"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
-                              >
-                                EMAIL
-                              </label>
-                              <p
-                                className="mb-0"
-                                style={{ fontSize: "0.95rem" }}
-                              >
-                                {user?.email}
-                              </p>
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>EMAIL</label>
+                              <p className={styles.infoValue}>{user?.email}</p>
                             </div>
 
-                            <div className="mb-3">
-                              <label
-                                className="form-label text-muted"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
-                              >
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>
                                 COMPLET NAME
                               </label>
                               <p
-                                className="mb-0 text-muted"
-                                style={{ fontSize: "0.95rem" }}
+                                className={styles.infoValue}
                               >
-                                {user?.full_name || "No especificado"}
+                                {user?.full_name || "---"}
                               </p>
                             </div>
 
-                            <div className="mb-3">
-                              <label
-                                className="form-label text-muted"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
-                              >
-                                PHONE
-                              </label>
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>PHONE</label>
                               <p
-                                className="mb-0 text-muted"
-                                style={{ fontSize: "0.95rem" }}
+                                className={styles.infoValue}
                               >
-                                {user?.phone || "No especificado"}
+                                {user?.phone || "---"}
                               </p>
                             </div>
                           </div>
 
                           <div className="col-md-6">
-                            <h5
-                              className="mb-3"
-                              style={{ color: "#343a40", fontWeight: "500" }}
-                            >
+                            <h5 className={styles.sectionTitle}>
                               Adicional Details
                             </h5>
 
-                            <div className="mb-3">
-                              <label
-                                className="form-label text-muted"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
-                              >
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>
                                 BIRTHDATE
                               </label>
                               <p
-                                className="mb-0 text-muted"
-                                style={{ fontSize: "0.95rem" }}
+                                className={styles.infoValue}
                               >
                                 {user?.birthdate
                                   ? new Date(
                                     user?.birthdate
                                   ).toLocaleDateString("es-ES")
-                                  : "No especificada"}
+                                  : "---"}
                               </p>
                             </div>
 
-                            <div className="mb-3">
-                              <label
-                                className="form-label text-muted"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
-                              >
-                                GENDER
-                              </label>
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>GENDER</label>
                               <p
-                                className="mb-0 text-muted"
-                                style={{ fontSize: "0.95rem" }}
+                                className={styles.infoValue}
                               >
-                                {user?.gender || "No especificado"}
+                                {user?.gender || "---"}
                               </p>
                             </div>
                           </div>
                         </div>
                       )}
+
                       {activeTab === "activity" && (
                         <div>
                           <div className="row">
                             <div className="col-md-6">
-                              <h5
-                                className="mb-3"
-                                style={{ color: "#343a40", fontWeight: "500" }}
-                              >
+                              <h5 className={styles.sectionTitle}>
                                 Objetos Mágicos
                               </h5>
 
                               {user?.magics_items &&
                                 user.magics_items.length > 0 ? (
-                                <div className="list-group">
+                                <div className={styles.magicList}>
                                   {user.magics_items.map((item, index) => (
                                     <div
                                       key={index}
-                                      className="list-group-item border-0 px-0"
+                                      className={styles.magicItem}
                                     >
-                                      <div className="d-flex align-items-center">
+                                      <div className={styles.magicItemContent}>
                                         <div
-                                          className="me-3 d-flex align-items-center justify-content-center"
-                                          style={{
-                                            width: "40px",
-                                            height: "40px",
-                                            background:
-                                              "linear-gradient(135deg, #f39c12, #f1c40f)",
-                                            borderRadius: "8px",
-                                            color: "#2c3e50",
-                                          }}
+                                          className={`${styles.magicIcon} ${styles.magicIconItems}`}
                                         >
                                           <i className="fas fa-magic"></i>
                                         </div>
                                         <div>
-                                          <h6 className="mb-1">
+                                          <h6 className={styles.magicItemTitle}>
                                             {item.name ||
                                               `Objeto Mágico ${index + 1}`}
                                           </h6>
-                                          <small className="text-muted">
+                                          <small
+                                            className={
+                                              styles.magicItemDescription
+                                            }
+                                          >
                                             {item.description ||
                                               "Objeto mágico especial"}
                                           </small>
@@ -448,12 +306,14 @@ export const ProfilePage = () => {
                                   ))}
                                 </div>
                               ) : (
-                                <div className="text-center py-4">
-                                  <i className="fas fa-magic fa-3x text-muted mb-3"></i>
-                                  <p className="text-muted">
+                                <div className={styles.emptyState}>
+                                  <i
+                                    className={`fas fa-magic ${styles.emptyStateIcon}`}
+                                  ></i>
+                                  <p className={styles.emptyStateText}>
                                     Aún no tienes objetos mágicos
                                   </p>
-                                  <small className="text-muted">
+                                  <small className={styles.emptyStateSubtext}>
                                     Explora el mundo para encontrar objetos
                                     especiales
                                   </small>
@@ -462,40 +322,31 @@ export const ProfilePage = () => {
                             </div>
 
                             <div className="col-md-6">
-                              <h5
-                                className="mb-3"
-                                style={{ color: "#343a40", fontWeight: "500" }}
-                              >
-                                Hechizos
-                              </h5>
+                              <h5 className={styles.sectionTitle}>Hechizos</h5>
 
                               {user?.spells && user.spells.length > 0 ? (
-                                <div className="list-group">
+                                <div className={styles.magicList}>
                                   {user.spells.map((spell, index) => (
                                     <div
                                       key={index}
-                                      className="list-group-item border-0 px-0"
+                                      className={styles.magicItem}
                                     >
-                                      <div className="d-flex align-items-center">
+                                      <div className={styles.magicItemContent}>
                                         <div
-                                          className="me-3 d-flex align-items-center justify-content-center"
-                                          style={{
-                                            width: "40px",
-                                            height: "40px",
-                                            background:
-                                              "linear-gradient(135deg, #9b59b6, #8e44ad)",
-                                            borderRadius: "8px",
-                                            color: "white",
-                                          }}
+                                          className={`${styles.magicIcon} ${styles.magicIconSpells}`}
                                         >
                                           <i className="fas fa-fire"></i>
                                         </div>
                                         <div>
-                                          <h6 className="mb-1">
+                                          <h6 className={styles.magicItemTitle}>
                                             {spell.name ||
                                               `Hechizo ${index + 1}`}
                                           </h6>
-                                          <small className="text-muted">
+                                          <small
+                                            className={
+                                              styles.magicItemDescription
+                                            }
+                                          >
                                             {spell.description ||
                                               "Hechizo poderoso"}
                                           </small>
@@ -505,12 +356,14 @@ export const ProfilePage = () => {
                                   ))}
                                 </div>
                               ) : (
-                                <div className="text-center py-4">
-                                  <i className="fas fa-fire fa-3x text-muted mb-3"></i>
-                                  <p className="text-muted">
+                                <div className={styles.emptyState}>
+                                  <i
+                                    className={`fas fa-fire ${styles.emptyStateIcon}`}
+                                  ></i>
+                                  <p className={styles.emptyStateText}>
                                     Aún no conoces hechizos
                                   </p>
-                                  <small className="text-muted">
+                                  <small className={styles.emptyStateSubtext}>
                                     Aprende hechizos para aumentar tu poder
                                   </small>
                                 </div>
@@ -519,93 +372,57 @@ export const ProfilePage = () => {
                           </div>
 
                           {/* Estadísticas detalladas */}
-                          <div
-                            className="mt-4 pt-4"
-                            style={{ borderTop: "1px solid #dee2e6" }}
-                          >
-                            <h5
-                              className="mb-3"
-                              style={{ color: "#343a40", fontWeight: "500" }}
-                            >
+                          <div className={styles.activitySummary}>
+                            <h5 className={styles.sectionTitle}>
                               Resumen de Actividad
                             </h5>
-                            <div className="row text-center">
+                            <div className={`row ${styles.statsContainer}`}>
                               <div className="col-md-3">
-                                <div
-                                  className="p-3"
-                                  style={{
-                                    background: "#f8f9fa",
-                                    borderRadius: "8px",
-                                  }}
-                                >
+                                <div className={styles.statCard}>
                                   <h4
-                                    style={{
-                                      color: "#f39c12",
-                                      fontWeight: "600",
-                                    }}
+                                    className={`${styles.statNumber} ${styles.statNumberItems}`}
                                   >
                                     {user?.magics_items?.length || 0}
                                   </h4>
-                                  <small className="text-muted">
+                                  <small className={styles.statLabel}>
                                     Objetos Mágicos
                                   </small>
                                 </div>
                               </div>
                               <div className="col-md-3">
-                                <div
-                                  className="p-3"
-                                  style={{
-                                    background: "#f8f9fa",
-                                    borderRadius: "8px",
-                                  }}
-                                >
+                                <div className={styles.statCard}>
                                   <h4
-                                    style={{
-                                      color: "#9b59b6",
-                                      fontWeight: "600",
-                                    }}
+                                    className={`${styles.statNumber} ${styles.statNumberSpells}`}
                                   >
                                     {user?.spells?.length || 0}
                                   </h4>
-                                  <small className="text-muted">Hechizos</small>
+                                  <small className={styles.statLabel}>
+                                    Hechizos
+                                  </small>
                                 </div>
                               </div>
                               <div className="col-md-3">
-                                <div
-                                  className="p-3"
-                                  style={{
-                                    background: "#f8f9fa",
-                                    borderRadius: "8px",
-                                  }}
-                                >
+                                <div className={styles.statCard}>
                                   <h4
-                                    style={{
-                                      color: "#27ae60",
-                                      fontWeight: "600",
-                                    }}
+                                    className={`${styles.statNumber} ${styles.statNumberMissions}`}
                                   >
                                     0
                                   </h4>
-                                  <small className="text-muted">Misiones</small>
+                                  <small className={styles.statLabel}>
+                                    Misiones
+                                  </small>
                                 </div>
                               </div>
                               <div className="col-md-3">
-                                <div
-                                  className="p-3"
-                                  style={{
-                                    background: "#f8f9fa",
-                                    borderRadius: "8px",
-                                  }}
-                                >
+                                <div className={styles.statCard}>
                                   <h4
-                                    style={{
-                                      color: "#e74c3c",
-                                      fontWeight: "600",
-                                    }}
+                                    className={`${styles.statNumber} ${styles.statNumberAchievements}`}
                                   >
                                     0
                                   </h4>
-                                  <small className="text-muted">Logros</small>
+                                  <small className={styles.statLabel}>
+                                    Logros
+                                  </small>
                                 </div>
                               </div>
                             </div>
@@ -616,24 +433,16 @@ export const ProfilePage = () => {
                   ) : (
                     // Formulario de Edición
                     <div>
-                      <h5
-                        className="mb-4"
-                        style={{ color: "#343a40", fontWeight: "500" }}
-                      >
+                      <h5 className={styles.sectionTitle}>
                         Edit Profile Information
                       </h5>
-
                       <form onSubmit={handleSubmit}>
                         <div className="row">
                           <div className="col-md-6">
                             <div className="mb-3">
                               <label
                                 htmlFor="username"
-                                className="form-label"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
+                                className={styles.formLabel}
                               >
                                 USERNAME *
                               </label>
@@ -651,11 +460,7 @@ export const ProfilePage = () => {
                             <div className="mb-3">
                               <label
                                 htmlFor="email"
-                                className="form-label"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
+                                className={styles.formLabel}
                               >
                                 EMAIL *
                               </label>
@@ -673,13 +478,9 @@ export const ProfilePage = () => {
                             <div className="mb-3">
                               <label
                                 htmlFor="full_name"
-                                className="form-label"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
+                                className={styles.formLabel}
                               >
-                                COMPLET NAME
+                                FULL NAME
                               </label>
                               <input
                                 type="text"
@@ -687,7 +488,7 @@ export const ProfilePage = () => {
                                 name="full_name"
                                 value={formData.full_name}
                                 onChange={handleInputChange}
-                                placeholder="Introduce tu nombre completo"
+                                placeholder="Your full name"
                                 style={{ borderRadius: "4px" }}
                               />
                             </div>
@@ -697,11 +498,7 @@ export const ProfilePage = () => {
                             <div className="mb-3">
                               <label
                                 htmlFor="phone"
-                                className="form-label"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
+                                className={styles.formLabel}
                               >
                                 PHONE
                               </label>
@@ -711,7 +508,7 @@ export const ProfilePage = () => {
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleInputChange}
-                                placeholder="Introduce tu número de teléfono"
+                                placeholder="Your phone"
                                 style={{ borderRadius: "4px" }}
                               />
                             </div>
@@ -719,11 +516,7 @@ export const ProfilePage = () => {
                             <div className="mb-3">
                               <label
                                 htmlFor="birthdate"
-                                className="form-label"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
+                                className={styles.formLabel}
                               >
                                 BIRTHDATE
                               </label>
@@ -736,15 +529,10 @@ export const ProfilePage = () => {
                                 style={{ borderRadius: "4px" }}
                               />
                             </div>
-
                             <div className="mb-3">
                               <label
                                 htmlFor="gender"
-                                className="form-label"
-                                style={{
-                                  fontSize: "0.875rem",
-                                  fontWeight: "600",
-                                }}
+                                className={styles.formLabel}
                               >
                                 GENDER
                               </label>
@@ -767,20 +555,15 @@ export const ProfilePage = () => {
                           </div>
                         </div>
 
-                        <div className="d-flex gap-2 mt-4">
+                        <div className={styles.formButtons}>
                           <button
                             type="submit"
-                            className="btn btn-primary"
+                            className={styles.btnPrimary}
                             disabled={loading}
-                            style={{ borderRadius: "4px" }}
                           >
                             {loading ? (
                               <>
-                                <span
-                                  className="spinner-border spinner-border-sm me-2"
-                                  role="status"
-                                  aria-hidden="true"
-                                ></span>
+                                <span className={styles.spinner}></span>
                                 Saving...
                               </>
                             ) : (
@@ -789,16 +572,14 @@ export const ProfilePage = () => {
                           </button>
                           <button
                             type="button"
-                            className="btn btn-outline-secondary"
+                            className={styles.btnOutlineSecondary}
                             onClick={handleCancel}
                             disabled={loading}
-                            style={{ borderRadius: "4px" }}
                           >
                             Cancel
                           </button>
                         </div>
                       </form>
-                       
                     </div>
                   )}
                 </div>

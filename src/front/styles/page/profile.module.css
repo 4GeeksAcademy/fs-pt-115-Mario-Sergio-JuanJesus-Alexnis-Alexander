@@ -1,0 +1,397 @@
+/* Contenedor principal */
+.containerFluid {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 20px;
+ 
+}
+
+/* Título principal */
+.mainTitle {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #343a40;
+  border-bottom: 3px solid #f1c40f;
+  padding-bottom: 10px;
+  margin-bottom: 1.5rem;
+}
+
+/* Contenedor de perfil */
+.profileContainer {
+  background-color: white;
+  border-radius: 0.375rem;
+  box-shadow: 0 0.20rem 0.45rem rgba(0, 0, 0, 0.1);
+}
+
+/* Header del perfil */
+.profileHeader {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Avatar y contenedor de imagen */
+.avatarContainer {
+  margin-right: 1.5rem;
+  position: relative;
+}
+
+.avatarImage {
+  width: 90px;
+  object-fit: cover;
+  object-position: center;
+  height: 100px;
+  border-radius: 8px;
+}
+
+.avatarPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 100px;
+  background: linear-gradient(135deg, #f39c12, #f1c40f);
+  border-radius: 8px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  box-shadow: 0 2px 8px rgba(241, 196, 15, 0.3);
+}
+
+.editAvatarButton {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 28px;
+  height: 28px;
+  background-color: #28a745;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.editAvatarButton input {
+  display: none;
+}
+
+.editAvatarButton span {
+  font-size: 12px;
+}
+
+/* Información del usuario */
+.userInfo {
+  flex-grow: 1;
+}
+
+.username {
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+}
+
+.userRole {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.memberInfo {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.lastActive {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Botones de acción */
+.editBtn {
+  font-size: 0.875rem;
+  padding: 10px;
+  background: linear-gradient(135deg, #d19d0e 0%, #ffed4e 100%);
+  border-radius: 25px;
+  color: black;
+  font-weight: 500;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  cursor: pointer;
+}
+
+.editBtn:hover {
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+
+
+/* Contenido del perfil */
+.profileContent {
+  padding: 1.5rem;
+}
+
+
+/* Secciones de información */
+.sectionTitle {
+  color: #343a40;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.infoItem {
+  margin-bottom: 1rem;
+}
+
+.infoLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6c757d;
+  margin-bottom: 0.25rem;
+}
+
+.infoValue {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* Lista de elementos mágicos */
+.magicList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.magicItem {
+  border: 0;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.magicItem:last-child {
+  border-bottom: none;
+}
+
+.magicItemContent {
+  display: flex;
+  align-items: center;
+}
+
+.magicIcon {
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+}
+
+.magicIconItems {
+  background: linear-gradient(135deg, #f39c12, #f1c40f);
+  color: #2c3e50;
+}
+
+.magicIconSpells {
+  background: linear-gradient(135deg, #9b59b6, #8e44ad);
+  color: white;
+}
+
+.magicItemTitle {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.magicItemDescription {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Estado vacío */
+.emptyState {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.emptyStateIcon {
+  font-size: 3rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.emptyStateText {
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+}
+
+.emptyStateSubtext {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Estadísticas */
+.activitySummary {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.statsContainer {
+  text-align: center;
+}
+
+.statCard {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.statNumber {
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.statNumberItems {
+  color: #f39c12;
+}
+
+.statNumberSpells {
+  color: #9b59b6;
+}
+
+.statNumberMissions {
+  color: #27ae60;
+}
+
+.statNumberAchievements {
+  color: #e74c3c;
+}
+
+.statLabel {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* Formulario de edición */
+.formLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.formInput {
+    border-radius: 4px;
+}
+
+
+
+/* Botones del formulario */
+.formButtons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.btnPrimary {
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.btnPrimary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btnPrimary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btnOutlineSecondary {
+  color: #6c757d;
+  background-color: transparent;
+  border-color: #6c757d;
+  border-radius: 4px;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #6c757d;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+
+.btnOutlineSecondary:hover {
+  color: white;
+  background-color: #6c757d;
+}
+
+.btnOutlineSecondary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* Spinner */
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 0.125em solid transparent;
+  border-right: 0.125em solid currentColor;
+  border-radius: 50%;
+  animation: spinner-border 0.75s linear infinite;
+  margin-right: 0.5rem;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+@keyframes spinner-border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2rem;
+  }
+  
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .avatarContainer {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .userInfo {
+    margin-bottom: 1rem;
+  }
+  
+  .actionButtons {
+    margin-left: 0;
+  }
+  
+  .formButtons {
+    flex-direction: column;
+  }
+  
+  .statsContainer .row > div {
+    margin-bottom: 1rem;
+  }
+}
