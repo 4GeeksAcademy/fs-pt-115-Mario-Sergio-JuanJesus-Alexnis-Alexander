@@ -55,3 +55,32 @@ export const userLogin = async (loginUser) => {
     }
     
 }
+
+export const uploadImg = async (file, token) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    try {
+        const response = await fetch(`${urlApi}/api/user/upload-img`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData
+    })
+    const data = await response.json()
+    if (!response.ok) {
+        return {
+            success: false,
+            error: error.msg || data.error || 'Error desconocido'
+        }
+    }
+    
+    return data
+
+    } catch (error) {
+         return { error: error.msg,
+            success: false
+          }
+    }
+    
+}

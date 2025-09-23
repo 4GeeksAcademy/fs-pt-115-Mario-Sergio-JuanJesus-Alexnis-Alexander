@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { uploadImg } from "../../serviceApi/userApi";
 
 export const ProfilePage = () => {
-  const { user } = useAuth();
+  const { user, token, userInfo } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     username: user?.username || "",
@@ -13,7 +14,9 @@ export const ProfilePage = () => {
     gender: user?.gender || "",
   });
   const [loading, setLoading] = useState(false);
+  const [loadingImg, setLoadingImg] = useState(false);
   const [activeTab, setActiveTab] = useState("info");
+  const [file, setFile] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +25,19 @@ export const ProfilePage = () => {
       [name]: value,
     }));
   };
+
+  const handleUpoloadImage = async () => {
+    setLoadingImg(true);
+    await uploadImg(file, token);
+    await userInfo();
+    setLoadingImg(false);
+  };
+
+  useEffect(() => {
+    if (file) {
+      handleUpoloadImage();
+    }
+  }, [file]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -93,23 +109,81 @@ export const ProfilePage = () => {
                   style={{ borderBottom: "1px solid #dee2e6" }}
                 >
                   {/* Avatar */}
-                  <div className="me-4">
-                    <div
-                      className="d-flex align-items-center justify-content-center"
+                  <div className="me-4 position-relative">
+                    {loadingImg && (
+                        <p>
+                          Loading image{" "}
+                          <span
+                            className="spinner-border spinner-border-sm me-2"
+                            role="status"
+                            aria-hidden="true"
+                          ></span>
+                        </p>
+                      )}
+                    {user?.avatar ? (
+                      <img
+                        src={user?.avatar}
+                        style={{
+                          width: "90px",
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          height: "100px",
+                          background:
+                            "linear-gradient(135deg, #f39c12, #f1c40f)",
+                          borderRadius: "8px",
+                          boxShadow: "0 2px 8px rgba(241, 196, 15, 0.3)",
+                        }}
+                        alt="userImg"
+                      />
+                    ) : (
+                      <div
+                        className="d-flex align-items-center justify-content-center"
+                        style={{
+                          width: "90px",
+                          height: "100px",
+                          background: "linear-gradient(135deg, #f39c12, #f1c40f)",
+                          borderRadius: "8px",
+                          fontSize: "2.5rem",
+                          fontWeight: "bold",
+                          color: "#2c3e50",
+                          boxShadow: "0 2px 8px rgba(241, 196, 15, 0.3)",
+                        }}
+                      >
+                        {user?.username.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                    {/* Botón de editar avatar en la esquina */}
+                    <label
+                      className="position-absolute"
                       style={{
-                        width: "80px",
-                        height: "80px",
-                        background: "linear-gradient(135deg, #f39c12, #f1c40f)",
-                        borderRadius: "8px",
-                        fontSize: "2.5rem",
-                        fontWeight: "bold",
-                        color: "#2c3e50",
-                        boxShadow: "0 2px 8px rgba(241, 196, 15, 0.3)",
+                        bottom: "-4px",
+                        right: "-4px",
+                        width: "28px",
+                        height: "28px",
+                        backgroundColor: "#28a745",
+                        borderRadius: "50%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                        border: "2px solid white",
+                        boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+                        transition: "background-color 0.3s ease",
                       }}
+                      onMouseEnter={(e) => e.target.style.backgroundColor = "#218838"}
+                      onMouseLeave={(e) => e.target.style.backgroundColor = "#28a745"}
                     >
-                      {user?.username?.charAt(0).toUpperCase()}
-                    </div>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setFile(e.target.files[0])}
+                        style={{ display: "none" }}
+                        name="avatar"
+                      />
+                      <span style={{ fontSize: "12px" }}>✏️</span>
+                    </label>
                   </div>
+                  
 
                   {/* Info del Usuario */}
                   <div className="flex-grow-1">
@@ -300,8 +374,8 @@ export const ProfilePage = () => {
                               >
                                 {user?.birthdate
                                   ? new Date(
-                                      user?.birthdate
-                                    ).toLocaleDateString("es-ES")
+                                    user?.birthdate
+                                  ).toLocaleDateString("es-ES")
                                   : "No especificada"}
                               </p>
                             </div>
@@ -338,7 +412,7 @@ export const ProfilePage = () => {
                               </h5>
 
                               {user?.magics_items &&
-                              user.magics_items.length > 0 ? (
+                                user.magics_items.length > 0 ? (
                                 <div className="list-group">
                                   {user.magics_items.map((item, index) => (
                                     <div
@@ -566,7 +640,6 @@ export const ProfilePage = () => {
                               <input
                                 type="text"
                                 className="form-control"
-                                id="username"
                                 name="username"
                                 value={formData.username}
                                 onChange={handleInputChange}
@@ -589,7 +662,6 @@ export const ProfilePage = () => {
                               <input
                                 type="email"
                                 className="form-control"
-                                id="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleInputChange}
@@ -612,7 +684,6 @@ export const ProfilePage = () => {
                               <input
                                 type="text"
                                 className="form-control"
-                                id="full_name"
                                 name="full_name"
                                 value={formData.full_name}
                                 onChange={handleInputChange}
@@ -637,7 +708,6 @@ export const ProfilePage = () => {
                               <input
                                 type="tel"
                                 className="form-control"
-                                id="phone"
                                 name="phone"
                                 value={formData.phone}
                                 onChange={handleInputChange}
@@ -660,7 +730,6 @@ export const ProfilePage = () => {
                               <input
                                 type="date"
                                 className="form-control"
-                                id="birthdate"
                                 name="birthdate"
                                 value={formData.birthdate}
                                 onChange={handleInputChange}
@@ -681,7 +750,6 @@ export const ProfilePage = () => {
                               </label>
                               <select
                                 className="form-select"
-                                id="gender"
                                 name="gender"
                                 value={formData.gender}
                                 onChange={handleInputChange}
@@ -730,6 +798,7 @@ export const ProfilePage = () => {
                           </button>
                         </div>
                       </form>
+                       
                     </div>
                   )}
                 </div>
