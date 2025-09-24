@@ -165,14 +165,6 @@ def upload_image():
     return jsonify({'msg': 'Image not found'}), 404
 
     
-    
-    
-
-    
-
-
-
-
 @user_bp.route('/', methods=['GET'])
 def all_user():
     users = User.query.all()

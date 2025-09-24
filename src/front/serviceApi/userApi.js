@@ -56,6 +56,35 @@ export const userLogin = async (loginUser) => {
     
 }
 
+export const updateUser = async (newData, token) => {
+    try {
+        const response = await fetch(`${urlApi}/api/user`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(newData)
+    })
+    const data = await response.json()
+    if (!response.ok) {
+        return {
+            success: false,
+            error: data.msg || data.message || 'Error desconocido' 
+        }
+    }
+    return {
+        success: true,
+        user: data.user,
+        token: data.token
+    }
+
+    } catch (error) {
+         return { error: error.msg }
+    }
+    
+}
+
 export const uploadImg = async (file, token) => {
     const formData = new FormData()
     formData.append('file', file)

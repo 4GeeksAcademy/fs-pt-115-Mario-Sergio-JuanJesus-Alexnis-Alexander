@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
-import { uploadImg } from "../../serviceApi/userApi";
+import { updateUser, uploadImg } from "../../serviceApi/userApi";
 import styles from "../../styles/page/profile.module.css";
 
 export const ProfilePage = () => {
@@ -45,9 +45,8 @@ export const ProfilePage = () => {
     setLoading(true);
 
     try {
-      // Aquí la llamada API para actualizar el perfil
-
-      // Aquí actualizar el perfil los nuevos datos
+      await updateUser(formData, token)
+      await userInfo()
       alert("Perfil actualizado correctamente!");
       setIsEditing(false);
     } catch (error) {
