@@ -197,7 +197,16 @@ export const ProfilePage = () => {
                             <h5 className={styles.sectionTitle}>
                               Personal Information
                             </h5>
-
+                            <div className={styles.infoItem}>
+                              <label className={styles.infoLabel}>
+                                FULL NAME
+                              </label>
+                              <p
+                                className={styles.infoValue}
+                              >
+                                {user?.full_name || "---"}
+                              </p>
+                            </div>
                             <div className={styles.infoItem}>
                               <label className={styles.infoLabel}>
                                 USERNAME
@@ -212,17 +221,7 @@ export const ProfilePage = () => {
                               <p className={styles.infoValue}>{user?.email}</p>
                             </div>
 
-                            <div className={styles.infoItem}>
-                              <label className={styles.infoLabel}>
-                                COMPLET NAME
-                              </label>
-                              <p
-                                className={styles.infoValue}
-                              >
-                                {user?.full_name || "---"}
-                              </p>
-                            </div>
-
+                            
                             <div className={styles.infoItem}>
                               <label className={styles.infoLabel}>PHONE</label>
                               <p
@@ -265,116 +264,13 @@ export const ProfilePage = () => {
                         </div>
                       )}
 
+                      {/* Pestaña de actividad */}
                       {activeTab === "activity" && (
                         <div>
-                          <div className="row">
-                            <div className="col-md-6">
-                              <h5 className={styles.sectionTitle}>
-                                Objetos Mágicos
-                              </h5>
-
-                              {user?.magics_items &&
-                                user.magics_items.length > 0 ? (
-                                <div className={styles.magicList}>
-                                  {user.magics_items.map((item, index) => (
-                                    <div
-                                      key={index}
-                                      className={styles.magicItem}
-                                    >
-                                      <div className={styles.magicItemContent}>
-                                        <div
-                                          className={`${styles.magicIcon} ${styles.magicIconItems}`}
-                                        >
-                                          <i className="fas fa-magic"></i>
-                                        </div>
-                                        <div>
-                                          <h6 className={styles.magicItemTitle}>
-                                            {item.name ||
-                                              `Objeto Mágico ${index + 1}`}
-                                          </h6>
-                                          <small
-                                            className={
-                                              styles.magicItemDescription
-                                            }
-                                          >
-                                            {item.description ||
-                                              "Objeto mágico especial"}
-                                          </small>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              ) : (
-                                <div className={styles.emptyState}>
-                                  <i
-                                    className={`fas fa-magic ${styles.emptyStateIcon}`}
-                                  ></i>
-                                  <p className={styles.emptyStateText}>
-                                    Aún no tienes objetos mágicos
-                                  </p>
-                                  <small className={styles.emptyStateSubtext}>
-                                    Explora el mundo para encontrar objetos
-                                    especiales
-                                  </small>
-                                </div>
-                              )}
-                            </div>
-
-                            <div className="col-md-6">
-                              <h5 className={styles.sectionTitle}>Hechizos</h5>
-
-                              {user?.spells && user.spells.length > 0 ? (
-                                <div className={styles.magicList}>
-                                  {user.spells.map((spell, index) => (
-                                    <div
-                                      key={index}
-                                      className={styles.magicItem}
-                                    >
-                                      <div className={styles.magicItemContent}>
-                                        <div
-                                          className={`${styles.magicIcon} ${styles.magicIconSpells}`}
-                                        >
-                                          <i className="fas fa-fire"></i>
-                                        </div>
-                                        <div>
-                                          <h6 className={styles.magicItemTitle}>
-                                            {spell.name ||
-                                              `Hechizo ${index + 1}`}
-                                          </h6>
-                                          <small
-                                            className={
-                                              styles.magicItemDescription
-                                            }
-                                          >
-                                            {spell.description ||
-                                              "Hechizo poderoso"}
-                                          </small>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              ) : (
-                                <div className={styles.emptyState}>
-                                  <i
-                                    className={`fas fa-fire ${styles.emptyStateIcon}`}
-                                  ></i>
-                                  <p className={styles.emptyStateText}>
-                                    Aún no conoces hechizos
-                                  </p>
-                                  <small className={styles.emptyStateSubtext}>
-                                    Aprende hechizos para aumentar tu poder
-                                  </small>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Estadísticas detalladas */}
-                          <div className={styles.activitySummary}>
+                          {/* Resumen de actividad */}
+                          <div>
                             <h5 className={styles.sectionTitle}>
-                              Resumen de Actividad
+                              Activity Summary
                             </h5>
                             <div className={`row ${styles.statsContainer}`}>
                               <div className="col-md-3">
@@ -385,7 +281,7 @@ export const ProfilePage = () => {
                                     {user?.magics_items?.length || 0}
                                   </h4>
                                   <small className={styles.statLabel}>
-                                    Objetos Mágicos
+                                    Magic Items
                                   </small>
                                 </div>
                               </div>
@@ -397,7 +293,7 @@ export const ProfilePage = () => {
                                     {user?.spells?.length || 0}
                                   </h4>
                                   <small className={styles.statLabel}>
-                                    Hechizos
+                                    Spells
                                   </small>
                                 </div>
                               </div>
@@ -409,7 +305,7 @@ export const ProfilePage = () => {
                                     0
                                   </h4>
                                   <small className={styles.statLabel}>
-                                    Misiones
+                                    Characters
                                   </small>
                                 </div>
                               </div>
@@ -421,7 +317,7 @@ export const ProfilePage = () => {
                                     0
                                   </h4>
                                   <small className={styles.statLabel}>
-                                    Logros
+                                    Campaigns
                                   </small>
                                 </div>
                               </div>
@@ -547,8 +443,8 @@ export const ProfilePage = () => {
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                                 <option value="other">Other</option>
-                                <option value="prefiero_no_decir">
-                                  Prefiero no decir
+                                <option value="I prefer not to say">
+                                  I prefer not to say
                                 </option>
                               </select>
                             </div>
@@ -558,7 +454,7 @@ export const ProfilePage = () => {
                         <div className={styles.formButtons}>
                           <button
                             type="submit"
-                            className={styles.btnPrimary}
+                            className={styles.btnSaveChanges}
                             disabled={loading}
                           >
                             {loading ? (
@@ -572,11 +468,11 @@ export const ProfilePage = () => {
                           </button>
                           <button
                             type="button"
-                            className={styles.btnOutlineSecondary}
+                            className={styles.btnReturn}
                             onClick={handleCancel}
                             disabled={loading}
                           >
-                            Cancel
+                            Return
                           </button>
                         </div>
                       </form>

@@ -3,7 +3,6 @@
   background-color: #f8f9fa;
   min-height: 100vh;
   padding-top: 20px;
- 
 }
 
 /* Título principal */
@@ -20,7 +19,7 @@
 .profileContainer {
   background-color: white;
   border-radius: 0.375rem;
-  box-shadow: 0 0.20rem 0.45rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.2rem 0.45rem rgba(0, 0, 0, 0.1);
 }
 
 /* Header del perfil */
@@ -111,26 +110,26 @@
 
 /* Botones de acción */
 .editBtn {
-  font-size: 0.875rem;
-  padding: 10px;
   background: linear-gradient(135deg, #d19d0e 0%, #ffed4e 100%);
+  padding: 10px;
   border-radius: 25px;
   color: black;
   font-weight: 500;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 .editBtn:hover {
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 30px rgb(255, 217, 0);
+  transform: scale(1.05);
 }
-
 
 /* Contenido del perfil */
 .profileContent {
   padding: 1.5rem;
 }
-
 
 /* Secciones de información */
 .sectionTitle {
@@ -231,13 +230,6 @@
   font-size: 0.875rem;
 }
 
-/* Estadísticas */
-.activitySummary {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #dee2e6;
-}
-
 .statsContainer {
   text-align: center;
 }
@@ -284,10 +276,8 @@
 }
 
 .formInput {
-    border-radius: 4px;
+  border-radius: 4px;
 }
-
-
 
 /* Botones del formulario */
 .formButtons {
@@ -296,50 +286,37 @@
   margin-top: 1.5rem;
 }
 
-.btnPrimary {
-  color: white;
-  background-color: #007bff;
-  border-color: #007bff;
-  border-radius: 4px;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
+.btnSaveChanges {
+  background: linear-gradient(135deg, #d19d0e 0%, #ffed4e 100%);
+  padding: 15px;
+  border-radius: 25px;
+  color: black;
+  font-weight: 500;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  border: none;
+  transition: all 0.3s ease;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.btnPrimary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+.btnSaveChanges:hover {
+  box-shadow: 0 0 30px rgb(255, 217, 0);
+  transform: scale(1.05);
 }
 
-.btnPrimary:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
-.btnOutlineSecondary {
+.btnReturn {
   color: #6c757d;
+  font-weight: 500;
   background-color: transparent;
   border-color: #6c757d;
-  border-radius: 4px;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
+  border-radius: 15px;
+  padding: 10px;
   border: 1px solid #6c757d;
-  cursor: pointer;
-  transition: all 0.15s ease-in-out;
 }
 
-.btnOutlineSecondary:hover {
+.btnReturn:hover {
   color: white;
   background-color: #6c757d;
 }
-
-.btnOutlineSecondary:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
 
 /* Spinner */
 .spinner {
@@ -368,29 +345,29 @@
   .mainTitle {
     font-size: 2rem;
   }
-  
+
   .profileHeader {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .avatarContainer {
     margin-right: 0;
     margin-bottom: 1rem;
   }
-  
+
   .userInfo {
     margin-bottom: 1rem;
   }
-  
+
   .actionButtons {
     margin-left: 0;
   }
-  
+
   .formButtons {
     flex-direction: column;
   }
-  
+
   .statsContainer .row > div {
     margin-bottom: 1rem;
   }
