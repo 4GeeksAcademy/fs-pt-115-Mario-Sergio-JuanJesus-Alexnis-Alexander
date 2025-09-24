@@ -15,7 +15,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     },
     {
       to: "user/create-magic-item",
-      text: " Create Magics Items",
+      text: " Create Magic Items",
       styles: styles.createBtn,
     },
     { to: "", text: " Create Monsters", styles: styles.createBtn },
@@ -41,7 +41,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     },
     {
       to: "user/create-campaign",
-      text: " Create Campaigns",
+      text: " Create Campaign",
       styles: styles.createBtn,
     },
   ];
@@ -53,7 +53,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         <section className={styles.dropLeft}>
           <Link to={"/user/characters"}>
             <button className={styles.charactersBtn} onClick={closeDropdown}>
-              <span className={styles.titleBtn}>MY CHARACTER</span>
+              <span className={styles.titleBtn}>MY CHARACTERS</span>
             </button>
           </Link>
           <Link to={"/user/campaigns"}>
@@ -63,7 +63,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
           </Link>
           <Link to={"/user/magics-items"}>
             <button className={styles.magicsBtn} onClick={closeDropdown}>
-              <span className={styles.titleBtn}> MY MAGICS ITEMS </span>
+              <span className={styles.titleBtn}>MY MAGIC ITEMS</span>
             </button>
           </Link>
           <Link to={""}>
