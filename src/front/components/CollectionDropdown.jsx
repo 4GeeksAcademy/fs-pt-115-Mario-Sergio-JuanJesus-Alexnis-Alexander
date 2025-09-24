@@ -18,7 +18,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       text: " Create Magic Items",
       styles: styles.createBtn,
     },
-    { to: "", text: " Crear monstruos", styles: styles.createBtn },
+    { to: "", text: " Create Monsters", styles: styles.createBtn },
     {
       to: "user/create-background",
       text: " Create Background",
@@ -31,12 +31,12 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     },
     {
       to: "user/create-subclasses",
-      text: " Create Subclass",
+      text: " Create Class",
       styles: styles.createBtn,
     },
     {
       to: "user/create-feats",
-      text: " Create Feat",
+      text: " Create Feats",
       styles: styles.createBtn,
     },
     {
@@ -86,7 +86,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
       <div className={styles.dropRightContainer}>
         <section>
-          <h3 className="text-white mt-2">Creaciones:</h3>
+          <h3 className="text-white mt-2">Homebrew:</h3>
           <div className={styles.dropRight}>
             {creationsList.map((item, index) => (
               <Link
