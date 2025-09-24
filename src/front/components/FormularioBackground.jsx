@@ -8,7 +8,7 @@ export const FormularioBackground = () => {
 
                 <div className="col-md-6 mb-3">
                     <label htmlFor="backgroundName" className="form-label">
-                        Name
+                        Name<span className="text-danger fs-5">*</span>
                     </label>
                     <input
                         type="text"
@@ -18,9 +18,10 @@ export const FormularioBackground = () => {
                         required
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="backgroundVersion" className="form-label">
-                        Version
+                        Version<span className="text-danger fs-5">*</span>
                     </label>
                     <input
                         type="text"
@@ -30,9 +31,10 @@ export const FormularioBackground = () => {
                         required
                     />
                 </div>
+
                 <div className="col-md-12 mb-3">
                     <label htmlFor="backgroundIntroduction" className="form-label">
-                        Introduction
+                        Introduction<span className="text-danger fs-5">*</span>
                     </label>
                     <textarea
                         className="form-control"
@@ -43,11 +45,6 @@ export const FormularioBackground = () => {
                     />
                 </div>
                 
-                <hr className="my-3" />
-                <div className="p-2">
-                    <h6>Skills & Abilities</h6>
-                </div>
-
                 <div className="col-md-6 mb-3">
                     <label htmlFor="abilityScoresDescription" className="form-label">
                         Ability Scores Description
@@ -59,6 +56,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="featDescription" className="form-label">
                         Feat Description
@@ -70,6 +68,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="skillProficienciesDescription" className="form-label">
                         Skill Proficiencies Description
@@ -81,6 +80,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="toolProficienciesDescription" className="form-label">
                         Tool Proficiencies Description
@@ -92,6 +92,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="languagesDescription" className="form-label">
                         Languages Description
@@ -103,6 +104,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="equipmentDescription" className="form-label">
                         Equipment Description
@@ -113,11 +115,6 @@ export const FormularioBackground = () => {
                         name="equipment_description"
                         rows="3"
                     />
-                </div>
-                
-                <hr className="my-3" />
-                <div className="p-2">
-                    <h6>Specifics & Traits</h6>
                 </div>
 
                 <div className="col-md-6 mb-3">
@@ -131,6 +128,7 @@ export const FormularioBackground = () => {
                         name="background_specific_table_name"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="tableDescription" className="form-label">
                         Background Specific Table Description
@@ -142,6 +140,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="featureName" className="form-label">
                         Feature Name
@@ -153,6 +152,7 @@ export const FormularioBackground = () => {
                         name="feature_name"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="featureDescription" className="form-label">
                         Feature Description
@@ -163,11 +163,6 @@ export const FormularioBackground = () => {
                         name="feature_description"
                         rows="3"
                     />
-                </div>
-                
-                <hr className="my-3" />
-                <div className="p-2">
-                    <h6>Variants & Other Info</h6>
                 </div>
 
                 <div className="col-md-6 mb-3">
@@ -181,6 +176,7 @@ export const FormularioBackground = () => {
                         name="variant_name"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="variantDescription" className="form-label">
                         Variant Description
@@ -192,6 +188,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="variantFeatureName" className="form-label">
                         Variant Feature Name
@@ -203,6 +200,7 @@ export const FormularioBackground = () => {
                         name="variant_feature_name"
                     />
                 </div>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="variantFeatureDescription" className="form-label">
                         Variant Feature Description
@@ -214,6 +212,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-12 mb-3">
                     <label htmlFor="suggestedCharacteristics" className="form-label">
                         Suggested Characteristics Description
@@ -225,6 +224,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-12 mb-3">
                     <label htmlFor="spellListDescription" className="form-label">
                         Spell List Description
@@ -236,6 +236,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-12 mb-3">
                     <label htmlFor="spellListExtendedDescription" className="form-label">
                         Spell List Extended Description
@@ -247,6 +248,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+
                 <div className="col-md-12 mb-3">
                     <label htmlFor="contactsDescription" className="form-label">
                         Contacts Description
@@ -258,6 +260,7 @@ export const FormularioBackground = () => {
                         rows="3"
                     />
                 </div>
+                
                 <div className="col-md-12 mb-3">
                     <label htmlFor="backgroundTags" className="form-label">
                         Background Tags
