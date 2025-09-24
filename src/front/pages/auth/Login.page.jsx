@@ -9,7 +9,7 @@ export const LoginPage = () => {
     password: "",
   });
   const [error, setError] = useState(null);
-  const { login, loading } = useAuth();
+  const { login, loading, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
 
   const handleOnChange = (e) => {
@@ -120,7 +120,7 @@ export const LoginPage = () => {
 	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
             />
           </svg>
-          <span>Log in with Google</span>
+          <span onClick={loginWithGoogle}>Log in with Google</span>
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
