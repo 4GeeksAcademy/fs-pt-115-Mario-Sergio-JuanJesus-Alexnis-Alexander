@@ -45,11 +45,9 @@ export const ProfilePage = () => {
     setLoading(true);
 
     try {
-      // Aquí harías la llamada a tu API para actualizar el perfil
+      // Aquí la llamada API para actualizar el perfil
 
-      // Simulación de llamada API
-
-      // Aquí actualizarías el contexto de usuario con los nuevos datos
+      // Aquí actualizar el perfil los nuevos datos
       alert("Perfil actualizado correctamente!");
       setIsEditing(false);
     } catch (error) {
@@ -127,7 +125,7 @@ export const ProfilePage = () => {
                     <h2 className={styles.username}>{user?.username}</h2>
                     <p className={styles.userRole}>Registered Users</p>
                     <p className={styles.memberInfo}>
-                      Member for {new Date().toLocaleDateString("es-ES")}
+                      Member since {user?.created_at}
                     </p>
                     <p className={styles.lastActive}>Last active 5 hours ago</p>
                   </div>
