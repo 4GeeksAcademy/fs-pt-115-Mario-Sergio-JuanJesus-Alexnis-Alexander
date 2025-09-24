@@ -1,10 +1,11 @@
 from typing import Optional, List
 from . import db
 from .magic_items_model import MagicsItems
-from sqlalchemy import String, Boolean, Text
+from sqlalchemy import String, Boolean, Text, DateTime
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from .spell_model import Spell
 from flask_bcrypt import generate_password_hash, check_password_hash
+from datetime import datetime
 
 
 class User(db.Model):
@@ -16,6 +17,7 @@ class User(db.Model):
     phone: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
     gender: Mapped[Optional[str]] = mapped_column(String(10), nullable=True)
     avatar: Mapped[Optional[str]] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
     password: Mapped[str] = mapped_column(nullable=False)
 
     magics_items: Mapped[List["MagicsItems"]] = relationship()
@@ -40,6 +42,7 @@ class User(db.Model):
             "gender": self.gender,
             "phone": self.phone,
             "avatar": self.avatar,
+            "created_at": self.created_at.strftime("%Y-%m-%d") if self.created_at else None,
             "spells": [spell.serialize() for spell in self.spell],
             'magics_items': [item.serialize() for item in self.magics_items]
         }
