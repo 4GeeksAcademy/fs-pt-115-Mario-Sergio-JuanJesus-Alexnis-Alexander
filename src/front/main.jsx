@@ -6,6 +6,7 @@ import { router } from "./routes"; // Import the router configuration
 import { StoreProvider } from "./hooks/useGlobalReducer"; // Import the StoreProvider for global state management
 import { BackendURL } from "./components/BackendURL";
 import { AuthProvider } from "./hooks/useAuth";
+import { AuthProviderGoogle } from "./provider/authProvider";
 
 const Main = () => {
   if (
@@ -20,12 +21,14 @@ const Main = () => {
   return (
     <React.StrictMode>
       {/* Provide global state to all components */}
-      <StoreProvider>
-        {/* Set up routing for the application */}
-        <AuthProvider>
-          <RouterProvider router={router}></RouterProvider>
-        </AuthProvider>
-      </StoreProvider>
+      <AuthProviderGoogle>
+        <StoreProvider>
+          {/* Set up routing for the application */}
+          <AuthProvider>
+            <RouterProvider router={router}></RouterProvider>
+          </AuthProvider>
+        </StoreProvider>
+      </AuthProviderGoogle>
     </React.StrictMode>
   );
 };
