@@ -1,7 +1,7 @@
 export const FormularioSubclasses = () => {
     return (
     <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center mb-4 fw-bold">CREATE A SUBCLASS</h2>
+      <h2 className="text-center mb-4 fw-bold">CREATE A CLASS</h2>
       <form className="row g-3 fw-bold">
 
         <div className="col-md-6">
@@ -12,21 +12,13 @@ export const FormularioSubclasses = () => {
           <label htmlFor="subclassVersion" className="form-label">Version</label>
           <input type="text" className="form-control" id="subclassVersion" name="version" />
         </div>
-        
-        <div className="col-12">
-          <h5 className="mt-3">Descriptions</h5>
-        </div>
-        <div className="col-md-6">
+        <div className="col-md-12">
           <label htmlFor="shortDescription" className="form-label">Short Description</label>
-          <textarea className="form-control" id="shortDescription" rows="3" name="short_description" required></textarea>
+          <textarea className="form-control" id="shortDescription" rows="2" name="short_description" required></textarea>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-12">
           <label htmlFor="description" className="form-label">Description</label>
           <textarea className="form-control" id="description" rows="3" name="description" required></textarea>
-        </div>
-
-        <div className="col-12">
-          <h5 className="mt-3">Spell Details</h5>
         </div>
         <div className="col-md-4">
           <label htmlFor="spellcastingAbility" className="form-label">Spellcasting Ability</label>
@@ -68,7 +60,7 @@ export const FormularioSubclasses = () => {
           <label htmlFor="knowsAllSpells" className="form-label">Knows All Spells</label>
           <select id="knowsAllSpells" className="form-select" name="knows_all_spells">
             <option selected disabled value="">Selecciona...</option>
-            <option value="yes">Sí</option>
+            <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
         </div>
