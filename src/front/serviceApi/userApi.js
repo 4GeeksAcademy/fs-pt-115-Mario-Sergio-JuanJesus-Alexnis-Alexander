@@ -55,3 +55,61 @@ export const userLogin = async (loginUser) => {
     }
     
 }
+
+export const updateUser = async (newData, token) => {
+    try {
+        const response = await fetch(`${urlApi}/api/user`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(newData)
+    })
+    const data = await response.json()
+    if (!response.ok) {
+        return {
+            success: false,
+            error: data.msg || data.message || 'Error desconocido' 
+        }
+    }
+    return {
+        success: true,
+        user: data.user,
+        token: data.token
+    }
+
+    } catch (error) {
+         return { error: error.msg }
+    }
+    
+}
+
+export const uploadImg = async (file, token) => {
+    const formData = new FormData()
+    formData.append('file', file)
+    try {
+        const response = await fetch(`${urlApi}/api/user/upload-img`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+        body: formData
+    })
+    const data = await response.json()
+    if (!response.ok) {
+        return {
+            success: false,
+            error: error.msg || data.error || 'Error desconocido'
+        }
+    }
+    
+    return data
+
+    } catch (error) {
+         return { error: error.msg,
+            success: false
+          }
+    }
+    
+}

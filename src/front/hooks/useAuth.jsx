@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { loginWithRedirect, user: userAuth0, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, user: userAuth0, isAuthenticated, logout: logoutGoogle } = useAuth0();
 
 
   const loginWithGoogle = () => {
@@ -81,6 +81,7 @@ export const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     localStorage.removeItem("token");
+    logoutGoogle()
     setToken(null);
     setUser(null);
   };
@@ -154,7 +155,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, user, loading, login, logOut, authSignUp, loginWithGoogle }}
+      value={{ token, user, loading, login, logOut, authSignUp, loginWithGoogle, userInfo }}
     >
       {children}
     </AuthContext.Provider>
