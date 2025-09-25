@@ -4,6 +4,7 @@ import "../styles/forms/backgroundForm.css"
 export const FormularioBackground = () => {
     const [page, setPage] = useState(1)
     return (
+        
         <div className="container col-md-5 my-5 basic-form position-relative">
             <h2 className="text-center fw-bold">Create New Background</h2>
             <form className="row fw-bold">

@@ -5,7 +5,7 @@ import { useDisabledFields } from "../hooks/useDisabledFields";
 import { initialDisabled, rules } from "../rules-forms/magicsItems.rules";
 
 export const FormMagicItems = () => {
-  
+
   const [input, setInputs] = useState({});
   const [error, setError] = useState(null);
   const { disabledFields, updateDisabledFields } = useDisabledFields(
@@ -13,7 +13,7 @@ export const FormMagicItems = () => {
     initialDisabled
   );
   const navigate = useNavigate();
-  
+
   const handleOnChange = (e) => {
     const { name, value, checked, type } = e.target;
 
@@ -21,7 +21,7 @@ export const FormMagicItems = () => {
 
     setInputs({ ...input, [name]: inputValue });
     updateDisabledFields(name, inputValue);
-    
+
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
