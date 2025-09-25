@@ -1,7 +1,6 @@
 from . import db
 from sqlalchemy import Integer, Text, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .user_model import User
 
 
 class Character(db.Model):
