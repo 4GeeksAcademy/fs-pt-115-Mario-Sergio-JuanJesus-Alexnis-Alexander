@@ -5,13 +5,13 @@ export const FormularioBackground = () => {
     const [page, setPage] = useState(1)
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
-            <h2 className="text-center fw-bold">CREATE A NEW BACKGROUND</h2>
+            <h2 className="text-center fw-bold">Create New Background</h2>
             <form className="row fw-bold">
                 {page === 1 &&
                     <>
                         <div className="col-md-6 mb-3">
                             <label htmlFor="backgroundName" className="form-label">
-                                Name
+                                Name<span className="text-danger">*</span>
                             </label>
                             <input
                                 type="text"
@@ -23,7 +23,7 @@ export const FormularioBackground = () => {
                         </div>
                         <div className="col-md-6 mb-3">
                             <label htmlFor="backgroundVersion" className="form-label">
-                                Base Description
+                                Description<span className="text-danger">*</span>
                             </label>
                             <input
                                 type="text"

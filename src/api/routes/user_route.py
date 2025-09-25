@@ -199,22 +199,17 @@ def delete_user():
 @user_bp.route('/upload-img', methods=['POST'])
 @jwt_required()
 def upload_image():
+    user_id = get_jwt_identity()
+    user = db.session.get(User, int(user_id))
     file = request.files.get('file')
 
     if file:
         upload_result = cloudinary.uploader.upload(file)
-        return jsonify(upload_result['secure_url']), 201
+        url_image = upload_result['secure_url']
+        user.avatar = url_image
+        db.session.commit()
+        return jsonify(url_image), 201
     return jsonify({'msg': 'Image not found'}), 404
-
-    
-    
-    
-
-    
-
-
-
-
 @user_bp.route('/', methods=['GET'])
 def all_user():
     users = User.query.all()
