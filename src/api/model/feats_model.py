@@ -6,10 +6,10 @@ from typing import Optional
 class Feats(db.Model):
     feats_id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(255), nullable=False)
-    version: Mapped[str] = mapped_column(Text)
-    description: Mapped[str] = mapped_column(String(255))
-    snippet: Mapped[str] = mapped_column(String(255))
-    feats_tags: Mapped[str] = mapped_column(String(255))
+    version: Mapped[Optional[str]] = mapped_column(Text)
+    description: Mapped[Optional[str]] = mapped_column(String(255))
+    snippet: Mapped[Optional[str]] = mapped_column(String(255))
+    feats_tags: Mapped[Optional[str]] = mapped_column(String(255))
 
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
