@@ -35,27 +35,7 @@
   padding: 12px 15px;
 }
 
-.pageLink {
-  text-decoration: underline;
-  margin: 0;
-  text-align: end;
-  color: #747474;
-  text-decoration-color: #747474;
-}
-
-.pageLinkLabel {
-  cursor: pointer;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 9px;
-  font-weight: 700;
-}
-
-.pageLinkLabel:hover {
-  color: #000;
-}
-
-.formBtn {
+.loginBtn {
   padding: 10px 15px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -66,10 +46,12 @@
   color: white;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: letter-spacing 0.3s ease;
 }
 
-.formBtn:active {
-  box-shadow: none;
+.loginBtn:hover{
+  font-weight: 700;
+  letter-spacing: 0.3rem;
 }
 
 .signUpLabel {
@@ -80,7 +62,7 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.signUpLink {
+.signUpBtn {
   margin-left: 1px;
   font-size: 11px;
   text-decoration: underline;
@@ -101,7 +83,6 @@
   gap: 15px;
 }
 
-.appleLoginButton,
 .googleLoginButton {
   border-radius: 20px;
   box-sizing: border-box;
@@ -116,20 +97,12 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 11px;
   gap: 5px;
-}
-
-.appleLoginButton {
-  background-color: #000;
-  color: #fff;
-  border: 2px solid #000;
-}
-
-.googleLoginButton {
   border: 2px solid #747474;
 }
 
-.appleIcon,
-.googleIcon {
-  font-size: 18px;
-  margin-bottom: 1px;
+.googleLoginButton:hover {
+  background-color: black;
+  color: white;
 }
+
+

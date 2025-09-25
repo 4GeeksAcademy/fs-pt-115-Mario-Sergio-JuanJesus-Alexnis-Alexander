@@ -1,7 +1,7 @@
 export const FormularioFeats = () => {
   return (
     <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center fw-bold">CREATE A FEAT</h2>
+      <h2 className="text-center fw-bold">Create a Feats</h2>
       <form className="row g-3 fw-bold">
 
         <div className="col-md-6">
@@ -27,15 +27,11 @@ export const FormularioFeats = () => {
           <label htmlFor="featTags" className="form-label">Feat Tags</label>
           <select id="featTags" className="form-select" name="feat_tags">
             <option selected disabled value="">Selecciona...</option>
-            <option>Combate</option>
-            <option>Magia</option>
-            <option>Habilidad</option>
+            <option>Combat</option>
+            <option>Magic</option>
+            <option>Ability</option>
             <option>General</option>
           </select>
-        </div>
-
-        <div className="col-12 mt-4">
-          <button type="submit" className="btn btn-primary">Submit</button>
         </div>
 
         <div className="col-12 text-center mt-4">

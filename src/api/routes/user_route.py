@@ -56,6 +56,49 @@ def sign_up():
         'token': token,
         'user': new_user.serialize()}), 200
 
+@user_bp.route('/signup-google', methods=['POST'])
+def sign_up_google():
+    data = request.get_json()
+    username = data.get('username')
+    email = data.get('email')
+    avatar = data.get('image')
+    full_name = data.get('full_name')
+
+    
+    user_exist = db.session.execute(db.select(User).where(
+        User.email == data['email']
+    )).scalar_one_or_none()
+
+    if user_exist:
+        token = create_access_token(str(user_exist.id))
+        return jsonify({
+        'success': True,
+        'msg': 'Usuario existe',
+        'token': token,
+        'user': user_exist.serialize()}), 200
+    
+    new_user = User(email= email, username= username, password= '', avatar= avatar, full_name= full_name)
+    db.session.add(new_user)
+    db.session.commit()
+    token = create_access_token(str(new_user.id))
+
+    html_body = render_template('welcome.html', username= username)
+
+    message = Message(
+        subject = 'Welcome message',
+        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
+        recipients = [email],
+        html = html_body
+    )
+
+    mail.send(message)
+
+    return jsonify({
+        'success': True,
+        'msg': 'Usuario creado',
+        'token': token,
+        'user': new_user.serialize()}), 200
+
 
 @user_bp.route('/login', methods=['POST'])
 def user_login():
@@ -156,14 +199,17 @@ def delete_user():
 @user_bp.route('/upload-img', methods=['POST'])
 @jwt_required()
 def upload_image():
+    user_id = get_jwt_identity()
+    user = db.session.get(User, int(user_id))
     file = request.files.get('file')
 
     if file:
         upload_result = cloudinary.uploader.upload(file)
-        return jsonify(upload_result['secure_url']), 201
+        url_image = upload_result['secure_url']
+        user.avatar = url_image
+        db.session.commit()
+        return jsonify(url_image), 201
     return jsonify({'msg': 'Image not found'}), 404
-
-
 @user_bp.route('/', methods=['GET'])
 def all_user():
     users = User.query.all()
