@@ -163,14 +163,6 @@ def upload_image():
         return jsonify(upload_result['secure_url']), 201
     return jsonify({'msg': 'Image not found'}), 404
 
-    
-    
-    
-
-    
-
-
-
 
 @user_bp.route('/', methods=['GET'])
 def all_user():
