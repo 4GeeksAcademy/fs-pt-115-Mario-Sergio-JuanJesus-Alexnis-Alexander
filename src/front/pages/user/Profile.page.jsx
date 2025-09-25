@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { updateUser, uploadImg } from "../../serviceApi/userApi";
 import styles from "../../styles/page/profile.module.css";
+import { calculatedUserRank } from "../../rules-forms/userRank.rules";
 
 export const ProfilePage = () => {
   const { user, token, userInfo } = useAuth();
@@ -68,6 +69,17 @@ export const ProfilePage = () => {
     setIsEditing(false);
   };
 
+  const totalItems =
+    (user?.magics_items?.length || 0) +
+    (user?.spells?.length || 0) +
+    (user?.character?.length || 0) +
+    (user?.campaign?.length || 0)
+
+  const userRank = calculatedUserRank(totalItems)
+
+  console.log('Total items:', totalItems);
+console.log('User rank:', userRank);
+
   return (
     <>
       <div className={`container-fluid ${styles.containerFluid}`}>
@@ -125,7 +137,7 @@ export const ProfilePage = () => {
                     <p className={styles.memberInfo}>
                       Member since {user?.created_at}
                     </p>
-                    <p className={styles.lastActive}>Rank : </p>
+                    <p className={styles.lastActive}>Rank : <strong>{userRank.toUpperCase()}</strong></p>
                   </div>
 
                   {/* Botones de Acción */}
