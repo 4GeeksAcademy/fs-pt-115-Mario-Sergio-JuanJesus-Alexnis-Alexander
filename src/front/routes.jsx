@@ -28,6 +28,7 @@ import { ShowCampaignPage } from "./pages/user/ShowCampaign.page";
 import { WikiClasses } from "./components/Wiki/WikiClasses";
 import { WikiFeats } from "./components/Wiki/WikiFeats"; 
 import { WikiBackgrounds } from "./components/Wiki/WikiBackgrounds";
+import { SpellPage } from "./pages/user/Spell.page";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -59,6 +60,7 @@ export const router = createBrowserRouter(
           <Route path="user/create-subclasses" element={ <CreateSubclassPage/> }/>
           <Route path="user/create-feats" element={ <CreateFeatPage/> }/>
           <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
+          <Route path="user/spell" element={ <SpellPage/> }/>
           <Route path="user/characters" element={ <ShowCharactersPage/> }/>
           <Route path="user/campaigns" element={ <ShowCampaignPage/> }/>
           <Route path="wiki/classes" element={<WikiClasses />} />

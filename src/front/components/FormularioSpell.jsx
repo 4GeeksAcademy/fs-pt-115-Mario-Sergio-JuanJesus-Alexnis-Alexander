@@ -2,12 +2,16 @@ import { useState } from "react";
 import "../styles/forms/backgroundForm.css"
 import { useDisabledFields } from "../hooks/useDisabledFields";
 import { initialDisabled, rules } from "../rules-forms/spell.rules";
+import { useNavigate } from "react-router-dom";
+import { createNewSpell } from "../serviceApi/spellApi";
 
 export const FormularioSpell = () => {
     const [page, setPage] = useState(1)
     const [input, setInputs] = useState({});
 
     const { disabledFields, updateDisabledFields } = useDisabledFields(rules, initialDisabled);
+
+    const navigate = useNavigate();
 
     const handleOnChange = (e) => {
         const { name, value, checked, type } = e.target;
@@ -17,15 +21,26 @@ export const FormularioSpell = () => {
         setInputs({ ...input, [name]: inputValue });
         updateDisabledFields(name, inputValue);
 
-
+    };
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        const dataSpell = await createNewSpell(input);
+        if (!dataSpell.success) {
+            console.log(dataSpell?.error || "Creación fallida");
+            return ;
+        } else {
+            setInputs({});
+        }
+        navigate("/user/spell");
     };
 
-
+console.log(input)
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
             <h2 className="text-center fw-bold">Formulario Homebrews Spells</h2>
-            <form className="row fw-bold">
+            <form className="row fw-bold" onSubmit={handleOnSubmit} >
+
                 {page === 1 &&
                     <>
                         <div className="col-md-4 mb-3">
@@ -49,12 +64,11 @@ export const FormularioSpell = () => {
                             </label>
                             <input
                                 onChange={handleOnChange}
-                                type="number"
+                                type="text"
                                 placeholder=""
                                 className="form-control"
                                 id="spell_level"
                                 name="spell_level"
-                                required=""
                             />
                         </div>
 
@@ -164,7 +178,7 @@ export const FormularioSpell = () => {
                                 type="text"
                                 className="form-control"
                                 id="range_distance"
-                                name="range_distancee"
+                                name="range_distance"
                                 disabled={disabledFields.range_distance}
                             />
                         </div>

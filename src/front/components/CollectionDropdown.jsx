@@ -66,7 +66,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
               <span className={styles.titleBtn}>MY MAGIC ITEMS</span>
             </button>
           </Link>
-          <Link to={""}>
+          <Link to={"/user/spell"}>
             <button className={styles.spellsBtn}>
               <span className={styles.titleBtn}>MY SPELLS</span>
             </button>
