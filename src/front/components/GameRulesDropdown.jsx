@@ -25,7 +25,7 @@ export const GameRulesDropdown = ({ closeDropdown }) => {
               </button>
             </Link>
 
-            <Link to={"/wiki_equipment"} onClick={closeDropdown}>
+            <Link to={"/wiki/equipment"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Equipment
               </button>
@@ -37,19 +37,19 @@ export const GameRulesDropdown = ({ closeDropdown }) => {
               </button>
             </Link>
 
-            <Link to={"/wiki_spells"} onClick={closeDropdown}>
+            <Link to={"/wiki/spells"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Spells
               </button>
             </Link>
 
-            <Link to={"/wiki_magic-items"} onClick={closeDropdown}>
+            <Link to={"/wiki/magic-items"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Magic Items
               </button>
             </Link>
 
-            <Link to={"/wiki_monster"} onClick={closeDropdown}>
+            <Link to={"/wiki/monsters"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Monster
               </button>

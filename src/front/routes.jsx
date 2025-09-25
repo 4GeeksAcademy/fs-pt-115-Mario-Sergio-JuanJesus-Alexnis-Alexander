@@ -30,6 +30,9 @@ import { WikiFeats } from "./components/Wiki/WikiFeats";
 import { WikiBackgrounds } from "./components/Wiki/WikiBackgrounds";
 import { WikiSpecies } from "./components/Wiki/WikiSpecies";
 import { WikiSpells } from "./components/Wiki/WikiSpells";
+import { WikiEquipment } from "./components/Wiki/WikiEquipment";
+import { WikiMagicItems } from "./components/Wiki/WikiMagicItems";
+import { WikiMonsters } from "./components/Wiki/WikiMonsters";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -45,6 +48,9 @@ export const router = createBrowserRouter(
         <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
         <Route path="wiki/species" element={<WikiSpecies />} />
         <Route path="wiki/spells" element={<WikiSpells />} />
+        <Route path="wiki/equipment" element={<WikiEquipment />} />
+        <Route path="wiki/magic-items" element={<WikiMagicItems />} />
+        <Route path="wiki/monsters" element={<WikiMonsters />} />
 
       </Route>
 
