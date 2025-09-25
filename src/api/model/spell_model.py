@@ -5,32 +5,46 @@ from typing import Optional
 
 class Spell(db.Model):
     spell_id: Mapped[int] = mapped_column(primary_key=True)
-    spell: Mapped[str] = mapped_column(String(255), nullable=False)
-    level: Mapped[str] = mapped_column(String(255), nullable=False)
-    casting_time: Mapped[Optional[int]] = mapped_column(Integer)
-    reaction_condition: Mapped[Optional[str]]= mapped_column(Text)
-    components_material: Mapped[Optional[str]] = mapped_column(String(255))
-    range_distance: Mapped[Optional[int]] = mapped_column(Integer)
-    duration: Mapped[Optional[int]] = mapped_column(Integer)
-    is_ritual: Mapped[Optional[bool]] = mapped_column(Boolean)
-    has_scaling: Mapped[Optional[bool]] = mapped_column(Boolean)
-    scaling_type: Mapped[Optional[str]] = mapped_column(String(255))
+    spell_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    spell_level: Mapped[str] = mapped_column(String(255), nullable=False)
+    spell_school: Mapped[int] = mapped_column(Integer, nullable=False)
+    casting_time: Mapped[int] = mapped_column(Integer, nullable=False)
+    casting_time_select: Mapped[Optional[int]] = mapped_column(Integer)
+    reaction_casting_time: Mapped[str] = mapped_column(String(255), nullable=False)
+    components: Mapped[Optional[int]] = mapped_column(Integer)
+    material_components: Mapped[str] = mapped_column(String(255), nullable=False)
+    spell_range: Mapped[str] = mapped_column(String(255), nullable=False)
+    range_distance: Mapped[str] = mapped_column(String(255), nullable=False)
+    duration_type: Mapped[str] = mapped_column(String(255), nullable=False)
+    duration: Mapped[str] = mapped_column(String(255), nullable=False)
+    duration_select: Mapped[str] = mapped_column(String(255), nullable=False)
+    description: Mapped[str] = mapped_column(String(255), nullable=False)
+    ritual_spell: Mapped[Optional[int]] = mapped_column(Integer)
+    at_higher_levels: Mapped[Optional[int]] = mapped_column(Integer)
+    higher_level_scaling: Mapped[Optional[int]] = mapped_column(Integer)
+    available_for_classes: Mapped[str] = mapped_column(String(255), nullable=False)
 
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
     def serialize (self):
         return {
             "spell_id": self.spell_id,
-            "spell": self.spell,
-            "level": self.level,
+            "spell_name": self.spell_name,
+            "spell_level": self.spell_level,
+            "spell_school": self.spell_school,
             "casting_time": self.casting_time,
-            "reaction_condition": self.reaction_condition,
-            "components_material": self.components_material,
+            "casting_time_select": self.casting_time_select,
+            "reaction_casting_time": self.reaction_casting_time,
+            "components": self.components,
+            "material_components": self.material_components,
+            "spell_range": self.spell_range,
             "range_distance": self.range_distance,
+            "duration_type": self.duration_type,
             "duration": self.duration,
-            "is_ritual": self.is_ritual,
-            "has_scaling": self.has_scaling,
-            "scaling_type": self.scaling_type,
-            "user_id": self.user_id
+            "duration_select": self.duration_select,
+            "description": self.description,
+            "ritual_spell": self.ritual_spell,
+            "at_higher_levels": self.at_higher_levels,
+            "higher_level_scaling": self.higher_level_scaling,
+            "available_for_classes": self.available_for_classes 
         }
-
