@@ -56,6 +56,49 @@ def sign_up():
         'token': token,
         'user': new_user.serialize()}), 200
 
+@user_bp.route('/signup-google', methods=['POST'])
+def sign_up_google():
+    data = request.get_json()
+    username = data.get('username')
+    email = data.get('email')
+    avatar = data.get('image')
+    full_name = data.get('full_name')
+
+    
+    user_exist = db.session.execute(db.select(User).where(
+        User.email == data['email']
+    )).scalar_one_or_none()
+
+    if user_exist:
+        token = create_access_token(str(user_exist.id))
+        return jsonify({
+        'success': True,
+        'msg': 'Usuario existe',
+        'token': token,
+        'user': user_exist.serialize()}), 200
+    
+    new_user = User(email= email, username= username, password= '', avatar= avatar, full_name= full_name)
+    db.session.add(new_user)
+    db.session.commit()
+    token = create_access_token(str(new_user.id))
+
+    html_body = render_template('welcome.html', username= username)
+
+    message = Message(
+        subject = 'Welcome message',
+        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
+        recipients = [email],
+        html = html_body
+    )
+
+    mail.send(message)
+
+    return jsonify({
+        'success': True,
+        'msg': 'Usuario creado',
+        'token': token,
+        'user': new_user.serialize()}), 200
+
 
 @user_bp.route('/login', methods=['POST'])
 def user_login():
@@ -126,6 +169,10 @@ def upgrade_user():
     
     user.username = data.get('username', user.username)
     user.email = data.get('email', user.email)
+    user.full_name = data.get('full_name', user.full_name)
+    user.phone = data.get('phone', user.phone)
+    user.gender = data.get('gender', user.gender)
+    user.birthdate = data.get('birthdate', user.birthdate)
 
     db.session.commit()
 
