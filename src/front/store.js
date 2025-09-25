@@ -5,12 +5,23 @@ export const initialStore=()=>{
     magicsItems: [],
     classes: [],
     races: [],
-    backgrounds: []
+    backgrounds: [],
+    monsters: [],
   }
 }
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+    case 'set_monsters':
+      return{
+        ...store,
+        monsters: action.payload
+      }
+    case 'deleteMonster':
+      return{
+        ...store,
+        monsters: store.monsters.filter(item => item.id != action.payload)
+      }
     case 'set_classes':
       return{
         ...store,

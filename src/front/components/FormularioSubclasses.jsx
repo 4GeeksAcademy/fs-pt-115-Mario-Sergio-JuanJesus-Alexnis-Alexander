@@ -5,12 +5,12 @@ export const FormularioSubclasses = () => {
   const [page, setPage] = useState(1)
   return (
     <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center mb-4 fw-bold">CREATE A CLASS</h2>
+      <h2 className="text-center mb-4 fw-bold">Create a Subclass</h2>
       <form className="row g-3 fw-bold">
         {page === 1 &&
           <>
             <div className="col-md-6">
-              <label htmlFor="subclassName" className="form-label">Name</label>
+              <label htmlFor="subclassName" className="form-label">Name<span className="text-danger">*</span></label>
               <input type="text" className="form-control" id="subclassName" name="name" required />
             </div>
             <div className="col-md-6">
@@ -19,11 +19,11 @@ export const FormularioSubclasses = () => {
             </div>
 
             <div className="col-md-6">
-              <label htmlFor="shortDescription" className="form-label">Short Description</label>
+              <label htmlFor="shortDescription" className="form-label">Short Description<span className="text-danger">*</span></label>
               <textarea className="form-control" id="shortDescription" rows="3" name="short_description" required></textarea>
             </div>
             <div className="col-md-6">
-              <label htmlFor="description" className="form-label">Description</label>
+              <label htmlFor="description" className="form-label">Description<span className="text-danger">*</span></label>
               <textarea className="form-control" id="description" rows="3" name="description" required></textarea>
             </div>
 
@@ -99,7 +99,7 @@ export const FormularioSubclasses = () => {
             </div>
 
             <div className="col-md-6">
-              <label htmlFor="avatar" className="form-label">Avatar</label>
+              <label htmlFor="avatar" className="form-label">Avatar<span className="text-danger">*</span></label>
               <input className="form-control" type="file" id="avatar" name="avatar" />
             </div>
 
@@ -111,17 +111,17 @@ export const FormularioSubclasses = () => {
         }
 
 
-        
+
       </form>
 
-              <div className="number-page-subclasses">
-          <button className={page === 1 && "active"} type="button" onClick={() => setPage(1)}>1</button>
-          <button className={page === 2 && "active"} type="button" onClick={() => setPage(2)}>2</button>
-        </div>
+      <div className="number-page-subclasses">
+        <button className={page === 1 && "active"} type="button" onClick={() => setPage(1)}>1</button>
+        <button className={page === 2 && "active"} type="button" onClick={() => setPage(2)}>2</button>
+      </div>
 
-        <div className="button-create-subclasses">
-          <button type="submit" className="btn btn-primary">Create Subclasses</button>
-        </div>
+      <div className="button-create-subclasses">
+        <button type="submit" className="btn btn-primary">Create Subclasses</button>
+      </div>
     </div>
   );
 };
