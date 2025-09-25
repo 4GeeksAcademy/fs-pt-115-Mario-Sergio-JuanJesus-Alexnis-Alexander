@@ -3,7 +3,6 @@ import styles from "../../styles/page/home.module.css";
 
 export const Home = () => {
 	const { user } = useAuth0()
-	console.log(user);
 	
 	return (
 		<>

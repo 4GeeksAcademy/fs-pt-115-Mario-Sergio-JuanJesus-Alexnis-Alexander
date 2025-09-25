@@ -20,7 +20,6 @@ class Specie(db.Model):
     will_have_species: Mapped[Optional[str]]= mapped_column(String(255))
     large_avatar: Mapped[Optional[str]]= mapped_column(String(255))
     portrait_avatar: Mapped[Optional[str]]= mapped_column(String(255))
-
     user_id: Mapped[int]= mapped_column(ForeignKey("user.id"))
 
 def serialize (self):
