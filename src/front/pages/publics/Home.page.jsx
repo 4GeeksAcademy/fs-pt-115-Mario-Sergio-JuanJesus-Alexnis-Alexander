@@ -1,14 +1,14 @@
-
-import { FormMagicItems } from "../../components/FormMagicsItems";
-import { CollectionDropdown } from "../../components/CollectionDropdown";
-import { FormularioBackground } from "../../components/FormularioBackground";
+import { useAuth0 } from "@auth0/auth0-react";
+import styles from "../../styles/page/home.module.css";
 
 export const Home = () => {
-
+	const { user } = useAuth0()
+	
 	return (
 		<>
-			<h1 className="text-center mt-5">D&D MASTERS OF INFINITY</h1>
+			<div className={styles.main}>
+			<h1 className={styles.title}>Bienvenido a <br></br> D&D MASTERS OF INFINITY</h1>
+			</div>
 		</>
-		
 	);
 }; 

@@ -1,4 +1,8 @@
+import { useState } from "react";
+import "../styles/forms/backgroundForm.css"
+
 export const FormularioBackground = () => {
+    const [page, setPage] = useState(1)
     return (
         <div className="container">
             <form className="row mt-5 border border-secondary-emphasis border-1 p-4">
@@ -277,6 +281,7 @@ export const FormularioBackground = () => {
                     <button type="submit" className="btn btn-primary">Crear Background</button>
                 </div>
             </form>
+
         </div>
     );
 };

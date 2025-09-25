@@ -5,6 +5,7 @@ from typing import Optional
 
 class Background(db.Model):
     background_id: Mapped[int] = mapped_column(primary_key=True)
+<<<<<<< HEAD
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     version: Mapped[str] = mapped_column(String(255), nullable=False)
     introduction: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -27,8 +28,30 @@ class Background(db.Model):
     spell_list_extended: Mapped[Optional[str]] = mapped_column(Text)
     contacts_list: Mapped[Optional[str]]= mapped_column(Text)
     background_tags: Mapped[Optional[str]] = mapped_column(Text)
+=======
+    background_name: Mapped[str] = mapped_column(String(255))
+    base_description: Mapped[str] = mapped_column(Text)
+    habilities_description: Mapped[str] = mapped_column(Text)
+    feats_description: Mapped[Optional[str]] = mapped_column(Text)
+    skill_proficiencies_description: Mapped[Optional[str]]  = mapped_column(Text)
+    tool_proficiencies_description: Mapped[Optional[str]]  = mapped_column(Text)
+    languages_description: Mapped[Optional[str]]  = mapped_column(Text)
+    equipment_description: Mapped[Optional[str]]  = mapped_column(Text)
+    specific_table_name: Mapped[Optional[str]]  = mapped_column(String(255))
+    specific_tabla_desc: Mapped[Optional[str]] = mapped_column(Text)
+    feature: Mapped[Optional[str]]  = mapped_column(String(255))
+    feature_desc: Mapped[Optional[str]]  = mapped_column(Text)
+    variant: Mapped[Optional[str]]  = mapped_column(String(255))
+    variant_desc: Mapped[Optional[str]]  = mapped_column(Text)
+    variant_feature: Mapped[Optional[str]]  = mapped_column(String(255))
+    variant_feature_desc: Mapped[Optional[str]] = mapped_column(Text)
+    suggested_characteristics: Mapped[Optional[str]]  = mapped_column(Text)
+    spell_list_introduction: Mapped[Optional[str]]  = mapped_column(Text)
+    spell_list_extended: Mapped[Optional[str]]  = mapped_column(Text)
+    contacts_list: Mapped[Optional[str]]  = mapped_column(Text)
+>>>>>>> 39e63da56f76b3530fd4898fa1c95162461e4023
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("user,id"))
+    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
     def serialize(self):
         return {

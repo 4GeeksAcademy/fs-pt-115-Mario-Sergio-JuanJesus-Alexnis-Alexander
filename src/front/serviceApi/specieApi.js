@@ -6,7 +6,7 @@ export const createNewSpecie = async (newSpecie) => {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
-                'Authorizacion': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(newSpecie)
         })

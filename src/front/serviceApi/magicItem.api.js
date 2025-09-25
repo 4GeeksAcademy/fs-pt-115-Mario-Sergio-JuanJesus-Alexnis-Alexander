@@ -1,5 +1,3 @@
-import { data } from "@remix-run/router";
-
 const urlApi = import.meta.env.VITE_BACKEND_URL;
 
 export const createMagicItem = async (newMagicItem) => {
@@ -38,10 +36,10 @@ export const createMagicItem = async (newMagicItem) => {
 
 export const showMagicItem = async (itemId) => {
     try {
-        const response = await fetch(`${urlApi}/user/magics-items/${itemId}`, {
+        const response = await fetch(`${urlApi}/api/user/magics-items/${itemId}`, {
             method: 'GET',
             headers: {
-                'Autorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
 
@@ -69,11 +67,11 @@ export const showMagicItem = async (itemId) => {
 
 export const updateMagicItem = async (updateItem, itemId) => {
     try {
-        const response = await fetch(`${urlApi}/user/magics-items/${itemId}`, {
+        const response = await fetch(`${urlApi}/api/user/magics-items/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Autorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(updateItem)
     })
@@ -104,10 +102,10 @@ export const updateMagicItem = async (updateItem, itemId) => {
 export const deleteMagicItem = async (itemId) => {
 
     try {
-        const response = await fetch(`${urlApi}/user/magics-items/${itemId}`, {
+        const response = await fetch(`${urlApi}/api/user/magics-items/${itemId}`, {
         method: 'DELETE',
         headers: {
-                'Autorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
     })
 
@@ -134,12 +132,12 @@ export const deleteMagicItem = async (itemId) => {
     
 }
 
-export const showAllMMagicItems = async () => {
+export const getAllMagicItems = async () => {
     try {
-        const response = await fetch(`${urlApi}/user/magics-items`, {
+        const response = await fetch(`${urlApi}/api/user/magics-items`, {
             method: 'GET',
             headers: {
-                'Autorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
 

@@ -2,12 +2,13 @@ from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.user_model import User
 from ..model.spell_model import Spell
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
 
 spell_bp = Blueprint('spell', __name__, url_prefix='/spells')
 
 CORS(spell_bp)
+
 
 @spell_bp.route('/', methods=['POST'])
 @jwt_required()
@@ -15,31 +16,48 @@ def create_spell():
     data = request.get_json()
     user_id = get_jwt_identity()
 
-    spell = data.get("spell")
-    level = data.get("level")
+    spell_name = data.get("spell_name")
+    spell_level = data.get("spell_level")
+    spell_school = data.get("spell_school")
     casting_time = data.get("casting_time")
-    reaction_condition = data.get("reaction_condition")
-    components_material = data.get("components_material")
+    casting_time_select = data.get("casting_time_select")
+    reaction_casting_time = data.get("reaction_casting_time")
+    components = data.get("components")
+    material_components = data.get("material_components")
+    spell_range = data.get("spell_range")
     range_distance = data.get("range_distance")
+    duration_type = data.get("duration_type")
     duration = data.get("duration")
-    is_ritual = data.get("is_ritual")
-    has_scaling = data.get("has_scaling")
-    scaling_type = data.get("scaling_type")
+    duration_select = data.get("duration_select")
+    description = data.get("description")
+    ritual_spell = data.get("ritual_spell")
+    at_higher_levels = data.get("at_higher_levels")
+    higher_level_scaling = data.get("higher_level_scaling")
+    available_for_classes = data.get("available_for_classes")
 
-    if not spell or not level:
+    if not spell_name or not spell_level or not spell_school or not casting_time or not reaction_casting_time or not material_components or not spell_range or not range_distance or not duration_type or not duration or not duration_select or not description or not available_for_classes:
         return jsonify({'msg': 'Spell y Level son requeridos'}), 400
 
     new_spell = Spell(
-        spell=spell,
-        level=level,
+        spell_name=spell_name,
+        spell_level=spell_level,
+        spell_school=spell_school,
         casting_time=casting_time,
-        reaction_condition=reaction_condition,
-        components_material=components_material,
+        casting_time_select=casting_time_select,
+        reaction_casting_time=reaction_casting_time,
+        components=components,
+        material_components=material_components,
+        spell_range=spell_range,
         range_distance=range_distance,
+        duration_type=duration_type,
         duration=duration,
-        is_ritual=is_ritual,
-        has_scaling=has_scaling,
-        scaling_type=scaling_type,
+        duration_select=duration_select,
+        description=description,
+        ritual_spell=ritual_spell,
+        at_higher_levels=at_higher_levels,
+        higher_level_scaling=higher_level_scaling,
+        available_for_classes=available_for_classes,
+
         user_id=int(user_id)
     )
 
@@ -90,15 +108,25 @@ def update_spell(spell_id):
         return jsonify({'msg': 'Spell no encontrado'}), 404
 
     spell.spell = data.get("spell", spell.spell)
-    spell.level = data.get("level", spell.level)
-    spell.casting_time = data.get ("casting_time", spell.casting_time)
-    spell.reaction_condition = data.get ("reaction_condition", spell.reaction_condition)
-    spell.components_material = data.get ("components_material", spell.components_material)
-    spell.range_distance = data.get ("range_distance", spell.range_distance)
-    spell.duration = data.get ("duration", spell.duration)
-    spell.is_ritual = data.get ("is_ritual", spell.is_ritual)
-    spell.has_scaling = data.get ("has_scaling", spell.has_scaling)
-    spell.scaling_type = data.get ("scaling_type", spell.scaling_type)
+    spell.spell_name= data.get("spell_name", spell.spell_name)
+    spell.spell_level= data.get("spell_level", spell.spell_level)
+    spell.spell_school= data.get("spell_school", spell.spell_school)
+    spell.casting_time= data.get("casting_time", spell.casting_time)
+    spell.casting_time_select= data.get("casting_time_select", spell.casting_time_select)
+    spell.reaction_casting_time= data.get("reaction_casting_time", spell.reaction_casting_time)
+    spell.components= data.get("components", spell.components)
+    spell.material_components= data.get("material_components", spell.material_components)
+    spell.spell_range= data.get("spell_range", spell.spell_range)
+    spell.range_distance= data.get("range_distance", spell.range_distance)
+    spell.duration_type= data.get("duration_type", spell.duration_type)
+    spell.duration= data.get("duration", spell.duration)
+    spell.duration_select= data.get("duration_select", spell.duration_select)
+    spell.description= data.get("description", spell.description)
+    spell.ritual_spell= data.get("ritual_spell", spell.ritual_spell)
+    spell.at_higher_levels= data.get("at_higher_levels", spell.at_higher_levels)
+    spell.higher_level_scaling= data.get("higher_level_scaling", spell.higher_level_scaling)
+    spell.available_for_classes= data.get("available_for_classes", spell.available_for_classes)
+
 
     db.session.commit()
 
