@@ -38,6 +38,7 @@ export const ProfilePage = () => {
     if (file) {
       handleUpoloadImage();
     }
+    userInfo()
   }, [file]);
 
   const handleSubmit = async (e) => {
@@ -47,11 +48,9 @@ export const ProfilePage = () => {
     try {
       await updateUser(formData, token)
       await userInfo()
-      alert("Perfil actualizado correctamente!");
       setIsEditing(false);
     } catch (error) {
       console.error("Error al actualizar perfil:", error);
-      alert("Error al actualizar el perfil");
     } finally {
       setLoading(false);
     }
@@ -126,7 +125,7 @@ export const ProfilePage = () => {
                     <p className={styles.memberInfo}>
                       Member since {user?.created_at}
                     </p>
-                    <p className={styles.lastActive}>Last active 5 hours ago</p>
+                    <p className={styles.lastActive}>Rank : </p>
                   </div>
 
                   {/* Botones de Acción */}
@@ -273,30 +272,6 @@ export const ProfilePage = () => {
                               <div className="col-md-3">
                                 <div className={styles.statCard}>
                                   <h4
-                                    className={`${styles.statNumber} ${styles.statNumberItems}`}
-                                  >
-                                    {user?.magics_items?.length || 0}
-                                  </h4>
-                                  <small className={styles.statLabel}>
-                                    Magic Items
-                                  </small>
-                                </div>
-                              </div>
-                              <div className="col-md-3">
-                                <div className={styles.statCard}>
-                                  <h4
-                                    className={`${styles.statNumber} ${styles.statNumberSpells}`}
-                                  >
-                                    {user?.spells?.length || 0}
-                                  </h4>
-                                  <small className={styles.statLabel}>
-                                    Spells
-                                  </small>
-                                </div>
-                              </div>
-                              <div className="col-md-3">
-                                <div className={styles.statCard}>
-                                  <h4
                                     className={`${styles.statNumber} ${styles.statNumberMissions}`}
                                   >
                                     0
@@ -315,6 +290,30 @@ export const ProfilePage = () => {
                                   </h4>
                                   <small className={styles.statLabel}>
                                     Campaigns
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberItems}`}
+                                  >
+                                    {user?.magics_items?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Magic Items
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberSpells}`}
+                                  >
+                                    {user?.spells?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Spells
                                   </small>
                                 </div>
                               </div>
@@ -382,7 +381,6 @@ export const ProfilePage = () => {
                                 value={formData.full_name}
                                 onChange={handleInputChange}
                                 placeholder="Your full name"
-                                style={{ borderRadius: "4px" }}
                               />
                             </div>
                           </div>
@@ -402,7 +400,6 @@ export const ProfilePage = () => {
                                 value={formData.phone}
                                 onChange={handleInputChange}
                                 placeholder="Your phone"
-                                style={{ borderRadius: "4px" }}
                               />
                             </div>
 
@@ -434,7 +431,6 @@ export const ProfilePage = () => {
                                 name="gender"
                                 value={formData.gender}
                                 onChange={handleInputChange}
-                                style={{ borderRadius: "4px" }}
                               >
                                 <option value="">Select...</option>
                                 <option value="male">Male</option>

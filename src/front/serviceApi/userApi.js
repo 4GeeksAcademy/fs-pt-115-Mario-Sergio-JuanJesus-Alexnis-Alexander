@@ -59,7 +59,7 @@ export const userLogin = async (loginUser) => {
 export const updateUser = async (newData, token) => {
     try {
         const response = await fetch(`${urlApi}/api/user`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
