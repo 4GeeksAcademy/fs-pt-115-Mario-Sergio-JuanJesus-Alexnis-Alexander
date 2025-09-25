@@ -8,11 +8,11 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const login = async (email, password) => {
+  const login = async (emailOrUsername, password) => {
     setLoading(true);
 
     try {
-      const data = await userLogin({ email, password });
+      const data = await userLogin({ emailOrUsername, password });
     
       if (data.success) {
         setToken(data.token);
@@ -87,9 +87,7 @@ export const AuthProvider = ({ children }) => {
 
       if (!response.ok) {
         throw new Error("Error al traer información");
-        
       }
-
       const data = await response.json()
 
       setUser(data.user)

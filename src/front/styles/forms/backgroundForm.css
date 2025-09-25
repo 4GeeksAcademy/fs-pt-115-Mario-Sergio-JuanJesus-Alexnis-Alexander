@@ -1,0 +1,17 @@
+.number-page-background{
+    position: absolute;
+    bottom: -4rem;
+    justify-content: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.button-create-background{
+    position: absolute;
+    bottom: -7rem;
+    text-align: center;
+}
+
+.active{
+    background-color: rgb(207, 207, 207);
+}

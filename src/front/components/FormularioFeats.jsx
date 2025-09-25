@@ -27,15 +27,15 @@ export const FormularioFeats = () => {
           <label htmlFor="featTags" className="form-label">Feat Tags</label>
           <select id="featTags" className="form-select" name="feat_tags">
             <option selected disabled value="">Selecciona...</option>
-            <option>Combate</option>
-            <option>Magia</option>
-            <option>Habilidad</option>
+            <option>Combat</option>
+            <option>Magic</option>
+            <option>Ability</option>
             <option>General</option>
           </select>
         </div>
 
-        <div className="col-12 mt-4">
-          <button type="submit" className="btn btn-primary">Submit</button>
+        <div className="col-12 text-center mt-4">
+          <button type="submit" className="btn btn-primary">Create Feats</button>
         </div>
       </form>
     </div>

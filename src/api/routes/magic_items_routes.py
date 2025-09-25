@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, Blueprint
 from flask_cors import CORS
 from ..model.magic_items_model import MagicsItems
-from ..model_config import db
+from ..extension_config import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 magics_items_bp = Blueprint('magic_items', __name__,
@@ -38,19 +38,19 @@ def show_magic_item_id(magic_item_id):
 @jwt_required()
 def create_magic_item():
     user_id = get_jwt_identity()
+    data = request.get_json()
 
     # ***Campos obligatorios***
-    data = request.get_json()
     name = data.get('name')
     rarity = data.get('rarity')
     base_item_type = data.get('base_item_type')
-    attunement_description = data.get('attunement_description')
     description = data.get('description')
 
-    if not name or not rarity or not base_item_type or not attunement_description or not description:
+    if not name or not rarity or not base_item_type or not description:
         return jsonify({'error': 'Rellena los campos obligatorios'}), 400
 
     # ***Campos opcionales***
+    attunement_description = data.get('attunement_description')
     version = data.get('version')
     magic_item_type = data.get('magic_item_type')
     base_armor = data.get('base_armor')

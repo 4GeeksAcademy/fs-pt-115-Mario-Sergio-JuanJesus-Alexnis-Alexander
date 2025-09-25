@@ -3,7 +3,7 @@ from datetime import timedelta
 import os
 from api.model.campaign_model import Campaign
 from flask_admin import Admin
-from .model_config import db
+from .extension_config import db
 from .model.user_model import User
 from .model.spell_model import Spell
 from .model.magic_items_model import MagicsItems

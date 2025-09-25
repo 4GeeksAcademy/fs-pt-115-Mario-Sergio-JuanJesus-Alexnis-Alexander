@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import styles from "../../styles/page/signUp.module.css";
 
 export const SignupPage = () => {
   const [input, setInput] = useState({});
@@ -27,7 +28,7 @@ export const SignupPage = () => {
     if (newUserData.success) {
       return navigate("/");
     } else {
-      setError(newUserData.error || "Error en el registro");
+      setError(newUserData.error || "Error signUp");
     }
   };
 
@@ -41,70 +42,69 @@ export const SignupPage = () => {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
         <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleOnSubmit}
-      className="container w-50 mt-5 bg-light p-3 rounded-3 "
-    >
-      <div className="mb-3">
-        <h2 className="text-center">Nuevo usuario</h2>
-        <label htmlFor="username" className="form-label">
-          Username
-        </label>
+    <form onSubmit={handleOnSubmit} className={`${styles.form} mx-auto mt-5`}>
+      <p className={styles.title}>Register </p>
+      <p className={styles.message}>
+        Signup now and get full access to our app.{" "}
+      </p>
+      <label>
         <input
           required
-          type="text"
-          className="form-control"
+          placeholder=""
+          type="username"
+          className={styles.input}
           name="username"
           onChange={(e) => handleOnChange(e)}
         />
-        <label htmlFor="email" className="form-label">
-          Email
-        </label>
+        <span>Username</span>
+      </label>
+      <label>
         <input
           required
+          placeholder=""
           type="email"
-          className="form-control"
+          className={styles.input}
           name="email"
           onChange={(e) => handleOnChange(e)}
         />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
-          Contraseña
-        </label>
+        <span>Email</span>
+      </label>
+      <label>
         <input
           required
+          placeholder=""
           type="password"
-          className="form-control"
+          className={styles.input}
           name="password"
           onChange={(e) => handleOnChange(e)}
         />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="confirmPassword" className="form-label">
-          Confirmar contraseña
-        </label>
+        <span>Password</span>
+      </label>
+      <label>
         <input
           required
+          placeholder=""
           type="password"
-          className="form-control"
+          className={styles.input}
           name="confirmPassword"
           onChange={(e) => handleOnChange(e)}
         />
-      </div>
-
-      {error && <div className="alert alert-danger">{error}</div>}
-
-      <button type="submit" className="btn btn-primary">
-        Enviar
-      </button>
+        <span>Confirm password</span>
+      </label>
+      <button className={styles.submit}>Submit</button>
+      <p className={styles.signin}>
+        Already have an acount ?{" "}
+        <Link to={"/login"}>
+          <span>SignIn</span>{" "}
+        </Link>
+      </p>
     </form>
   );
 };

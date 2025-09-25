@@ -1,5 +1,3 @@
-
-
 const urlApi = import.meta.env.VITE_BACKEND_URL;
 
 export const createMagicItem = async (newMagicItem) => {
