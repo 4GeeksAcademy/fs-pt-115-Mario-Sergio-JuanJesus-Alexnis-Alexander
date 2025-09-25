@@ -28,6 +28,8 @@ import { ShowCampaignPage } from "./pages/user/ShowCampaign.page";
 import { WikiClasses } from "./components/Wiki/WikiClasses";
 import { WikiFeats } from "./components/Wiki/WikiFeats";
 import { WikiBackgrounds } from "./components/Wiki/WikiBackgrounds";
+import { WikiSpecies } from "./components/Wiki/WikiSpecies";
+import { WikiSpells } from "./components/Wiki/WikiSpells";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +43,9 @@ export const router = createBrowserRouter(
         <Route path="wiki/classes" element={<WikiClasses />} />
         <Route path="wiki/feats" element={<WikiFeats />} />
         <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
+        <Route path="wiki/species" element={<WikiSpecies />} />
+        <Route path="wiki/spells" element={<WikiSpells />} />
+
       </Route>
 
 

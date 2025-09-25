@@ -13,7 +13,7 @@ export const GameRulesDropdown = ({ closeDropdown }) => {
                 Classes
               </button>
             </Link>
-            <Link to={"/wiki_species"} onClick={closeDropdown}>
+            <Link to={"/wiki/species"} onClick={closeDropdown}>
               <button className="p-4 fw-bold w-100 h-100">
                 Species
               </button>
