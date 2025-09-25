@@ -33,6 +33,7 @@ import { WikiSpells } from "./components/Wiki/WikiSpells";
 import { WikiEquipment } from "./components/Wiki/WikiEquipment";
 import { WikiMagicItems } from "./components/Wiki/WikiMagicItems";
 import { WikiMonsters } from "./components/Wiki/WikiMonsters";
+import { SpellPage } from "./pages/user/Spell.page";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -76,6 +77,25 @@ export const router = createBrowserRouter(
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
 
 
+          {/* METER AQUI LAS RUTAS: */}
+          <Route path="user/profile" element={ <ProfilePage/> }/>
+          <Route path="user/create-spell" element={ <Formspell/> }/>
+          <Route path="user/create-character" element={ <CreateCharacterPage/> }/>
+          <Route path="user/create-feat" element={ <CreateFeatPage/> }/>
+          <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
+          <Route path="user/create-campaign" element={ <PageFormCampaign/>}/>
+          <Route path="user/create-background" element={ <CreateBackgroundPage/> }/>
+          <Route path="user/create-specie" element={ <CreateSpeciePage/> }/>
+          <Route path="user/create-subclasses" element={ <CreateSubclassPage/> }/>
+          <Route path="user/create-feats" element={ <CreateFeatPage/> }/>
+          <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
+          <Route path="user/spell" element={ <SpellPage/> }/>
+          <Route path="user/characters" element={ <ShowCharactersPage/> }/>
+          <Route path="user/campaigns" element={ <ShowCampaignPage/> }/>
+          <Route path="wiki/classes" element={<WikiClasses />} />
+          <Route path="wiki/feats" element={<WikiFeats />} />
+          <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
+          
       </Route>
 
 

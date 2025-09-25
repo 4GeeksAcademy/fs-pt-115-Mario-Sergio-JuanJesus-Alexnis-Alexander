@@ -5,7 +5,8 @@ export const initialStore=()=>{
     magicsItems: [],
     classes: [],
     races: [],
-    backgrounds: []
+    backgrounds: [],
+    spells: []
   }
 }
 
@@ -16,6 +17,16 @@ export default function storeReducer(store, action = {}) {
         ...store,
         classes: action.payload
       }
+      case 'set_spells':
+      return{
+        ...store,
+        spells: action.payload
+      }
+      case 'deleteSpell':
+      return {
+        ...store,
+        spells: store.spells.filter(item => item.spell_id != action.payload)
+      };
     case 'set_races':
       return{
         ...store,

@@ -77,8 +77,8 @@ export const ProfilePage = () => {
 
   const userRank = calculatedUserRank(totalItems)
 
-  console.log('Total items:', totalItems);
-console.log('User rank:', userRank);
+  console.log(user.campaign);
+  
 
   return (
     <>
@@ -286,7 +286,7 @@ console.log('User rank:', userRank);
                                   <h4
                                     className={`${styles.statNumber} ${styles.statNumberMissions}`}
                                   >
-                                    0
+                                    {user?.character?.length || 0}
                                   </h4>
                                   <small className={styles.statLabel}>
                                     Characters
@@ -298,7 +298,7 @@ console.log('User rank:', userRank);
                                   <h4
                                     className={`${styles.statNumber} ${styles.statNumberAchievements}`}
                                   >
-                                    0
+                                    {user?.campaign.length || 0}
                                   </h4>
                                   <small className={styles.statLabel}>
                                     Campaigns
