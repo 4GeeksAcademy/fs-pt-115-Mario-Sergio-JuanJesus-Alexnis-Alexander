@@ -126,6 +126,10 @@ def upgrade_user():
     
     user.username = data.get('username', user.username)
     user.email = data.get('email', user.email)
+    user.full_name = data.get('full_name', user.full_name)
+    user.phone = data.get('phone', user.phone)
+    user.gender = data.get('gender', user.gender)
+    user.birthdate = data.get('birthdate', user.birthdate)
 
     db.session.commit()
 
