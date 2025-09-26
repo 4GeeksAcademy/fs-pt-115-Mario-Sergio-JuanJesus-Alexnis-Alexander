@@ -3,7 +3,6 @@ import { useAuth } from "../../hooks/useAuth";
 import { updateUser, uploadImg } from "../../serviceApi/userApi";
 import styles from "../../styles/page/profile.module.css";
 import { calculatedUserRank } from "../../rules-forms/userRank.rules";
-import { use } from "react";
 
 export const ProfilePage = () => {
   const { user, token, userInfo } = useAuth();
