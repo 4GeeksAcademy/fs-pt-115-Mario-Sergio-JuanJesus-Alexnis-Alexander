@@ -103,6 +103,7 @@ def update_background(background_id):
     data = request.get_json()
     if not background:
         return jsonify({'msg': 'Background no encontrado'}), 404
+    
     background.name = data.get("name", background.name)
     background.version = data.get("version", background.version)
     background.introduction = data.get("introduction", background.introduction)

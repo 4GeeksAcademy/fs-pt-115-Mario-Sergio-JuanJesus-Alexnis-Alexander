@@ -34,9 +34,10 @@ class Background(db.Model):
     def serialize(self):
         return {
             "background_id": self.background_id,
-            "background_name": self.background_name,
-            "base_description": self.base_description,
-            "habilities_description": self.habilities_description,
+            "name": self.name,
+            "version": self.version,
+            "introduction": self.introduction,
+            "abilities_score_description": self.abilities_score_description,
             "feats_description": self.feats_description,
             "skill_proficiencies_description": self.skill_proficiencies_description,
             "tool_proficiencies_description": self.tool_proficiencies_description,
@@ -54,5 +55,6 @@ class Background(db.Model):
             "spell_list_introduction": self.spell_list_introduction,
             "spell_list_extended": self.spell_list_extended,
             "contacts_list": self.contacts_list,
+            "background_tags": self.background_tags,
             "user_id": self.user_id
         }
