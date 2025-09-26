@@ -53,7 +53,7 @@ export const ProfilePage = () => {
     } catch (error) {
       console.error("Error al actualizar perfil:", error);
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 

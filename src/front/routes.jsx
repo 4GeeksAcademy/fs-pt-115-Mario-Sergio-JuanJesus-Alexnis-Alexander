@@ -76,6 +76,8 @@ export const router = createBrowserRouter(
         <Route path="user/magics-items" element={<ShowMagicsItemsPage />} />
         <Route path="user/characters" element={<ShowCharactersPage />} />
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
+        <Route path="user/create-monster" element={<CreateMonsterPage />} />
+        <Route path="user/monster" element={<ShowMonsterPage />} />
       </Route>
 
       {/* AQUI SOLO LAS RUTAS DE LOGIN Y REGISTER */}
