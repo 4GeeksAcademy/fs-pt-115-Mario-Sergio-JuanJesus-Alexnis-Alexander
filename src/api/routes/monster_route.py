@@ -1,17 +1,10 @@
 from flask import Flask, request, jsonify, Blueprint
-from flask_cors import CORS
 from ..model.monster_model import Monster
 from ..extension_config import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 monster_bp = Blueprint('monster', __name__, url_prefix='/user/monster')
 
-CORS(monster_bp,
-    resources={r"/*": {"origins": "https://psychic-yodel-45w4x56vgg9hq976-3000.app.github.dev"}},
-    allow_headers=["Content-Type", "Authorization"],
-    expose_headers=["Content-Type"],
-    methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-    )
 
 @monster_bp.route('/', methods=["POST"])
 @jwt_required()
@@ -19,7 +12,7 @@ def create_monster():
     data = request.get_json() or {}
     user_id = get_jwt_identity()
 
-    required = ["name", "type", "subtype", "size", "challenge"]
+    required = ["name", "type", "size", "challenge"]
     missing = [i for i in required if data.get(i) in (None, "")]
     if missing:
         return jsonify({"msg": "Faltan campos obligatorios", "fields": missing}), 400
@@ -38,7 +31,6 @@ def create_monster():
 
     return jsonify({'msg': 'Monstruo creado',
                     'monster': new_monster.serialize()}), 201
-
 
 
 @monster_bp.route('/', methods=['GET'])
@@ -60,6 +52,7 @@ def show_monster_id(monster_id):
 
     return jsonify(item_id.serialize()), 200
 
+
 @monster_bp.route('/<int:monster_id>', methods=['PUT'])
 @jwt_required()
 def update_monster(monster_id):
@@ -68,7 +61,6 @@ def update_monster(monster_id):
 
     if not item:
         return jsonify({'error': 'No hay ningun Monstruo con esa referencia'}), 404
-    
 
     if not item.name or not item.class_name or not item.race_name or not item.background_name:
         return jsonify({'error': 'Rellena los campos obligatorios'}), 400

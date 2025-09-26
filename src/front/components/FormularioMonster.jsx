@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
-import useGlobalReducer from "../hooks/useGlobalReducer"
 import { useNavigate } from "react-router-dom";
+import { createMonster } from "../serviceApi/monsterApi";
 
 export const FormularioMonster = () => {
-    const { store, dispatch } = useGlobalReducer()
     const [input, setInputs] = useState({});
     const [error, setError] = useState(null);
     const navigate = useNavigate();
@@ -17,7 +16,17 @@ export const FormularioMonster = () => {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
 
-        const dataMonster = await createCharacter(input);
+        // Validación extra de campos requeridos
+        const requiredFields = ["name", "type", "size", "challenge"];
+        const missingFields = requiredFields.filter(
+            field => !input[field] || input[field].trim() === ""
+        );
+        if (missingFields.length > 0) {
+            setError(`Faltan campos obligatorios: ${missingFields.join(", ")}`);
+            return;
+        }
+
+        const dataMonster = await createMonster(input);
 
         if (!dataMonster.success) {
             return setError(dataMonster.error || "Creación fallida");
@@ -26,11 +35,8 @@ export const FormularioMonster = () => {
             setError(null);
         }
 
-        navigate("/user/monsters");
+        navigate("/user/monster");
     };
-    useEffect(() => {
-
-    }, [])
 
     return (
         <div className="container col-md-5 my-5 basic-form">
@@ -55,15 +61,23 @@ export const FormularioMonster = () => {
                     </label>
                     <select
                         onChange={handleOnChange}
-                        name="class_name"
+                        name="type"
                         className="form-select"
                         required
                     >
                         <option value="">---</option>
-                        <option value="">aberration</option>
-                        <option value="">dragon</option>
-                        <option value="">elemental</option>
-                        
+                        <option value="aquatic">aquatic</option>
+                        <option value="celestial">celestial</option>
+                        <option value="construct">construct</option>
+                        <option value="elemental">elemental</option>
+                        <option value="fey">fey</option>
+                        <option value="fiend">fiend</option>
+                        <option value="giant">giant</option>
+                        <option value="humanoid">humanoid</option>
+                        <option value="monstrosity">monstrosity</option>
+                        <option value="ooze">ooze</option>
+                        <option value="plant">plant</option>
+                        <option value="undead">undead</option>
                     </select>
                 </div>
                 <div className="col-md-8">
@@ -72,23 +86,24 @@ export const FormularioMonster = () => {
                     </label>
                     <select
                         onChange={handleOnChange}
-                        name="race_name"
+                        name="subtype"
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
-                        <option value="">aquatic</option>
-                        <option value="">celestial</option>
-                        <option value="">construct</option>
-                        <option value="">elemental</option>
-                        <option value="">fey</option>
-                        <option value="">fiend</option>
-                        <option value="">giant</option>
-                        <option value="">humanoid</option>
-                        <option value="">monstrosity</option>
-                        <option value="">ooze</option>
-                        <option value="">plant</option>
-                        <option value="">undead</option>
+                        <option value="none">---</option>
+                        <option value="unknown">unknown</option>
+                        <option value="aquatic">aquatic</option>
+                        <option value="celestial">celestial</option>
+                        <option value="construct">construct</option>
+                        <option value="elemental">elemental</option>
+                        <option value="fey">fey</option>
+                        <option value="fiend">fiend</option>
+                        <option value="giant">giant</option>
+                        <option value="humanoid">humanoid</option>
+                        <option value="monstrosity">monstrosity</option>
+                        <option value="ooze">ooze</option>
+                        <option value="plant">plant</option>
+                        <option value="undead">undead</option>
                     </select>
                 </div>
                 <div className="col-md-8">
@@ -97,17 +112,17 @@ export const FormularioMonster = () => {
                     </label>
                     <select
                         onChange={handleOnChange}
-                        name="background_name"
+                        name="size"
                         className="form-select"
                         required
                     >
                         <option value="">---</option>
-                        <option value="">Tiny</option>
-                        <option value="">Small</option>
-                        <option value="">Medium</option>
-                        <option value="">Large</option>
-                        <option value="">Huge</option>
-                        <option value="">Gargantuan</option>
+                        <option value="Tiny">Tiny</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                        <option value="Huge">Huge</option>
+                        <option value="Gargantuan">Gargantuan</option>
                     </select>
                 </div>
                 <div className="col-md-8">
@@ -116,45 +131,45 @@ export const FormularioMonster = () => {
                     </label>
                     <select
                         onChange={handleOnChange}
-                        name="background_name"
+                        name="challenge"
                         className="form-select"
                         required
                     >
                         <option value="">---</option>
-                        <option value="">0</option>
-                        <option value="">1/8</option>
-                        <option value="">1/4</option>
-                        <option value="">1/2</option>
-                        <option value="">1</option>
-                        <option value="">2</option>
-                        <option value="">3</option>
-                        <option value="">4</option>
-                        <option value="">5</option>
-                        <option value="">6</option>
-                        <option value="">7</option>
-                        <option value="">8</option>
-                        <option value="">9</option>
-                        <option value="">10</option>
-                        <option value="">11</option>
-                        <option value="">12</option>
-                        <option value="">13</option>
-                        <option value="">14</option>
-                        <option value="">15</option>
-                        <option value="">16</option>
-                        <option value="">17</option>
-                        <option value="">18</option>
-                        <option value="">19</option>
-                        <option value="">20</option>
-                        <option value="">21</option>
-                        <option value="">22</option>
-                        <option value="">23</option>
-                        <option value="">24</option>
-                        <option value="">25</option>
-                        <option value="">26</option>
-                        <option value="">27</option>
-                        <option value="">28</option>
-                        <option value="">29</option>
-                        <option value="">30</option>
+                        <option value="0">0</option>
+                        <option value="1/8">1/8</option>
+                        <option value="1/4">1/4</option>
+                        <option value="1/2">1/2</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option>
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
                     </select>
                 </div>
                 <div className="col-12 text-center">
@@ -162,7 +177,7 @@ export const FormularioMonster = () => {
                         Submit new Monster
                     </button>
                 </div>
-                
+
             </form>
         </div>
     )

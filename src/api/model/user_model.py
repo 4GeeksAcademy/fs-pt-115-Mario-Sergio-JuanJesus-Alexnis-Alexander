@@ -5,6 +5,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from flask_bcrypt import generate_password_hash, check_password_hash
 from .magic_items_model import MagicsItems
 from .spell_model import Spell
+from .character_model import Character
 from .campaign_model import Campaign
 from .feats_model import Feats
 from .specie_model import Specie

@@ -1,3 +1,4 @@
+const urlApi = import.meta.env.VITE_BACKEND_URL;
 export const createMonster = async (newMonster) => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -13,20 +14,26 @@ export const createMonster = async (newMonster) => {
       body: JSON.stringify(newMonster),
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
+    if (response.headers.get("content-type")?.includes("application/json")) {
+      const data = await response.json();
+      if (!response.ok) {
+        return {
+          success: false,
+          error: data.error || "Error al crear Monstruo",
+        };
+      }
+      return {
+        success: true,
+        data: data,
+        msg: data.msg,
+      };
+    } else {
+      const text = await response.text();
       return {
         success: false,
-        error: data.error || "Error al crear Monstruo",
+        error: "Respuesta inesperada del servidor: " + text,
       };
     }
-
-    return {
-      success: true,
-      data: data,
-      msg: data.msg,
-    };
   } catch (error) {
     return {
       success: false,
@@ -48,20 +55,26 @@ export const showMonster = async (monster_id) => {
       },
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
+    if (response.headers.get("content-type")?.includes("application/json")) {
+      const data = await response.json();
+      if (!response.ok) {
+        return {
+          success: false,
+          error: data.error || "Error al mostrar el monstruo",
+        };
+      }
+      return {
+        success: true,
+        data: data,
+        msg: data.msg,
+      };
+    } else {
+      const text = await response.text();
       return {
         success: false,
-        error: data.error || "Error al mostrar el monstruo",
+        error: "Respuesta inesperada del servidor: " + text,
       };
     }
-
-    return {
-      success: true,
-      data: data,
-      msg: data.msg,
-    };
   } catch (error) {
     return {
       success: false,
@@ -88,20 +101,26 @@ export const updateMonster = async (updateMonster, monsterId) => {
       }
     );
 
-    const data = await response.json();
-
-    if (!response.ok) {
+    if (response.headers.get("content-type")?.includes("application/json")) {
+      const data = await response.json();
+      if (!response.ok) {
+        return {
+          success: false,
+          error: data.error,
+        };
+      }
+      return {
+        success: true,
+        data: data,
+        msg: data.msg,
+      };
+    } else {
+      const text = await response.text();
       return {
         success: false,
-        error: data.error,
+        error: "Respuesta inesperada del servidor: " + text,
       };
     }
-
-    return {
-      success: true,
-      data: data,
-      msg: data.msg,
-    };
   } catch (error) {
     return {
       success: false,
@@ -126,19 +145,25 @@ export const deleteMonster = async (monsterId) => {
       }
     );
 
-    const data = await response.json();
-
-    if (!response.ok) {
+    if (response.headers.get("content-type")?.includes("application/json")) {
+      const data = await response.json();
+      if (!response.ok) {
+        return {
+          success: false,
+          error: data.error,
+        };
+      }
+      return {
+        success: true,
+        msg: data.msg,
+      };
+    } else {
+      const text = await response.text();
       return {
         success: false,
-        error: data.error,
+        error: "Respuesta inesperada del servidor: " + text,
       };
     }
-
-    return {
-      success: true,
-      msg: data.msg,
-    };
   } catch (error) {
     return {
       success: false,
@@ -156,20 +181,25 @@ export const getAllMonsters= async () => {
       },
     });
 
-    const data = await response.json();
-    
-
-    if (!response.ok) {
+    if (response.headers.get("content-type")?.includes("application/json")) {
+      const data = await response.json();
+      if (!response.ok) {
+        return {
+          success: false,
+          error: data.error,
+        };
+      }
+      return {
+        success: true,
+        data: data,
+      };
+    } else {
+      const text = await response.text();
       return {
         success: false,
-        error: data.error,
+        error: "Respuesta inesperada del servidor: " + text,
       };
     }
-
-    return {
-      success: true,
-      data: data,
-    };
   } catch (error) {
     return {
       success: false,

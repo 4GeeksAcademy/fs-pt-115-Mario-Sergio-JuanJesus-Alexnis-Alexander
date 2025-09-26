@@ -10,12 +10,7 @@ from cloudinary import CloudinaryImage
 
 user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../templates')
 
-CORS(user_bp,
-    resources={r"/*": {"origins": "https://psychic-yodel-45w4x56vgg9hq976-3000.app.github.dev"}},
-    allow_headers=["Content-Type", "Authorization"],
-    expose_headers=["Content-Type"],
-    methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-     )
+CORS(user_bp)
 
 
 

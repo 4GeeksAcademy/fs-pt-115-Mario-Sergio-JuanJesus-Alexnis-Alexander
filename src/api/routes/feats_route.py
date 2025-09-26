@@ -47,7 +47,7 @@ def get_feats(feats_id):
     
     return jsonify(feats.serialize()), 200
 
-@feats_bp.route('/<int:feats_id', methods=['DELETE'])
+@feats_bp.route('/<int:feats_id>', methods=['DELETE'])
 @jwt_required()
 def delete_feats(feats_id):
     feats = Feats.query.get(feats_id)
@@ -59,7 +59,7 @@ def delete_feats(feats_id):
 
     return jsonify({'msg': 'Feats eliminado'}), 200
 
-@feats_bp.route('/<int:feats_id', methods=['PUT'])
+@feats_bp.route('/<int:feats_id>', methods=['PUT'])
 @jwt_required()
 def update_feats(feats_id):
     feats = Feats.query.get(feats_id)
