@@ -1,6 +1,7 @@
 from . import db
 from sqlalchemy import Integer, Text, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+# Si necesitas usar User, impórtalo dentro de la función o método donde se requiera
 
 
 class Character(db.Model):
