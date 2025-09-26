@@ -1,7 +1,7 @@
 from . import db
 from sqlalchemy import Integer, Text, String, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from .user_model import User
+# Si necesitas usar User, impórtalo dentro de la función o método donde se requiera
 
 
 class Character(db.Model):
@@ -12,6 +12,7 @@ class Character(db.Model):
     background_name: Mapped[str] = mapped_column(String(120), nullable=False)
 
     user_id: Mapped[int] = mapped_column(ForeignKey('user.id'), nullable=False)
+
     def serialize(self):
         return {
             "id": self.id,

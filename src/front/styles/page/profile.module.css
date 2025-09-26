@@ -248,6 +248,18 @@
   
 }
 
+.statNumberClasses {
+  color: #3498db;
+}
+
+.statNumberSpecies {
+  color: #2ecc71;
+}
+
+.statNumberCharacters {
+  color: #e67e22;
+}
+
 .statNumberItems {
   color: #f39c12;
 }
@@ -256,12 +268,16 @@
   color: #9b59b6;
 }
 
-.statNumberMissions {
+.statNumberBackgrounds {
   color: #27ae60;
 }
 
-.statNumberAchievements {
+.statNumberMonsters {
   color: #e74c3c;
+}
+
+.statNumberFeats {
+  color: #36cae4;
 }
 
 .statLabel {

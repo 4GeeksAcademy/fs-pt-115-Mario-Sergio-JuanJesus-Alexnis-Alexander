@@ -94,7 +94,7 @@ def delete_spell(spell_id):
         return jsonify({'msg': 'Spell no encontrado'}), 404
 
     db.session.delete(spell)
-    db.commit()
+    db.session.commit()
 
     return jsonify({'msg': 'Spell eliminado'}), 200
 

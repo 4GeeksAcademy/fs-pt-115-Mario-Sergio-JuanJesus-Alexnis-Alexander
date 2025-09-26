@@ -5,17 +5,39 @@ export const initialStore=()=>{
     magicsItems: [],
     classes: [],
     races: [],
-    backgrounds: []
+    backgrounds: [],
+    monsters: [],
+    spells: []
   }
 }
 
 export default function storeReducer(store, action = {}) {
   switch(action.type){
+    case 'set_monsters':
+      return{
+        ...store,
+        monsters: action.payload
+      }
+    case 'deleteMonster':
+      return{
+        ...store,
+        monsters: store.monsters.filter(item => item.id != action.payload)
+      }
     case 'set_classes':
       return{
         ...store,
         classes: action.payload
       }
+      case 'set_spells':
+      return{
+        ...store,
+        spells: action.payload
+      }
+      case 'deleteSpell':
+      return {
+        ...store,
+        spells: store.spells.filter(item => item.spell_id != action.payload)
+      };
     case 'set_races':
       return{
         ...store,
@@ -26,6 +48,26 @@ export default function storeReducer(store, action = {}) {
         ...store,
         backgrounds: action.payload
       }
+    case 'showBackground':
+      return {
+        ...store,
+        backgrounds: action.payload
+      };
+    case 'deleteBackground':
+      return {
+        ...store,
+        backgrounds: store.backgrounds.filter(item => item.id != action.payload)
+      };
+    case 'showMonsters':
+      return {
+        ...store,
+        monsters: action.payload
+      };
+    case 'deleteMonster':
+      return {
+        ...store,
+        monsters: store.monsters.filter(item => item.id != action.payload)
+      };
     case 'showMagicItem':
       return {
         ...store,
@@ -57,6 +99,6 @@ export default function storeReducer(store, action = {}) {
         campaign: store.campaign.filter(item => item.id != action.payload)
       };
     default:
-      throw Error('Unknown action.');
+      throw Error(action.type);
   }    
 }

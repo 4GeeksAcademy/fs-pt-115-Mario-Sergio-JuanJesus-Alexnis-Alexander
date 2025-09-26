@@ -20,7 +20,6 @@ export const createNewSpell =  async (newSpell) => {
         return {
             success: true,
             data: data,
-            token: data.token
         }
     } catch (error) {
         return {error: error.msg}
@@ -99,5 +98,35 @@ export const deleteSpell = async (spellId) => {
         }
     } catch (error) {
         return {error: error.msg} || 'Error de conexión'
+    }
+}
+
+export const getAllSpells = async () => {
+    try {
+        const response = await fetch(`${urlApi}/api/spells`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+            return {
+                success: false,
+                error: data.error
+            }
+        }
+
+        return {
+            success: true,
+            data: data
+        }
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message
+        }
     }
 }
