@@ -102,7 +102,7 @@ export const FormularioCharacter = () => {
                     </select>
                 </div>
                 <div className="col-12 text-center">
-                    <button type="submit" className="btn border m-4">
+                    <button type="submit" className="btn btn-primary m-4">
                         Submit new Character
                     </button>
                 </div>

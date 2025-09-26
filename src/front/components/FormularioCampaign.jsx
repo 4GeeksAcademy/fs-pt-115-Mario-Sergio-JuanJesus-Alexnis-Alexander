@@ -30,12 +30,6 @@ export const FormularioCampaign = () => {
 
     navigate("/user/campaigns");
   };
-  useEffect(() => {
-    getClasses(dispatch)
-    getRaces(dispatch)
-    getBackgrounds(dispatch)
-
-  }, [])
 
   return (
     <div className="container col-md-5 my-5 basic-form">
@@ -106,7 +100,7 @@ export const FormularioCampaign = () => {
           {error && <div className="alert alert-danger">{error}</div>}
         </div>
         <div className="col-12 text-center">
-          <button type="submit" className="btn border m-4">
+          <button type="submit" className="btn btn-primary m-4">
             Submit new Campaing
           </button>
         </div>

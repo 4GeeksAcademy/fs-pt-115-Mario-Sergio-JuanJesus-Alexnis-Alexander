@@ -18,7 +18,11 @@ export const CollectionDropdown = ({ closeDropdown }) => {
       text: " Create Magic Items",
       styles: styles.createBtn,
     },
-    { to: "", text: " Create Monsters", styles: styles.createBtn },
+    {
+      to: "user/create-monster",
+      text: " Create Monsters",
+      styles: styles.createBtn
+    },
     {
       to: "user/create-background",
       text: " Create Background",
@@ -57,7 +61,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             </button>
           </Link>
           <Link to={"/user/campaigns"}>
-            <button className={styles.campaignsBtn}>
+            <button className={styles.campaignsBtn} onClick={closeDropdown}>
               <span className={styles.titleBtn}>MY CAMPAIGNS</span>
             </button>
           </Link>
@@ -67,64 +71,64 @@ export const CollectionDropdown = ({ closeDropdown }) => {
             </button>
           </Link>
           <Link to={"/user/spell"}>
-            <button className={styles.spellsBtn}>
+            <button className={styles.spellsBtn} onClick={closeDropdown}>
               <span className={styles.titleBtn}>MY SPELLS</span>
             </button>
           </Link>
-          <Link to={""}>
-            <button className={styles.monstersBtn}>
+          <Link to={"/user/monster"}>
+            <button className={styles.monstersBtn} onClick={closeDropdown}>
               <span className={styles.titleBtn}>MY MONSTERS</span>
             </button>
           </Link>
-          <Link to={""}>
-            <button className={styles.diceBtn}>
+          <Link to={"https://dnddice.com/collections/build-your-own-set"} target="_blank" rel="noopener noreferrer">
+            <button className={styles.diceBtn} onClick={closeDropdown}>
               <span className={styles.titleBtn}>MY DICE</span>
             </button>
           </Link>
         </section>
 
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
-      <div className={styles.dropRightContainer}>
-        <section>
-          <h3 className="text-white mt-2">Homebrew:</h3>
-          <div className={styles.dropRight}>
-            {creationsList.map((item, index) => (
-              <Link
-                key={index}
-                to={item.to}
-                onClick={closeDropdown}
-                className={item.styles}
-              >
-                <span className="">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="11"
-                      fill="none"
-                      stroke="#F1C40F"
-                      strokeWidth="2"
-                    />
+        <div className={styles.dropRightContainer}>
+          <section>
+            <h3 className="text-white mt-2">Homebrew:</h3>
+            <div className={styles.dropRight}>
+              {creationsList.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.to}
+                  onClick={closeDropdown}
+                  className={item.styles}
+                >
+                  <span className="">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="11"
+                        fill="none"
+                        stroke="#F1C40F"
+                        strokeWidth="2"
+                      />
 
-                    <path
-                      d="M12 6v12M6 12h12"
-                      stroke="#F1C40F"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  {item.text}
-                </span>
-              </Link>
-            ))}
-          </div>
-        </section>
-      </div>
+                      <path
+                        d="M12 6v12M6 12h12"
+                        stroke="#F1C40F"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    {item.text}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
 
     </>
