@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify, Blueprint
 from ..model.magic_items_model import MagicsItems
+from flask_cors import CORS
 from ..extension_config import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 magics_items_bp = Blueprint('magic_items', __name__,
                             url_prefix='/user/magics-items')
 
+CORS(magics_items_bp)
 
 @magics_items_bp.route('/', methods=['GET'])
 @jwt_required()
