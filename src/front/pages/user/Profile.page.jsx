@@ -77,7 +77,6 @@ export const ProfilePage = () => {
 
   const userRank = calculatedUserRank(totalItems)
 
-  console.log(user.campaign);
   
 
   return (
