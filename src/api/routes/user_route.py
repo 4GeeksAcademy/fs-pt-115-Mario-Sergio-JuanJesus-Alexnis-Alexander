@@ -17,6 +17,8 @@ CORS(user_bp,
     methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
      )
 
+
+
 @user_bp.route('/signup', methods=['POST'])
 def sign_up():
     data = request.get_json()
