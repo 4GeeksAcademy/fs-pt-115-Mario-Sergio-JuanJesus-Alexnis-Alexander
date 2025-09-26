@@ -7,272 +7,272 @@ export const FormularioBackground = () => {
         <div className="container">
             <form className="row mt-5 border border-secondary-emphasis border-1 p-4">
                 <div className="p-2">
-                    <h5>FORMULARIO CREATE A BACKGROUND</h5>
+                    <h5>Formulario Create Background</h5>
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="backgroundName" className="form-label">
+                    <label htmlFor="name" className="form-label">
                         Name<span className="text-danger fs-5">*</span>
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="backgroundName"
+                        id="namee"
                         name="name"
                         required
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="backgroundVersion" className="form-label">
+                    <label htmlFor="version" className="form-label">
                         Version<span className="text-danger fs-5">*</span>
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="backgroundVersion"
+                        id="version"
                         name="version"
-                        required
+                        required=""
                     />
                 </div>
 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="backgroundIntroduction" className="form-label">
+                    <label htmlFor="introduction" className="form-label">
                         Introduction<span className="text-danger fs-5">*</span>
                     </label>
                     <textarea
                         className="form-control"
-                        id="backgroundIntroduction"
+                        id="introduction"
                         name="introduction"
                         rows="3"
-                        required
+                        required=""
                     />
                 </div>
                 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="abilityScoresDescription" className="form-label">
+                    <label htmlFor="abilities_score_descriptio" className="form-label">
                         Ability Scores Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="abilityScoresDescription"
-                        name="ability_scores_description"
+                        id="abilities_score_descriptio"
+                        name="abilities_score_descriptio"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="featDescription" className="form-label">
+                    <label htmlFor="feats_description" className="form-label">
                         Feat Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="featDescription"
-                        name="feat_description"
+                        id="feats_description"
+                        name="feats_description"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="skillProficienciesDescription" className="form-label">
+                    <label htmlFor="skill_proficiencies_description" className="form-label">
                         Skill Proficiencies Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="skillProficienciesDescription"
-                        name="skill_proficiencies_description"
+                        id="skill_proficiencies_description"
+                        name="skill_proficiencies_descriptionn"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="toolProficienciesDescription" className="form-label">
+                    <label htmlFor="tool_proficiencies_description" className="form-label">
                         Tool Proficiencies Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="toolProficienciesDescription"
+                        id="tool_proficiencies_descriptionn"
                         name="tool_proficiencies_description"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="languagesDescription" className="form-label">
+                    <label htmlFor="languages_description" className="form-label">
                         Languages Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="languagesDescription"
+                        id="languages_description"
                         name="languages_description"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="equipmentDescription" className="form-label">
+                    <label htmlFor="equipment_description" className="form-label">
                         Equipment Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="equipmentDescription"
+                        id="equipment_description"
                         name="equipment_description"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="tableName" className="form-label">
+                    <label htmlFor="specific_table_name" className="form-label">
                         Background Specific Table Name
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="tableName"
-                        name="background_specific_table_name"
+                        id="specific_table_name"
+                        name="specific_table_name"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="tableDescription" className="form-label">
+                    <label htmlFor="specific_tabla_desc" className="form-label">
                         Background Specific Table Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="tableDescription"
-                        name="background_specific_table_description"
+                        id="specific_tabla_desc"
+                        name="specific_tabla_desc"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="featureName" className="form-label">
+                    <label htmlFor="feature" className="form-label">
                         Feature Name
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="featureName"
-                        name="feature_name"
+                        id="feature"
+                        name="feature"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="featureDescription" className="form-label">
+                    <label htmlFor="feature_desc" className="form-label">
                         Feature Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="featureDescription"
-                        name="feature_description"
+                        id="feature_desc"
+                        name="feature_desc"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="variantName" className="form-label">
+                    <label htmlFor="variant" className="form-label">
                         Variant Name
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="variantName"
-                        name="variant_name"
+                        id="variant"
+                        name="variant"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="variantDescription" className="form-label">
+                    <label htmlFor="variant_desc" className="form-label">
                         Variant Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="variantDescription"
-                        name="variant_description"
+                        id="variant_desc"
+                        name="variant_desc"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="variantFeatureName" className="form-label">
+                    <label htmlFor="variant_feature" className="form-label">
                         Variant Feature Name
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="variantFeatureName"
-                        name="variant_feature_name"
+                        id="variant_feature"
+                        name="variant_feature"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="variantFeatureDescription" className="form-label">
+                    <label htmlFor="variant_feature_desc" className="form-label">
                         Variant Feature Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="variantFeatureDescription"
-                        name="variant_feature_description"
+                        id="variant_feature_desc"
+                        name="variant_feature_desc"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="suggestedCharacteristics" className="form-label">
+                    <label htmlFor="suggested_characteristics" className="form-label">
                         Suggested Characteristics Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="suggestedCharacteristics"
-                        name="suggested_characteristics_description"
+                        id="suggested_characteristics"
+                        name="suggested_characteristics"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="spellListDescription" className="form-label">
+                    <label htmlFor="spell_list_desc" className="form-label">
                         Spell List Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="spellListDescription"
-                        name="spell_list_description"
+                        id="spell_list_descn"
+                        name="spell_list_descn"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="spellListExtendedDescription" className="form-label">
+                    <label htmlFor="spell_list_extended" className="form-label">
                         Spell List Extended Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="spellListExtendedDescription"
-                        name="spell_list_extended_description"
+                        id="spell_list_extended"
+                        name="spell_list_extended"
                         rows="3"
                     />
                 </div>
 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="contactsDescription" className="form-label">
+                    <label htmlFor="contacts_list" className="form-label">
                         Contacts Description
                     </label>
                     <textarea
                         className="form-control"
-                        id="contactsDescription"
-                        name="contacts_description"
+                        id="contacts_list"
+                        name="contacts_list"
                         rows="3"
                     />
                 </div>
                 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="backgroundTags" className="form-label">
+                    <label htmlFor="background_tags" className="form-label">
                         Background Tags
                     </label>
                     <input
                         type="text"
                         className="form-control"
-                        id="backgroundTags"
+                        id="background_tags"
                         name="background_tags"
                     />
                 </div>

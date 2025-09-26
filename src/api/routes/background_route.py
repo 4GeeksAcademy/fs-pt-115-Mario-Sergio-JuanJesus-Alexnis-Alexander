@@ -16,9 +16,10 @@ def create_background():
     data = request.get_json()
     user_id = get_jwt_identity()
 
-    background_name = data.get("background_name")
-    base_description = data.get("base_description")
-    habilities_description = data.get("habilities_description")
+    name = data.get("name")
+    version = data.get("version")
+    introduction = data.get("introduction")
+    abilities_score_description = data.get("abilities_score_description")
     feats_description = data.get("feats_description")
     skill_proficiencies_description = data.get("skill_proficiencies_description")
     tool_proficiencies_description = data.get("tool_proficiencies_description")
@@ -33,14 +34,19 @@ def create_background():
     variant_feature = data.get("variant_feature")
     variant_feature_desc = data.get("variant_feature_desc")
     suggested_characteristics = data.get("suggested_characteristics")
-    spell_list_introduction = data.get("spell_list_introduction")
+    spell_list_desc = data.get("spell_list_desc")
     spell_list_extended = data.get("spell_list_extended")
     contacts_list = data.get("contacts_list")
+    background_tags = data.get("background_tags")
 
-    new_background = Background(
-        background_name=background_name,
-        base_description=base_description,
-        habilities_description=habilities_description,
+    if not name or not version or not introduction:
+        return jsonify({'msg': 'Spell y Level son requeridos'}), 400
+
+    new_background = Background (
+        name=name,
+        version=version,
+        introduction=introduction,
+        abilities_score_description=abilities_score_description,
         feats_description=feats_description,
         skill_proficiencies_description=skill_proficiencies_description,
         tool_proficiencies_description=tool_proficiencies_description,
@@ -55,9 +61,11 @@ def create_background():
         variant_feature=variant_feature,
         variant_feature_desc=variant_feature_desc,
         suggested_characteristics=suggested_characteristics,
-        spell_list_introduction=spell_list_introduction,
+        spell_list_desc=spell_list_desc,
         spell_list_extended=spell_list_extended,
         contacts_list=contacts_list,
+        background_tags=background_tags,
+
         user_id=int(user_id)
     )
 
@@ -95,10 +103,10 @@ def update_background(background_id):
     data = request.get_json()
     if not background:
         return jsonify({'msg': 'Background no encontrado'}), 404
-    
-    background.background_name = data.get("background_name", background.background_name)
-    background.base_description = data.get("base_description", background.base_description)
-    background.habilities_description = data.get("habilities_description", background.habilities_description)
+    background.name = data.get("name", background.name)
+    background.version = data.get("version", background.version)
+    background.introduction = data.get("introduction", background.introduction)
+    background.abilities_score_description = data.get("abilities_score_description", background.abilities_score_description)
     background.feats_description = data.get("feats_description", background.feats_description)
     background.skill_proficiencies_description = data.get("skill_proficiencies_description", background.skill_proficiencies_description)
     background.tool_proficiencies_description = data.get("tool_proficiencies_description", background.tool_proficiencies_description)
@@ -107,15 +115,16 @@ def update_background(background_id):
     background.specific_table_name = data.get("specific_table_name", background.specific_table_name)
     background.specific_tabla_desc = data.get("specific_tabla_desc", background.specific_tabla_desc)
     background.feature = data.get("feature", background.feature)
-    background.feature_desc = data.get("feature_des", background.feature_desc)
+    background.feature_desc = data.get("feature_desc", background.feature_desc)
     background.variant = data.get("variant", background.variant)
     background.variant_desc = data.get("variant_desc", background.variant_desc)
     background.variant_feature = data.get("variant_feature", background.variant_feature)
     background.variant_feature_desc = data.get("variant_feature_desc", background.variant_feature_desc)
     background.suggested_characteristics = data.get("suggested_characteristics", background.suggested_characteristics)
-    background.spell_list_introduction = data.get("spell_list_introduction", background.spell_list_introduction)
+    background.spell_list_desc = data.get("spell_list_desc", background.spell_list_desc)
     background.spell_list_extended = data.get("spell_list_extended", background.spell_list_extended)
     background.contacts_list = data.get("contacts_list", background.contacts_list)
+    background.background_tags = data.get("background_tags", background.background_tags)
 
     db.session.commit()
 
