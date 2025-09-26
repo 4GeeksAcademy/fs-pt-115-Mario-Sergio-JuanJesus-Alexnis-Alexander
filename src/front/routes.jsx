@@ -34,6 +34,8 @@ import { WikiEquipment } from "./components/Wiki/WikiEquipment";
 import { WikiMagicItems } from "./components/Wiki/WikiMagicItems";
 import { WikiMonsters } from "./components/Wiki/WikiMonsters";
 import { SpellPage } from "./pages/user/Spell.page";
+import { ShowMonsterPage } from "./pages/user/ShowMonster.page";
+import { CreateMonsterPage } from "./pages/user/CreateMonster.page";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -95,7 +97,14 @@ export const router = createBrowserRouter(
           <Route path="wiki/classes" element={<WikiClasses />} />
           <Route path="wiki/feats" element={<WikiFeats />} />
           <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
-          
+        <Route path="user/create-monster" element={<CreateMonsterPage />} />  
+        <Route path="user/spell" element={<SpellPage />} />
+        <Route path="user/characters" element={<ShowCharactersPage />} />
+        <Route path="user/campaigns" element={<ShowCampaignPage />} />
+        <Route path="user/monster" element={<ShowMonsterPage />} />
+        <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
+        <Route path="wiki/classes" element={<WikiClasses />} />
+        <Route path="wiki/feats" element={<WikiFeats />} />
       </Route>
 
 

@@ -63,7 +63,7 @@ def get_subclasses(subclasses_id):
     
     return jsonify(subclasses.serialize()), 200
 
-@subclasses_bp.route('/<int:subclasses_id', methods=['DELETE'])
+@subclasses_bp.route('/<int:subclasses_id>', methods=['DELETE'])
 @jwt_required()
 def delete_subclasses(subclasses_id):
     subclasses = Subclasses.query.get(subclasses_id)
@@ -75,7 +75,7 @@ def delete_subclasses(subclasses_id):
 
     return jsonify({'msg': 'Subclasses eliminado'}), 200
 
-@subclasses_bp.route('/<int:subclasses_id', methods=['PUT'])
+@subclasses_bp.route('/<int:subclasses_id>', methods=['PUT'])
 @jwt_required()
 def update_subclasses(subclasses_id):
     subclasses = Subclasses.query.get(subclasses_id)
