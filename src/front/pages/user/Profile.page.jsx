@@ -3,6 +3,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { updateUser, uploadImg } from "../../serviceApi/userApi";
 import styles from "../../styles/page/profile.module.css";
 import { calculatedUserRank } from "../../rules-forms/userRank.rules";
+import { use } from "react";
 
 export const ProfilePage = () => {
   const { user, token, userInfo } = useAuth();
@@ -70,10 +71,14 @@ export const ProfilePage = () => {
   };
 
   const totalItems =
-    (user?.magics_items?.length || 0) +
+    (user?.magics_items?.length || 0) + 
+    (user?.monsters?.length || 0) +
+    (user?.backgrounds?.length || 0) +
+    (user?.classes?.length || 0) +
+    (user?.specie?.length || 0) +
+    (user?.feats?.length || 0) +
     (user?.spells?.length || 0) +
-    (user?.character?.length || 0) +
-    (user?.campaign?.length || 0)
+    (user?.character?.length || 0) 
 
   const userRank = calculatedUserRank(totalItems)
 
@@ -283,24 +288,12 @@ export const ProfilePage = () => {
                               <div className="col-md-3">
                                 <div className={styles.statCard}>
                                   <h4
-                                    className={`${styles.statNumber} ${styles.statNumberMissions}`}
+                                    className={`${styles.statNumber} ${styles.statNumberCharacters}`}
                                   >
                                     {user?.character?.length || 0}
                                   </h4>
                                   <small className={styles.statLabel}>
                                     Characters
-                                  </small>
-                                </div>
-                              </div>
-                              <div className="col-md-3">
-                                <div className={styles.statCard}>
-                                  <h4
-                                    className={`${styles.statNumber} ${styles.statNumberAchievements}`}
-                                  >
-                                    {user?.campaign.length || 0}
-                                  </h4>
-                                  <small className={styles.statLabel}>
-                                    Campaigns
                                   </small>
                                 </div>
                               </div>
@@ -325,6 +318,78 @@ export const ProfilePage = () => {
                                   </h4>
                                   <small className={styles.statLabel}>
                                     Spells
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberFeats}`}
+                                  >
+                                    {user?.feats?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Feats
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberMonsters}`}
+                                  >
+                                    {user?.monsters?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Monsters
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberBackgrounds}`}
+                                  >
+                                    {user?.backgrounds?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Backgrounds
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberSpecies}`}
+                                  >
+                                    {user?.specie?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Species
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberClasses}`}
+                                  >
+                                    {user?.class?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Classes
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberTotal}`}
+                                  >
+                                    {totalItems}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Total Items
                                   </small>
                                 </div>
                               </div>

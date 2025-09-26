@@ -10,6 +10,7 @@ export const Navbar = () => {
   const { logOut, user, loading } = useAuth();
   const [showCollectionDropdown, setShowCollectionDropdown] = useState(false);
   const [showRulesDropdown, setShowRulesDropdown] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const navigate = useNavigate();
   const timeDropdown = useRef(null);
 
@@ -24,16 +25,24 @@ export const Navbar = () => {
     }, 200);
   };
 
+  const handleMouseEnterProfile = () => {
+    if (timeDropdown.current) clearTimeout(timeDropdown.current);
+    setShowProfileDropdown(true);
+    setShowCollectionDropdown(false);
+    setShowRulesDropdown(false);
+  }
   const handleMouseEnterCollection = () => {
     if (timeDropdown.current) clearTimeout(timeDropdown.current);
     setShowCollectionDropdown(true);
     setShowRulesDropdown(false);
+    setShowProfileDropdown(false);
   };
 
   const handleMouseEnterRules = () => {
     if (timeDropdown.current) clearTimeout(timeDropdown.current);
     setShowRulesDropdown(true);
     setShowCollectionDropdown(false);
+    setShowProfileDropdown(false);
   };
 
   if (loading) {
@@ -131,30 +140,41 @@ export const Navbar = () => {
             </form>
           ) : (
             <form className="d-flex gap-2 ms-auto me-1">
-              <div className="btn-group">
+              <div className="btn-group" onMouseEnter={handleMouseEnterProfile} onMouseLeave={() => handleMouseLeave(setShowProfileDropdown)}>
                 <button
-                  className={`${styles.button} dropdown-toggle`}
+                  className={styles.button}
                   type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
                 >
                   {user.username}
                 </button>
-                <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark" style={{background: 'black'}}>
-                  <li>
-                    <Link to={"/user/profile"}>
-                      <span className="dropdown-item text-white">Profile</span>
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider bg-light" />
-                  </li>
-                  <li>
-                    <button className="dropdown-item text-danger" onClick={handleLogout}>
-                      Sign out
-                    </button>
-                  </li>
-                </ul>
+                {showProfileDropdown && (
+                  <ul
+                    className="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                    style={{
+                      background: 'black',
+                      display: 'block',
+                      position: 'absolute',
+                      top: '100%',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      zIndex: 1000
+                    }}
+                  >
+                    <li>
+                      <Link to={"/user/profile"}>
+                        <span className="dropdown-item text-white">Profile</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider bg-light" />
+                    </li>
+                    <li>
+                      <button className="dropdown-item text-danger" onClick={handleLogout}>
+                        Sign out
+                      </button>
+                    </li>
+                  </ul>
+                )}
               </div>
             </form>
           )}

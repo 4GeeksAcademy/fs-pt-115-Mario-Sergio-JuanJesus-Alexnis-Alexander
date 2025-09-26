@@ -12,6 +12,8 @@ user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../te
 
 CORS(user_bp)
 
+
+
 @user_bp.route('/signup', methods=['POST'])
 def sign_up():
     data = request.get_json()
