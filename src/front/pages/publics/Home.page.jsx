@@ -5,12 +5,8 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 export const Home = () => {
-	// const { user } = useAuth0()
 	const { user } = useAuth()
-	console.log(user);
 	
-	
-
 	return (
 		<>
 			<div className={styles.main}>
