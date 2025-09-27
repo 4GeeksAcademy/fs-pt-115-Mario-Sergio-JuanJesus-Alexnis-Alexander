@@ -100,3 +100,33 @@ export const deleteBackground = async (background_id) => {
         return {error: error.msg} || 'Error de conexión'
     }
 }
+
+export const getAllBackgrounds = async () => {
+    try {
+        const response = await fetch(`${urlApi}/api/background`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+            return {
+                success: false,
+                error: data.error
+            }
+        }
+
+        return {
+            success: true,
+            data: data
+        }
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message
+        }
+    }
+}

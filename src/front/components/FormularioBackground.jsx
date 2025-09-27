@@ -1,13 +1,41 @@
 import { useState } from "react";
 import "../styles/forms/backgroundForm.css"
+import { useNavigate } from "react-router-dom";
+import { createNewBackground } from "../serviceApi/backgroundApi";
 
 export const FormularioBackground = () => {
     const [page, setPage] = useState(1)
+    const [input, setInputs] = useState({});
+
+    const navigate = useNavigate();
+
+    const handleOnChange = (e) => {
+        const { name, value, checked, type } = e.target;
+
+        const inputValue = type === "checkbox" ? checked : value;
+
+        setInputs({ ...input, [name]: inputValue });
+
+    };
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        const dataBackground = await createNewBackground(input);
+        if (!dataBackground.success) {
+            console.log(dataBackground?.error || "Creación fallida");
+            return;
+        } else {
+            setInputs({});
+        }
+        navigate("/user/background");
+    };
+
+    console.log(input)
+
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
             <h2 className="text-center fw-bold">Create Background</h2>
-            <form className="row fw-bold">
+            <form className="row fw-bold" onSubmit={handleOnSubmit}>
 
                 {page === 1 &&
                     <>
@@ -16,9 +44,10 @@ export const FormularioBackground = () => {
                                 Name<span className="text-danger fs-5">*</span>
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
-                                id="namee"
+                                id="name"
                                 name="name"
                                 required
                             />
@@ -29,11 +58,12 @@ export const FormularioBackground = () => {
                                 Version<span className="text-danger fs-5">*</span>
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
                                 id="version"
                                 name="version"
-                                required=""
+                                required
                             />
                         </div>
 
@@ -42,11 +72,12 @@ export const FormularioBackground = () => {
                                 Introduction<span className="text-danger fs-5">*</span>
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="introduction"
                                 name="introduction"
                                 rows="3"
-                                required=""
+                                required
                             />
                         </div>
 
@@ -55,6 +86,7 @@ export const FormularioBackground = () => {
                                 Ability Scores Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="abilities_score_descriptio"
                                 name="abilities_score_descriptio"
@@ -67,6 +99,7 @@ export const FormularioBackground = () => {
                                 Feat Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="feats_description"
                                 name="feats_description"
@@ -79,6 +112,7 @@ export const FormularioBackground = () => {
                                 Skill Proficiencies Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="skill_proficiencies_description"
                                 name="skill_proficiencies_descriptionn"
@@ -91,6 +125,7 @@ export const FormularioBackground = () => {
                                 Tool Proficiencies Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="tool_proficiencies_descriptionn"
                                 name="tool_proficiencies_description"
@@ -108,6 +143,7 @@ export const FormularioBackground = () => {
                                 Languages Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="languages_description"
                                 name="languages_description"
@@ -120,6 +156,7 @@ export const FormularioBackground = () => {
                                 Equipment Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="equipment_description"
                                 name="equipment_description"
@@ -132,6 +169,7 @@ export const FormularioBackground = () => {
                                 Background Specific Table Name
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
                                 id="specific_table_name"
@@ -144,6 +182,7 @@ export const FormularioBackground = () => {
                                 Background Specific Table Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="specific_tabla_desc"
                                 name="specific_tabla_desc"
@@ -156,6 +195,7 @@ export const FormularioBackground = () => {
                                 Feature Name
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
                                 id="feature"
@@ -168,6 +208,7 @@ export const FormularioBackground = () => {
                                 Feature Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="feature_desc"
                                 name="feature_desc"
@@ -180,6 +221,7 @@ export const FormularioBackground = () => {
                                 Variant Name
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
                                 id="variant"
@@ -192,6 +234,7 @@ export const FormularioBackground = () => {
                                 Variant Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="variant_desc"
                                 name="variant_desc"
@@ -209,6 +252,7 @@ export const FormularioBackground = () => {
                                 Variant Feature Name
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
                                 id="variant_feature"
@@ -221,6 +265,7 @@ export const FormularioBackground = () => {
                                 Variant Feature Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="variant_feature_desc"
                                 name="variant_feature_desc"
@@ -233,6 +278,7 @@ export const FormularioBackground = () => {
                                 Suggested Characteristics Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="suggested_characteristics"
                                 name="suggested_characteristics"
@@ -245,6 +291,7 @@ export const FormularioBackground = () => {
                                 Spell List Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="spell_list_desc"
                                 name="spell_list_desc"
@@ -257,6 +304,7 @@ export const FormularioBackground = () => {
                                 Spell List Extended Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="spell_list_extended"
                                 name="spell_list_extended"
@@ -269,6 +317,7 @@ export const FormularioBackground = () => {
                                 Contacts Description
                             </label>
                             <textarea
+                                onChange={handleOnChange}
                                 className="form-control"
                                 id="contacts_list"
                                 name="contacts_list"
@@ -281,6 +330,7 @@ export const FormularioBackground = () => {
                                 Background Tags
                             </label>
                             <input
+                                onChange={handleOnChange}
                                 type="text"
                                 className="form-control"
                                 id="background_tags"
@@ -288,12 +338,11 @@ export const FormularioBackground = () => {
                             />
                         </div>
                     </>
-                    }
+                }
 
                 <div className="number-page-background">
                     <button type="button" disabled={page === 1} onClick={() => setPage((p) => Math.max(p - 1, 1))}>prev</button>
-                    <span>{page} / 2</span>
-                    <button type="button" disabled={page === 2} onClick={() => setPage((p) => Math.min(p + 1, 2))}>prev</button>
+                    <span>{page} / 3</span>
                     <button type="button" disabled={page === 3} onClick={() => setPage((p) => Math.min(p + 1, 3))}>next</button>
                 </div>
 

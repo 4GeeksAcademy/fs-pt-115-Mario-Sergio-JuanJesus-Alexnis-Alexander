@@ -48,11 +48,6 @@ export default function storeReducer(store, action = {}) {
         ...store,
         backgrounds: action.payload
       }
-    case 'showBackground':
-      return {
-        ...store,
-        backgrounds: action.payload
-      };
     case 'deleteBackground':
       return {
         ...store,
