@@ -74,6 +74,7 @@ export const router = createBrowserRouter(
         <Route path="user/create-subclasses" element={<CreateSubclassPage />} />
         <Route path="user/create-feats" element={<CreateFeatPage />} />
         <Route path="user/magics-items" element={<ShowMagicsItemsPage />} />
+        <Route path="user/spell" element={<SpellPage />} />
         <Route path="user/characters" element={<ShowCharactersPage />} />
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
         <Route path="user/create-monster" element={<CreateMonsterPage />} />
