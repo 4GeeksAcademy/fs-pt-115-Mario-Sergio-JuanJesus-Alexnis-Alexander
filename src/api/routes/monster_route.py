@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify, Blueprint
 from ..model.monster_model import Monster
 from ..extension_config import db
+from flask_cors import CORS
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 monster_bp = Blueprint('monster', __name__, url_prefix='/user/monster')
 
+CORS(monster_bp)
 
 @monster_bp.route('/', methods=["POST"])
 @jwt_required()

@@ -54,7 +54,6 @@ export const router = createBrowserRouter(
         <Route path="wiki/equipment" element={<WikiEquipment />} />
         <Route path="wiki/magic-items" element={<WikiMagicItems />} />
         <Route path="wiki/monsters" element={<WikiMonsters />} />
-
       </Route>
 
 
@@ -77,47 +76,15 @@ export const router = createBrowserRouter(
         <Route path="user/magics-items" element={<ShowMagicsItemsPage />} />
         <Route path="user/characters" element={<ShowCharactersPage />} />
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
-
-
-          {/* METER AQUI LAS RUTAS: */}
-          <Route path="user/profile" element={ <ProfilePage/> }/>
-          <Route path="user/create-spell" element={ <Formspell/> }/>
-          <Route path="user/create-character" element={ <CreateCharacterPage/> }/>
-          <Route path="user/create-feat" element={ <CreateFeatPage/> }/>
-          <Route path="user/create-magic-item" element={ <CreateMagicItemPage/> }/>
-          <Route path="user/create-campaign" element={ <PageFormCampaign/>}/>
-          <Route path="user/create-background" element={ <CreateBackgroundPage/> }/>
-          <Route path="user/create-specie" element={ <CreateSpeciePage/> }/>
-          <Route path="user/create-subclasses" element={ <CreateSubclassPage/> }/>
-          <Route path="user/create-feats" element={ <CreateFeatPage/> }/>
-          <Route path="user/magics-items" element={ <ShowMagicsItemsPage/> }/>
-          <Route path="user/spell" element={ <SpellPage/> }/>
-          <Route path="user/characters" element={ <ShowCharactersPage/> }/>
-          <Route path="user/campaigns" element={ <ShowCampaignPage/> }/>
-          <Route path="wiki/classes" element={<WikiClasses />} />
-          <Route path="wiki/feats" element={<WikiFeats />} />
-          <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
-        <Route path="user/create-monster" element={<CreateMonsterPage />} />  
-        <Route path="user/spell" element={<SpellPage />} />
-        <Route path="user/characters" element={<ShowCharactersPage />} />
-        <Route path="user/campaigns" element={<ShowCampaignPage />} />
+        <Route path="user/create-monster" element={<CreateMonsterPage />} />
         <Route path="user/monster" element={<ShowMonsterPage />} />
-        <Route path="wiki/backgrounds" element={<WikiBackgrounds />} />
-        <Route path="wiki/classes" element={<WikiClasses />} />
-        <Route path="wiki/feats" element={<WikiFeats />} />
       </Route>
-
-
-
 
       {/* AQUI SOLO LAS RUTAS DE LOGIN Y REGISTER */}
       <Route element={<AuthLayout />}>
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/login' element={<LoginPage />} />
       </Route>
-
-
-
 
     </Route>
   )
