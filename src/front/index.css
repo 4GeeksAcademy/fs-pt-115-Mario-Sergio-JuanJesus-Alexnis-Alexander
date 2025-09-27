@@ -10,4 +10,23 @@
 body {
     background-image: url("../front/assets/img/builder1k.jpg");
     background-repeat: no-repeat;
+
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Para Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* Para asegurar que funcione en todos lados */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
 }

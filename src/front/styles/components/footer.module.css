@@ -1,0 +1,145 @@
+.footer {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+  color: #f4d03f;
+  padding: 50px 0 20px;
+  margin-top: auto;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10rem;
+  margin-bottom: 1rem;
+}
+
+.footerSection h3 {
+  color: #f1c40f;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  position: relative;
+}
+.footerSection h3::after {
+  content: '';
+  position: absolute;
+  left: 5%;
+  transform: translateX(-50%);
+  bottom: -8px;
+  width: 30px;
+  height: 2px;
+  background-color: #f1c40f;
+}
+
+.footerSection p {
+  margin-bottom: 15px;
+  color: #f4d03f;
+  line-height: 1.7;
+}
+
+.footerSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footerSection ul li {
+  margin-bottom: 10px;
+}
+
+.footerSection ul li a {
+  color: #f4d03f;
+  text-decoration: none;
+  transition: padding-left 0.3s ease;
+  display: inline-block;
+}
+
+.footerSection ul li a:hover {
+  color: #f1c40f;
+  padding-left: 5px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f4d03f;
+}
+
+.contactItem svg {
+  width: 18px;
+  height: 18px;
+  fill: #f1c40f;
+  flex-shrink: 0;
+}
+
+.footerBottom {
+  border-top: 1px solid #333333;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.footerBottomContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.copyright {
+  color: #f4d03f;
+  font-size: 0.9rem;
+}
+
+.copyright p {
+  margin: 0;
+}
+
+.footerNav {
+  display: flex;
+  gap: 30px;
+}
+
+.footerNav a {
+  color: #f4d03f;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footerNav a:hover {
+  color: #f1c40f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footerBottomContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footerNav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+
+}
