@@ -9,6 +9,13 @@ background_bp = Blueprint('background', __name__, url_prefix='/background')
 
 CORS(background_bp)
 
+@background_bp.route('/', methods=['GET'])
+@jwt_required()
+def show_magics_items():
+    user_id = get_jwt_identity()
+    backgrounds = Background.query.filter_by(user_id=user_id).all()
+
+    return jsonify([background.serialize() for background in backgrounds]), 200
 
 @background_bp.route('/', methods=['POST'])
 @jwt_required()
@@ -92,7 +99,7 @@ def delete_background(background_id):
         return jsonify ({'msg': 'Background no encontrado'}), 404
     
     db.session.delete(background)
-    db.commit()
+    db.session.commit()
 
     return jsonify({'msg': 'Background eliminado'}), 200
 
