@@ -44,7 +44,7 @@ export default function storeReducer(store, action = {}) {
         ...store,
         feats: action.payload
       }
-      case 'deletefeats':
+      case 'deleteFeats':
       return {
         ...store,
         feats: store.feats.filter(item => item.feats_id != action.payload)

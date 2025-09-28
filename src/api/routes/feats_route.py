@@ -15,7 +15,7 @@ def show_feats():
     user_id = get_jwt_identity()
     feats = Feats.query.filter_by(user_id=user_id).all()
 
-    return jsonify([feats.serialize() for feats in feats]), 200
+    return jsonify([feat.serialize() for feat in feats]), 200
 
 @feats_bp.route('/', methods=['POST'])
 @jwt_required()

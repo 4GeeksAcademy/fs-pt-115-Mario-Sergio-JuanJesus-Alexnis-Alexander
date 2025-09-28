@@ -2,7 +2,7 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useState } from "react";
 import { deleteFeats } from "../serviceApi/featsApi";
 
-export const createNewFeats = ({ item }) => {
+export const FeatsCard = ({ item }) => {
   const { dispatch } = useGlobalReducer();
   const [error, setError] = useState(false);
 

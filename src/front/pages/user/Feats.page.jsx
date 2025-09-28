@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
-import { getAllSpells } from "../../serviceApi/spellApi";
-import { SpellCard } from "../../components/SpellCard";
-
+import { getAllFeats } from "../../serviceApi/featsApi";
+import { FeatsCard } from "../../components/FeatsCard";
 
 export const FeatsPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -46,12 +45,12 @@ export const FeatsPage = () => {
   return (
     <>
       <h1 className="text-center mt-5">
-        Aqui esta tu lista de spell
+        Aqui esta tu lista de feats
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.feats.length > 0 ? (
-          store.feats.map((feats) => (
-            <FeatsCard key={feats.feats_id} item={feats} />
+          store.feats.map((feat) => (
+            <FeatsCard key={feat.feats_id} item={feat} />
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
