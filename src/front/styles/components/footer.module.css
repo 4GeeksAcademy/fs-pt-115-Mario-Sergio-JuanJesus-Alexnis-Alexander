@@ -84,6 +84,15 @@
   flex-shrink: 0;
 }
 
+.contactItem a {
+  color: #f4d03f;
+  text-decoration: none;
+}
+
+.contactItem a:hover {
+  border-bottom: solid 1px #f1c40f;
+}
+
 .footerBottom {
   border-top: 1px solid #333333;
   padding-top: 30px;
