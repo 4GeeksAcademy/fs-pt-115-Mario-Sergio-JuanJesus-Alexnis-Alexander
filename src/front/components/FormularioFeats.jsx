@@ -26,7 +26,7 @@ export const FormularioFeats = () => {
         <div className="col-md-6 mt-3">
           <label htmlFor="featTags" className="form-label">Feat Tags</label>
           <select id="featTags" className="form-select" name="feat_tags">
-            <option selected disabled value="">Selecciona...</option>
+            <option selected disabled value="">-</option>
             <option>Combat</option>
             <option>Magic</option>
             <option>Ability</option>
