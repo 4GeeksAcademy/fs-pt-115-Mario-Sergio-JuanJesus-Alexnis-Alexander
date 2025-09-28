@@ -9,6 +9,14 @@ subclasses_bp = Blueprint ('subclasses', __name__, url_prefix='/subclasses')
 
 CORS(subclasses_bp)
 
+@subclasses_bp.route('/', methods=['GET'])
+@jwt_required()
+def show_subclasses():
+    user_id = get_jwt_identity()
+    subclasses = Subclasses.query.filter_by(user_id=user_id).all()
+
+    return jsonify([subclasse.serialize() for subclasse in subclasses]), 200
+
 @subclasses_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_subclasses():
@@ -71,7 +79,7 @@ def delete_subclasses(subclasses_id):
         return jsonify ({'msg': 'Subclasses no encontrada'}), 404
     
     db.session.delete(subclasses)
-    db.commit()
+    db.session.commit()
 
     return jsonify({'msg': 'Subclasses eliminado'}), 200
 
