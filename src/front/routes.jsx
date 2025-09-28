@@ -36,6 +36,7 @@ import { WikiMonsters } from "./components/Wiki/WikiMonsters";
 import { SpellPage } from "./pages/user/Spell.page";
 import { ShowMonsterPage } from "./pages/user/ShowMonster.page";
 import { CreateMonsterPage } from "./pages/user/CreateMonster.page";
+import { SpeciePage } from "./pages/user/Specie.page";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -74,6 +75,7 @@ export const router = createBrowserRouter(
         <Route path="user/create-subclasses" element={<CreateSubclassPage />} />
         <Route path="user/create-feats" element={<CreateFeatPage />} />
         <Route path="user/magics-items" element={<ShowMagicsItemsPage />} />
+        <Route path="user/specie" element={<SpeciePage/>} />
         <Route path="user/characters" element={<ShowCharactersPage />} />
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
         <Route path="user/create-monster" element={<CreateMonsterPage />} />
