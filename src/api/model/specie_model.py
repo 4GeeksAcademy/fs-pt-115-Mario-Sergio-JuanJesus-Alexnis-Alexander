@@ -16,7 +16,7 @@ class Specie(db.Model):
     group: Mapped[Optional[str]]= mapped_column(String(255))
     description: Mapped[str] = mapped_column(String(255), nullable=False)
     hide_trait: Mapped[Optional[str]]= mapped_column(Text)
-    specie_trait: Mapped[Optional[str]]= mapped_column(String(255))
+    specie_trait: Mapped[str] = mapped_column(String(255), nullable=False)
     will_have_species: Mapped[Optional[str]]= mapped_column(String(255))
     large_avatar: Mapped[Optional[str]]= mapped_column(String(255))
     portrait_avatar: Mapped[Optional[str]]= mapped_column(String(255))
