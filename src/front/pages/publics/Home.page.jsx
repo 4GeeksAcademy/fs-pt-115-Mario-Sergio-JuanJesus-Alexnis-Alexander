@@ -2,9 +2,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import dropstyles from "../../styles/components/menuDropdown.module.css";
 import styles from "../../styles/page/home.module.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Home = () => {
-	const { user } = useAuth0()
+	// const { user } = useAuth0()
+	const { user } = useAuth()
+	console.log(user);
+	
+	
 
 	return (
 		<>
@@ -36,7 +41,7 @@ export const Home = () => {
 								{!user && <p className={styles.text}>Si eres un apasionado de Dungeons & Dragons, no dudes en registrarte y comenzar a explorar todo lo que D&D MASTERS OF INFINITY tiene para ofrecer. Ya seas un jugador experimentado o un principiante, nuestra plataforma está diseñada para adaptarse a tus necesidades y mejorar tu experiencia de juego.</p>}
 								{!user && <p className={styles.text}>Regístrate hoy mismo y comienza tu aventura con nosotros.</p>}
 								{!user && <div className={styles.buttonContainer}><Link to="/login" className={styles.button}>Regístrate</Link></div>}
-								{user && <h2 className={styles.subtitle}>¡Hola {user.nickname}!</h2>}
+								{user && <h2 className={styles.subtitle}>¡Hola {user.username}!</h2>}
 								{user && <p className={styles.text}>Gracias por ser parte de nuestra comunidad. Explora nuestras funcionalidades y comienza a crear y gestionar tus partidas de Dungeons & Dragons de manera sencilla y eficiente.</p>}
 								{user && <p className={styles.text}>¡Que comience la aventura!</p>}
 								{user && <section className={dropstyles.dropLeft}>

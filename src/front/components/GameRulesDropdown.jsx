@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from '../styles/components/menuDropdown.module.css'
+import styles from '../styles/components/menuDropdown.module.css';
 
 export const GameRulesDropdown = ({ closeDropdown }) => {
   return (

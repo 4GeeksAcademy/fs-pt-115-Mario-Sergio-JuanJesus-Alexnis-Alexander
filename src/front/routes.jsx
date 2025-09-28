@@ -54,7 +54,6 @@ export const router = createBrowserRouter(
         <Route path="wiki/equipment" element={<WikiEquipment />} />
         <Route path="wiki/magic-items" element={<WikiMagicItems />} />
         <Route path="wiki/monsters" element={<WikiMonsters />} />
-
       </Route>
 
 
@@ -79,17 +78,11 @@ export const router = createBrowserRouter(
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
       </Route>
 
-
-
-
       {/* AQUI SOLO LAS RUTAS DE LOGIN Y REGISTER */}
       <Route element={<AuthLayout />}>
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/login' element={<LoginPage />} />
       </Route>
-
-
-
 
     </Route>
   )
