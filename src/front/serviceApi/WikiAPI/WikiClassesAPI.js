@@ -34,7 +34,7 @@ export const getClassLevels = async (classIndex) => {
     if (!response.ok) throw new Error(`Error al obtener niveles de ${classIndex}`);
     const data = await response.json();
 
-    // Mapeamos los niveles y extraemos class_specific
+    
     return data.map(lvl => ({
       level: lvl.level,
       prof_bonus: lvl.prof_bonus,

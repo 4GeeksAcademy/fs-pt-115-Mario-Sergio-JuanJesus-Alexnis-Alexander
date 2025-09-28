@@ -1,18 +1,13 @@
 from flask import Flask, request, jsonify, Blueprint
-from flask_cors import CORS
 from ..model.magic_items_model import MagicsItems
+from flask_cors import CORS
 from ..extension_config import db
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 magics_items_bp = Blueprint('magic_items', __name__,
                             url_prefix='/user/magics-items')
 
-CORS(magics_items_bp,
-    resources={r"/*": {"origins": "https://psychic-yodel-45w4x56vgg9hq976-3000.app.github.dev"}},
-    allow_headers=["Content-Type", "Authorization"],
-    expose_headers=["Content-Type"],
-    methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"])
-
+CORS(magics_items_bp)
 
 @magics_items_bp.route('/', methods=['GET'])
 @jwt_required()
@@ -100,7 +95,7 @@ def update_magic_item(magic_item_id):
         'attunement_description', item.attunement_description)
     item.description = data.get('description', item.description)
 
-    if not item.name or not item.rarity or not item.base_item_type or not item.attunement_description or not item.description:
+    if not item.name or not item.rarity or not item.base_item_type or not item.description:
         return jsonify({'error': 'Rellena los campos obligatorios'}), 400
 
     # ***Campos opcionales***

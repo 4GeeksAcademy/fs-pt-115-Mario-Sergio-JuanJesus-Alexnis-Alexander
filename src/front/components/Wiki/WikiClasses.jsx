@@ -16,7 +16,7 @@ import wizardImg from "../../assets/img/638607460388570205.png"
 
 
 const classImages = {
-  barbarian: barbarianImg, // <-- aquí usamos la importación
+  barbarian: barbarianImg, 
   bard: bardImg,
   cleric: clericImg,
   druid: druidImg,
@@ -40,9 +40,9 @@ const primaryAbilities = {
   paladin: { name: "Strength & Charisma", desc: "Paladins are united by their oaths to stand against the forces of annihilation and corruption. Whether sworn before a god’s altar, in a sacred glade before nature spirits, or in a moment of desperation and grief with the dead as the only witnesses, a Paladin’s oath is a powerful bond." },
   ranger: { name: "Dexterity & Wisdom", desc: "Far from bustling cities, amid the trees of trackless forests and across wide plains, Rangers keep their unending watch in the wilderness. Rangers learn to track their quarry as a predator does, moving stealthily through the wilds and hiding themselves in brush and rubble." },
   rogue: { name: "Dexterity", desc: "Rogues rely on cunning, stealth, and their foes’ vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem. A few even learn magical tricks to supplement their other abilities. " },
-  sorcerer: { name: "Charisma", desc: "orcerers wield innate magic that is stamped into their being. Some Sorcerers can’t name the origin of their power, while others trace it to strange events in their personal or family history" },
+  sorcerer: { name: "Charisma", desc: "Sorcerers wield innate magic that is stamped into their being. Some Sorcerers can’t name the origin of their power, while others trace it to strange events in their personal or family history" },
   warlock: { name: "Charisma", desc: "Warlocks quest for knowledge that lies hidden in the fabric of the multiverse. They often begin their search for magical power by delving into tomes of forbidden lore, dabbling in invocations meant to attract the power of extraplanar beings, or seeking places of power where the influence of these beings can be felt" },
-  wizard: { name: "izards are defined by their exhaustive study of magic’s inner workings. They cast spells of explosive fire, arcing lightning, subtle deception, and spectacular transformations. Their magic conjures monsters from other planes of existence, glimpses the future, or forms protective barriers" },
+  wizard: { name: "Intelligence", desc: "Wizards are defined by their exhaustive study of magic’s inner workings. They cast spells of explosive fire, arcing lightning, subtle deception, and spectacular transformations. Their magic conjures monsters from other planes of existence, glimpses the future, or forms protective barriers" },
 };
 
 export const WikiClasses = () => {

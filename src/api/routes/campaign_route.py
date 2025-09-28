@@ -6,13 +6,7 @@ from flask_jwt_extended import get_jwt_identity, jwt_required
 
 campaign_bp = Blueprint('campaign', __name__, url_prefix='/user/campaigns')
 
-CORS(
-    campaign_bp,
-    resources={r"/*": {"origins": "https://psychic-yodel-*-3000.app.github.dev"}},
-    allow_headers=["Content-Type", "Authorization"],
-    expose_headers=["Content-Type"],
-    methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
-)
+CORS(campaign_bp)
 
 @campaign_bp.route('/', methods=['POST']) 
 @jwt_required()

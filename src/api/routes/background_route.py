@@ -76,7 +76,7 @@ def get_background(background_id):
     
     return jsonify(backgrond.serialize()), 200
 
-@background_bp.route('/<int:background_id', methods=['DELETE'])
+@background_bp.route('/<int:background_id>', methods=['DELETE'])
 @jwt_required()
 def delete_background(background_id):
     background = Background.query.get(background_id)
@@ -88,7 +88,7 @@ def delete_background(background_id):
 
     return jsonify({'msg': 'Background eliminado'}), 200
 
-@background_bp.route('/<int:background_id', methods=['PUT'])
+@background_bp.route('/<int:background_id>', methods=['PUT'])
 @jwt_required()
 def update_background(background_id):
     background = Background.query.get(background_id)

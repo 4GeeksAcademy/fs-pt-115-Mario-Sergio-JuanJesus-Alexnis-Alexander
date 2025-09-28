@@ -1,7 +1,7 @@
 export const FormularioSpecie = () => {
     return (
         <div className="container col-md-5 my-5 basic-form">
-            <h2 className="text-center fw-bold">CREATE A SPECIES</h2>
+            <h2 className="text-center fw-bold">Create a Species</h2>
             <form className="row fw-bold">
 
                 <div className="col-md-12 mb-3">
@@ -119,7 +119,7 @@ export const FormularioSpecie = () => {
                     </select>
                 </div>
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="description" className="form-label">
                         Description<span className="text-danger">*</span>
                     </label>

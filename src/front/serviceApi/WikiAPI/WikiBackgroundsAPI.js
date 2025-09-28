@@ -12,21 +12,21 @@ export const getBackgroundsList = async () => {
   }
 };
 
-// Función para obtener detalles completos del background
+
 export const getBackgroundDetails = async (index) => {
   try {
     const res = await fetch(`${BASE_URL}/${index}`);
     if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
     const data = await res.json();
 
-    // Aquí hacemos llamadas adicionales para feats, equipment o ability scores si existen
+    
     let feat = null;
     let ability_scores = [];
     let equipment = [];
 
-    // Ejemplo: si background tiene un feature con un feat (Magic Initiate, etc.)
+    
     if (data.starting_proficiencies) {
-      // Se puede mapear proficiencies
+      
       const skills = data.starting_proficiencies.map(p => ({ name: p.name }));
       data.skill_proficiencies = skills;
     }
@@ -35,12 +35,12 @@ export const getBackgroundDetails = async (index) => {
       equipment = data.starting_equipment.map(e => ({ name: e.equipment.name }));
     }
 
-    // Si quieres traer feats específicos, tendrías que hacer fetch de cada URL
+    
     if (data.feature) {
       feat = data.feature.name;
     }
 
-    // Ability scores: algunos backgrounds no tienen, pero podemos simularlo o extraerlo
+    
     if (data.language_options) {
       ability_scores = ["Intelligence", "Wisdom", "Charisma"]; // ejemplo fijo
     }

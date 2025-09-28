@@ -5,7 +5,7 @@ import { useDisabledFields } from "../hooks/useDisabledFields";
 import { initialDisabled, rules } from "../rules-forms/magicsItems.rules";
 
 export const FormMagicItems = () => {
-  
+
   const [input, setInputs] = useState({});
   const [error, setError] = useState(null);
   const { disabledFields, updateDisabledFields } = useDisabledFields(
@@ -13,7 +13,7 @@ export const FormMagicItems = () => {
     initialDisabled
   );
   const navigate = useNavigate();
-  
+
   const handleOnChange = (e) => {
     const { name, value, checked, type } = e.target;
 
@@ -21,7 +21,7 @@ export const FormMagicItems = () => {
 
     setInputs({ ...input, [name]: inputValue });
     updateDisabledFields(name, inputValue);
-    
+
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +37,7 @@ export const FormMagicItems = () => {
 
   return (
     <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center fw-bold">Create your Magic Item</h2>
+      <h2 className="text-center fw-bold">Create Your Magic Item</h2>
       <form onSubmit={handleOnSubmit} className="row g-2">
         <div className="col-md-6">
           <label htmlFor="name" className="form-label">
