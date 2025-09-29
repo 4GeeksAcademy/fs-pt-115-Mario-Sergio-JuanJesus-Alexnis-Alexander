@@ -100,3 +100,33 @@ export const deleteSubclasses = async (subclasses_id) => {
         return {error: error.msg} || 'Error de conexión'
     }
 }
+
+export const getAllSubclasses = async () => {
+    try {
+        const response = await fetch(`${urlApi}/api/subclasses`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+
+        const data = await response.json()
+
+        if (!response.ok) {
+            return {
+                success: false,
+                error: data.error
+            }
+        }
+
+        return {
+            success: true,
+            data: data
+        }
+    } catch (error) {
+        return {
+            success: false,
+            error: error.message
+        }
+    }
+}
