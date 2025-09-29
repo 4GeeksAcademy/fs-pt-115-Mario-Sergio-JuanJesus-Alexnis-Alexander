@@ -29,14 +29,14 @@ export const FormularioSpell = () => {
         const dataSpell = await createNewSpell(input);
         if (!dataSpell.success) {
             console.log(dataSpell?.error || "Creación fallida");
-            return ;
+            return;
         } else {
             setInputs({});
         }
         navigate("/user/spell");
     };
 
-console.log(input)
+    console.log(input)
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
@@ -57,6 +57,7 @@ console.log(input)
                                 id="spell_name"
                                 name="spell_name"
                                 required=""
+                                value={input.spell_name || ""}
                             />
                         </div>
 
@@ -71,6 +72,7 @@ console.log(input)
                                 className="form-control"
                                 id="spell_level"
                                 name="spell_level"
+                                value={input.spell_level || ""}
                             />
                         </div>
 
@@ -78,7 +80,13 @@ console.log(input)
                             <label htmlFor="spell_school" className="form-label">
                                 Spell School<span className="text-danger">*</span>
                             </label><br />
-                            <select onChange={handleOnChange} name="spell_school" id="spell_school" className="form-select">
+                            <select
+                                onChange={handleOnChange}
+                                name="spell_school"
+                                id="spell_school"
+                                className="form-select"
+                                value={input.spell_school || "-"}
+                            >
                                 <option>-</option>
                                 <option value={"Abjuration"}>Abjuration</option>
                                 <option value={"Conjuration"}>Conjuration</option>
@@ -99,6 +107,7 @@ console.log(input)
                                 id="casting_time"
                                 name="casting_time"
                                 required=""
+                                value={input.casting_time || ""}
                             />
                         </div>
 
@@ -106,7 +115,13 @@ console.log(input)
                             <label htmlFor="casting_time_select" className="form-label">
                                 Casting Time Select
                             </label><br />
-                            <select onChange={handleOnChange} name="casting_time_select" id="casting_time_select" className="form-select">
+                            <select
+                                onChange={handleOnChange}
+                                name="casting_time_select"
+                                id="casting_time_select"
+                                className="form-select"
+                                value={input.casting_time_select || "-"}
+                            >
                                 <option>-</option>
                                 <option value={"Action"}>Action</option>
                                 <option value={"Bonus Action"}>Bonus Action</option>
@@ -127,18 +142,42 @@ console.log(input)
                                 id="reaction_casting_time"
                                 name="reaction_casting_time"
                                 disabled={disabledFields.reaction_casting_time}
+                                value={input.reaction_casting_time || ""}
                             />
                         </div>
-
                         <div className="col-md-4 mb-3">
                             <label className="form-label d-block">
                                 Components
                             </label>
-                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="v" id="v" autoComplete="off" />
+                            <input
+                                onChange={handleOnChange}
+                                type="checkbox"
+                                className="btn-check"
+                                name="v"
+                                id="v"
+                                autoComplete="off"
+                                checked={!!input.v}
+                            />
                             <label className="btn btn-outline-secondary" htmlFor="v">V</label>
-                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="s" id="s" autoComplete="off" />
+                            <input
+                                onChange={handleOnChange}
+                                type="checkbox"
+                                className="btn-check"
+                                name="s"
+                                id="s"
+                                autoComplete="off"
+                                checked={!!input.s}
+                            />
                             <label className="btn btn-outline-secondary" htmlFor="s">S</label>
-                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="m" id="m" autoComplete="off" />
+                            <input
+                                onChange={handleOnChange}
+                                type="checkbox"
+                                className="btn-check"
+                                name="m"
+                                id="m"
+                                autoComplete="off"
+                                checked={!!input.m}
+                            />
                             <label className="btn btn-outline-secondary" htmlFor="m">M</label>
                         </div>
 
@@ -154,6 +193,7 @@ console.log(input)
                                 id="material_components"
                                 name="material_components"
                                 disabled={disabledFields.material_components}
+                                value={input.material_components || ""}
                             />
                         </div>
 
@@ -161,7 +201,13 @@ console.log(input)
                             <label htmlFor="spell_range" className="form-label">
                                 Spell Range<span className="text-danger">*</span>
                             </label><br />
-                            <select onChange={handleOnChange} name="spell_range" id="spell_range" className="form-select">
+                            <select
+                                onChange={handleOnChange}
+                                name="spell_range"
+                                id="spell_range"
+                                className="form-select"
+                                value={input.spell_range || "-"}
+                            >
                                 <option>-</option>
                                 <option value={"Self"}>Self</option>
                                 <option value={"Touch"}>Touch</option>
@@ -182,6 +228,7 @@ console.log(input)
                                 id="range_distance"
                                 name="range_distance"
                                 disabled={disabledFields.range_distance}
+                                value={input.range_distance || ""}
                             />
                         </div>
 
@@ -189,7 +236,13 @@ console.log(input)
                             <label htmlFor="duration_type" className="form-label">
                                 Duration Type<span className="text-danger">*</span>
                             </label><br />
-                            <select onChange={handleOnChange} name="duration_type" id="duration_type" className="form-select">
+                            <select
+                                onChange={handleOnChange}
+                                name="duration_type"
+                                id="duration_type"
+                                className="form-select"
+                                value={input.duration_type || "-"}
+                            >
                                 <option>-</option>
                                 <option value={"Concentration"}>Concentration</option>
                                 <option value={"Instantaneous"}>Instantaneous</option>
@@ -209,6 +262,7 @@ console.log(input)
                                 id="duration"
                                 name="duration"
                                 disabled={disabledFields.duration}
+                                value={input.duration || ""}
                             />
                         </div>
 
@@ -216,7 +270,14 @@ console.log(input)
                             <label htmlFor="duration_select" className="form-label">
                                 Duration Select<span className="text-danger">*</span>
                             </label><br />
-                            <select onChange={handleOnChange} disabled={disabledFields.duration_select} name="duration_select" id="duration_select" className="form-select">
+                            <select
+                                onChange={handleOnChange}
+                                disabled={disabledFields.duration_select}
+                                name="duration_select"
+                                id="duration_select"
+                                className="form-select"
+                                value={input.duration_select || "-"}
+                            >
                                 <option>-</option>
                                 <option value={"Round"}>Round</option>
                                 <option value={"Minute"}>Minute</option>
@@ -236,6 +297,7 @@ console.log(input)
                                 id="description"
                                 name="description"
                                 required=""
+                                value={input.description || ""}
                             />
                         </div>
                     </>
@@ -247,21 +309,42 @@ console.log(input)
                             <label htmlFor="ritual_spell" className="form-label">
                                 Ritual Spell
                             </label>
-                            <input onChange={handleOnChange} name="ritual_spell" id="ritual_spell" type="checkbox" required="" />
+                            <input
+                                onChange={handleOnChange}
+                                name="ritual_spell"
+                                id="ritual_spell"
+                                type="checkbox"
+                                required=""
+                                checked={!!input.ritual_spell}
+                            />
                         </div>
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="at_higher_levels" className="form-label">
                                 At Higher Levels Scaling
                             </label>
-                            <input onChange={handleOnChange} name="at_higher_levels" id="at_higher_levels" type="checkbox" required="" />
+                            <input
+                                onChange={handleOnChange}
+                                name="at_higher_levels"
+                                id="at_higher_levels"
+                                type="checkbox"
+                                required=""
+                                checked={!!input.at_higher_levels}
+                            />
                         </div>
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="higher_level_scaling" className="form-label">
                                 Higher Level Scaling
                             </label><br />
-                            <select onChange={handleOnChange} disabled={disabledFields.higher_level_scaling} name="higher_level_scaling" id="higher_level_scaling" className="form-select">
+                            <select
+                                onChange={handleOnChange}
+                                disabled={disabledFields.higher_level_scaling}
+                                name="higher_level_scaling"
+                                id="higher_level_scaling"
+                                className="form-select"
+                                value={input.higher_level_scaling || "-"}
+                            >
                                 <option>-</option>
                                 <option value={"Character Level"}>Character Level</option>
                                 <option value={"Spell Scale"}>Spell Scale</option>
@@ -280,6 +363,7 @@ console.log(input)
                                 id="available_for_classes"
                                 name="available_for_classes"
                                 required=""
+                                value={input.available_for_classes || ""}
                             />
                         </div>
                     </>

@@ -139,3 +139,99 @@ a {
   font-weight: 500;
 }
 
+.classeswikibtn {
+  background-image: url("https://lasetadelgoblin.com/wp-content/uploads/2021/09/dnd2-900x317.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.classeswikibtn:hover {
+  background-size: 110%; 
+}
+
+.specieswikibtn {
+  background-image: url("https://geekdad.com/wp-content/uploads/2024/09/dnd2024-Give-it-a-Try.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.specieswikibtn:hover {
+  background-size: 110%; 
+}
+
+
+.backgroundswikibtn {
+  background-image: url("https://mythcreants.com/wp-content/uploads/2022/09/Stryxhaven-824x550.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 30%; 
+  border: none;
+}
+
+.backgroundswikibtn:hover {
+  background-size: 110%; 
+}
+
+.equipmentwikibtn {
+  background-image: url("https://olddungeonmaster.com/wp-content/uploads/2020/08/player-equipment.jpg?w=640");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.equipmentwikibtn:hover {
+  background-size: 110%; 
+}
+
+.featswikibtn {
+  background-image: url("https://static0.cbrimages.com/wordpress/wp-content/uploads/2021/09/DD-Artificer.jpg?w=1600&h=900&fit=crop");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 30%;
+  border: none;
+}
+
+.featswikibtn:hover {
+  background-size: 110%; 
+}
+
+.spellswikibtn {
+  background-image: url("https://www.dndbeyond.com/attachments/10/598/the-three-constants-of-magic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.spellswikibtn:hover {
+  background-size: 110%; 
+}
+
+.magicitemswikibtn {
+  background-image: url("https://static0.cbrimages.com/wordpress/wp-content/uploads/2023/04/15-common-magical-items-your-d-d-party-will-thank-you-for.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.magicitemswikibtn:hover {
+  background-size: 110%; 
+}
+
+.monsterswikibtn {
+  background-image: url("https://static0.cbrimages.com/wordpress/wp-content/uploads/2022/11/Shadow-of-the-Dragon-Queen-Dragonlance.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.monsterswikibtn:hover {
+  background-size: 110%; 
+}

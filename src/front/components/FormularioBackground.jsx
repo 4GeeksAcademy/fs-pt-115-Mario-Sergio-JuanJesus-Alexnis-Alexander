@@ -50,6 +50,7 @@ export const FormularioBackground = () => {
                                 id="name"
                                 name="name"
                                 required
+                                value={input.name || ""}
                             />
                         </div>
 
@@ -64,6 +65,7 @@ export const FormularioBackground = () => {
                                 id="version"
                                 name="version"
                                 required
+                                value={input.version || ""}
                             />
                         </div>
 
@@ -78,6 +80,7 @@ export const FormularioBackground = () => {
                                 name="introduction"
                                 rows="3"
                                 required
+                                value={input.introduction || ""}
                             />
                         </div>
 
@@ -91,6 +94,7 @@ export const FormularioBackground = () => {
                                 id="abilities_score_descriptio"
                                 name="abilities_score_descriptio"
                                 rows="3"
+                                value={input.abilities_score_descriptio || ""}
                             />
                         </div>
 
@@ -104,6 +108,7 @@ export const FormularioBackground = () => {
                                 id="feats_description"
                                 name="feats_description"
                                 rows="3"
+                                value={input.feats_description || ""}
                             />
                         </div>
 
@@ -117,6 +122,7 @@ export const FormularioBackground = () => {
                                 id="skill_proficiencies_description"
                                 name="skill_proficiencies_descriptionn"
                                 rows="3"
+                                value={input.skill_proficiencies_descriptionn || ""}
                             />
                         </div>
 
@@ -130,6 +136,7 @@ export const FormularioBackground = () => {
                                 id="tool_proficiencies_descriptionn"
                                 name="tool_proficiencies_description"
                                 rows="3"
+                                value={input.tool_proficiencies_description || ""}
                             />
                         </div>
                     </>
@@ -148,6 +155,7 @@ export const FormularioBackground = () => {
                                 id="languages_description"
                                 name="languages_description"
                                 rows="3"
+                                value={input.languages_description || ""}
                             />
                         </div>
 
@@ -161,6 +169,7 @@ export const FormularioBackground = () => {
                                 id="equipment_description"
                                 name="equipment_description"
                                 rows="3"
+                                value={input.equipment_description || ""}
                             />
                         </div>
 
@@ -174,6 +183,7 @@ export const FormularioBackground = () => {
                                 className="form-control"
                                 id="specific_table_name"
                                 name="specific_table_name"
+                                value={input.specific_table_name || ""}
                             />
                         </div>
 
@@ -187,6 +197,7 @@ export const FormularioBackground = () => {
                                 id="specific_tabla_desc"
                                 name="specific_tabla_desc"
                                 rows="3"
+                                value={input.specific_tabla_desc || ""}
                             />
                         </div>
 
@@ -200,6 +211,7 @@ export const FormularioBackground = () => {
                                 className="form-control"
                                 id="feature"
                                 name="feature"
+                                value={input.feature || ""}
                             />
                         </div>
 
@@ -213,6 +225,7 @@ export const FormularioBackground = () => {
                                 id="feature_desc"
                                 name="feature_desc"
                                 rows="3"
+                                value={input.feature_desc || ""}
                             />
                         </div>
 
@@ -226,6 +239,7 @@ export const FormularioBackground = () => {
                                 className="form-control"
                                 id="variant"
                                 name="variant"
+                                value={input.variant || ""}
                             />
                         </div>
 
@@ -239,6 +253,7 @@ export const FormularioBackground = () => {
                                 id="variant_desc"
                                 name="variant_desc"
                                 rows="3"
+                                value={input.variant_desc || ""}
                             />
                         </div>
                     </>
@@ -257,6 +272,7 @@ export const FormularioBackground = () => {
                                 className="form-control"
                                 id="variant_feature"
                                 name="variant_feature"
+                                value={input.variant_feature || ""}
                             />
                         </div>
 
@@ -270,6 +286,7 @@ export const FormularioBackground = () => {
                                 id="variant_feature_desc"
                                 name="variant_feature_desc"
                                 rows="3"
+                                value={input.variant_feature_desc || ""}
                             />
                         </div>
 
@@ -283,6 +300,7 @@ export const FormularioBackground = () => {
                                 id="suggested_characteristics"
                                 name="suggested_characteristics"
                                 rows="3"
+                                value={input.suggested_characteristics || ""}
                             />
                         </div>
 
@@ -296,6 +314,7 @@ export const FormularioBackground = () => {
                                 id="spell_list_desc"
                                 name="spell_list_desc"
                                 rows="3"
+                                value={input.spell_list_desc || ""}
                             />
                         </div>
 
@@ -309,6 +328,7 @@ export const FormularioBackground = () => {
                                 id="spell_list_extended"
                                 name="spell_list_extended"
                                 rows="3"
+                                value={input.spell_list_extended || ""}
                             />
                         </div>
 
@@ -322,6 +342,7 @@ export const FormularioBackground = () => {
                                 id="contacts_list"
                                 name="contacts_list"
                                 rows="3"
+                                value={input.contacts_list || ""}
                             />
                         </div>
 
@@ -335,6 +356,7 @@ export const FormularioBackground = () => {
                                 className="form-control"
                                 id="background_tags"
                                 name="background_tags"
+                                value={input.background_tags || ""}
                             />
                         </div>
                     </>

@@ -1,6 +1,8 @@
 
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import { useState } from "react";
+import { deleteCampaign } from "../serviceApi/campaignApi";
+
 
 export const CampaignCard = ({ item }) => {
   const { dispatch } = useGlobalReducer();
@@ -8,14 +10,14 @@ export const CampaignCard = ({ item }) => {
 
   const handleOnDelete = async (id) => {
     setError(false);
-    const deleteCampaign = await deleteCampaign(id);
+    const deleteCampaignApi = await deleteCampaign(id);
     if (deleteCampaign.success) {
       dispatch({
         type: "deleteCampaign",
         payload: id,
       });
     } else {
-      setError(deleteCampaign.error);
+      setError(deleteCampaignApi.error);
     }
   };
 
