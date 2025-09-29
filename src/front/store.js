@@ -1,5 +1,5 @@
-export const initialStore=()=>{
-  return{
+export const initialStore = () => {
+  return {
     characters: [],
     campaign: [],
     magicsItems: [],
@@ -7,93 +7,120 @@ export const initialStore=()=>{
     races: [],
     backgrounds: [],
     monsters: [],
-    spells: []
-  }
-}
+    spells: [],
+    species: [],
+  };
+};
 
 export default function storeReducer(store, action = {}) {
-  switch(action.type){
-    case 'set_monsters':
-      return{
-        ...store,
-        monsters: action.payload
-      }
-    case 'deleteMonster':
-      return{
-        ...store,
-        monsters: store.monsters.filter(item => item.id != action.payload)
-      }
-    case 'set_classes':
-      return{
-        ...store,
-        classes: action.payload
-      }
-      case 'set_spells':
-      return{
-        ...store,
-        spells: action.payload
-      }
-      case 'deleteSpell':
+  switch (action.type) {
+    case "set_monsters":
       return {
         ...store,
-        spells: store.spells.filter(item => item.spell_id != action.payload)
+        monsters: action.payload,
       };
-    case 'set_races':
-      return{
+    case "deleteMonster":
+      return {
         ...store,
-        races: action.payload
-      }
-    case 'set_backgrounds':
-      return{
+        monsters: store.monsters.filter((item) => item.id != action.payload),
+      };
+    case "set_classes":
+      return {
         ...store,
+        classes: action.payload,
+      };
+    case "set_spells":
+      return {
+        ...store,
+        spells: action.payload,
+      };
+    case "deleteSpell":
+      return {
+        ...store,
+        spells: store.spells.filter((item) => item.spell_id != action.payload),
+      };
+    case "set_species":
+      return {
+        ...store,
+        species: action.payload,
+      };
+    case "deleteSpecie":
+      return {
+        ...store,
+        species: store.species.filter(
+          (item) => item.specie_id != action.payload
+        ),
+      };
+    case "set_races":
+      return {
+        ...store,
+        races: action.payload,
+      };
+    case "set_backgrounds":
+      return {
+        ...store,
+        backgrounds: action.payload,
+      };
+    case "showBackground":
         backgrounds: action.payload
       }
     case 'deleteBackground':
       return {
         ...store,
-        backgrounds: store.backgrounds.filter(item => item.id != action.payload)
+        backgrounds: action.payload,
       };
-    case 'showMonsters':
+    case "deleteBackground":
       return {
         ...store,
-        monsters: action.payload
+        backgrounds: store.backgrounds.filter(
+          (item) => item.id != action.payload
+        ),
       };
-    case 'deleteMonster':
+    case "showMonsters":
       return {
         ...store,
-        monsters: store.monsters.filter(item => item.id != action.payload)
+        monsters: action.payload,
       };
-    case 'showMagicItem':
+    case "deleteMonster":
       return {
         ...store,
-        magicsItems: action.payload
+        monsters: store.monsters.filter((item) => item.id != action.payload),
       };
-    case 'deleteMagicItem':
+    case "showMagicItem":
       return {
         ...store,
-        magicsItems: store.magicsItems.filter(item => item.id != action.payload)
+        magicsItems: action.payload,
       };
-    case 'showCharacters':
+    case "deleteMagicItem":
       return {
         ...store,
-        characters: action.payload
+        magicsItems: store.magicsItems.filter(
+          (item) => item.id != action.payload
+        ),
       };
-    case 'deleteCharacter':
+    case "showCharacters":
       return {
         ...store,
-        characters: store.characters.filter(item => item.id != action.payload)
+        characters: action.payload,
       };
-    case 'showCampaign':
+    case "deleteCharacter":
       return {
         ...store,
-        campaign: action.payload
+        characters: store.characters.filter(
+          (item) => item.id != action.payload
+        ),
       };
-    case 'deleteCampaign':
+    case "showCampaign":
       return {
         ...store,
-        campaign: store.campaign.filter(item => item.id != action.payload)
+        campaign: action.payload,
+      };
+    case "deleteCampaign":
+      return {
+        ...store,
+        campaign: store.campaign.filter((item) => item.id != action.payload),
       };
     default:
       throw Error(action.type);
-  }    
+  }
 }

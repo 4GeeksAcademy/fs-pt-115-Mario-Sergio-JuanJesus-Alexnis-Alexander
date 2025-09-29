@@ -1,65 +1,171 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createNewSpecie } from "../serviceApi/specieApi";
+
 export const FormularioSpecie = () => {
+
+    const [page, setPage] = useState(1)
+    const [input, setInputs] = useState({});
+
+    const navigate = useNavigate();
+
+    const handleOnChange = (e) => {
+        const { name, value, checked, type } = e.target;
+
+        const inputValue = type === "checkbox" ? checked : value;
+
+        setInputs({ ...input, [name]: inputValue });
+
+    };
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        const dataSpecie = await createNewSpecie(input);
+        if (!dataSpecie.success) {
+            console.log(dataSpecie?.error || "Creación fallida");
+            return;
+        } else {
+            setInputs({});
+        }
+        navigate("/user/specie");
+    };
+
+    console.log(input)
+
+
     return (
         <div className="container col-md-5 my-5 basic-form">
             <h2 className="text-center fw-bold">Create a Species</h2>
-            <form className="row fw-bold">
+            <form onSubmit={handleOnSubmit} className="row fw-bold">
 
-                <div className="col-md-6 mb-3">
-                    <label htmlFor="backgroundName" className="form-label">
+                <div className="col-md-12 mb-3">
+                    <label htmlFor="name" className="form-label">
                         Name<span className="text-danger">*</span>
                     </label>
-                    <input
-                        type="text"
+                    <textarea
+                        onChange={handleOnChange}
                         className="form-control"
                         id="name"
                         name="name"
-                        required
-                    />
-                </div>
-
-                <div className="col-md-6 mb-3">
-                    <label htmlFor="backgroundVersion" className="form-label">
-                        Size<span className="text-danger">*</span>
-                    </label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="size"
-                        name="size"
+                        rows="3"
                         required
                     />
                 </div>
 
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="backgroundVersion" className="form-label">
-                        Short Description<span className="text-danger">*</span>
+                    <label htmlFor="version" className="form-label">
+                        Version
                     </label>
-                    <input
-                        type="text"
+                    <textarea
+                        onChange={handleOnChange}
                         className="form-control"
-                        id="backgroundVersion"
+                        id="version"
                         name="version"
-                        required
+                        rows="3"
+                    />
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="" className="form-label">
+                        Size<span className="text-danger">*</span>
+                    </label><br />
+                    <select name="size" id="size" className="form-select" onChange={handleOnChange}>
+
+                        <option>-</option>
+                        <option value={"Small"}>Small</option>
+                        <option value={"Medium"}>Medium</option>
+                        <option value={"Large"}>Large</option>
+                        <option value={"Huge"}>Huge</option>
+                    </select>
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="speed_walking" className="form-label">
+                        Speed Walking
+                    </label>
+                    <textarea
+                        onChange={handleOnChange}
+                        className="form-control"
+                        id="speed_walking"
+                        name="speed_walking"
+                        rows="3"
+                    />
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="speed_burrowing" className="form-label">
+                        Speed Burrowing
+                    </label>
+                    <textarea
+                        onChange={handleOnChange}
+                        className="form-control"
+                        id="speed_burrowing"
+                        name="speed_burrowing"
+                        rows="3"
+                    />
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="speed_flying" className="form-label">
+                        Speed Flying
+                    </label>
+                    <textarea
+                        onChange={handleOnChange}
+                        className="form-control"
+                        id="speed_flying"
+                        name="speed_flying"
+                        rows="3"
+                    />
+                </div>
+
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="speed_swimming" className="form-label">
+                        Speed Swimming
+                    </label>
+                    <textarea
+                        onChange={handleOnChange}
+                        className="form-control"
+                        id="speed_swimming"
+                        name="speed_swimming"
+                        rows="3"
                     />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="speciesGroup" className="form-label">
+                    <label htmlFor="short_description" className="form-label">
+                        Short Description
+                    </label>
+                    <textarea
+                        onChange={handleOnChange}
+                        className="form-control"
+                        id="short_description"
+                        name="speed_swimming"
+                        rows="3"
+                    />
+                </div>
+
+                <div className="col-md-12 mb-3">
+                    <label htmlFor="group" className="form-label">
                         Species Group
                     </label>
-                    <select id="speciesGroup" className="form-select" name="species_group">
-                        <option selected disabled value="">-</option>
-                        <option value="a">Group A</option>
-                        <option value="b">Group B</option>
-                        <option value="c">Group C</option>
+                    <select name="group" id="group" className="form-select" onChange={handleOnChange}>
+                        <option>-</option>
+                        <option value={"Aaracokra"}>Aaracokra</option>
+                        <option value={"Aasimar"}>Aasimar</option>
+                        <option value={"Bearfolk"}>Bearfolk</option>
+                        <option value={"Bugbear"}>Bugbear</option>
+                        <option value={"Cervan"}>Cervan</option>
+                        <option value={"Corvum"}>Corvum</option>
+                        <option value={"Dara"}>Dara</option>
+                        <option value={"Elf"}>Elf</option>
                     </select>
                 </div>
 
                 <div className="col-md-6 mb-3">
                     <label htmlFor="description" className="form-label">
-                        Introduction
+                        Description<span className="text-danger">*</span>
                     </label>
                     <textarea
+                        onChange={handleOnChange}
                         className="form-control"
                         id="description"
                         name="description"
@@ -68,41 +174,56 @@ export const FormularioSpecie = () => {
                     />
                 </div>
 
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="hide_trait" className="form-label">
+                        Hide Traits Heading
+                    </label>
+                    <input type="checkbox" onChange={handleOnChange} />
+                </div>
+
                 <div className="col-md-12 mb-3">
-                    <label htmlFor="traitIntroduction" className="form-label">
-                        Trait Description
+                    <label htmlFor="specie_trait" className="form-label">
+                        Species Trait Introduction<span className="text-danger">*</span>
                     </label>
                     <textarea
+                        onChange={handleOnChange}
                         className="form-control"
-                        id="traitIntroduction"
-                        name="species_trait_introduction"
+                        id="specie_trait"
+                        name="specie_trait"
                         rows="2"
                         required
                     />
                 </div>
 
-                <div className="col-md-12 mb-3">
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="hideTraitsHeading"
-                            name="hide_traits_heading"
-                        />
-                        <label className="form-check-label" htmlFor="hideTraitsHeading">
-                            Hide Traits Heading
-                        </label>
-                    </div>
+                <div className="col-md-4 mb-3">
+                    <label htmlFor="will_have_species" className="form-label">
+                        Will have Species Options?
+                    </label>
+                    <input type="checkbox" onChange={handleOnChange} />
                 </div>
 
                 <div className="col-md-6 mb-3">
-                    <label htmlFor="portraitAvatar" className="form-label">
-                        Avatar
+                    <label htmlFor="large_avatar" className="form-label">
+                        Large Avatar
                     </label>
                     <input
+                        onChange={handleOnChange}
                         className="form-control"
                         type="file"
-                        id="portraitAvatar"
+                        id="large_avatar"
+                        name="large_avatar"
+                    />
+                </div>
+
+                <div className="col-md-6 mb-3">
+                    <label htmlFor="portrait_avatar" className="form-label">
+                        Portrait Avatar
+                    </label>
+                    <input
+                        onChange={handleOnChange}
+                        className="form-control"
+                        type="file"
+                        id="portrait_avatar"
                         name="portrait_avatar"
                     />
                 </div>
