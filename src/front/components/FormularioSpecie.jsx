@@ -37,7 +37,7 @@ export const FormularioSpecie = () => {
             <h2 className="text-center fw-bold">Create a Species</h2>
             <form onSubmit={handleOnSubmit} className="row fw-bold">
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Name<span className="text-danger">*</span>
                     </label>
@@ -46,12 +46,12 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="name"
                         name="name"
-                        rows="3"
+                        rows="1"
                         required
                     />
                 </div>
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="version" className="form-label">
                         Version
                     </label>
@@ -60,7 +60,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="version"
                         name="version"
-                        rows="3"
+                        rows="1"
                     />
                 </div>
 
@@ -87,7 +87,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="speed_walking"
                         name="speed_walking"
-                        rows="3"
+                        rows="1"
                     />
                 </div>
 
@@ -100,7 +100,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="speed_burrowing"
                         name="speed_burrowing"
-                        rows="3"
+                        rows="1"
                     />
                 </div>
 
@@ -113,7 +113,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="speed_flying"
                         name="speed_flying"
-                        rows="3"
+                        rows="1"
                     />
                 </div>
 
@@ -126,11 +126,11 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="speed_swimming"
                         name="speed_swimming"
-                        rows="3"
+                        rows="1"
                     />
                 </div>
 
-                <div className="col-md-6 mb-3">
+                <div className="col-md-4 mb-3">
                     <label htmlFor="short_description" className="form-label">
                         Short Description
                     </label>
@@ -139,11 +139,11 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="short_description"
                         name="speed_swimming"
-                        rows="3"
+                        rows="1"
                     />
                 </div>
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="group" className="form-label">
                         Species Group
                     </label>
@@ -169,19 +169,19 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="description"
                         name="description"
-                        rows="2"
+                        rows="1"
                         required
                     />
                 </div>
 
-                <div className="col-md-4 mb-3">
+                <div className="col-md-3 mb-3">
                     <label htmlFor="hide_trait" className="form-label">
                         Hide Traits Heading
                     </label>
                     <input type="checkbox" onChange={handleOnChange} />
                 </div>
 
-                <div className="col-md-12 mb-3">
+                <div className="col-md-9 mb-3">
                     <label htmlFor="specie_trait" className="form-label">
                         Species Trait Introduction<span className="text-danger">*</span>
                     </label>
@@ -190,7 +190,7 @@ export const FormularioSpecie = () => {
                         className="form-control"
                         id="specie_trait"
                         name="specie_trait"
-                        rows="2"
+                        rows="1"
                         required
                     />
                 </div>
@@ -202,7 +202,7 @@ export const FormularioSpecie = () => {
                     <input type="checkbox" onChange={handleOnChange} />
                 </div>
 
-                <div className="col-md-6 mb-3">
+                <div className="col-md-4 mb-3">
                     <label htmlFor="large_avatar" className="form-label">
                         Large Avatar
                     </label>
@@ -215,7 +215,7 @@ export const FormularioSpecie = () => {
                     />
                 </div>
 
-                <div className="col-md-6 mb-3">
+                <div className="col-md-4 mb-3">
                     <label htmlFor="portrait_avatar" className="form-label">
                         Portrait Avatar
                     </label>
