@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { fetchMonstersList, fetchMonsterDetails } from "../../serviceApi/WikiAPI/WikiMonstersAPI.js";
 
 export const WikiMonsters = () => {
-  const [monstersList, setMonstersList] = useState([]); // lista básica
-  const [detailsByIndex, setDetailsByIndex] = useState({}); // caché de detalles
+  const [monstersList, setMonstersList] = useState([]); 
+  const [detailsByIndex, setDetailsByIndex] = useState({}); 
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [expanded, setExpanded] = useState({});
   const MONSTERS_PER_PAGE = 20;
 
-  // cargar lista básica
+
   useEffect(() => {
     async function loadList() {
       const list = await fetchMonstersList();
@@ -46,7 +46,7 @@ export const WikiMonsters = () => {
 
   return (
     <div className="container mt-4">
-      {/* Headers */}
+      
       <div style={{
         display: "grid",
         gridTemplateColumns: "2fr 1fr 1fr 1fr",

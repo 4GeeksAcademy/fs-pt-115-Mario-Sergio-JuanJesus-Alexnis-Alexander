@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { fetchEquipmentList, fetchEquipmentDetails } from "../../serviceApi/WikiAPI/WikiEquipmentAPI.js";
 
 export const WikiEquipment = () => {
-  const [equipmentList, setEquipmentList] = useState([]); // lista básica
-  const [detailsByIndex, setDetailsByIndex] = useState({}); // caché de detalles
+  const [equipmentList, setEquipmentList] = useState([]); 
+  const [detailsByIndex, setDetailsByIndex] = useState({}); 
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const EQUIPMENT_PER_PAGE = 20;
 
-  // cargar la lista básica al inicio
+
   useEffect(() => {
     async function loadList() {
       const list = await fetchEquipmentList();
@@ -24,7 +24,7 @@ export const WikiEquipment = () => {
   const currentList = equipmentList.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(equipmentList.length / EQUIPMENT_PER_PAGE);
 
-  // cargar detalles de los visibles (en paralelo y de golpe)
+
   useEffect(() => {
     async function loadDetails() {
       const missing = currentList.filter((item) => !detailsByIndex[item.index]);

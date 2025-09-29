@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { fetchSpellsList, fetchSpellDetails } from "../../serviceApi/WikiAPI/WikiSpellsAPI.js";
 
 export const WikiSpells = () => {
-  const [spellsList, setSpellsList] = useState([]); // lista básica
-  const [detailsByIndex, setDetailsByIndex] = useState({}); // caché de detalles
+  const [spellsList, setSpellsList] = useState([]); 
+  const [detailsByIndex, setDetailsByIndex] = useState({}); 
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [expanded, setExpanded] = useState({});
@@ -24,7 +24,7 @@ export const WikiSpells = () => {
   const currentList = spellsList.slice(indexOfFirstSpell, indexOfLastSpell);
   const totalPages = Math.ceil(spellsList.length / SPELLS_PER_PAGE);
 
-  // cargar detalles solo de los visibles (elimina goteo)
+  
   useEffect(() => {
     async function loadDetails() {
       const missingSpells = currentList.filter(sp => !detailsByIndex[sp.index]);

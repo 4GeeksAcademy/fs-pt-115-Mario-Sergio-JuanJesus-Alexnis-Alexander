@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { fetchMagicItemsList, fetchMagicItemDetails } from "../../serviceApi/WikiAPI/WikiMagicItemsAPI.js";
 
 export const WikiMagicItems = () => {
-  const [itemsList, setItemsList] = useState([]); // lista básica
-  const [detailsByIndex, setDetailsByIndex] = useState({}); // caché de detalles
+  const [itemsList, setItemsList] = useState([]); 
+  const [detailsByIndex, setDetailsByIndex] = useState({}); 
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [expanded, setExpanded] = useState({});
   const ITEMS_PER_PAGE = 20;
 
-  // cargar la lista básica al inicio
+
   useEffect(() => {
     async function loadList() {
       const list = await fetchMagicItemsList();
@@ -24,7 +24,7 @@ export const WikiMagicItems = () => {
   const currentList = itemsList.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(itemsList.length / ITEMS_PER_PAGE);
 
-  // cargar detalles solo de los visibles
+
   useEffect(() => {
     async function loadDetails() {
       const missingItems = currentList.filter(item => !detailsByIndex[item.index]);
