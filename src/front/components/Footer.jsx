@@ -3,7 +3,7 @@ import styles from '../styles/components/footer.module.css'
 export const Footer = () => {
 
 	return (
-		<footer className={styles.footer}>
+		<footer className={`${styles.footer} mt-5`}>
 			<div className={styles.footerContainer}>
 				<div className={styles.footerContent}>
 

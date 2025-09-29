@@ -50,3 +50,55 @@ def get_campaigns():
     campaign_list = Campaign.query.filter_by(user_id=user_id).all()
 
     return jsonify([mi.serialize() for mi in campaign_list]), 200
+
+@campaign_bp.route('/<int:id>', methods=['DELETE'])
+@jwt_required()
+def delete_campaign(id):
+    user_id = get_jwt_identity()
+    campaign = Campaign.query.filter_by(id=id, user_id=user_id).first()
+
+    if not campaign:
+        return jsonify({"error": "Campaña no encontrada"}), 404
+
+    try:
+        db.session.delete(campaign)
+        db.session.commit()
+        return jsonify({"message": "Campaña eliminada"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": "Error al eliminar campaña"}), 500
+    
+@campaign_bp.route('/<int:id>', methods=['PUT'])
+@jwt_required()
+def update_campaign(id):
+    data = request.get_json() or {}
+    user_id = get_jwt_identity()
+
+    campaign = Campaign.query.filter_by(id=id, user_id=user_id).first()
+    if not campaign:
+        return jsonify({"error": "Campaña no encontrada"}), 404
+
+    name = (data.get("name") or "").strip()
+    if not name:
+        return jsonify({"error": "El campo 'name' es obligatorio"}), 400
+
+    level = data.get("level")
+    players = data.get("players")
+    try:
+        level = int(level) if level not in (None, "") else None
+        players = int(players) if players not in (None, "") else None
+    except ValueError:
+        return jsonify({"error": "level y players deben ser numéricos"}), 400
+
+    campaign.name = name
+    campaign.description = data.get("description")
+    campaign.setting = data.get("setting")
+    campaign.level = level
+    campaign.players = players
+
+    try:
+        db.session.commit()
+        return jsonify(campaign.serialize()), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": "Error al actualizar campaña"}), 500
