@@ -8,9 +8,7 @@ export const initialStore = () => {
     backgrounds: [],
     monsters: [],
     spells: [],
-    feats: []
-  }
-}
+    feats: [],
     subclasses: [],
     species: [],
   };
@@ -33,49 +31,69 @@ export default function storeReducer(store, action = {}) {
         ...store,
         classes: action.payload,
       };
+
     case "set_spells":
       return {
         ...store,
         spells: action.payload,
       };
+
     case "deleteSpell":
       return {
         ...store,
         spells: store.spells.filter((item) => item.spell_id != action.payload),
       };
-      case 'set_feats':
-      return{
-        ...store,
-        feats: action.payload
-      }
-      case 'deleteFeats':
+
+    case "set_feats":
       return {
         ...store,
-        feats: store.feats.filter(item => item.feats_id != action.payload)
+        feats: action.payload,
       };
-    case 'set_races':
-      return{
-    case "set_subclasses":
+
+    case "deleteFeats":
       return {
         ...store,
-        subclasses: action.payload,
+        feats: store.feats.filter((item) => item.feats_id != action.payload),
       };
-    case "deleteSubclasses":
-      return {
-        ...store,
-        subclasses: store.subclasses.filter((item) => item.subclasses_id != action.payload),
-      };
+
     case "set_races":
       return {
         ...store,
         races: action.payload,
       };
+
+    case "set_subclasses":
+      return {
+        ...store,
+        subclasses: action.payload,
+      };
+
+    case "deleteSubclasses":
+      return {
+        ...store,
+        subclasses: store.subclasses.filter(
+          (item) => item.subclasses_id != action.payload
+        ),
+      };
+
+    case "set_races":
+      return {
+        ...store,
+        races: action.payload,
+      };
+
     case "set_backgrounds":
+      return {
+        ...store,
+        backgrounds: action.payload,
+      };
+
     case "set_species":
       return {
         ...store,
         species: action.payload,
       };
+
     case "deleteSpecie":
       return {
         ...store,
@@ -94,9 +112,11 @@ export default function storeReducer(store, action = {}) {
         backgrounds: action.payload,
       };
     case "showBackground":
-        backgrounds: action.payload
-      }
-    case 'deleteBackground':
+      return {
+        ...store,
+        backgrounds: action.payload,
+      };
+    case "deleteBackground":
       return {
         ...store,
         backgrounds: action.payload,
@@ -155,6 +175,9 @@ export default function storeReducer(store, action = {}) {
     case "deleteCampaign":
       return {
         ...store,
+        campaign: store.backgrounds.filter((item) => item.id != action.payload),
+      };
+
     case "deleteBackground":
       return {
         ...store,

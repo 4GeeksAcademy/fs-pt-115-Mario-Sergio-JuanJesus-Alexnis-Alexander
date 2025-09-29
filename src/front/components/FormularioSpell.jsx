@@ -8,6 +8,8 @@ import { createNewSpell } from "../serviceApi/spellApi";
 export const FormularioSpell = () => {
     const [page, setPage] = useState(1)
     const [input, setInputs] = useState({});
+    
+    
 
     const { disabledFields, updateDisabledFields } = useDisabledFields(rules, initialDisabled);
 
@@ -132,11 +134,11 @@ console.log(input)
                             <label className="form-label d-block">
                                 Components
                             </label>
-                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="v" id="v" autocomplete="off" />
+                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="v" id="v" autoComplete="off" />
                             <label className="btn btn-outline-secondary" htmlFor="v">V</label>
-                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="s" id="s" autocomplete="off" />
+                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="s" id="s" autoComplete="off" />
                             <label className="btn btn-outline-secondary" htmlFor="s">S</label>
-                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="m" id="m" autocomplete="off" />
+                            <input onChange={handleOnChange} type="checkbox" className="btn-check" name="m" id="m" autoComplete="off" />
                             <label className="btn btn-outline-secondary" htmlFor="m">M</label>
                         </div>
 
