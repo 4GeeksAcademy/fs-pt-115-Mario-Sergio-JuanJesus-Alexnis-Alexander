@@ -8,9 +8,7 @@ export const initialStore = () => {
     backgrounds: [],
     monsters: [],
     spells: [],
-    feats: []
-  }
-}
+    feats: [],
     subclasses: [],
     species: [],
   };
@@ -43,18 +41,21 @@ export default function storeReducer(store, action = {}) {
         ...store,
         spells: store.spells.filter((item) => item.spell_id != action.payload),
       };
-      case 'set_feats':
-      return{
-        ...store,
-        feats: action.payload
-      }
-      case 'deleteFeats':
+    case "set_feats":
       return {
         ...store,
-        feats: store.feats.filter(item => item.feats_id != action.payload)
+        feats: action.payload,
       };
-    case 'set_races':
-      return{
+    case "deleteFeats":
+      return {
+        ...store,
+        feats: store.feats.filter((item) => item.feats_id != action.payload),
+      };
+    case "set_races":
+      return {
+        ...store,
+        races: action.payload,
+      };
     case "set_subclasses":
       return {
         ...store,
@@ -63,14 +64,15 @@ export default function storeReducer(store, action = {}) {
     case "deleteSubclasses":
       return {
         ...store,
-        subclasses: store.subclasses.filter((item) => item.subclasses_id != action.payload),
+        subclasses: store.subclasses.filter(
+          (item) => item.subclasses_id != action.payload
+        ),
       };
     case "set_races":
       return {
         ...store,
         races: action.payload,
       };
-    case "set_backgrounds":
     case "set_species":
       return {
         ...store,
@@ -94,14 +96,6 @@ export default function storeReducer(store, action = {}) {
         backgrounds: action.payload,
       };
     case "showBackground":
-        backgrounds: action.payload
-      }
-    case 'deleteBackground':
-      return {
-        ...store,
-        backgrounds: action.payload,
-      };
-    case "showBackground":
       return {
         ...store,
         backgrounds: action.payload,
@@ -153,55 +147,7 @@ export default function storeReducer(store, action = {}) {
         campaign: action.payload,
       };
     case "deleteCampaign":
-      return {
-        ...store,
-    case "deleteBackground":
-      return {
-        ...store,
-        backgrounds: store.backgrounds.filter(
-          (item) => item.id != action.payload
-        ),
-      };
-    case "showMonsters":
-      return {
-        ...store,
-        monsters: action.payload,
-      };
-    case "deleteMonster":
-      return {
-        ...store,
-        monsters: store.monsters.filter((item) => item.id != action.payload),
-      };
-    case "showMagicItem":
-      return {
-        ...store,
-        magicsItems: action.payload,
-      };
-    case "deleteMagicItem":
-      return {
-        ...store,
-        magicsItems: store.magicsItems.filter(
-          (item) => item.id != action.payload
-        ),
-      };
-    case "showCharacters":
-      return {
-        ...store,
-        characters: action.payload,
-      };
-    case "deleteCharacter":
-      return {
-        ...store,
-        characters: store.characters.filter(
-          (item) => item.id != action.payload
-        ),
-      };
-    case "showCampaign":
-      return {
-        ...store,
-        campaign: action.payload,
-      };
-    case "deleteCampaign":
+      console.log("Borrando campaña con id:", action.payload, store.campaign);
       return {
         ...store,
         campaign: store.campaign.filter((item) => item.id != action.payload),
