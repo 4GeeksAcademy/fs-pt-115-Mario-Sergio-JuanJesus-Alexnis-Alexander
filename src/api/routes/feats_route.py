@@ -9,6 +9,14 @@ feats_bp = Blueprint('feats', __name__, url_prefix='feats')
 
 CORS(feats_bp)
 
+@feats_bp.route('/', methods=['GET'])
+@jwt_required()
+def show_feats():
+    user_id = get_jwt_identity()
+    feats = Feats.query.filter_by(user_id=user_id).all()
+
+    return jsonify([feat.serialize() for feat in feats]), 200
+
 @feats_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_feats():
@@ -55,7 +63,7 @@ def delete_feats(feats_id):
         return jsonify({'msg': 'Feats no encontrado'}), 404
     
     db.session.delete(feats)
-    db.commit()
+    db.session.commit()
 
     return jsonify({'msg': 'Feats eliminado'}), 200
 

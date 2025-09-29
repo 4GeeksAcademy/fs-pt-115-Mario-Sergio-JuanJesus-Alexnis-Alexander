@@ -8,6 +8,9 @@ export const initialStore = () => {
     backgrounds: [],
     monsters: [],
     spells: [],
+    feats: []
+  }
+}
     subclasses: [],
     species: [],
   };
@@ -40,6 +43,18 @@ export default function storeReducer(store, action = {}) {
         ...store,
         spells: store.spells.filter((item) => item.spell_id != action.payload),
       };
+      case 'set_feats':
+      return{
+        ...store,
+        feats: action.payload
+      }
+      case 'deleteFeats':
+      return {
+        ...store,
+        feats: store.feats.filter(item => item.feats_id != action.payload)
+      };
+    case 'set_races':
+      return{
     case "set_subclasses":
       return {
         ...store,

@@ -36,6 +36,7 @@ import { WikiMonsters } from "./components/Wiki/WikiMonsters";
 import { SpellPage } from "./pages/user/Spell.page";
 import { ShowMonsterPage } from "./pages/user/ShowMonster.page";
 import { CreateMonsterPage } from "./pages/user/CreateMonster.page";
+import { FeatsPage } from "./pages/user/Feats.page";
 import { SubclassesPage } from "./pages/user/Subclasses.page";
 import { SpeciePage } from "./pages/user/Specie.page";
 import { BackgroundPage } from "./pages/user/Background.page";
@@ -77,6 +78,7 @@ export const router = createBrowserRouter(
         <Route path="user/create-subclasses" element={<CreateSubclassPage />} />
         <Route path="user/create-feats" element={<CreateFeatPage />} />
         <Route path="user/magics-items" element={<ShowMagicsItemsPage />} />
+        <Route path="user/feats" element={<FeatsPage/>} />
         <Route path="user/subclasses" element={<SubclassesPage />} />
         <Route path="user/specie" element={<SpeciePage/>} />
         <Route path="user/background" element={< BackgroundPage />} />
