@@ -10,6 +10,15 @@ specie_bp = Blueprint('specie', __name__, url_prefix='/specie')
 CORS(specie_bp)
 
 
+@specie_bp.route('/', methods=['GET'])
+@jwt_required()
+def show_species():
+    user_id = get_jwt_identity()
+    species = Specie.query.filter_by(user_id=user_id).all()
+
+    return jsonify([specie.serialize() for specie in species]), 200
+
+
 @specie_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_specie():
@@ -59,7 +68,7 @@ def create_specie():
     db.session.commit()
 
     return jsonify({'msg': 'Specie creada',
-                    'specie': new_specie.serialize()}), 201
+                    'Specie':new_specie.serialize()}), 201
 
 
 @specie_bp.route('/<int:specie_id>', methods=['GET'])
@@ -80,7 +89,7 @@ def delete_specie(specie_id):
         return jsonify({'msg': 'Specie no encontrada'}), 404
 
     db.session.delete(specie)
-    db.commit()
+    db.session.commit()
 
     return jsonify({'msg': 'Specie eliminada'}), 200
 
