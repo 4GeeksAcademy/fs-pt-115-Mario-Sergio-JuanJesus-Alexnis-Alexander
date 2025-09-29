@@ -10,7 +10,7 @@ export const WikiFeats = () => {
     const fetchFeats = async () => {
       setLoading(true);
       const list = await getFeatsList();
-      setFeats(list); // solo el listado, no detalles completos
+      setFeats(list); 
       setLoading(false);
     };
     fetchFeats();
@@ -42,7 +42,7 @@ export const WikiFeats = () => {
     );
   }
 
-  // Vista del listado de feats
+
   return (
     <div className="container mt-4">
       <div className="row">

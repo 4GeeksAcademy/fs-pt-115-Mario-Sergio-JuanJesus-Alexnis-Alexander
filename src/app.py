@@ -20,7 +20,10 @@ ENV = "development" if os.getenv("FLASK_DEBUG") == "1" else "production"
 static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../dist/')
 app = Flask(__name__)
-frontend_origin = "https://reimagined-spork-97jrj7g596xwf75x5-3000.app.github.dev/"
+frontend_origin = [
+    "https://supreme-fortnight-9rjvprw567jcxwq5-3000.app.github.dev",
+    "https://supreme-fortnight-9rjvprw567jcxwq5.github.dev/"
+]
 CORS(app, resources={r"/*": {"origins": frontend_origin}},
      supports_credentials=True)
 app.url_map.strict_slashes = False

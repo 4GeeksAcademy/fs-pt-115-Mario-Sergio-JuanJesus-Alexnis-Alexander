@@ -70,3 +70,79 @@ export const getCampaigns = async () => {
     };
   }
 };
+export const updateCampaign = async (updateCampaign, campaignId) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return { success: false, error: "No autenticado" };
+  }
+  try {
+    const response = await fetch(
+      `${urlApi}/api/user/campaign/${campaignId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(updateCampaign),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return {
+        success: false,
+        error: data.error,
+      };
+    }
+
+    return {
+      success: true,
+      data: data,
+      msg: data.msg,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+};
+
+export const deleteCampaign = async (campaignId) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    return { success: false, error: "No autenticado" };
+  }
+  try {
+    const response = await fetch(
+      `${urlApi}/api/user/campaigns/${campaignId}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      return {
+        success: false,
+        error: data.error,
+      };
+    }
+
+    return {
+      success: true,
+      msg: data.msg,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+};

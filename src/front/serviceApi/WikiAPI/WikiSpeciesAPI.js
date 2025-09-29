@@ -1,6 +1,6 @@
 const BASE_URL = "https://www.dnd5eapi.co/api/2014/";
 
-// Obtener todas las especies (races)
+
 export async function fetchAllSpecies() {
   try {
     const res = await fetch(`${BASE_URL}races/`);
@@ -13,7 +13,7 @@ export async function fetchAllSpecies() {
   }
 }
 
-// Obtener detalles de una especie en particular
+
 export async function fetchSpeciesDetails(speciesIndex) {
   try {
     const res = await fetch(`${BASE_URL}races/${speciesIndex}`);
