@@ -2,11 +2,11 @@ const urlApi = import.meta.env.VITE_BACKEND_URL;
 
 export const createNewSubclasses = async (newSubclasses) => {
     try {
-        const response = await fetch (`${urlApi})api/subclasses`, {
+        const response = await fetch (`${urlApi}/api/subclasses`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
-                'Authorizacion': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(newSubclasses)
         })

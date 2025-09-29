@@ -103,7 +103,7 @@ export const deleteFeats = async (featsId) => {
 
 export const getAllFeats = async () => {
     try {
-        const response = await fetch(`${urlApi}/api/subclasses`, {
+        const response = await fetch(`${urlApi}/api/feats`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

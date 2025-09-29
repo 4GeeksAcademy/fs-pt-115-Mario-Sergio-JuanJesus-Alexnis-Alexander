@@ -41,7 +41,7 @@ def create_background():
     variant_feature = data.get("variant_feature")
     variant_feature_desc = data.get("variant_feature_desc")
     suggested_characteristics = data.get("suggested_characteristics")
-    spell_list_desc = data.get("spell_list_desc")
+    spell_list_introduction = data.get("spell_list_introduction")
     spell_list_extended = data.get("spell_list_extended")
     contacts_list = data.get("contacts_list")
     background_tags = data.get("background_tags")
@@ -68,7 +68,7 @@ def create_background():
         variant_feature=variant_feature,
         variant_feature_desc=variant_feature_desc,
         suggested_characteristics=suggested_characteristics,
-        spell_list_desc=spell_list_desc,
+        spell_list_introduction=spell_list_introduction,
         spell_list_extended=spell_list_extended,
         contacts_list=contacts_list,
         background_tags=background_tags,

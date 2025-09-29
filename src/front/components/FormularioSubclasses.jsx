@@ -11,6 +11,7 @@ export const FormularioSubclasses = () => {
 
   const navigate = useNavigate();
 
+
   const handleOnChange = (e) => {
     const { name, value, checked, type } = e.target;
 
@@ -21,14 +22,15 @@ export const FormularioSubclasses = () => {
   };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    console.log('hola');
+    
     const dataSubclasses = await createNewSubclasses(input);
     if (!dataSubclasses.success) {
       return setError(dataSubclasses?.error || "Creación fallida");
     }
-    
     setInputs({});
     setError(null);
-    
+
     navigate("/user/subclasses");
   };
 
@@ -138,29 +140,31 @@ export const FormularioSubclasses = () => {
             </div>
           </>
         }
-        
-      </form>
-
-      <div className="number-page-subclasses">
-  <button 
-    className={page === 1 ? "active" : ""} 
-    type="button" 
-    onClick={() => setPage(1)}
-  >
-    1
-  </button>
-  <button 
-    className={page === 2 ? "active" : ""} 
-    type="button" 
-    onClick={() => setPage(2)}
-  >
-    2
-  </button>
-</div>
-
-      <div className="button-create-subclasses">
+        <div className="d-flex gap-2 justify-content-center flex-column">
+        <button
+          className={page === 1 ? "active" : ""}
+          type="button"
+          onClick={() => setPage(1)}
+        >
+          1
+        </button>
+        <button
+          className={page === 2 ? "active" : ""}
+          type="button"
+          onClick={() => setPage(2)}
+        >
+          2
+        </button>
+        <div className="mt-2 text-center">
         <button type="submit" className="btn btn-primary">Create Subclasses</button>
       </div>
+
+      </div>
+
+      
+      </form>
+
+      
     </div>
   );
 };

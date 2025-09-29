@@ -305,16 +305,16 @@ export const FormularioBackground = () => {
                         </div>
 
                         <div className="col-md-12 mb-3">
-                            <label htmlFor="spell_list_desc" className="form-label">
+                            <label htmlFor="spell_list_introduction" className="form-label">
                                 Spell List Description
                             </label>
                             <textarea
                                 onChange={handleOnChange}
                                 className="form-control"
-                                id="spell_list_desc"
-                                name="spell_list_desc"
+                                id="spell_list_introduction"
+                                name="spell_list_introduction"
                                 rows="3"
-                                value={input.spell_list_desc || ""}
+                                value={input.spell_list_introduction || ""}
                             />
                         </div>
 
