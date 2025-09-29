@@ -48,8 +48,8 @@ export const WikiBackgrounds = () => {
       // Mapear campos que queremos mostrar en detalle
       const detailedBg = {
         name: details.name,
-        ability_scores: details.ability_scores || [], // Ej: ["Intelligence", "Wisdom", "Charisma"]
-        feat: details.feat || null,                   // Ej: "Magic Initiate (Cleric)"
+        ability_scores: details.ability_scores || [], 
+        feat: details.feat || null,                   
         skill_proficiencies: details.skill_proficiencies || [],
         tool_proficiencies: details.tool_proficiencies || [],
         equipment: details.equipment || [],

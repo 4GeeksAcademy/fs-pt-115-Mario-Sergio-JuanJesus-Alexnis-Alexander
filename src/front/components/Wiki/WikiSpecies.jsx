@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllSpecies, fetchSpeciesDetails } from "../../serviceApi/WikiAPI/WikiSpeciesAPI.js";
 
-// Importa imágenes
+
 import humanImg from "../../assets/img/pngtree-dnd-adventurer-png-image_12861468.png";
 import elfImg from "../../assets/img/636287075350739045.png";
 import dwarfImg from "../../assets/img/636271781394265550.png";
@@ -12,7 +12,7 @@ import halfelfImg from "../../assets/img/636274618102950794.png";
 import halforcImg from "../../assets/img/636274570630462055.png";
 import tieflingImg from "../../assets/img/266-2664125_tiefling-rogue-dnd-tiefling-rogue.png";
 
-// Claves exactas según index de la API
+
 const speciesImages = {
   human: humanImg,
   elf: elfImg,
@@ -76,7 +76,7 @@ export const WikiSpecies = () => {
                   />
                 )}
 
-                {/* Contenido del texto */}
+                
                 <div className="card-body position-relative" style={{ zIndex: 2 }}>
                   <h5 className="card-title">{sp.name}</h5>
                   <p><strong>Descripción:</strong> {sp.description}</p>
