@@ -4,6 +4,9 @@ from ..model.user_model import User
 from ..model.subclasses_model import Subclasses
 from ..extension_config import db
 from flask_jwt_extended import get_jwt_identity, jwt_required
+import cloudinary
+import cloudinary.uploader
+from cloudinary import CloudinaryImage
 
 subclasses_bp = Blueprint ('subclasses', __name__, url_prefix='/subclasses')
 
