@@ -1,0 +1,401 @@
+/* Wrapper para carta + error */
+.cardWrapper {
+  display: inline-block;
+}
+
+/* Contenedor principal de la carta */
+.card {
+  width: 280px;
+  min-height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6);
+  background: #000;
+  border: 1px solid #000;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  font-family: serif;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9), 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Marco exterior según rareza */
+.rarityFrame {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 12px;
+  pointer-events: none;
+  border: 3px solid;
+  border-color: inherit;
+}
+
+/* ========== COLORES DE RAREZA ========== */
+.rarityCommon {
+  --rarity-color: #1a1a1a;
+}
+
+.rarityCommon .rarityFrame {
+  border-color: #1a1a1a;
+  box-shadow: inset 0 0 20px rgba(26, 26, 26, 0.4);
+}
+
+.rarityCommon .rarityGem {
+  background: #1a1a1a;
+  box-shadow: 0 0 12px #1a1a1a, 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rarityUncommon {
+  --rarity-color: #71797e;
+}
+
+.rarityUncommon .rarityFrame {
+  border-color: #71797e;
+  box-shadow: inset 0 0 20px rgba(113, 121, 126, 0.4);
+}
+
+.rarityUncommon .rarityGem {
+  background: #71797e;
+  box-shadow: 0 0 12px #71797e, 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rarityRare {
+  --rarity-color: #c9b037;
+}
+
+.rarityRare .rarityFrame {
+  border-color: #c9b037;
+  box-shadow: inset 0 0 20px rgba(201, 176, 55, 0.4);
+}
+
+.rarityRare .rarityGem {
+  background: #c9b037;
+  box-shadow: 0 0 12px #c9b037, 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rarityVeryRare {
+  --rarity-color: #c0c0c0;
+}
+
+.rarityVeryRare .rarityFrame {
+  border-color: #c0c0c0;
+  box-shadow: inset 0 0 20px rgba(192, 192, 192, 0.4);
+}
+
+.rarityVeryRare .rarityGem {
+  background: #c0c0c0;
+  box-shadow: 0 0 12px #c0c0c0, 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rarityLegendary {
+  --rarity-color: #cd7f32;
+}
+
+.rarityLegendary .rarityFrame {
+  border-color: #cd7f32;
+  box-shadow: inset 0 0 20px rgba(205, 127, 50, 0.4);
+}
+
+.rarityLegendary .rarityGem {
+  background: #cd7f32;
+  box-shadow: 0 0 12px #cd7f32, 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rarityArtifact {
+  --rarity-color: #ff6b35;
+}
+
+.rarityArtifact .rarityFrame {
+  border-color: #ff6b35;
+  box-shadow: inset 0 0 20px rgba(255, 107, 53, 0.4);
+}
+
+.rarityArtifact .rarityGem {
+  background: #ff6b35;
+  box-shadow: 0 0 12px #ff6b35, 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== INTERIOR DE LA CARTA ========== */
+.cardInner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #1a1614;
+  padding: 12px;
+  position: relative;
+}
+
+/* ========== HEADER CON NOMBRE Y COSTE ========== */
+.header {
+  border-radius: 8px 8px 0 0;
+  padding: 6px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.cardName {
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.3px;
+}
+
+.manaCost {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ========== COLORES DE TIPO ========== */
+.typePotion {
+  background: linear-gradient(135deg, #c62828 0%, #d32f2f 50%, #e57373 100%);
+}
+
+.typeScroll {
+  background: linear-gradient(135deg, #4527a0 0%, #5e35b1 50%, #9575cd 100%);
+}
+
+.typeWand {
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 50%, #64b5f6 100%);
+}
+
+.typeRing {
+  background: linear-gradient(135deg, #ef6c00 0%, #f57c00 50%, #ffb74d 100%);
+}
+
+.typeArmor {
+  background: linear-gradient(135deg, #424242 0%, #616161 50%, #9e9e9e 100%);
+}
+
+.typeWeapon {
+  background: linear-gradient(135deg, #c62828 0%, #d32f2f 50%, #e57373 100%);
+}
+
+.typeWondrousItem {
+  background: linear-gradient(135deg, #00838f 0%, #0097a7 50%, #4dd0e1 100%);
+}
+
+.typeRod {
+  background: linear-gradient(135deg, #6a1b9a 0%, #7b1fa2 50%, #ba68c8 100%);
+}
+
+.typeStaff {
+  background: linear-gradient(135deg, #558b2f 0%, #689f38 50%, #aed581 100%);
+}
+
+/* ========== IMAGEN ========== */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  border: 3px solid #2a2420;
+  border-top: none;
+  background: #000;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ========== LÍNEA DE TIPO ========== */
+.typeLine {
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-top: none;
+}
+
+.rarityText {
+  font-size: 10px;
+  opacity: 0.9;
+}
+
+/* ========== CAJA DE TEXTO ========== */
+.textBox {
+  flex: 1;
+  background: linear-gradient(to bottom, #e8e6db 0%, #d9d6cc 100%);
+  border: 3px solid #2a2420;
+  border-top: none;
+  border-radius: 0;
+  padding: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #000;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sección de estadísticas */
+.statsSection {
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #a39d8f;
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+.statsSection div {
+  margin-bottom: 2px;
+}
+
+.attunement {
+  color: #8b4513;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+/* Descripción */
+.description {
+  font-family: serif;
+  font-size: 11px;
+}
+
+/* Vista previa de descripción */
+.descriptionPreview {
+  font-family: serif;
+  font-size: 12px;
+  color: #555;
+  font-style: italic;
+}
+
+/* Advertencia de sigilo */
+.stealthWarning {
+  margin-top: 6px;
+  font-size: 10px;
+  font-style: italic;
+  color: #8b4513;
+}
+
+/* ========== BOTONES DE ACCIÓN ========== */
+.actionButtons {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 8px 8px;
+}
+
+.btnDetails {
+  flex: 1;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btnDetails:hover {
+  background: linear-gradient(135deg, #0d47a1 0%, #1565c0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btnDetails:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btnDelete {
+  flex: 1;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.btnDelete:hover {
+  background: linear-gradient(135deg, #b71c1c 0%, #c62828 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btnDelete:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ========== ALERTA DE ERROR ========== */
+.errorAlert {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, #c62828 0%, #d32f2f 100%);
+  color: white;
+  border-radius: 8px;
+  font-size: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  max-width: 280px;
+}
+
+/* ========== SÍMBOLO DE RAREZA ========== */
+.rarityGem {
+  position: absolute;
+  bottom: 52px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========== SCROLLBAR PERSONALIZADO ========== */
+.textBox::-webkit-scrollbar {
+  width: 6px;
+}
+
+.textBox::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.textBox::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.textBox::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
