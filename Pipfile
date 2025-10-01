@@ -22,6 +22,7 @@ flask-migrate = "*"
 flask-jwt-extended = "*"
 flask-swagger = "*"
 cloudinary = "*"
+tomli = "*"
 
 [requires]
 python_version = "3.13"
