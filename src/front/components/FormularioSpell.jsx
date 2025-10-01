@@ -8,6 +8,8 @@ import { createNewSpell } from "../serviceApi/spellApi";
 export const FormularioSpell = () => {
     const [page, setPage] = useState(1)
     const [input, setInputs] = useState({});
+    
+    
 
     const { disabledFields, updateDisabledFields } = useDisabledFields(rules, initialDisabled);
 
@@ -143,7 +145,6 @@ export const FormularioSpell = () => {
                                 value={input.reaction_casting_time || ""}
                             />
                         </div>
-
                         <div className="col-md-4 mb-3">
                             <label className="form-label d-block">
                                 Components

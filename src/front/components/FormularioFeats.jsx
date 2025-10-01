@@ -83,7 +83,7 @@ export const FormularioFeats = () => {
         <div className="col-md-6 mt-3">
           <label htmlFor="featTags" className="form-label">Feat Tags</label>
           <select onChange={handleOnChange} id="featTags" className="form-select" name="feat_tags">
-            <option selected disabled value="">-</option>
+            <option value="">---</option>
             <option value={"Combat"}>Combat</option>
             <option value={"Magic"}>Magic</option>
             <option value={"Ability"}>Ability</option>

@@ -86,6 +86,7 @@ export const router = createBrowserRouter(
         <Route path="user/campaigns" element={<ShowCampaignPage />} />
         <Route path="user/create-monster" element={<CreateMonsterPage />} />
         <Route path="user/monster" element={<ShowMonsterPage />} />
+        <Route path="user/spell" element={<SpellPage />} />
       </Route>
 
       {/* AQUI SOLO LAS RUTAS DE LOGIN Y REGISTER */}

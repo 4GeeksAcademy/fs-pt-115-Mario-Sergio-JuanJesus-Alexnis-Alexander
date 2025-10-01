@@ -31,11 +31,13 @@ export default function storeReducer(store, action = {}) {
         ...store,
         classes: action.payload,
       };
+
     case "set_spells":
       return {
         ...store,
         spells: action.payload,
       };
+
     case "deleteSpell":
       return {
         ...store,
@@ -61,6 +63,7 @@ export default function storeReducer(store, action = {}) {
         ...store,
         subclasses: action.payload,
       };
+
     case "deleteSubclasses":
       return {
         ...store,
@@ -68,6 +71,7 @@ export default function storeReducer(store, action = {}) {
           (item) => item.subclasses_id != action.payload
         ),
       };
+
     case "set_races":
       return {
         ...store,
@@ -78,6 +82,7 @@ export default function storeReducer(store, action = {}) {
         ...store,
         species: action.payload,
       };
+
     case "deleteSpecie":
       return {
         ...store,
@@ -147,7 +152,6 @@ export default function storeReducer(store, action = {}) {
         campaign: action.payload,
       };
     case "deleteCampaign":
-      console.log("Borrando campaña con id:", action.payload, store.campaign);
       return {
         ...store,
         campaign: store.campaign.filter((item) => item.id != action.payload),
