@@ -26,7 +26,9 @@ export const CampaignCard = ({ item }) => {
       <div className="card" style={{ width: "18rem" }}>
         <div className="card-body">
           <h5 className="card-title">Nombre: {item.name}</h5>
-          <h5 className="card-title">Tipo: {item.level}</h5>
+          <h5 className="card-title">Level: {item.level}</h5>
+          <h5 className="card-title">Players: {item.players}</h5>
+          <h5 className="card-title">Description: {item.description}</h5>
 
           <div className="d-flex justify-content-start gap-2 mt-3">
             <button className="btn btn-primary" disabled>Detalles</button>

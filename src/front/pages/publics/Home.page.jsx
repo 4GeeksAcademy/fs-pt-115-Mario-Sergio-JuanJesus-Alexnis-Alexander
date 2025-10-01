@@ -21,7 +21,7 @@ export const Home = () => {
 								</p>
 							</div>
 						</div>
-						<div className="col-md-5">
+						<div className="col-md-6">
 							<div className={styles.card}>
 								<h2 className={styles.subtitle}>Visita la Newsletter de DnD</h2>
 								<Link to="https://dungeonsanddragonsfan.com/" target="_blank" rel="noopener noreferrer">
@@ -31,7 +31,7 @@ export const Home = () => {
 						</div>
 					</div>
 					<div className="row">
-						<div className="col-md-11">
+						<div className="col-md-12">
 							<div className={styles.card}>
 								{!user && <h2 className={styles.subtitle}>¡Únete a nuestra comunidad!</h2>}
 								{!user && <p className={styles.text}>Si eres un apasionado de Dungeons & Dragons, no dudes en registrarte y comenzar a explorar todo lo que D&D MASTERS OF INFINITY tiene para ofrecer. Ya seas un jugador experimentado o un principiante, nuestra plataforma está diseñada para adaptarse a tus necesidades y mejorar tu experiencia de juego.</p>}
