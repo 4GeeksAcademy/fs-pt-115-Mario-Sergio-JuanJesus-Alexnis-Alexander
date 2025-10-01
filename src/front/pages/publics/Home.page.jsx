@@ -11,36 +11,35 @@ export const Home = () => {
 		<>
 			<div className={styles.main}>
 				<div className="container">
-					<h1 className={styles.title}>Bienvenido a <br></br> D&D MASTERS OF INFINITY</h1>
 					<div className="row">
-						<div className="col-md-6">
+						<div className="col-md-6 mt-4">
 							<div className={styles.card}>
-								<h2 className={styles.subtitle}>¿Qué es D&D MASTERS OF INFINITY?</h2>
+								<h2 className={styles.subtitle}>What is D&D MASTERS OF INFINITY?</h2>
 								<p className={styles.text}>
-									D&D MASTERS OF INFINITY es una plataforma web diseñada para facilitar la gestión y organización de partidas de Dungeons & Dragons. Nuestra misión es proporcionar a los jugadores y Dungeon Masters (DMs) una herramienta intuitiva y eficiente para crear, administrar y disfrutar de sus aventuras en el mundo de D&D.
+									D&D MASTERS OF INFINITY is a web platform designed to facilitate the management and organization of Dungeons & Dragons games. Our mission is to provide players and Dungeon Masters (DMs) with an intuitive and efficient tool to create, manage and enjoy their adventures in the world of D&D.
 								</p>
 							</div>
 						</div>
-						<div className="col-md-6">
+						<div className="col-md-6 mt-4">
 							<div className={styles.card}>
-								<h2 className={styles.subtitle}>Visita la Newsletter de DnD</h2>
+								<h2 className={styles.subtitle}>Visit the DnD Newsletter</h2>
 								<Link to="https://dungeonsanddragonsfan.com/" target="_blank" rel="noopener noreferrer">
-									<img className={styles.img} src="https://dungeonsanddragonsfan.com/wp-content/uploads/2024/05/dungeons-and-dragons-fanatics-logo-1A.png" alt="" />
+									<img className={`${styles.img} mx-auto d-block`} src="https://dungeonsanddragonsfan.com/wp-content/uploads/2024/05/dungeons-and-dragons-fanatics-logo-1A.png" alt="" />
 								</Link>
 							</div>
 						</div>
 					</div>
 					<div className="row">
-						<div className="col-md-12">
+						<div className="col-md-12 d-flex flex-wrap gap-2">
 							<div className={styles.card}>
-								{!user && <h2 className={styles.subtitle}>¡Únete a nuestra comunidad!</h2>}
-								{!user && <p className={styles.text}>Si eres un apasionado de Dungeons & Dragons, no dudes en registrarte y comenzar a explorar todo lo que D&D MASTERS OF INFINITY tiene para ofrecer. Ya seas un jugador experimentado o un principiante, nuestra plataforma está diseñada para adaptarse a tus necesidades y mejorar tu experiencia de juego.</p>}
-								{!user && <p className={styles.text}>Regístrate hoy mismo y comienza tu aventura con nosotros.</p>}
-								{!user && <div className={styles.buttonContainer}><Link to="/login" className={styles.button}>Regístrate</Link></div>}
-								{user && <h2 className={styles.subtitle}>¡Hola {user.username}!</h2>}
-								{user && <p className={styles.text}>Gracias por ser parte de nuestra comunidad. Explora nuestras funcionalidades y comienza a crear y gestionar tus partidas de Dungeons & Dragons de manera sencilla y eficiente.</p>}
-								{user && <p className={styles.text}>¡Que comience la aventura!</p>}
-								{user && <section className={dropstyles.dropLeft}>
+								{!user && <h2 className={styles.subtitle}>Join our community!</h2>}
+								{!user && <p className={styles.text}>If you are passionate about Dungeons & Dragons, feel free to sign up and start exploring everything D&D MASTERS OF INFINITY has to offer. Whether you are an experienced player or a beginner, our platform is designed to adapt to your needs and improve your gaming experience.</p>}
+								{!user && <p className={styles.text}>Register today and start your adventure with us.</p>}
+								{!user && <div className={styles.buttonContainer}><Link to="/login" className={styles.button}>Sign up</Link></div>}
+								{user && <h2 className={styles.subtitle}> Hi {user.username}!</h2>}
+								{user && <p className={styles.text}>Thank you for being part of our community. Explore our features and start creating and managing your Dungeons & Dragons games simply and efficiently.</p>}
+								{user && <p className={styles.text}>Let the adventure begin!</p>}
+								{user && <section className={dropstyles.dropLeftbtn}>
 										  <Link to={"/user/characters"}>
 											<button className={dropstyles.charactersBtn}>
 											  <span className={dropstyles.titleBtn}>MY CHARACTERS</span>
@@ -49,6 +48,26 @@ export const Home = () => {
 										  <Link to={"/user/campaigns"}>
 											<button className={dropstyles.campaignsBtn}>
 											  <span className={dropstyles.titleBtn}>MY CAMPAIGNS</span>
+											</button>
+										  </Link>
+										  <Link to={"/user/feats"}>
+											<button className={dropstyles.featsBtn}>
+											  <span className={dropstyles.titleBtn}>MY FEATS</span>
+											</button>
+										  </Link>
+										  <Link to={"/user/background"}>
+											<button className={dropstyles.backgroundsBtn}>
+											  <span className={dropstyles.titleBtn}>MY BACKGROUNDS</span>
+											</button>
+										  </Link>
+										  <Link to={"/user/subclasses"}>
+											<button className={dropstyles.classesBtn}>
+											  <span className={dropstyles.titleBtn}>MY CLASSES</span>
+											</button>
+										  </Link>
+										  <Link to={"/user/specie"}>
+											<button className={dropstyles.speciesBtn}>
+											  <span className={dropstyles.titleBtn}>MY SPECIES</span>
 											</button>
 										  </Link>
 										  <Link to={"/user/magics-items"}>
