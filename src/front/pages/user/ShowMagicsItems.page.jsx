@@ -8,6 +8,8 @@ export const ShowMagicsItemsPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+ 
+
   const getMagicsApi = async () => {
     setLoading(true);
     const responseApi = await getAllMagicItems();
@@ -35,7 +37,7 @@ export const ShowMagicsItemsPage = () => {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
         <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
@@ -45,7 +47,7 @@ export const ShowMagicsItemsPage = () => {
   return (
     <>
       <h1 className="text-center mt-5">
-        Aqui esta tu lista de articulos magicos
+        Item Magic list:
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.magicsItems.length > 0 ? (
