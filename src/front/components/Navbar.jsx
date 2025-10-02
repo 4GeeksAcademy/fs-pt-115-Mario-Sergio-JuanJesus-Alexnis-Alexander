@@ -83,7 +83,7 @@ export const Navbar = () => {
                 onMouseEnter={handleMouseEnterCollection}
                 onMouseLeave={() => handleMouseLeave(setShowCollectionDropdown)}
               >
-                <button className={styles.button}>Collections 🔻</button>
+                <button className={styles.button}>Collections/Creations 🔻</button>
               </div>
               <div
                 onMouseEnter={handleMouseEnterRules}

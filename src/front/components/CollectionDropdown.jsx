@@ -90,7 +90,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
         {/* **** SECCION DERECHA DEL DROPDOWN **** */}
         <div className={styles.dropRightContainer}>
           <section>
-            <h3 className="text-white mt-2">Homebrew:</h3>
+            <h3 className="text-white mt-2">Creations:</h3>
             <div className={styles.dropRight}>
               {creationsList.map((item, index) => (
                 <Link

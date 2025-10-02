@@ -17,12 +17,12 @@ flask-mail = "*"
 sqlalchemy = "*"
 flask-bcrypt = "*"
 flask = "*"
-flask-cors = "*"
 flask-migrate = "*"
 flask-jwt-extended = "*"
 flask-swagger = "*"
 cloudinary = "*"
 tomli = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.13"
