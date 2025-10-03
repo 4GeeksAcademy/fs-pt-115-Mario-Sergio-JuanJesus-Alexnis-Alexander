@@ -53,7 +53,7 @@ export const WikiSpecies = () => {
     loadSpeciesWithDetails();
   }, []);
 
-  if (loading) return <p>Cargando especies...</p>;
+  if (loading) return <p>Charging species...</p>;
 
   return (
     <div className="container mt-4">
@@ -94,7 +94,7 @@ export const WikiSpecies = () => {
                       <p><strong>Traits:</strong> {sp.traits}</p>
                     </div>
                     <div>
-                      <p className="text-muted">Haz click para volver</p>
+                      <p className="text-muted">Click to go back</p>
                     </div>
                   </div>
                 </div>
