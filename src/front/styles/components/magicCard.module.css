@@ -1,0 +1,234 @@
+
+/* ========== FLIP CARD CONTAINER ========== */
+.flipCard {
+  background-color: transparent;
+  width: 250px;
+  height: 350px; /* Cambiado de 290px a 350px para coincidir con tu inline style */
+  border-radius: 10px;
+  perspective: 1000px;
+  font-family: sans-serif;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.flipCard:hover {
+  transform: translateY(-3px);
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Cambiado de 250px a 100% para que use toda la altura del padre */
+  text-align: center;
+  transition: transform 0.6s;
+  transition-timing-function: cubic-bezier(0.61, 0.98, 0.48, 1.01);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flipCardTransform {
+  transform: rotate(180deg) rotateX(180deg);
+}
+
+.flipCardFront {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  width: 100%;
+  height: 100%; /* Añadido */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 10px; 
+  overflow: hidden; 
+  background: #000; 
+  display: flex; 
+  flex-direction: column;
+}
+
+/* TITULO */
+.cardTitle {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+   display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.cardTitle span:last-child {
+  font-size: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* SECCION TYPE */
+.typeBox {
+  background: #1a1614;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #d1d5db;
+  text-align: left;
+  font-family: sans-serif;
+  flex-shrink: 0; /* No se encoge */
+}
+
+/* IMAGEN  */
+.cardImageContainer {
+  background: #000;
+  flex: 1; /* Ocupa el espacio disponible */
+  overflow: hidden;
+  position: relative;
+  min-height: 150px; /* Altura mínima */
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SECCION RAREZA */
+.rarityBox {
+  padding: 5px 10px;
+  height: 2rem;
+  border-radius: 0 0 10px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  border-top: none;
+  flex-shrink: 0; /* No se encoge */
+  display: flex;
+  align-items: center;
+}
+
+/* DORSO DE LA CARTA */
+.flipCardBack {
+  background: black;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 10px; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow-y: auto; 
+}
+
+/* Marco dorado en el dorso */
+.flipCardBack::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 12px;
+  border: 3px solid #c9b037;
+  box-shadow: inset 0 0 20px rgba(201, 176, 55, 0.4);
+  pointer-events: none;
+}
+
+.flipCardBack > * {
+  position: relative;
+  z-index: 1;
+}
+
+.backTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #c9b037;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.backDescription {
+  font-size: 14px; 
+  color: #d1d5db;
+  margin-bottom: 15px; 
+  line-height: 1.6;
+  text-align: center;
+  max-height: 180px; 
+  overflow-y: auto;
+}
+
+.attunementNote {
+  font-size: 13px; 
+  font-style: italic;
+  color: #fbbf24;
+  margin-bottom: 15px; 
+}
+
+.itemStats {
+  font-size: 13px; 
+  color: #94a3b8;
+  text-align: left;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* BOTON DELETE */
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 15px; 
+}
+
+.btnPrimary {
+  padding: 10px 20px; 
+  background: linear-gradient(135deg, #b44646 0%, #6e3838 100%);
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  font-size: 12px; 
+  font-weight: bold; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: sans-serif;
+}
+
+.btnPrimary:hover {
+  background: red;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Scrollbar personalizado */
+.backDescription::-webkit-scrollbar {
+  width: 4px;
+}
+
+.backDescription::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
+
+.backDescription::-webkit-scrollbar-thumb {
+  background: rgba(201, 176, 55, 0.6);
+  border-radius: 2px;
+}
+
+.backDescription::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 176, 55, 0.8);
+}

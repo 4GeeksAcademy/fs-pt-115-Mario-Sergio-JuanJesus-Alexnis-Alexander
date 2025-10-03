@@ -8,7 +8,7 @@ export const RootLayout = () => {
     <>
       <Navbar />
       <Cookies/>
-      <main>
+      <main style={{minHeight: '600px'}}>
         <Outlet />
       </main>
       <Footer />
