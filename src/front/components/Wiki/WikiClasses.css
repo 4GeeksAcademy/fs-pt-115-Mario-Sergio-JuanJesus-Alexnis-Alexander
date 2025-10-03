@@ -1,3 +1,6 @@
+html, body {
+  background: rgb(248, 249, 250) !important;
+}
 .wiki-card {
   perspective: 1000px;
   min-height: 400px;
@@ -34,7 +37,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: #fff;
+  background: rgb(248, 249, 250);
   border-radius: 10px;
   overflow: hidden;
   min-height: 400px;
@@ -42,7 +45,7 @@
 
 .wiki-card-back {
   transform: rotateY(180deg);
-  background: #fff;
+  background: rgb(248, 249, 250);
   z-index: 2;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;

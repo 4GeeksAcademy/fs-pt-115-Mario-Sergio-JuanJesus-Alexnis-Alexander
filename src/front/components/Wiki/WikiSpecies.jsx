@@ -64,7 +64,7 @@ export const WikiSpecies = () => {
           return (
             <div key={sp.index} className="col-md-4 mb-3">
               <div
-                className={`wiki-card card border-0 position-relative${flippedCard === sp.index ? ' flipped' : ''}`}
+                className={`wiki-card card border-0 my-3 position-relative${flippedCard === sp.index ? ' flipped' : ''}`}
                 style={{ cursor: "pointer", width: "100%", height: "auto" }}
               >
                 <div className="wiki-card-inner" style={{ width: "100%", height: "100%" }}>
