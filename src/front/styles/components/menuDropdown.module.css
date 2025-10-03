@@ -13,6 +13,14 @@
   grid-template-rows: repeat(2, 1fr);
   gap: 10px;
 }
+.dropLeftbtn {
+  display: grid;
+  grid-column: 1;
+  padding: 1rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
 
 .titleBtn {
   color: black;
@@ -22,6 +30,10 @@
 
 .charactersBtn,
 .campaignsBtn,
+.featsBtn,
+.backgroundsBtn,
+.classesBtn,
+.speciesBtn,
 .magicsBtn,
 .spellsBtn,
 .monstersBtn,
@@ -70,6 +82,54 @@ a {
 }
 
 .campaignsBtn:hover {
+   background-size: 16rem;
+}
+
+.featsBtn{
+  background-image: url("https://imgs.search.brave.com/gvKgbeYRCzKw56pdGGaE3sNYHvIK360vUCifvHArj_U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/d2FyZ2FtZXIuY29t/L3dwLWNvbnRlbnQv/c2l0ZXMvd2FyZ2Ft/ZXIvMjAyNC8wOC9k/bmQtMjAyNC1mZWF0/cy1odW1hbi13YXJs/b2NrLTU1MHgzMDku/anBn");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.featsBtn:hover {
+   background-size: 16rem;
+}
+
+.backgroundsBtn{
+  background-image: url("https://imgs.search.brave.com/squcn5UdSsNdRgSJOJ9JAjfx6Cz4Cfj8nwVprhnO4HE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/d2FyZ2FtZXIuY29t/L3dwLWNvbnRlbnQv/c2l0ZXMvd2FyZ2Ft/ZXIvMjAyNS8wMi9k/bmQtMjAyNC1iYWNr/Z3JvdW5kcy1mb3J0/cmVzcy01NTB4MzA5/LmpwZw");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.backgroundsBtn:hover {
+   background-size: 16rem;
+}
+
+.classesBtn{
+  background-image: url("https://imgs.search.brave.com/TzIc05xgzYI9yic15bNQMid8LbhKMVhtY3qJcWoQwpM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9kdW5n/ZW9uc29sdmVycy5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MjMvMDkvZG5kLTVl/LWNsYXNzZXMtMTAy/NHg1NzQucG5n");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.classesBtn:hover {
+   background-size: 16rem;
+}
+
+.speciesBtn{
+  background-image: url("https://imgs.search.brave.com/azkbP9r4ucslMw70tWTN3R20hTgu9sFBDrGF5py7TaY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vZHVuZ2Vv/bnNhbmRkcmFnb25z/ZmFuLmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNC8wNy9u/ZXctMjAyNC1kbmQt/cmFjZXMtc3BlY2ll/cy0xNi5wbmc_cmVz/aXplPTgwMCw0NTAm/c3NsPTE");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  border: none;
+}
+
+.speciesBtn:hover {
    background-size: 16rem;
 }
 
