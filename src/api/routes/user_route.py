@@ -84,14 +84,15 @@ def sign_up_google():
 
     html_body = render_template('welcome.html', username= username)
 
-    message = Message(
-        subject = 'Welcome message',
-        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
-        recipients = [email],
-        html = html_body
-    )
-
-    mail.send(message)
+    try:
+        send_email(
+            to_email=email,
+            subject="Bienvenido a Master of Infinity",
+            html=html_body,
+        )
+    except EmailError as e:
+        print(f'[email] error enviando bienvenida:{e}')
+   
 
     return jsonify({
         'success': True,
