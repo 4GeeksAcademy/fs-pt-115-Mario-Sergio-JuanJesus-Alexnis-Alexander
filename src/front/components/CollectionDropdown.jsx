@@ -35,7 +35,7 @@ export const CollectionDropdown = ({ closeDropdown }) => {
     },
     {
       to: "user/create-subclasses",
-      text: " Create SubClass",
+      text: " Create Class",
       styles: styles.createBtn,
     },
     {

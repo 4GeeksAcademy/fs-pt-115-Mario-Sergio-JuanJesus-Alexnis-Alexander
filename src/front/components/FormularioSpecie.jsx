@@ -34,8 +34,11 @@ export const FormularioSpecie = () => {
 
     return (
         <div className="container col-md-5 my-5 basic-form">
-            <h2 className="text-center fw-bold">Create a Species</h2>
+            <h2 className="text-center fw-bold">Create Species</h2>
             <form onSubmit={handleOnSubmit} className="row fw-bold">
+
+                {page === 1 &&
+                    <>
 
                 <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
@@ -143,6 +146,12 @@ export const FormularioSpecie = () => {
                     />
                 </div>
 
+                    </>
+                }
+
+                {page === 2 &&
+                    <>
+
                 <div className="col-md-6 mb-3">
                     <label htmlFor="group" className="form-label">
                         Species Group
@@ -228,9 +237,22 @@ export const FormularioSpecie = () => {
                     />
                 </div>
 
-                <div className="col-12 text-center mt-4">
-                    <button type="submit" className="btn btn-primary">Create Specie</button>
+                    </>
+                }
+
+               <div className="number-page-specie">
+                    <button type="button" disabled={page === 1} onClick={() => setPage((p) => Math.max(p - 1, 1))}>prev</button>
+                    <span>{page} / 2</span>
+                    <button type="button" disabled={page === 2} onClick={() => setPage((p) => Math.min(p + 1, 2))}>next</button>
                 </div>
+
+                {
+                    page === 2 &&
+                    <div className="button-create-specie">
+                        <button type="submit" className="btn btn-primary">Create Specie</button>
+                    </div>
+                }
+
             </form>
         </div>
     );

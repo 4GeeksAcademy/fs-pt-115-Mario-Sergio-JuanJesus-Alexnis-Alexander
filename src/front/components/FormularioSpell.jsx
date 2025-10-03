@@ -9,8 +9,6 @@ export const FormularioSpell = () => {
     const [page, setPage] = useState(1)
     const [input, setInputs] = useState({});
 
-
-
     const { disabledFields, updateDisabledFields } = useDisabledFields(rules, initialDisabled);
 
     const navigate = useNavigate();
@@ -40,7 +38,7 @@ export const FormularioSpell = () => {
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
-            <h2 className="text-center fw-bold">Create New Spells</h2>
+            <h2 className="text-center fw-bold">Create Spells</h2>
             <form className="row fw-bold" onSubmit={handleOnSubmit} >
 
                 {page === 1 &&
@@ -369,7 +367,7 @@ export const FormularioSpell = () => {
                     </>
                 }
 
-                <div className="number-page-background">
+                <div className="number-page-spell">
                     <button type="button" disabled={page === 1} onClick={() => setPage((p) => Math.max(p - 1, 1))}>prev</button>
                     <span>{page} / 2</span>
                     <button type="button" disabled={page === 2} onClick={() => setPage((p) => Math.min(p + 1, 2))}>next</button>
@@ -377,7 +375,7 @@ export const FormularioSpell = () => {
 
                 {
                     page === 2 &&
-                    <div className="button-create-background">
+                    <div className="button-create-spell">
                         <button type="submit" className="btn btn-primary">Create Spell</button>
                     </div>
                 }

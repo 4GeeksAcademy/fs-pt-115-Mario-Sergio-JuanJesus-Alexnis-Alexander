@@ -345,7 +345,7 @@ export const FormularioBackground = () => {
                 {
                     page === 3 &&
                     <div className="col-12 text-center mt-4">
-                        <button type="submit" className="btn btn-primary">Crear Background</button>
+                        <button type="submit" className="btn btn-primary">Create Background</button>
                     </div>
                 }
             </form>

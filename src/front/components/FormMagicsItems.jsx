@@ -36,9 +36,11 @@ export const FormMagicItems = () => {
   };
 
   return (
-    <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center fw-bold">Create Your Magic Item</h2>
-      <form onSubmit={handleOnSubmit} className="row g-2">
+    <div className="container col-md-5 my-5 basic-form position-relative">
+      <h2 className="text-center fw-bold">Create Magic Item</h2>
+      <form onSubmit={handleOnSubmit} className="row g-2 row fw-bold">
+
+
         <div className="col-md-6">
           <label htmlFor="name" className="form-label">
             Name<span className="text-danger">*</span>
@@ -48,7 +50,7 @@ export const FormMagicItems = () => {
             type="text"
             className="form-control"
             name="name"
-            placeholder="Enter magic item name"
+            placeholder=""
             required
           />
         </div>
@@ -61,7 +63,7 @@ export const FormMagicItems = () => {
             type="text"
             className="form-control"
             name="version"
-            placeholder="1, 1.5, A, B, etc"
+            placeholder=""
           />
         </div>
         <div className="col-6">
@@ -74,7 +76,7 @@ export const FormMagicItems = () => {
             className="form-select"
             required
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value={"Common"}>Common</option>
             <option value={"Uncommon"}>Uncommon</option>
             <option value={"Rare"}>Rare</option>
@@ -95,7 +97,7 @@ export const FormMagicItems = () => {
             className="form-select"
             required
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value={"Item"}>Item</option>
             <option value={"Armor"}>Armor</option>
             <option value={"Weapon"}>Weapon</option>
@@ -103,7 +105,7 @@ export const FormMagicItems = () => {
         </div>
         <div className="col-md-4">
           <label htmlFor="magic_item_type" className="form-label">
-            Magic Item Type
+            Magic Item
           </label>
           <select
             onChange={handleOnChange}
@@ -111,7 +113,7 @@ export const FormMagicItems = () => {
             className="form-select"
             disabled={disabledFields.magic_item_type}
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value={"Wondrous Item"}>Wondrous Item</option>
             <option value={"Rod"}>Rod</option>
             <option value={"Scroll"}>Scroll</option>
@@ -131,7 +133,7 @@ export const FormMagicItems = () => {
             className="form-select"
             disabled={disabledFields.base_armor}
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value="Breastplate">Breastplate</option>
             <option value="Chain Mail">Chain Mail</option>
             <option value="Chain Shirt">Chain Shirt</option>
@@ -158,7 +160,7 @@ export const FormMagicItems = () => {
             className="form-select"
             disabled={disabledFields.dex_bonus}
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value="Full Modifier">Full Modifier</option>
             <option value="Max 2">Max 2</option>
             <option value="None">None</option>
@@ -190,14 +192,14 @@ export const FormMagicItems = () => {
             className="form-select"
             disabled={disabledFields.stealth_check}
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value={"None"}>None</option>
             <option value={"Disadvantage"}>Disadvantage</option>
           </select>
         </div>
         <div className="col-md-4">
           <label htmlFor="base_weapon" className="form-label">
-            Base Weapon
+            Base <br /> Weapon
           </label>
           <select
             onChange={handleOnChange}
@@ -205,7 +207,7 @@ export const FormMagicItems = () => {
             className="form-select"
             disabled={disabledFields.base_weapon}
           >
-            <option value="">---</option>
+            <option value="">-</option>
             <option value="Antimatter Rifle">Antimatter Rifle</option>
             <option value="Battleaxe">Battleaxe</option>
             <option value="Blowgun">Blowgun</option>
@@ -283,7 +285,7 @@ export const FormMagicItems = () => {
             type="text"
             className="form-control"
             name="attunement_description"
-            placeholder="Enter the magic item attunement description."
+            placeholder=""
             disabled={disabledFields.attunement_description}
           />
         </div>
