@@ -1,0 +1,69 @@
+.wiki-card {
+  perspective: 1000px;
+}
+
+.wiki-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.wiki-card.flipped .wiki-card-inner {
+  transform: rotateY(180deg);
+}
+
+.wiki-card-front,
+.wiki-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.wiki-card-front {
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wiki-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Banner nombre tipo titleBtn */
+.wiki-card-front .titleBanner {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Trasera */
+.wiki-card-back {
+  background: white;
+  transform: rotateY(180deg);
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Botones dentro de la trasera */
+.wiki-card-back .btn {
+  margin-top: 5px;
+}
