@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "./WikiSpecies.css";
 import { fetchAllSpecies, fetchSpeciesDetails } from "../../serviceApi/WikiAPI/WikiSpeciesAPI.js";
 
 
@@ -28,6 +29,14 @@ const speciesImages = {
 export const WikiSpecies = () => {
   const [species, setSpecies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [flippedCard, setFlippedCard] = useState(null);
+
+  // Fondo blanco uniforme
+  useEffect(() => {
+    const prev = document.body.style.background;
+    document.body.style.background = "#fff";
+    return () => { document.body.style.background = prev; };
+  }, []);
 
   useEffect(() => {
     async function loadSpeciesWithDetails() {
@@ -44,7 +53,7 @@ export const WikiSpecies = () => {
     loadSpeciesWithDetails();
   }, []);
 
-  if (loading) return <p>Cargando especies...</p>;
+  if (loading) return <p>Charging species...</p>;
 
   return (
     <div className="container mt-4">
@@ -55,33 +64,39 @@ export const WikiSpecies = () => {
           return (
             <div key={sp.index} className="col-md-4 mb-3">
               <div
-                className="card h-100 position-relative"
-                style={{ cursor: "pointer" }}
+                className={`wiki-card card border-0 my-3 position-relative${flippedCard === sp.index ? ' flipped' : ''}`}
+                style={{ cursor: "pointer", width: "100%", height: "auto" }}
               >
-                
-                {imageSrc && (
-                  <img
-                    src={imageSrc}
-                    alt={sp.name}
-                    style={{
-                      position: "absolute",
-                      right: 0,
-                      top: 0,
-                      width: "50%",
-                      height: "100%",
-                      objectFit: "cover",
-                      opacity: 0.5,
-                      pointerEvents: "none",
-                    }}
-                  />
-                )}
-
-                
-                <div className="card-body position-relative" style={{ zIndex: 2 }}>
-                  <h5 className="card-title">{sp.name}</h5>
-                  <p><strong>Descripción:</strong> {sp.description}</p>
-                  <p><strong>Traits:</strong> {sp.traits}</p>
-                  <p className="text-muted">Haz click para ver detalles</p>
+                <div className="wiki-card-inner" style={{ width: "100%", height: "100%" }}>
+                  {/* Cara frontal */}
+                  <div className="wiki-card-front" onClick={() => setFlippedCard(sp.index)}>
+                    {imageSrc && (
+                      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden", padding: 0 }}>
+                        <img
+                          src={imageSrc}
+                          alt={sp.name}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                            borderRadius: "10px 10px 0 0",
+                            display: "block"
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  {/* Cara trasera */}
+                  <div className="wiki-card-back p-3 d-flex flex-column justify-content-between" onClick={() => setFlippedCard(null)} style={{ cursor: "pointer" }}>
+                    <div>
+                      <h5 className="card-title">{sp.name}</h5>
+                      <p><strong>Descripción:</strong> {sp.description}</p>
+                      <p><strong>Traits:</strong> {sp.traits}</p>
+                    </div>
+                    <div>
+                      <p className="text-muted">Click to go back</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -21,8 +21,8 @@ static_file_dir = os.path.join(os.path.dirname(
     os.path.realpath(__file__)), '../dist/')
 app = Flask(__name__)
 frontend_origin = [
-    "https://supreme-fortnight-9rjvprw567jcxwq5-3000.app.github.dev",
-    "https://supreme-fortnight-9rjvprw567jcxwq5.github.dev/"
+    "https://bug-free-space-goggles-wpg6wpxgw973v996-3000.app.github.dev",
+    "https://bug-free-space-goggles-wpg6wpxgw973v996.github.dev"
 ]
 CORS(app, resources={r"/*": {"origins": frontend_origin}},
      supports_credentials=True)

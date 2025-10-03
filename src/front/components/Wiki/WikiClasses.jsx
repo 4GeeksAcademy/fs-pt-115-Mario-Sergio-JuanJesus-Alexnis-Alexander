@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+// Cambia el fondo del body solo cuando este componente está montado
+import { useEffect as useEffectBody } from "react";
+import "./WikiClasses.css";
 import { getClassesList, getClassDetails, getClassLevels } from "../../serviceApi/WikiAPI/WikiClassesAPI";
 import barbarianImg from "../../assets/img/638607453019977939.png";
 import bardImg from "../../assets/img/638607457242601819.png"
@@ -16,7 +19,7 @@ import wizardImg from "../../assets/img/638607460388570205.png"
 
 
 const classImages = {
-  barbarian: barbarianImg, 
+  barbarian: barbarianImg,
   bard: bardImg,
   cleric: clericImg,
   druid: druidImg,
@@ -46,9 +49,15 @@ const primaryAbilities = {
 };
 
 export const WikiClasses = () => {
+  useEffectBody(() => {
+    const prev = document.body.style.background;
+    document.body.style.background = "rgba(15, 98, 180, 1)";
+    return () => { document.body.style.background = prev; };
+  }, []);
   const [classes, setClasses] = useState([]);
   const [classDetails, setClassDetails] = useState({});
   const [selectedClass, setSelectedClass] = useState(null);
+  const [flippedCard, setFlippedCard] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -76,7 +85,7 @@ export const WikiClasses = () => {
     setSelectedClass({ ...details, levels });
   };
 
-  if (loading) return <div className="text-center mt-5">Cargando clases...</div>;
+  if (loading) return <div className="text-center mt-5">Charging classes...</div>;
 
   if (selectedClass) {
     const ability = primaryAbilities[selectedClass.index];
@@ -128,14 +137,13 @@ export const WikiClasses = () => {
             )}
 
             <button className="btn btn-secondary mt-3" onClick={() => setSelectedClass(null)}>
-              ← Volver a todas las clases
+              ← Back to main
             </button>
           </div>
         </div>
       </div>
     );
   }
-
   return (
     <div className="container mt-4">
       <div className="row">
@@ -146,36 +154,43 @@ export const WikiClasses = () => {
           return (
             <div key={cls.index} className="col-md-4 mb-3">
               <div
-                className="card h-100 position-relative"
-                onClick={() => handleSelectClass(cls)}
-                style={{ cursor: "pointer" }}
+                className={`wiki-card card border-0 position-relative${flippedCard === cls.index ? ' flipped' : ''}`}
+                style={{ cursor: "pointer", width: "100%", height: "auto" }}
               >
-                {/* Imagen de fondo */}
-                {classImages[cls.index] && (
-                  <img
-                    src={classImages[cls.index]}
-                    alt={`${cls.name} background`}
-                    style={{
-                      position: "absolute",
-                      right: 0,
-                      bottom: 0,
-                      width: "50%",
-                      height: "100%",
-                      objectFit: "cover",
-                      opacity: 0.5,
-                      pointerEvents: "none",
-                    }}
-                  />
-                )}
-
-                {/* Contenido de la carta */}
-                <div className="card-body position-relative">
-                  <h5 className="card-title">{cls.name}</h5>
-                  <p><strong>Primary Ability:</strong> {ability?.name}</p>
-                  <p className="text-muted"><strong>{ability?.desc}</strong></p>
-                  <p><strong>Hit Point Die:</strong> d{details?.hit_die}</p>
-                  <p><strong>Saving Throws:</strong> {details?.saving_throws?.map(st => st.name).join(", ")}</p>
-                  <p className="text-muted">Haz click para ver detalles</p>
+                <div className="wiki-card-inner" style={{ width: "100%", height: "600px" }}>
+                  {/* Cara frontal */}
+                  <div className="wiki-card-front" onClick={() => setFlippedCard(cls.index)}>
+                    {classImages[cls.index] && (
+                      <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "#f8f9fa", borderRadius: "10px 10px 0 0", overflow: "hidden", padding: 0 }}>
+                        <img
+                          src={classImages[cls.index]}
+                          alt={`${cls.name} background`}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "contain",
+                            borderRadius: "10px 10px 0 0",
+                            display: "block",
+                            transparent: "true"
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                  {/* Cara trasera */}
+                  <div className="wiki-card-back p-3 d-flex flex-column justify-content-between" onClick={() => setFlippedCard(null)} style={{ cursor: "pointer" }}>
+                    <div>
+                      <h5 className="card-title">{cls.name}</h5>
+                      <p><strong>Primary Ability:</strong> {ability?.name}</p>
+                      <p className="text-muted"><strong>{ability?.desc}</strong></p>
+                      <p><strong>Hit Point Die:</strong> d{details?.hit_die}</p>
+                      <p><strong>Saving Throws:</strong> {details?.saving_throws?.map(st => st.name).join(", ")}</p>
+                    </div>
+                    <div>
+                      <button className="btn btn-secondary me-2" onClick={() => handleSelectClass(cls)}>Ver detalles</button>
+                      <button className="btn btn-outline-secondary" onClick={e => { e.stopPropagation(); setFlippedCard(null); }}>Volver</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
