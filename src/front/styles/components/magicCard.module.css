@@ -1,22 +1,24 @@
-/* .flipCard {
+
+/* ========== FLIP CARD CONTAINER ========== */
+.flipCard {
   background-color: transparent;
-  width: 210px;
-  height: 264px;
+  width: 250px;
+  height: 350px; /* Cambiado de 290px a 350px para coincidir con tu inline style */
+  border-radius: 10px;
   perspective: 1000px;
   font-family: sans-serif;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
 }
 
-.title {
-  font-size: 1.5em;
-  font-weight: 900;
-  text-align: center;
-  margin: 0;
+.flipCard:hover {
+  transform: translateY(-3px);
 }
 
 .flipCardInner {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100%; /* Cambiado de 250px a 100% para que use toda la altura del padre */
   text-align: center;
   transition: transform 0.6s;
   transition-timing-function: cubic-bezier(0.61, 0.98, 0.48, 1.01);
@@ -28,121 +30,21 @@
   transform: rotate(180deg) rotateX(180deg);
 }
 
-.flipCardFront,
-.flipCardBack {
-  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-}
-
 .flipCardFront {
-  background: #fff;
-  color: #000;
-}
-
-.flipCardBack {
-  background: #000;
-  color: #fff;
-  transform: rotateY(180deg);
-}
-
-.buttonContainer {
-  display: flex;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.btnPrimary {
-  padding: 0.375rem 0.75rem;
-  background-color: transparent;
-  color: white;
-  cursor: pointer;
-}
-  */
-
-/* ========== FLIP CARD CONTAINER ========== */
-.flipCard {
-  background-color: transparent;
-  width: 210px;
-  height: auto;
-  perspective: 1000px;
-  font-family: sans-serif;
-}
-
-.flipCardInner {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  text-align: center;
-   transition: transform 0.6s;
-  transition-timing-function: cubic-bezier(0.61, 0.98, 0.48, 1.01);
-  transform-style: preserve-3d;
-  cursor: pointer;
-}
-
-.flipCardTransform {
-  transform: rotate(180deg) rotateX(180deg);
-}
-
-.flipCardFront{
   box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
   width: 100%;
+  height: 100%; /* Añadido */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  border-radius: 10px; 
+  overflow: hidden; 
+  background: #000; 
+  display: flex; 
+  flex-direction: column;
 }
 
-
-.flipCardBack {
-  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  min-height: 295px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 1rem;
-}
-
-/* ========== FRENTE DE LA CARTA (ESTILO MTG) ========== */
-/* .flipCardFront {
-  display: flex;
-  flex-direction: column;
-} */
-
-
-/* Marco exterior dorado/plateado según rareza */
-/* .flipCardFront::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  border-radius: 12px;
-  border: 3px solid #c9b037;
-  box-shadow: inset 0 0 20px rgba(201, 176, 55, 0.4);
-  pointer-events: none;
-  z-index: 1;
-} */
-/* 
-Ajustar z-index para el contenido
-.flipCardFront > * {
-  position: relative;
-  z-index: 2;
-} */
-
-/* ========== HEADER CON NOMBRE ========== */
+/* TITULO */
 .cardTitle {
   padding: 8px 12px;
   font-size: 16px;
@@ -151,10 +53,27 @@ Ajustar z-index para el contenido
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   letter-spacing: 0.5px;
+  flex-shrink: 0;
+   display: flex;
+  justify-content: space-between; 
+  align-items: center;
 }
 
-/* ========== TYPE LINE SUPERIOR ========== */
-.typeLineTop {
+.cardTitle span:last-child {
+  font-size: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* SECCION TYPE */
+.typeBox {
   background: #1a1614;
   padding: 4px 10px;
   font-size: 11px;
@@ -162,14 +81,16 @@ Ajustar z-index para el contenido
   color: #d1d5db;
   text-align: left;
   font-family: sans-serif;
+  flex-shrink: 0; /* No se encoge */
 }
 
-/* ========== CONTENEDOR DE IMAGEN ========== */
+/* IMAGEN  */
 .cardImageContainer {
   background: #000;
-  height: 200px;
+  flex: 1; /* Ocupa el espacio disponible */
   overflow: hidden;
   position: relative;
+  min-height: 150px; /* Altura mínima */
 }
 
 .cardImage {
@@ -179,24 +100,8 @@ Ajustar z-index para el contenido
   display: block;
 }
 
-/* Placeholder para imagen */
-/* .imagePlaceholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #555;
-  font-size: 13px;
-  font-style: italic;
-  background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
-                    linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-} */
-
-/* ========== TYPE LINE INFERIOR (RARITY) ========== */
-.typeLineBottom {
+/* SECCION RAREZA */
+.rarityBox {
   padding: 5px 10px;
   height: 2rem;
   border-radius: 0 0 10px 10px;
@@ -204,36 +109,12 @@ Ajustar z-index para el contenido
   font-weight: bold;
   color: #fff;
   border-top: none;
+  flex-shrink: 0; /* No se encoge */
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-
-
-/* ========== CAJA DE TEXTO ========== */
-/* .textBox {
-  flex: 1;
-  background: linear-gradient(to bottom, #e8e6db 0%, #d9d6cc 100%);
-  border: 3px solid #2a2420;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  margin: 0 12px 12px 12px;
-  padding: 10px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 11px;
-  color: #333;
-  text-align: left;
-  line-height: 1.5;
-  overflow-y: auto;
-} */
-/* 
-.textPreview {
-  font-style: italic;
-  color: #666;
-} */
-
-/* ========== DORSO DE LA CARTA ========== */
+/* DORSO DE LA CARTA */
 .flipCardBack {
   background: black;
   color: white;
@@ -244,6 +125,13 @@ Ajustar z-index para el contenido
   align-items: center;
   padding: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.7);
+  border-radius: 10px; 
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow-y: auto; 
 }
 
 /* Marco dorado en el dorso */
@@ -266,57 +154,57 @@ Ajustar z-index para el contenido
 }
 
 .backTitle {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   color: #c9b037;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   letter-spacing: 2px;
 }
 
 .backDescription {
-  font-size: 13px;
+  font-size: 14px; 
   color: #d1d5db;
-  margin-bottom: 15px;
+  margin-bottom: 15px; 
   line-height: 1.6;
   text-align: center;
-  max-height: 180px;
+  max-height: 180px; 
   overflow-y: auto;
 }
 
 .attunementNote {
-  font-size: 12px;
+  font-size: 13px; 
   font-style: italic;
   color: #fbbf24;
-  margin-bottom: 15px;
+  margin-bottom: 15px; 
 }
 
 .itemStats {
-  font-size: 12px;
+  font-size: 13px; 
   color: #94a3b8;
+  text-align: left;
   margin-bottom: 5px;
   text-align: center;
 }
 
-/* ========== BOTONES ========== */
+/* BOTON DELETE */
 .buttonContainer {
   display: flex;
   gap: 10px;
   margin-top: auto;
-  padding-top: 15px;
+  padding-top: 15px; 
 }
 
 .btnPrimary {
-  padding: 10px 20px;
+  padding: 10px 20px; 
   background: linear-gradient(135deg, #b44646 0%, #6e3838 100%);
   color: white;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 8px;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 12px; 
+  font-weight: bold; 
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   font-family: sans-serif;
 }
 
@@ -325,126 +213,22 @@ Ajustar z-index para el contenido
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
-/* 
-.btnPrimary:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-} */
 
-
-/* ========== ALERT DE ERROR ========== */
-/* .errorAlert {
-  margin-top: 15px;
-  padding: 10px;
-  background: rgba(239, 68, 68, 0.2);
-  border: 1px solid #ef4444;
-  border-radius: 4px;
-  font-size: 12px;
-  color: #fca5a5;
-  text-align: center;
-} */
-
-/* ========== VARIANTES DE RAREZA ========== */
-/* .rarityCommon::before {
-  border-color: #1a1a1a;
-  box-shadow: inset 0 0 20px rgba(26, 26, 26, 0.4);
-}
-
-.rarityCommon .rarityGem {
-  background: #1a1a1a;
-  box-shadow: 0 0 10px #1a1a1a, 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.rarityUncommon::before {
-  border-color: #71797e;
-  box-shadow: inset 0 0 20px rgba(113, 121, 126, 0.4);
-}
-
-.rarityUncommon .rarityGem {
-  background: #71797e;
-  box-shadow: 0 0 10px #71797e, 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.rarityRare::before {
-  border-color: #c9b037;
-  box-shadow: inset 0 0 20px rgba(201, 176, 55, 0.4);
-}
-
-.rarityRare .rarityGem {
-  background: #c9b037;
-  box-shadow: 0 0 10px #c9b037, 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.rarityVeryRare::before {
-  border-color: #c0c0c0;
-  box-shadow: inset 0 0 20px rgba(192, 192, 192, 0.4);
-}
-
-.rarityVeryRare .rarityGem {
-  background: #c0c0c0;
-  box-shadow: 0 0 10px #c0c0c0, 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.rarityLegendary::before {
-  border-color: #cd7f32;
-  box-shadow: inset 0 0 20px rgba(205, 127, 50, 0.4);
-}
-
-.rarityLegendary .rarityGem {
-  background: #cd7f32;
-  box-shadow: 0 0 10px #cd7f32, 0 2px 4px rgba(0, 0, 0, 0.5);
-} */
-
-/* ========== VARIANTES DE TIPO ========== */
-/* .typePotion .cardTitle,
-.typePotion .typeLineBottom {
-  background: linear-gradient(135deg, #c62828 0%, #d32f2f 50%, #e57373 100%);
-}
-
-.typeScroll .cardTitle,
-.typeScroll .typeLineBottom {
-  background: linear-gradient(135deg, #4527a0 0%, #5e35b1 50%, #9575cd 100%);
-}
-
-.typeWand .cardTitle,
-.typeWand .typeLineBottom {
-  background: linear-gradient(135deg, #1565c0 0%, #1976d2 50%, #64b5f6 100%);
-}
-
-.typeRing .cardTitle,
-.typeRing .typeLineBottom {
-  background: linear-gradient(135deg, #ef6c00 0%, #f57c00 50%, #ffb74d 100%);
-}
-
-.typeArmor .cardTitle,
-.typeArmor .typeLineBottom {
-  background: linear-gradient(135deg, #424242 0%, #616161 50%, #9e9e9e 100%);
-}
-
-.typeWeapon .cardTitle,
-.typeWeapon .typeLineBottom {
-  background: linear-gradient(135deg, #c62828 0%, #d32f2f 50%, #e57373 100%);
-} */
-
-/* ========== SCROLLBAR ========== */
-/* .textBox::-webkit-scrollbar,
+/* Scrollbar personalizado */
 .backDescription::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
-.textBox::-webkit-scrollbar-track,
 .backDescription::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
 }
 
-.textBox::-webkit-scrollbar-thumb,
 .backDescription::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.3);
-  border-radius: 3px;
+  background: rgba(201, 176, 55, 0.6);
+  border-radius: 2px;
 }
 
-.textBox::-webkit-scrollbar-thumb:hover,
 .backDescription::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4);
-} */
+  background: rgba(201, 176, 55, 0.8);
+}

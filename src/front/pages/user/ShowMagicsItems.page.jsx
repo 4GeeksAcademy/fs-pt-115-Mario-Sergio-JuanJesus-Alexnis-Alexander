@@ -8,8 +8,6 @@ export const ShowMagicsItemsPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
- 
-
   const getMagicsApi = async () => {
     setLoading(true);
     const responseApi = await getAllMagicItems();
@@ -43,20 +41,59 @@ export const ShowMagicsItemsPage = () => {
     );
   }
 
-
   return (
     <>
-      <h1 className="text-center mt-5">
-        Item Magic list:
-      </h1>
-      <div className="container d-flex gap-4 justify-content-center mt-5">
+      <div style={{ textAlign: "center" }}>
+        <div
+          style={{
+            marginTop: '3rem',
+            display: "inline-block",
+            padding: "30px 50px",
+            background: "linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)",
+            clipPath:
+              "polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%)",
+            boxShadow: "0 10px 30px rgba(0, 0, 0, 0.6)",
+            position: "relative",
+            border: "3px solid #d4a017",
+          }}
+        >
+          <h1
+            style={{
+              color: "#dcbe73ff",
+              fontWeight: "bold",
+              fontSize: "36px",
+              fontFamily: "Georgia, serif",
+              letterSpacing: "2px",
+              margin: "0",
+              textShadow:
+                "0 0 15px rgba(212, 160, 23, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.9)",
+            }}
+          >
+            ITEM MAGIC LIST
+          </h1>
+        </div>
+      </div>
+      <div
+        className="container mt-5"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(5, 210px)",
+          gap: "60px",
+          justifyContent: "center",
+          minHeight: "350px",
+          marginBottom: "50px",
+        }}
+      >
         {store.magicsItems.length > 0 ? (
           store.magicsItems.map((magicItem) => (
             <MagicItemCard key={magicItem.id} item={magicItem} />
           ))
         ) : (
-          <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun articulo creado *****
+          <h1
+            className="text-center text-dark mt-5"
+            style={{ gridColumn: "1 / -1" }}
+          >
+            ***** You dont have any Items *****
           </h1>
         )}
       </div>

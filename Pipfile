@@ -23,6 +23,8 @@ flask-swagger = "*"
 cloudinary = "*"
 tomli = "*"
 flask-cors = "*"
+requests = "*"
+sendgrid = "*"
 
 [requires]
 python_version = "3.13"
