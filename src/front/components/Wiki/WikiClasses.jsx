@@ -51,7 +51,7 @@ const primaryAbilities = {
 export const WikiClasses = () => {
   useEffectBody(() => {
     const prev = document.body.style.background;
-    document.body.style.background = "#ffffffd5";
+    document.body.style.background = "rgba(15, 98, 180, 1)";
     return () => { document.body.style.background = prev; };
   }, []);
   const [classes, setClasses] = useState([]);
@@ -170,7 +170,8 @@ export const WikiClasses = () => {
                             height: "100%",
                             objectFit: "contain",
                             borderRadius: "10px 10px 0 0",
-                            display: "block"
+                            display: "block",
+                            transparent: "true"
                           }}
                         />
                       </div>
