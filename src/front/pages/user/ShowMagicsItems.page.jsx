@@ -34,8 +34,8 @@ export const ShowMagicsItemsPage = () => {
   if (loading) {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
-        <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        <div className="position-absolute top-50 start-50 translate-middle text-center fs-2 fw-bold">
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
@@ -44,8 +44,8 @@ export const ShowMagicsItemsPage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Aqui esta tu lista de articulos magicos
+      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
+        Your magic items
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.magicsItems.length > 0 ? (
@@ -54,7 +54,7 @@ export const ShowMagicsItemsPage = () => {
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun articulo creado *****
+            ***** You don't have any magic item created *****
           </h1>
         )}
       </div>

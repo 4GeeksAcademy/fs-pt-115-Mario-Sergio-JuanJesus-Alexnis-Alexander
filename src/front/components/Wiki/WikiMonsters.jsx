@@ -42,7 +42,7 @@ export const WikiMonsters = () => {
 
   const toggleExpand = index => setExpanded(prev => ({ ...prev, [index]: !prev[index] }));
 
-  if (loading) return <p>Cargando monstruos...</p>;
+  if (loading) return <p>Loading monsters...</p>;
 
   return (
     <div className="container mt-4">
