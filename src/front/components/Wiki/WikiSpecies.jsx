@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./WikiSpecies.css";
 import { fetchAllSpecies, fetchSpeciesDetails } from "../../serviceApi/WikiAPI/WikiSpeciesAPI.js";
 
-
 import humanImg from "../../assets/img/pngtree-dnd-adventurer-png-image_12861468.png";
 import elfImg from "../../assets/img/636287075350739045.png";
 import dwarfImg from "../../assets/img/636271781394265550.png";
@@ -12,7 +11,6 @@ import gnomeImg from "../../assets/img/636272671553055253.png";
 import halfelfImg from "../../assets/img/636274618102950794.png";
 import halforcImg from "../../assets/img/636274570630462055.png";
 import tieflingImg from "../../assets/img/266-2664125_tiefling-rogue-dnd-tiefling-rogue.png";
-
 
 const speciesImages = {
   human: humanImg,
@@ -57,6 +55,11 @@ export const WikiSpecies = () => {
 
   return (
     <div className="container mt-4">
+      {/* Banner principal */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Species</h1>
+      </div>
+
       <div className="row">
         {species.map(sp => {
           const imageSrc = speciesImages[sp.index];
@@ -86,6 +89,7 @@ export const WikiSpecies = () => {
                       </div>
                     )}
                   </div>
+
                   {/* Cara trasera */}
                   <div className="wiki-card-back p-3 d-flex flex-column justify-content-between" onClick={() => setFlippedCard(null)} style={{ cursor: "pointer" }}>
                     <div>

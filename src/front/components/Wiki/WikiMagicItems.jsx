@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchMagicItemsList, fetchMagicItemDetails } from "../../serviceApi/WikiAPI/WikiMagicItemsAPI.js";
+import "./WikiMagicItems.css"; // para banner y estilos generales
 
 export const WikiMagicItems = () => {
   const [itemsList, setItemsList] = useState([]); 
@@ -8,7 +9,6 @@ export const WikiMagicItems = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [expanded, setExpanded] = useState({});
   const ITEMS_PER_PAGE = 20;
-
 
   useEffect(() => {
     async function loadList() {
@@ -23,7 +23,6 @@ export const WikiMagicItems = () => {
   const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
   const currentList = itemsList.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(itemsList.length / ITEMS_PER_PAGE);
-
 
   useEffect(() => {
     async function loadDetails() {
@@ -46,6 +45,11 @@ export const WikiMagicItems = () => {
 
   return (
     <div className="container mt-4">
+      {/* Banner principal */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Magic Items</h1>
+      </div>
+
       {/* Headers */}
       <div style={{
         display: "grid",
