@@ -19,7 +19,7 @@ export const ProfilePage = () => {
   const [loadingImg, setLoadingImg] = useState(false);
   const [activeTab, setActiveTab] = useState("info");
   const [file, setFile] = useState(null);
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -53,7 +53,7 @@ export const ProfilePage = () => {
     } catch (error) {
       console.error("Error al actualizar perfil:", error);
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -70,35 +70,33 @@ export const ProfilePage = () => {
   };
 
   const totalItems =
-    (user?.magics_items?.length || 0) + 
+    (user?.magics_items?.length || 0) +
     (user?.monsters?.length || 0) +
     (user?.backgrounds?.length || 0) +
     (user?.classes?.length || 0) +
     (user?.specie?.length || 0) +
     (user?.feats?.length || 0) +
     (user?.spells?.length || 0) +
-    (user?.character?.length || 0) 
+    (user?.character?.length || 0) +
+    (user?.campaign?.length || 0)
 
   const userRank = calculatedUserRank(totalItems)
-
-  
 
   return (
     <>
       <div className={`container-fluid ${styles.containerFluid}`}>
         <div className="container">
-          {/* Título Principal */}
+
           <h1 className={`mb-4 ${styles.mainTitle}`}>
             {user?.username}'s Profile
           </h1>
 
-          {/* Contenedor Principal */}
+
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <div className={`${styles.profileContainer}`}>
-                {/* Header del Perfil */}
+                {/* Header */}
                 <div className={styles.profileHeader}>
-                  {/* Avatar */}
                   <div className={styles.avatarContainer}>
                     {loadingImg && (
                       <p>
@@ -140,7 +138,17 @@ export const ProfilePage = () => {
                     <p className={styles.memberInfo}>
                       Member since {user?.created_at}
                     </p>
-                    <p className={styles.lastActive}>Rank : <strong>{userRank.toUpperCase()}</strong></p>
+                    <p className={styles.lastActive}>Rank :
+                      <span
+                        style={{
+                          color: userRank.color,
+                          fontWeight: 'bold',
+                          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.6)'
+                        }}
+                      >
+                        {userRank.text.toUpperCase()}
+                      </span>
+                    </p>
                   </div>
 
                   {/* Botones de Acción */}
@@ -232,7 +240,7 @@ export const ProfilePage = () => {
                               <p className={styles.infoValue}>{user?.email}</p>
                             </div>
 
-                            
+
                             <div className={styles.infoItem}>
                               <label className={styles.infoLabel}>PHONE</label>
                               <p
@@ -305,6 +313,18 @@ export const ProfilePage = () => {
                                   </h4>
                                   <small className={styles.statLabel}>
                                     Magic Items
+                                  </small>
+                                </div>
+                              </div>
+                              <div className="col-md-3">
+                                <div className={styles.statCard}>
+                                  <h4
+                                    className={`${styles.statNumber} ${styles.statNumberCharacters}`}
+                                  >
+                                    {user?.campaign?.length || 0}
+                                  </h4>
+                                  <small className={styles.statLabel}>
+                                    Campaings
                                   </small>
                                 </div>
                               </div>

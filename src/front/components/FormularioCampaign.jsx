@@ -45,7 +45,7 @@ export const FormularioCampaign = () => {
             type="text"
             className="form-control"
             name="name"
-            placeholder=""
+            placeholder="Character name"
             required
           />
         </div>
@@ -59,7 +59,7 @@ export const FormularioCampaign = () => {
             type="text"
             className="form-control"
             name="description"
-            placeholder=""
+            placeholder="Campaing description"
           />
         </div>
 
@@ -72,7 +72,7 @@ export const FormularioCampaign = () => {
             type="text"
             name="settings"
             className="form-control"
-            placeholder=""
+            placeholder="Campaign Setting"
           ></input>
         </div>
 

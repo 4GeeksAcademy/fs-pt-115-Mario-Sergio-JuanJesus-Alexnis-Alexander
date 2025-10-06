@@ -1,15 +1,14 @@
 export const calculatedUserRank = (totalItems) => {
     switch (true) {
         case totalItems >= 20:
-            return 'Master'
+            return { text: 'Master', color: '#FFD700' } // Dorado
         case totalItems >= 15:
-            return 'Legend'
+            return { text: 'Legend', color: '#9B59B6' } // Púrpura
         case totalItems >= 10:
-            return 'Proffesional'
+            return { text: 'Professional', color: '#1494eaff' } // Azul
         case totalItems >= 5:
-            return 'Advanced'
-    
+            return { text: 'Advanced', color: '#0c572bff' } // Verde
         default:
-            return 'Beginner'
+            return { text: 'Beginner', color: '#95A5A6' } // Gris
     }
 }
