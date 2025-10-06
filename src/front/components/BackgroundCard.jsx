@@ -28,18 +28,16 @@ export const BackgroundCard = ({ item }) => {
           <h5 className="card-title">Introduction: {item.introduction}</h5>
 
           <div className="d-flex justify-content-start gap-2 mt-3">
-            <button className="btn btn-primary" disabled>Detalles</button>
-            <button className="btn btn-primary" disabled>✏️</button>
             <button
               className="btn btn-primary"
-              onClick={() => handleOnDelete(item.id)}
+              onClick={() => handleOnDelete(item.background_id)}
             >
               ❌
             </button>
           </div>
         </div>
         {error && (
-          <div class="alert alert-danger" role="alert">
+          <div className="alert alert-danger" role="alert">
             {error}
           </div>
         )}

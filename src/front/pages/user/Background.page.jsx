@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { getAllBackgrounds } from "../../serviceApi/backgroundApi";
 import { BackgroundCard } from "../../components/BackgroundCard";
+import styles from "../../styles/page/showItems.module.css";
 
 
 export const BackgroundPage = () => {
@@ -13,7 +14,7 @@ export const BackgroundPage = () => {
     setLoading(true);
     const responseApi = await getAllBackgrounds();
     if (!responseApi.success) {
-      setError(responseApi.error || "Error al traer articulos magicos");
+      setError(responseApi.error || "Error");
       return;
     }
     dispatch({
@@ -34,7 +35,7 @@ export const BackgroundPage = () => {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
         <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
@@ -43,12 +44,16 @@ export const BackgroundPage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Aqui esta tu lista de background
-      </h1>
+      <div style={{ textAlign: "center" }}>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.titleText}>
+            YOUR BACKGROUNDS
+          </h1>
+        </div>
+      </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
-        {store.backgrounds.length > 0 ? (
-          store.backgrounds.map((background) => (
+        {store?.backgrounds.length > 0 ? (
+          store?.backgrounds.map((background) => (
             <BackgroundCard key={background.background_id} item={background} />
           ))
         ) : (

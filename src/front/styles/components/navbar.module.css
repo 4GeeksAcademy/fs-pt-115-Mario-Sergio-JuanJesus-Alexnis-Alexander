@@ -36,9 +36,7 @@
   transform: translateX(-50%);
 }
 
-/* ========== MEDIA QUERIES ========== */
 
-/* Bootstrap collapse breakpoint */
 @media (max-width: 991px) {
   #navbar {
     padding: 8px 0;
@@ -49,24 +47,45 @@
     height: 2.2rem;
   }
 
+ 
+  #navbar .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #navbar .navbar-collapse > div:first-child {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-grow: 0 !important;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
   .btnDropdown {
     position: static !important;
     transform: none !important;
     flex-direction: row !important;
-    flex-wrap: wrap !important;
-    width: 100%;
-    padding: 10px;
-    gap: 8px;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    padding: 0 !important;
+    gap: 8px !important;
     justify-content: center;
   }
 
-    .button {
+  .button {
     width: auto !important;
-    flex: 0 1 auto;
+    flex: 0 0 auto;
     text-align: center;
-    padding: 6px 10px;     /* Más pequeño */
-    font-size: 10px;       /* Más pequeño */
+    padding: 8px 12px;    
+    font-size: 11px;       
     white-space: nowrap; 
+  }
+
+  #navbar form {
+    justify-content: center !important;
+    margin: 0 !important;
   }
 }
 
@@ -80,7 +99,7 @@
 
   .button {
     padding: 7px 12px;
-    font-size: 11px;
+    font-size: 10px;
   }
 }
 
@@ -96,13 +115,12 @@
   }
 
   .btnDropdown {
-    padding: 8px 5px;
-    gap: 5px;
+    gap: 5px !important;
   }
 
   .button {
     padding: 6px 10px;
-    font-size: 10px;
+    font-size: 9px;
     border-radius: 20px;
   }
 }

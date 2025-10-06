@@ -24,6 +24,7 @@
   font-weight: 700;
   position: relative;
 }
+
 .footerSection h3::after {
   content: '';
   position: absolute;
@@ -86,6 +87,7 @@
 .contactItem a {
   color: #f4d03f;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .contactItem a:hover {
@@ -131,16 +133,51 @@
   color: #f1c40f;
 }
 
-/* Responsive Design */
+/* Tablets */
+@media (max-width: 992px) {
+  .footerContent {
+    gap: 4rem;
+  }
+  
+  .footerSection h3 {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .footer {
+    padding: 35px 0 15px;
+  }
+
+  .footerContainer {
+    padding: 0 15px;
+  }
+
   .footerContent {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 35px;
+    margin-bottom: 30px;
+  }
+
+  .footerSection h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+
+  .footerSection h3::after {
+    left: 0;
+    transform: none;
+  }
+
+  .footerSection p {
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .footerBottomContent {
     flex-direction: column;
     text-align: center;
+    gap: 15px;
   }
 
   .footerNav {
@@ -149,5 +186,106 @@
     gap: 15px;
   }
 
+  .footerBottom {
+    padding-top: 20px;
+  }
+}
 
+/* Móviles */
+@media (max-width: 480px) {
+  .footer {
+    padding: 25px 0 15px;
+  }
+
+  .footerContainer {
+    padding: 0 12px;
+  }
+
+  .footerContent {
+    gap: 30px;
+    margin-bottom: 25px;
+  }
+
+  .footerSection h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
+
+  .footerSection p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  .footerSection ul li {
+    margin-bottom: 8px;
+  }
+
+  .footerSection ul li a {
+    font-size: 0.875rem;
+  }
+
+  .contactInfo {
+    gap: 10px;
+  }
+
+  .contactItem {
+    font-size: 0.875rem;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .contactItem svg {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+  }
+
+  .contactItem span,
+  .contactItem a {
+    font-size: 0.875rem;
+  }
+
+  .footerBottom {
+    padding-top: 15px;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  .footerNav {
+    gap: 12px;
+  }
+
+  .footerNav a {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer {
+    padding: 20px 0 12px;
+  }
+
+  .footerContainer {
+    padding: 0 10px;
+  }
+
+  .footerSection h3 {
+    font-size: 0.95rem;
+  }
+
+  .footerSection p {
+    font-size: 0.8rem;
+  }
+
+  .contactItem {
+    font-size: 0.8rem;
+  }
+
+  .contactItem svg {
+    width: 14px;
+    height: 14px;
+  }
 }

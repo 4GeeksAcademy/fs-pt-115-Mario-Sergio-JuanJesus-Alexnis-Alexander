@@ -66,14 +66,14 @@ export const AuthProvider = ({ children }) => {
         setToken(null);
         return {
           success: false,
-          error: data.error || data.msg || data.message || "Inicio de sesión fallido",
+          error: data.error || data.msg || data.message || "Invalid User",
         };
       }
     } catch (error) {
       setUser(null);
       setToken(null);
       return {
-        success: false || "Inicio de sesión fallido",
+        success: false || "Invalid User",
       };
     } finally {
       setLoading(false);

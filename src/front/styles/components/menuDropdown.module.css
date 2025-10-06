@@ -328,7 +328,6 @@ a {
   }
 }
 
-/* Tablets medianas */
 @media (max-width: 1024px) {
   .dropdown {
     width: 95vw;
@@ -408,7 +407,6 @@ a {
   }
 }
 
-/* Móviles */
 @media (max-width: 640px) {
   .dropdown {
     width: 98vw;
@@ -443,13 +441,13 @@ a {
 
   .dropRight {
     padding: 0.5rem;
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   .createBtn {
-    font-size: 0.8rem;
-    padding: 8px;
+    font-size: 0.75rem;
+    padding: 6px;
   }
 }
 
@@ -489,13 +487,26 @@ a {
 
   .dropRight {
     padding: 0.4rem;
-    grid-template-columns: 1fr;
-    gap: 8px;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 6px;
   }
 
   .createBtn {
-    font-size: 0.75rem;
-    padding: 6px;
+    font-size: 0.7rem;
+    padding: 5px;
+    text-align: left; 
+  }
+
+  .createBtn span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .createBtn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
   }
 }
 
@@ -523,7 +534,17 @@ a {
     font-size: 0.6rem;
   }
 
+  .dropRight {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 5px;
+  }
+
   .createBtn {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
+  }
+
+  .createBtn svg {
+    width: 16px;
+    height: 16px;
   }
 }

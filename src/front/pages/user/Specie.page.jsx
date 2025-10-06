@@ -3,6 +3,7 @@ import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { SpellCard } from "../../components/SpellCard";
 import { getAllSpecies } from "../../serviceApi/specieApi";
 import { SpecieCard } from "../../components/SpecieCard";
+import styles from "../../styles/page/showItems.module.css";
 
 
 export const SpeciePage = () => {
@@ -23,8 +24,7 @@ export const SpeciePage = () => {
     });
     setLoading(false);
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.species);
+
   useEffect(() => {
     getSpecieApi();
   }, []);
@@ -46,9 +46,13 @@ export const SpeciePage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Aqui esta tu lista de Specie
-      </h1>
+      <div style={{ textAlign: "center" }}>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.titleText}>
+                  YOUR SPECIES
+                </h1>
+              </div>
+          </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.species.length > 0 ? (
           store.species.map((specie) => (
