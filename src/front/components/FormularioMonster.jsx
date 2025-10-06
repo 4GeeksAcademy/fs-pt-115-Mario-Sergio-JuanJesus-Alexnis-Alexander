@@ -39,10 +39,11 @@ export const FormularioMonster = () => {
     };
 
     return (
-        <div className="container col-md-5 my-5 basic-form">
-            <form onSubmit={handleOnSubmit} className="row g-4">
-                <h1>Create your Monster</h1>
-                <div className="col-md-8">
+        <div className="container col-md-5 my-5 basic-form position-relative">
+            <form onSubmit={handleOnSubmit} className="row g-4 row fw-bold">
+                <h2 className="text-center fw-bold">Create Monster</h2>
+                
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Name <span className="text-danger fs-5">*</span>
                     </label>
@@ -51,11 +52,11 @@ export const FormularioMonster = () => {
                         type="text"
                         className="form-control"
                         name="name"
-                        placeholder="Introduce el nombre del monstruo"
+                        placeholder=""
                         required
                     />
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         type <span className="text-danger fs-5">*</span>
                     </label>
@@ -65,7 +66,7 @@ export const FormularioMonster = () => {
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
+                        <option value="">-</option>
                         <option value="aquatic">aquatic</option>
                         <option value="celestial">celestial</option>
                         <option value="construct">construct</option>
@@ -80,7 +81,7 @@ export const FormularioMonster = () => {
                         <option value="undead">undead</option>
                     </select>
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         subtype <span className="text-danger fs-5">*</span>
                     </label>
@@ -90,7 +91,7 @@ export const FormularioMonster = () => {
                         className="form-select"
                         required
                     >
-                        <option value="none">---</option>
+                        <option value="none">-</option>
                         <option value="unknown">unknown</option>
                         <option value="aquatic">aquatic</option>
                         <option value="celestial">celestial</option>
@@ -106,7 +107,7 @@ export const FormularioMonster = () => {
                         <option value="undead">undead</option>
                     </select>
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Size <span className="text-danger fs-5">*</span>
                     </label>
@@ -116,7 +117,7 @@ export const FormularioMonster = () => {
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
+                        <option value="">-</option>
                         <option value="Tiny">Tiny</option>
                         <option value="Small">Small</option>
                         <option value="Medium">Medium</option>
@@ -125,7 +126,7 @@ export const FormularioMonster = () => {
                         <option value="Gargantuan">Gargantuan</option>
                     </select>
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Challenge <span className="text-danger fs-5">*</span>
                     </label>
@@ -135,7 +136,7 @@ export const FormularioMonster = () => {
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
+                        <option value="">-</option>
                         <option value="0">0</option>
                         <option value="1/8">1/8</option>
                         <option value="1/4">1/4</option>
@@ -174,7 +175,7 @@ export const FormularioMonster = () => {
                 </div>
                 <div className="col-12 text-center">
                     <button type="submit" className="btn btn-primary m-4">
-                        Submit new Monster
+                        Create Monster
                     </button>
                 </div>
 
