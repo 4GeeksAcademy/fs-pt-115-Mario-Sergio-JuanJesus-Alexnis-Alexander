@@ -8,7 +8,7 @@ export const ShowCampaignPage = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getCampaignApi= async () => {
+  const getCampaignApi = async () => {
     setLoading(true);
     const responseApi = await getCampaigns();
     if (!responseApi.success) {
@@ -34,8 +34,8 @@ export const ShowCampaignPage = () => {
   if (loading) {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
-        <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        <div className="position-absolute top-50 start-50 translate-middle text-center fs-2 fw-bold">
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
@@ -44,8 +44,8 @@ export const ShowCampaignPage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Tus campañas
+      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
+        Your campaigns
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.campaign.length > 0 ? (
@@ -54,7 +54,7 @@ export const ShowCampaignPage = () => {
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
-            ***** No tienes ninguna campaña creada *****
+            ***** You don't have any campaign created *****
           </h1>
         )}
       </div>

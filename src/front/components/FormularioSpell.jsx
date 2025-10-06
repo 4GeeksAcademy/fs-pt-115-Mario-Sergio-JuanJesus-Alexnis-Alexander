@@ -55,7 +55,7 @@ export const FormularioSpell = () => {
                                 id="spell_name"
                                 name="spell_name"
                                 required=""
-                                value={input.spell_name || ""}
+                                value={input.spell_name || "0"}
                             />
                         </div>
 
@@ -70,7 +70,7 @@ export const FormularioSpell = () => {
                                 className="form-control"
                                 id="spell_level"
                                 name="spell_level"
-                                value={input.spell_level || ""}
+                                value={input.spell_level || "0"}
                             />
                         </div>
 
@@ -105,7 +105,7 @@ export const FormularioSpell = () => {
                                 id="casting_time"
                                 name="casting_time"
                                 required=""
-                                value={input.casting_time || "-"}
+                                value={input.casting_time || "0"}
                             />
                         </div>
 
@@ -140,7 +140,7 @@ export const FormularioSpell = () => {
                                 id="reaction_casting_time"
                                 name="reaction_casting_time"
                                 disabled={disabledFields.reaction_casting_time}
-                                value={input.reaction_casting_time || "-"}
+                                value={input.reaction_casting_time || "0"}
                             />
                         </div>
                         <div className="col-md-4 mb-3">
@@ -191,7 +191,7 @@ export const FormularioSpell = () => {
                                 id="material_components"
                                 name="material_components"
                                 disabled={disabledFields.material_components}
-                                value={input.material_components || "-"}
+                                value={input.material_components || "0"}
                             />
                         </div>
 
@@ -230,7 +230,7 @@ export const FormularioSpell = () => {
                                 id="range_distance"
                                 name="range_distance"
                                 disabled={disabledFields.range_distance}
-                                value={input.range_distance || "-"}
+                                value={input.range_distance || "0"}
                             />
                         </div>
 
@@ -264,7 +264,7 @@ export const FormularioSpell = () => {
                                 id="duration"
                                 name="duration"
                                 disabled={disabledFields.duration}
-                                value={input.duration || "-"}
+                                value={input.duration || "0"}
                             />
                         </div>
 
@@ -299,7 +299,7 @@ export const FormularioSpell = () => {
                                 id="description"
                                 name="description"
                                 required=""
-                                value={input.description || ""}
+                                value={input.description || "0"}
                             />
                         </div>
 
@@ -361,7 +361,7 @@ export const FormularioSpell = () => {
                                 id="available_for_classes"
                                 name="available_for_classes"
                                 required=""
-                                value={input.available_for_classes || ""}
+                                value={input.available_for_classes || "0"}
                             />
                         </div>
                     </>

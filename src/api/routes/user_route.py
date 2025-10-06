@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify, Blueprint, render_template
 from flask_cors import CORS
 from ..model.user_model import User
-from ..extension_config import db, mail
+from ..extension_config import db
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-from flask_mail import Message
 import cloudinary
 import cloudinary.uploader
 from cloudinary import CloudinaryImage
+from ..mail_config import send_email, EmailError
 
 user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../templates')
 
@@ -41,14 +41,14 @@ def sign_up():
 
     html_body = render_template('welcome.html', username= username)
 
-    message = Message(
-        subject = 'Welcome message',
-        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
-        recipients = [email],
-        html = html_body
-    )
-
-    mail.send(message)
+    try:
+        send_email(
+            to_email=email,
+            subject="Bienvenido a Master of Infinity",
+            html=html_body,
+        )
+    except EmailError as e:
+        print(f'[email] error enviando bienvenida:{e}')
 
     return jsonify({
         'success': True,
@@ -84,14 +84,15 @@ def sign_up_google():
 
     html_body = render_template('welcome.html', username= username)
 
-    message = Message(
-        subject = 'Welcome message',
-        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
-        recipients = [email],
-        html = html_body
-    )
-
-    mail.send(message)
+    try:
+        send_email(
+            to_email=email,
+            subject="Bienvenido a Master of Infinity",
+            html=html_body,
+        )
+    except EmailError as e:
+        print(f'[email] error enviando bienvenida:{e}')
+   
 
     return jsonify({
         'success': True,

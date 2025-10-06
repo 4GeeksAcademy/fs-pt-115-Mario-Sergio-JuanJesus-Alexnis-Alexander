@@ -84,7 +84,7 @@ export const FormMagicItems = () => {
             <option value={"Legendary"}>Legendary</option>
             <option value={"Artifact"}>Artifact</option>
             <option value={"Varies"}>Varies</option>
-            <option value={"nknow Rarit"}>Unknow Rarity</option>
+            <option value={"Unknow Rarity"}>Unknow Rarity</option>
           </select>
         </div>
         <div className="col-6">
