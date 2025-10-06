@@ -23,7 +23,7 @@ export const FormularioSubclasses = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log('hola');
-    
+
     const dataSubclasses = await createNewSubclasses(input);
     if (!dataSubclasses.success) {
       return setError(dataSubclasses?.error || "Creación fallida");
@@ -36,7 +36,7 @@ export const FormularioSubclasses = () => {
 
   return (
     <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center mb-4 fw-bold">Create a Subclass</h2>
+      <h2 className="text-center mb-4 fw-bold">Create Class</h2>
       <form className="row g-3 fw-bold" onSubmit={handleOnSubmit}>
         {page === 1 &&
           <>
@@ -59,7 +59,7 @@ export const FormularioSubclasses = () => {
             </div>
 
             <div className="col-md-4">
-              <label htmlFor="spellcastingAbility" className="form-label">Spellcasting Ability</label>
+              <label htmlFor="spellcastingAbility" className="form-label">Spell Ability</label>
               <select onChange={handleOnChange} id="spellcastingAbility" className="form-select" name="spellcasting_ability">
                 <option value="">-</option>
                 <option value="strength">Strength</option>
@@ -88,9 +88,14 @@ export const FormularioSubclasses = () => {
                 <option value={"List B"}>List B</option>
               </select>
             </div>
+          </>
+        }
+
+        {page === 2 &&
+          <>
 
             <div className="col-md-4">
-              <label htmlFor="spellPrepareType" className="form-label">Spell Prepare Type</label>
+              <label htmlFor="spellPrepareType" className="form-label">Spell Type</label> 
               <select onChange={handleOnChange} id="spellPrepareType" className="form-select" name="spell_prepare_type">
                 <option value="">-</option>
                 <option value={"Prepared"}>Prepared</option>
@@ -108,18 +113,14 @@ export const FormularioSubclasses = () => {
             </div>
 
             <div className="col-md-4">
-              <label htmlFor="spellLearningStyle" className="form-label">Spell Learning Style</label>
+              <label htmlFor="spellLearningStyle" className="form-label">Spell Style</label>
               <select onChange={handleOnChange} id="spellLearningStyle" className="form-select" name="spell_learning_style">
                 <option value="">-</option>
                 <option value={"Learned"}>Learned</option>
                 <option value={"Prepared"}>Prepared</option>
               </select>
             </div>
-          </>
-        }
 
-        {page === 2 &&
-          <>
             <div className="col-md-12">
               <label htmlFor="additionalSpecificSpells" className="form-label">Additional Specific Spells</label>
               <select onChange={handleOnChange} id="additionalSpecificSpells" className="form-select" name="additional_specific_spells">
@@ -140,31 +141,24 @@ export const FormularioSubclasses = () => {
             </div>
           </>
         }
-        <div className="d-flex gap-2 justify-content-center flex-column">
-        <button
-          className={page === 1 ? "active" : ""}
-          type="button"
-          onClick={() => setPage(1)}
-        >
-          1
-        </button>
-        <button
-          className={page === 2 ? "active" : ""}
-          type="button"
-          onClick={() => setPage(2)}
-        >
-          2
-        </button>
-        <div className="mt-2 text-center">
-        <button type="submit" className="btn btn-primary">Create Subclasses</button>
-      </div>
 
-      </div>
+                <div className="number-page-ubclasses">
+                    <button type="button" disabled={page === 1} onClick={() => setPage((p) => Math.max(p - 1, 1))}>prev</button>
+                    <span>{page} / 2</span>
+                    <button type="button" disabled={page === 2} onClick={() => setPage((p) => Math.min(p + 1, 2))}>next</button>
+                </div>
 
-      
+                {
+                    page === 2 &&
+                    <div className="button-create-subclasses">
+                        <button type="submit" className="btn btn-primary">Create Class</button>
+                    </div>
+                }
+
+
       </form>
 
-      
+
     </div>
   );
 };

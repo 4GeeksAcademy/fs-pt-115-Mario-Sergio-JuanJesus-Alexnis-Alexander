@@ -37,10 +37,11 @@ export const FormularioCharacter = () => {
     }, [])
 
     return (
-        <div className="container col-md-5 my-5 basic-form">
-            <form onSubmit={handleOnSubmit} className="row g-4">
-                <h1>Create your Character</h1>
-                <div className="col-md-8">
+        <div className="container col-md-5 my-5 basic-form position-relative">
+            <form onSubmit={handleOnSubmit} className="row g-4 row fw-bold">
+                <h2 className="text-center fw-bold">Create Character</h2>
+
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Name <span className="text-danger fs-5">*</span>
                     </label>
@@ -49,11 +50,12 @@ export const FormularioCharacter = () => {
                         type="text"
                         className="form-control"
                         name="name"
-                        placeholder="Introduce el nombre del personaje"
+                        placeholder=""
                         required
                     />
                 </div>
-                <div className="col-md-8">
+
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Class <span className="text-danger fs-5">*</span>
                     </label>
@@ -63,13 +65,13 @@ export const FormularioCharacter = () => {
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
+                        <option value="">-</option>
                         {store.classes.map((element, index) => (
                             <option key={index} value={element.name}>{element.name}</option>
                         ))}
                     </select>
                 </div>
-                <div className="col-md-8">
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Race <span className="text-danger fs-5">*</span>
                     </label>
@@ -79,13 +81,14 @@ export const FormularioCharacter = () => {
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
+                        <option value="">-</option>
                         {store.races.map((element, index) => (
                             <option key={index} value={element.name}>{element.name}</option>
                         ))}
                     </select>
                 </div>
-                <div className="col-md-8">
+
+                <div className="col-md-6 mb-3">
                     <label htmlFor="name" className="form-label">
                         Background <span className="text-danger fs-5">*</span>
                     </label>
@@ -95,7 +98,7 @@ export const FormularioCharacter = () => {
                         className="form-select"
                         required
                     >
-                        <option value="">---</option>
+                        <option value="">-</option>
                         {store.backgrounds.map((element, index) => (
                             <option key={index} value={element.name}>{element.name}</option>
                         ))}
@@ -103,7 +106,7 @@ export const FormularioCharacter = () => {
                 </div>
                 <div className="col-12 text-center">
                     <button type="submit" className="btn btn-primary m-4">
-                        Submit new Character
+                        Create Character
                     </button>
                 </div>
             </form>

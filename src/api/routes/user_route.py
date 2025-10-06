@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify, Blueprint, render_template
 from flask_cors import CORS
 from ..model.user_model import User
-from ..extension_config import db, mail
+from ..extension_config import db
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-from flask_mail import Message
 import cloudinary
 import cloudinary.uploader
 from cloudinary import CloudinaryImage
+from ..mail_config import send_email, EmailError
 
 user_bp = Blueprint('user', __name__, url_prefix='/user', template_folder='../templates')
 
@@ -22,7 +22,7 @@ def sign_up():
     if not username or not email or not password:
         return jsonify({
             'success': False,
-            'msg': 'Rellene todos los campos por favor'}), 400
+            'msg': 'Please fill out all fields'}), 400
     
     user_exist = db.session.execute(db.select(User).where(
         User.email == data['email']
@@ -31,7 +31,7 @@ def sign_up():
     if user_exist:
         return jsonify({
             'success': False,
-            'message': 'El usuario ya existe'}), 400
+            'message': 'User already exist'}), 400
     
     new_user = User(email= email, username= username)
     new_user.set_password(data['password'])
@@ -41,18 +41,18 @@ def sign_up():
 
     html_body = render_template('welcome.html', username= username)
 
-    message = Message(
-        subject = 'Welcome message',
-        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
-        recipients = [email],
-        html = html_body
-    )
-
-    mail.send(message)
+    try:
+        send_email(
+            to_email=email,
+            subject="Welcome to Master of Infinity",
+            html=html_body,
+        )
+    except EmailError as e:
+        print(f'[email] error enviando bienvenida:{e}')
 
     return jsonify({
         'success': True,
-        'msg': 'Usuario creado',
+        'msg': 'Usuario created',
         'token': token,
         'user': new_user.serialize()}), 200
 
@@ -73,7 +73,7 @@ def sign_up_google():
         token = create_access_token(str(user_exist.id))
         return jsonify({
         'success': True,
-        'msg': 'Usuario existe',
+        'msg': 'User already exists',
         'token': token,
         'user': user_exist.serialize()}), 200
     
@@ -84,18 +84,19 @@ def sign_up_google():
 
     html_body = render_template('welcome.html', username= username)
 
-    message = Message(
-        subject = 'Welcome message',
-        sender = ('Master Of Infinity', 'team.masterofinfinity@gmail.com'),
-        recipients = [email],
-        html = html_body
-    )
-
-    mail.send(message)
+    try:
+        send_email(
+            to_email=email,
+            subject="Welcome to Master of Infinity",
+            html=html_body,
+        )
+    except EmailError as e:
+        print(f'[email] error enviando bienvenida:{e}')
+   
 
     return jsonify({
         'success': True,
-        'msg': 'Usuario creado',
+        'msg': 'User created',
         'token': token,
         'user': new_user.serialize()}), 200
 
@@ -111,7 +112,7 @@ def user_login():
     if not email_or_username or not password:
         return jsonify({
             'success': False,
-            'msg': 'Rellene todos los campos por favor'}), 400
+            'msg': ''}), 400
     
     if is_email:
         user = db.session.execute(db.select(User).where(
@@ -125,7 +126,7 @@ def user_login():
     if not user:
         return jsonify({
             'success': False,
-            'msg': 'Email o contraseña invalidos'}), 400
+            'msg': 'Invalid email or password'}), 400
     
     if user.check_password(password):
         token = create_access_token(identity= str(user.id))
@@ -136,7 +137,7 @@ def user_login():
             'token': token
             })
     else:
-        return jsonify({'msg': 'Email o contraseña invalidos'}), 400
+        return jsonify({'msg': 'Invalid email or password'}), 400
     
     
 @user_bp.route('/profile', methods=['GET'])
@@ -165,7 +166,7 @@ def upgrade_user():
     if not user:
         return jsonify({
             'success': False,
-            'msg': 'Usuario no encontrado'}), 404
+            'msg': 'User not found'}), 404
     
     user.username = data.get('username', user.username)
     user.email = data.get('email', user.email)

@@ -29,8 +29,6 @@ export const FormularioBackground = () => {
         navigate("/user/background");
     };
 
-    console.log(input)
-
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
@@ -86,9 +84,9 @@ export const FormularioBackground = () => {
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="abilities_score_descriptio" className="form-label">
-                                Ability Scores Description
+                                Ability
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="abilities_score_descriptio"
@@ -102,7 +100,7 @@ export const FormularioBackground = () => {
                             <label htmlFor="feats_description" className="form-label">
                                 Feat Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="feats_description"
@@ -114,9 +112,9 @@ export const FormularioBackground = () => {
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="skill_proficiencies_description" className="form-label">
-                                Skill Proficiencies Description
+                                Skill Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="skill_proficiencies_description"
@@ -128,9 +126,9 @@ export const FormularioBackground = () => {
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="tool_proficiencies_description" className="form-label">
-                                Tool Proficiencies Description
+                                Tool Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="tool_proficiencies_descriptionn"
@@ -139,6 +137,7 @@ export const FormularioBackground = () => {
                                 value={input.tool_proficiencies_description || ""}
                             />
                         </div>
+
                     </>
                 }
 
@@ -149,7 +148,7 @@ export const FormularioBackground = () => {
                             <label htmlFor="languages_description" className="form-label">
                                 Languages Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="languages_description"
@@ -163,7 +162,7 @@ export const FormularioBackground = () => {
                             <label htmlFor="equipment_description" className="form-label">
                                 Equipment Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="equipment_description"
@@ -175,7 +174,7 @@ export const FormularioBackground = () => {
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="specific_table_name" className="form-label">
-                                Background Specific Table Name
+                                Background Name
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -184,20 +183,6 @@ export const FormularioBackground = () => {
                                 id="specific_table_name"
                                 name="specific_table_name"
                                 value={input.specific_table_name || ""}
-                            />
-                        </div>
-
-                        <div className="col-md-6 mb-3">
-                            <label htmlFor="specific_tabla_desc" className="form-label">
-                                Background Specific Table Description
-                            </label>
-                            <textarea
-                                onChange={handleOnChange}
-                                className="form-control"
-                                id="specific_tabla_desc"
-                                name="specific_tabla_desc"
-                                rows="3"
-                                value={input.specific_tabla_desc || ""}
                             />
                         </div>
 
@@ -217,14 +202,14 @@ export const FormularioBackground = () => {
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="feature_desc" className="form-label">
-                                Feature Description
+                                Feature
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
+                                type="text"
                                 className="form-control"
                                 id="feature_desc"
                                 name="feature_desc"
-                                rows="3"
                                 value={input.feature_desc || ""}
                             />
                         </div>
@@ -245,9 +230,9 @@ export const FormularioBackground = () => {
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="variant_desc" className="form-label">
-                                Variant Description
+                                Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="variant_desc"
@@ -256,15 +241,10 @@ export const FormularioBackground = () => {
                                 value={input.variant_desc || ""}
                             />
                         </div>
-                    </>
-                }
-
-                {page === 3 &&
-                    <>
 
                         <div className="col-md-6 mb-3">
                             <label htmlFor="variant_feature" className="form-label">
-                                Variant Feature Name
+                                Feature Name
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -276,25 +256,17 @@ export const FormularioBackground = () => {
                             />
                         </div>
 
-                        <div className="col-md-6 mb-3">
-                            <label htmlFor="variant_feature_desc" className="form-label">
-                                Variant Feature Description
-                            </label>
-                            <textarea
-                                onChange={handleOnChange}
-                                className="form-control"
-                                id="variant_feature_desc"
-                                name="variant_feature_desc"
-                                rows="3"
-                                value={input.variant_feature_desc || ""}
-                            />
-                        </div>
+                    </>
+                }
 
-                        <div className="col-md-12 mb-3">
+                {page === 3 &&
+                    <>
+
+                        <div className="col-md-6 mb-3">
                             <label htmlFor="suggested_characteristics" className="form-label">
-                                Suggested Characteristics Description
+                                Suggested Characteristics
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="suggested_characteristics"
@@ -304,11 +276,11 @@ export const FormularioBackground = () => {
                             />
                         </div>
 
-                        <div className="col-md-12 mb-3">
+                        <div className="col-md-6 mb-3">
                             <label htmlFor="spell_list_introduction" className="form-label">
                                 Spell List Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="spell_list_introduction"
@@ -318,11 +290,11 @@ export const FormularioBackground = () => {
                             />
                         </div>
 
-                        <div className="col-md-12 mb-3">
+                        <div className="col-md-6 mb-3">
                             <label htmlFor="spell_list_extended" className="form-label">
-                                Spell List Extended Description
+                                Spell Extended Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="spell_list_extended"
@@ -332,11 +304,11 @@ export const FormularioBackground = () => {
                             />
                         </div>
 
-                        <div className="col-md-12 mb-3">
+                        <div className="col-md-6 mb-3">
                             <label htmlFor="contacts_list" className="form-label">
                                 Contacts Description
                             </label>
-                            <textarea
+                            <input
                                 onChange={handleOnChange}
                                 className="form-control"
                                 id="contacts_list"
@@ -368,11 +340,10 @@ export const FormularioBackground = () => {
                     <button type="button" disabled={page === 3} onClick={() => setPage((p) => Math.min(p + 1, 3))}>next</button>
                 </div>
 
-
                 {
                     page === 3 &&
                     <div className="col-12 text-center mt-4">
-                        <button type="submit" className="btn btn-primary">Crear Background</button>
+                        <button type="submit" className="btn btn-primary">Create Background</button>
                     </div>
                 }
             </form>

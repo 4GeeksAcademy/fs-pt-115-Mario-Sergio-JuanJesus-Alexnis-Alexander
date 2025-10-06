@@ -32,7 +32,7 @@ export const FormularioFeats = () => {
 
   return (
     <div className="container col-md-5 my-5 basic-form">
-      <h2 className="text-center fw-bold">Create a Feats</h2>
+      <h2 className="text-center fw-bold">Create Feats</h2>
       <form className="row g-3 fw-bold" onSubmit={handleOnSubmit}>
 
         <div className="col-md-6">
@@ -58,26 +58,26 @@ export const FormularioFeats = () => {
           name="version" />
         </div>
 
-        <div className="col-12 mt-3">
+        <div className="col-md-12 mb-3">
           <label htmlFor="description" className="form-label">Description</label>
-          <textarea 
+          <input
           onChange={handleOnChange} 
           className="form-control" 
           id="description" 
           rows="5" 
           name="description"
-          ></textarea>
+          />
         </div>
 
         <div className="col-12 mt-3">
           <label htmlFor="snippet" className="form-label">Snippet</label>
-          <textarea 
+          <input
           onChange={handleOnChange} 
           className="form-control" 
           id="snippet" 
           rows="3" 
           name="snippet"
-          ></textarea>
+          />
         </div>
 
         <div className="col-md-6 mt-3">
