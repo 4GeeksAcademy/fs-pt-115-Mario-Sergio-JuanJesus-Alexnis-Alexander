@@ -111,10 +111,7 @@ export const updateCampaign = async (updateCampaign, campaignId) => {
 };
 
 export const deleteCampaign = async (campaignId) => {
-  const token = localStorage.getItem("token");
-  if (!token) {
-    return { success: false, error: "No autenticado" };
-  }
+  
   try {
     const response = await fetch(
       `${urlApi}/api/user/campaigns/${campaignId}`,

@@ -8,18 +8,6 @@ export const MagicItemCard = ({ item }) => {
   const [error, setError] = useState(false)
   const [transform, setTransform] = useState(false)
 
-   const getImages = () => {
-    const images = {
-    ring: '',
-    wand: '',
-    wondorousItems: '',
-    weapon: '',
-    armor: ''
-    }
-  }
-
-  
-
   const getRarityColor = () => {
 
   const rarityColors = {
@@ -36,7 +24,7 @@ export const MagicItemCard = ({ item }) => {
     return rarityColors[item.rarity] || '#bbbcb9ff'; 
   };
 
-    // Imagen por defecto según tipo
+    
   const getDefaultImage = (type) => {
     const images = {
       Potion: 'https://imgs.search.brave.com/ppko9Q4iyjOhAPFeNkNfL44D16fLXjsc2z0UZ9_I85Q/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jdWV2/YWRlbG9iby5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTgv/MDEvc2t5cmltX3Bv/dGlvbnNfYnlfZXRy/ZWxsZXktZDhob3N0/Yy5qcGc',
@@ -67,7 +55,7 @@ export const MagicItemCard = ({ item }) => {
 
   return (
     <>
-      <div className={styles.flipCard} style={{height: '350px'}}>
+      <div className={styles.flipCard}>
         <div 
           onClick={() => setTransform(!transform)} 
           className={`${styles.flipCardInner} ${transform ? styles.flipCardTransform : ''}`}
@@ -156,10 +144,9 @@ export const MagicItemCard = ({ item }) => {
             <div className={styles.buttonContainer}>
               <button
                 className={styles.btnPrimary}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleDelete(item.id);
-                }}
+                onClick={() => 
+                  handleDelete(item.id)
+                }
               >
                 🗑️ Delete Item
               </button>

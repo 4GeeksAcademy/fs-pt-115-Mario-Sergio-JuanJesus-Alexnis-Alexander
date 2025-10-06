@@ -94,7 +94,7 @@ def get_background(background_id):
 @background_bp.route('/<int:background_id>', methods=['DELETE'])
 @jwt_required()
 def delete_background(background_id):
-    background = Background.query.get(background_id)
+    background = db.session.get(Background, background_id)
     if not background:
         return jsonify ({'msg': 'Background no encontrado'}), 404
     

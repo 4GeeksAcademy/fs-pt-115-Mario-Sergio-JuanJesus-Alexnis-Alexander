@@ -54,19 +54,15 @@ def get_campaigns():
 @campaign_bp.route('/<int:id>', methods=['DELETE'])
 @jwt_required()
 def delete_campaign(id):
-    user_id = get_jwt_identity()
-    campaign = Campaign.query.filter_by(id=id, user_id=user_id).first()
+    campaign = db.session.get(Campaign, id)
 
     if not campaign:
         return jsonify({"error": "Campaña no encontrada"}), 404
+    
+    db.session.delete(campaign)
+    db.session.commit()
 
-    try:
-        db.session.delete(campaign)
-        db.session.commit()
-        return jsonify({"message": "Campaña eliminada"}), 200
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": "Error al eliminar campaña"}), 500
+    return jsonify({'msg': 'camapaña eliminada correctamente'}), 200
     
 @campaign_bp.route('/<int:id>', methods=['PUT'])
 @jwt_required()
