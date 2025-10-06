@@ -66,6 +66,7 @@ export const Navbar = () => {
 
         <button
           className="navbar-toggler bg-warning"
+          style={{ padding: '6px 8px' }}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -83,7 +84,7 @@ export const Navbar = () => {
                 onMouseEnter={handleMouseEnterCollection}
                 onMouseLeave={() => handleMouseLeave(setShowCollectionDropdown)}
               >
-                <button className={styles.button}>Collections 🔻</button>
+                <button className={styles.button}>Collections/Creations 🔻</button>
               </div>
               <div
                 onMouseEnter={handleMouseEnterRules}

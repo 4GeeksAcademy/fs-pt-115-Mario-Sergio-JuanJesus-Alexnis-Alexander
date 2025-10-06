@@ -20,7 +20,7 @@ export const ShowMonsterPage = () => {
       payload: responseApi.data,
     });
     setLoading(false);
-    
+
   };
   console.log("***DATOS PARA EXTRAER***");
   console.log(store.monsters);
@@ -35,8 +35,8 @@ export const ShowMonsterPage = () => {
   if (loading) {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
-        <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+        <div className="position-absolute top-50 start-50 translate-middle text-center fs-2 fw-bold">
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
@@ -45,8 +45,8 @@ export const ShowMonsterPage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Tu lista de monstruos
+      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
+        Your monsters
       </h1>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.monsters.length > 0 ? (
@@ -55,7 +55,7 @@ export const ShowMonsterPage = () => {
           ))
         ) : (
           <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun monstruo creado *****
+            ***** You don't have any monsters created *****
           </h1>
         )}
       </div>

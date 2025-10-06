@@ -9,32 +9,32 @@ export const Footer = () => {
 
 					{/* Company Info Section */}
 					<div className={styles.footerSection}>
-						<h3>Acerca de Nosotros</h3>
+						<h3>About Us</h3>
 						<p>
-							Somos un grupo comprometido con ofrecer los mejores servicios a la comunidad D&D.
-							Gracias a tantos años jugando queremos ofrecer un mejor servicio online para ayudar
-							en todo lo posible a la comunidad a poder controlar mejor sus partidas.
+							We are a group committed to offering the best services to the D&D community.
+							Thanks to so many years of playing we want to offer a better online service to help
+							as much as possible to the community to be able to better control their games.
 
 						</p>
 					</div>
 
 					<div className={styles.footerSection}>
-						<h3>Enlaces Rápidos</h3>
+						<h3>Quick Links</h3>
 						<ul>
-							<li><a href="#">Inicio</a></li>
-							<li><a href="#">Servicios</a></li>
-							<li><a href="#">Productos</a></li>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Products</a></li>
 						</ul>
 					</div>
 
 					<div className={styles.footerSection}>
-						<h3>Contacto</h3>
+						<h3>Contact</h3>
 						<div className={styles.contactInfo}>
 							<div className={styles.contactItem}>
 								<svg viewBox="0 0 24 24">
 									<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
 								</svg>
-								<span>Calle Principal 123, Ciudad</span>
+								<span>Main Street 123, City</span>
 							</div>
 							<div className={styles.contactItem}>
 								<svg viewBox="0 0 24 24">
@@ -56,10 +56,10 @@ export const Footer = () => {
 				<div className={styles.footerBottom}>
 					<div className={styles.footerBottomContent}>
 						<div className={styles.copyright}>
-							<p>&copy; 2025 MAsterOfInfinity. Todos los derechos reservados.</p>
+							<p>&copy; 2025 MasterOfInfinity. All rights reserved.</p>
 						</div>
 						<nav className={styles.footerNav}>
-							<a href="#">Política de Privacidad</a>
+							<a href="#">Privacy Policy</a>
 							<a href="#">Sitemap</a>
 						</nav>
 					</div>

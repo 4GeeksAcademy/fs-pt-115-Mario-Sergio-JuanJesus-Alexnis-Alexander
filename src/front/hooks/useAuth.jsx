@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const { loginWithRedirect, user: userAuth0, isAuthenticated, logout: logoutGoogle } = useAuth0();
+  
 
 
   const loginWithGoogle = () => {
@@ -81,7 +82,7 @@ export const AuthProvider = ({ children }) => {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    logoutGoogle()
+    logoutGoogle();
     setToken(null);
     setUser(null);
   };

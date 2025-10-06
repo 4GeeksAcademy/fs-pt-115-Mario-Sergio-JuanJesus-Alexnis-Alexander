@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { MagicItemCard } from "../../components/MagicItemCard";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { getAllMagicItems } from "../../serviceApi/magicItem.api";
+import styles from "../../styles/page/showItems.module.css";
 
 export const ShowMagicsItemsPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -21,8 +22,7 @@ export const ShowMagicsItemsPage = () => {
     });
     setLoading(false);
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.magicsItems);
+ 
   useEffect(() => {
     getMagicsApi();
   }, []);
@@ -35,29 +35,42 @@ export const ShowMagicsItemsPage = () => {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
         <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
   }
 
-
   return (
     <>
-      <h1 className="text-center mt-5">
-        Aqui esta tu lista de articulos magicos
-      </h1>
-      <div className="container d-flex gap-4 justify-content-center mt-5">
+    <div style={{ textAlign: "center" }}>
+      <div className={styles.titleContainer}>
+          <h1 className={styles.titleText}>
+            ITEM MAGIC LIST
+          </h1>
+        </div>
+    </div>
+
+    <div className="container mt-5" style={{ marginBottom: "50px" }}>
+      <div className="row g-4 justify-content-center">
         {store.magicsItems.length > 0 ? (
           store.magicsItems.map((magicItem) => (
-            <MagicItemCard key={magicItem.id} item={magicItem} />
+            <div 
+              key={magicItem.id} 
+              className="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2-4 d-flex justify-content-center"
+            >
+              <MagicItemCard item={magicItem} />
+            </div>
           ))
         ) : (
-          <h1 className="text-center text-dark mt-5">
-            ***** No tienes ningun articulo creado *****
-          </h1>
+          <div className="col-12">
+            <h1 className="text-center text-dark mt-5">
+              ***** You dont have any Items *****
+            </h1>
+          </div>
         )}
       </div>
-    </>
+    </div>
+  </>
   );
 };

@@ -143,6 +143,11 @@ export const SignupPage = () => {
           <span>SignIn</span>{" "}
         </Link>
       </p>
+      {error && (
+        <div className="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
     </form>
   );
 };

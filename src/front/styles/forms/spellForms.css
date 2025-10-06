@@ -1,0 +1,13 @@
+.number-page-spell{
+    position: absolute;
+    bottom: -4rem;
+    justify-content: center;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.button-create-spell{
+    position: absolute;
+    bottom: -7rem;
+    text-align: center;
+}

@@ -8,8 +8,6 @@ import { createNewSpell } from "../serviceApi/spellApi";
 export const FormularioSpell = () => {
     const [page, setPage] = useState(1)
     const [input, setInputs] = useState({});
-    
-    
 
     const { disabledFields, updateDisabledFields } = useDisabledFields(rules, initialDisabled);
 
@@ -40,14 +38,14 @@ export const FormularioSpell = () => {
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">
-            <h2 className="text-center fw-bold">Formulario Homebrews Spells</h2>
+            <h2 className="text-center fw-bold">Create Spells</h2>
             <form className="row fw-bold" onSubmit={handleOnSubmit} >
 
                 {page === 1 &&
                     <>
                         <div className="col-md-4 mb-3">
                             <label htmlFor="spell_name" className="form-label">
-                                Spell Name<span className="text-danger">*</span>
+                                Name<span className="text-danger">*</span>
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -63,7 +61,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="spell_level" className="form-label">
-                                Spell Level<span className="text-danger">*</span>
+                                Level<span className="text-danger">*</span>
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -78,7 +76,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="spell_school" className="form-label">
-                                Spell School<span className="text-danger">*</span>
+                                School<span className="text-danger">*</span>
                             </label><br />
                             <select
                                 onChange={handleOnChange}
@@ -113,7 +111,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="casting_time_select" className="form-label">
-                                Casting Time Select
+                                Casting Select
                             </label><br />
                             <select
                                 onChange={handleOnChange}
@@ -132,7 +130,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="reaction_casting_time" className="form-label">
-                                Reaction Casting Time<span className="text-danger">*</span>
+                                Reaction Time<span className="text-danger">*</span>
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -216,10 +214,14 @@ export const FormularioSpell = () => {
                                 <option value={"Unlimited"}>Unlimited</option>
                             </select>
                         </div>
+                    </>
+                }
 
+                {page === 2 &&
+                    <>
                         <div className="col-md-4 mb-3">
                             <label htmlFor="range_distance" className="form-label">
-                                Range Distance<span className="text-danger">*</span>
+                                Distance<span className="text-danger">*</span>
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -234,7 +236,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="duration_type" className="form-label">
-                                Duration Type<span className="text-danger">*</span>
+                                Type<span className="text-danger">*</span>
                             </label><br />
                             <select
                                 onChange={handleOnChange}
@@ -268,7 +270,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="duration_select" className="form-label">
-                                Duration Select<span className="text-danger">*</span>
+                                Select<span className="text-danger">*</span>
                             </label><br />
                             <select
                                 onChange={handleOnChange}
@@ -300,28 +302,24 @@ export const FormularioSpell = () => {
                                 value={input.description || "0"}
                             />
                         </div>
-                    </>
-                }
 
-                {page === 2 &&
-                    <>
                         <div className="col-md-4 mb-3">
                             <label htmlFor="ritual_spell" className="form-label">
                                 Ritual Spell
                             </label>
-                            <input
-                                onChange={handleOnChange}
-                                name="ritual_spell"
-                                id="ritual_spell"
-                                type="checkbox"
-                                required=""
-                                checked={!!input.ritual_spell}
-                            />
+                                <input
+                                    onChange={handleOnChange}
+                                    name="ritual_spell"
+                                    id="ritual_spell"
+                                    type="checkbox"
+                                    required=""
+                                    checked={!!input.ritual_spell}
+                                />
                         </div>
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="at_higher_levels" className="form-label">
-                                At Higher Levels Scaling
+                                Levels Scaling
                             </label>
                             <input
                                 onChange={handleOnChange}
@@ -335,7 +333,7 @@ export const FormularioSpell = () => {
 
                         <div className="col-md-4 mb-3">
                             <label htmlFor="higher_level_scaling" className="form-label">
-                                Higher Level Scaling
+                                Higher Scaling
                             </label><br />
                             <select
                                 onChange={handleOnChange}
@@ -369,7 +367,7 @@ export const FormularioSpell = () => {
                     </>
                 }
 
-                <div className="number-page-background">
+                <div className="number-page-spell">
                     <button type="button" disabled={page === 1} onClick={() => setPage((p) => Math.max(p - 1, 1))}>prev</button>
                     <span>{page} / 2</span>
                     <button type="button" disabled={page === 2} onClick={() => setPage((p) => Math.min(p + 1, 2))}>next</button>
@@ -377,7 +375,7 @@ export const FormularioSpell = () => {
 
                 {
                     page === 2 &&
-                    <div className="button-create-background">
+                    <div className="button-create-spell">
                         <button type="submit" className="btn btn-primary">Create Spell</button>
                     </div>
                 }
