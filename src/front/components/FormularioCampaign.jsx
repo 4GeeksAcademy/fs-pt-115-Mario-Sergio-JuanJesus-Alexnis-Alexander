@@ -44,7 +44,7 @@ export const FormularioCampaign = () => {
             type="text"
             className="form-control"
             name="name"
-            placeholder="Introduce el nombre del personaje"
+            placeholder="Character name"
             required
           />
         </div>
@@ -57,7 +57,7 @@ export const FormularioCampaign = () => {
             type="text"
             className="form-control"
             name="description"
-            placeholder="Introduce la descripción de la campaña"
+            placeholder="Campaing description"
           />
         </div>
         <div className="col-md-8">
@@ -69,7 +69,7 @@ export const FormularioCampaign = () => {
             type="text"
             name="settings"
             className="form-control"
-            placeholder="Introduce el escenario de la campaña"
+            placeholder="Campaign Setting"
           ></input>
         </div>
         <div className="col-md-8">

@@ -31,8 +31,6 @@ export const CampaignCard = ({ item }) => {
           <h5 className="card-title">Description: {item.description}</h5>
 
           <div className="d-flex justify-content-start gap-2 mt-3">
-            <button className="btn btn-primary" disabled>Detalles</button>
-            <button className="btn btn-primary" disabled>✏️</button>
             <button
               className="btn btn-primary"
               onClick={() => handleOnDelete(item.id)}
