@@ -33,9 +33,10 @@ export const FormularioCampaign = () => {
 
   return (
     <div className="container col-md-5 my-5 basic-form">
-      <form onSubmit={handleOnSubmit} className="row g-4">
-        <h1>Create your Campaings</h1>
-        <div className="col-md-8">
+      <h2 className="text-center mb-4 fw-bold">Create Campaings</h2>
+      <form onSubmit={handleOnSubmit} className="row g-3 fw-bold">
+
+        <div className="col-md-6 mb-3">
           <label htmlFor="name" className="form-label">
             Name <span className="text-danger fs-5">*</span>
           </label>
@@ -48,11 +49,12 @@ export const FormularioCampaign = () => {
             required
           />
         </div>
-        <div className="col-md-8">
+
+        <div className="col-md-6 mb-3">
           <label htmlFor="name" className="form-label">
             Description <span className="text-danger fs-5">*</span>
           </label>
-          <textarea
+          <input
             onChange={handleOnChange}
             type="text"
             className="form-control"
@@ -60,7 +62,8 @@ export const FormularioCampaign = () => {
             placeholder="Campaing description"
           />
         </div>
-        <div className="col-md-8">
+
+        <div className="col-md-6 mb-3">
           <label htmlFor="name" className="form-label">
             Settings <span className="text-danger fs-5">*</span>
           </label>
@@ -72,7 +75,8 @@ export const FormularioCampaign = () => {
             placeholder="Campaign Setting"
           ></input>
         </div>
-        <div className="col-md-8">
+
+        <div className="col-md-6 mb-3">
           <label htmlFor="name" className="form-label">
             Level <span className="text-danger fs-5">*</span>
           </label>
@@ -84,7 +88,8 @@ export const FormularioCampaign = () => {
             required
           ></input>
         </div>
-        <div className="col-md-8">
+
+        <div className="col-md-6 mb-3">
           <label htmlFor="name" className="form-label">
             Players <span className="text-danger fs-5">*</span>
           </label>
@@ -96,12 +101,13 @@ export const FormularioCampaign = () => {
             required
           ></input>
         </div>
-        <div className="col-md-8">
+
+        <div className="col-md-6 mb-3">
           {error && <div className="alert alert-danger">{error}</div>}
         </div>
         <div className="col-12 text-center">
           <button type="submit" className="btn btn-primary m-4">
-            Submit new Campaing
+            Create Campaing
           </button>
         </div>
       </form>

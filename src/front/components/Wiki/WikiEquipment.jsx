@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchEquipmentList, fetchEquipmentDetails } from "../../serviceApi/WikiAPI/WikiEquipmentAPI.js";
+import "./WikiEquipment.css"; // Importamos los estilos con .page-title
 
 export const WikiEquipment = () => {
   const [equipmentList, setEquipmentList] = useState([]); 
@@ -7,7 +8,6 @@ export const WikiEquipment = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const EQUIPMENT_PER_PAGE = 20;
-
 
   useEffect(() => {
     async function loadList() {
@@ -18,43 +18,37 @@ export const WikiEquipment = () => {
     loadList();
   }, []);
 
-  // índices de la paginación
   const indexOfLastItem = currentPage * EQUIPMENT_PER_PAGE;
   const indexOfFirstItem = indexOfLastItem - EQUIPMENT_PER_PAGE;
   const currentList = equipmentList.slice(indexOfFirstItem, indexOfLastItem);
   const totalPages = Math.ceil(equipmentList.length / EQUIPMENT_PER_PAGE);
 
-
   useEffect(() => {
     async function loadDetails() {
       const missing = currentList.filter((item) => !detailsByIndex[item.index]);
-
       if (missing.length > 0) {
         const results = await Promise.all(
-          missing.map(async (item) => {
-            const details = await fetchEquipmentDetails(item.index);
-            return [item.index, details];
-          })
+          missing.map(async (item) => [item.index, await fetchEquipmentDetails(item.index)])
         );
-
         const newDetails = results.reduce((acc, [index, details]) => {
           acc[index] = details;
           return acc;
         }, {});
-
         setDetailsByIndex((prev) => ({ ...prev, ...newDetails }));
       }
     }
-
-    if (currentList.length > 0) {
-      loadDetails();
-    }
+    if (currentList.length > 0) loadDetails();
   }, [currentList]);
 
   if (loading) return <p>Cargando lista de equipo...</p>;
 
   return (
     <div className="container mt-4">
+      {/* Banner principal */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Wiki Equipment</h1>
+      </div>
+
       {/* Headers */}
       <div
         style={{
@@ -117,7 +111,9 @@ export const WikiEquipment = () => {
         </span>
         <button
           className="btn btn-secondary ms-2"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+          onClick={() =>
+            setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+          }
           disabled={currentPage === totalPages}
         >
           Next →

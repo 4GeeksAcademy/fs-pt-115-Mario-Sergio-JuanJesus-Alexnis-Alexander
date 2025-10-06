@@ -1,0 +1,16 @@
+.page-title {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  background-color: #000;
+  border-bottom: 3px solid #d4af37;
+  border-radius: 5px;
+}
+
+.page-title h1 {
+  margin: 0;
+  color: #d4af37;
+  font-family: "Cinzel", serif;
+  font-size: 2rem;
+}
