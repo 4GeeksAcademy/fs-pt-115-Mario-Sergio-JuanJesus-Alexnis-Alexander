@@ -3,6 +3,7 @@ import { MagicItemCard } from "../../components/MagicItemCard";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { getAllCharacters } from "../../serviceApi/characterApi";
 import { CharacterCard } from "../../components/CharacterCard";
+import styles from "../../styles/page/showItems.module.css";
 
 export const ShowCharactersPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -23,8 +24,7 @@ export const ShowCharactersPage = () => {
     setLoading(false);
 
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.characters);
+
   useEffect(() => {
     getCharactersApi();
   }, []);
@@ -46,9 +46,13 @@ export const ShowCharactersPage = () => {
 
   return (
     <>
-      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
-        Your Characters
-      </h1>
+      <div style={{ textAlign: "center" }}>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.titleText}>
+                  CHARACTERS
+                </h1>
+              </div>
+          </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.characters.length > 0 ? (
           store.characters.map((element) => (

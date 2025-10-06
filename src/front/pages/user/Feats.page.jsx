@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { getAllFeats } from "../../serviceApi/featsApi";
 import { FeatsCard } from "../../components/FeatsCard";
+import styles from "../../styles/page/showItems.module.css";
 
 export const FeatsPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -21,8 +22,7 @@ export const FeatsPage = () => {
     });
     setLoading(false);
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.feats);
+
   useEffect(() => {
     getFeatsApi();
   }, []);
@@ -35,7 +35,7 @@ export const FeatsPage = () => {
     return (
       <div className="position-relative" style={{ height: "100vh" }}>
         <div className="position-absolute top-50 start-50 translate-middle fs-2">
-          ⌛⌛⌛⌛....Cargando....⌛⌛⌛⌛
+          ⌛⌛⌛⌛....Loading....⌛⌛⌛⌛
         </div>
       </div>
     );
@@ -44,9 +44,13 @@ export const FeatsPage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Aqui esta tu lista de feats
-      </h1>
+      <div style={{ textAlign: "center" }}>
+        <div className={styles.titleContainer}>
+          <h1 className={styles.titleText}>
+            YOUR FEATS
+          </h1>
+        </div>
+      </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.feats.length > 0 ? (
           store.feats.map((feat) => (

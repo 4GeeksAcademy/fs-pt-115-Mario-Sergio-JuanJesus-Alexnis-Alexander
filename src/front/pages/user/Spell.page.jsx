@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { getAllSpells } from "../../serviceApi/spellApi";
 import { SpellCard } from "../../components/SpellCard";
+import styles from "../../styles/page/showItems.module.css";
 
 
 export const SpellPage = () => {
@@ -22,8 +23,7 @@ export const SpellPage = () => {
     });
     setLoading(false);
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.spells);
+
   useEffect(() => {
     getSpellApi();
   }, []);
@@ -45,9 +45,13 @@ export const SpellPage = () => {
 
   return (
     <>
-      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
-        Your spells
-      </h1>
+      <div style={{ textAlign: "center" }}>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.titleText}>
+                  YOUR SPELLS
+                </h1>
+              </div>
+          </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.spells.length > 0 ? (
           store.spells.map((spell) => (

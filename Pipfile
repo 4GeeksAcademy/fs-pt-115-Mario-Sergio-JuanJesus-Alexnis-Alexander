@@ -22,9 +22,9 @@ flask-jwt-extended = "*"
 flask-swagger = "*"
 cloudinary = "*"
 tomli = "*"
-flask-cors = "*"
 requests = "*"
 sendgrid = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.13"

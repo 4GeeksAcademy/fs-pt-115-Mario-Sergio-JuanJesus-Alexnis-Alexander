@@ -22,8 +22,7 @@ export const SubclassesPage = () => {
     });
     setLoading(false);
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.subclasses);
+
   useEffect(() => {
     getSubclassesApi();
   }, []);
@@ -45,9 +44,13 @@ export const SubclassesPage = () => {
 
   return (
     <>
-      <h1 className="text-center mt-5">
-        Aqui esta tu lista de Subclasses
-      </h1>
+      <div style={{ textAlign: "center" }}>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.titleText}>
+                  SUBCLASSES
+                </h1>
+              </div>
+          </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.subclasses.length > 0 ? (
           store.subclasses.map((subclasse) => (

@@ -48,6 +48,7 @@ export const LoginPage = () => {
           onChange={handleOnChange}
           className={styles.input}
           placeholder="Email or username"
+          required
         />
         <input
           type="password"
@@ -56,6 +57,7 @@ export const LoginPage = () => {
           onChange={handleOnChange}
           className={styles.input}
           placeholder="Password"
+          required
         />
         <button className={styles.loginBtn}>Log in</button>
       </form>

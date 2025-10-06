@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { getAllMonsters } from "../../serviceApi/monsterApi";
 import { MonsterCard } from "../../components/MonsterCard";
+import styles from "../../styles/page/showItems.module.css";
+
 
 export const ShowMonsterPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -22,8 +24,7 @@ export const ShowMonsterPage = () => {
     setLoading(false);
 
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.monsters);
+  
   useEffect(() => {
     getMonsterApi();
   }, []);
@@ -45,9 +46,13 @@ export const ShowMonsterPage = () => {
 
   return (
     <>
-      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
-        Your monsters
-      </h1>
+      <div style={{ textAlign: "center" }}>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.titleText}>
+                  YOUR MOSNTERS
+                </h1>
+              </div>
+          </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.monsters.length > 0 ? (
           store.monsters.map((element) => (

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useGlobalReducer from "../../hooks/useGlobalReducer";
 import { CampaignCard } from "../../components/CampaignCard";
 import { getCampaigns } from "../../serviceApi/campaignApi";
+import styles from "../../styles/page/showItems.module.css";
 
 export const ShowCampaignPage = () => {
   const { store, dispatch } = useGlobalReducer();
@@ -21,8 +22,7 @@ export const ShowCampaignPage = () => {
     });
     setLoading(false);
   };
-  console.log("***DATOS PARA EXTRAER***");
-  console.log(store.campaign);
+  
   useEffect(() => {
     getCampaignApi();
   }, []);
@@ -44,9 +44,13 @@ export const ShowCampaignPage = () => {
 
   return (
     <>
-      <h1 className="text-center fw-bold display-4 mt-5 mb-4">
-        Your campaigns
-      </h1>
+      <div style={{ textAlign: "center" }}>
+            <div className={styles.titleContainer}>
+                <h1 className={styles.titleText}>
+                  YOUR CAMPAINGS
+                </h1>
+              </div>
+          </div>
       <div className="container d-flex gap-4 justify-content-center mt-5">
         {store.campaign.length > 0 ? (
           store.campaign.map((campaign) => (

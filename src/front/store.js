@@ -109,7 +109,7 @@ export default function storeReducer(store, action = {}) {
       return {
         ...store,
         backgrounds: store.backgrounds.filter(
-          (item) => item.id != action.payload
+          (item) => item.background_id != action.payload
         ),
       };
     case "showMonsters":
