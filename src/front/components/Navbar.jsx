@@ -66,6 +66,7 @@ export const Navbar = () => {
 
         <button
           className="navbar-toggler bg-warning"
+          style={{ padding: '6px 8px' }}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"

@@ -29,8 +29,6 @@ export const FormularioBackground = () => {
         navigate("/user/background");
     };
 
-    console.log(input)
-
 
     return (
         <div className="container col-md-5 my-5 basic-form position-relative">

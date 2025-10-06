@@ -1,9 +1,7 @@
-
-/* ========== FLIP CARD CONTAINER ========== */
 .flipCard {
   background-color: transparent;
   width: 250px;
-  height: 350px; /* Cambiado de 290px a 350px para coincidir con tu inline style */
+  height: 350px; 
   border-radius: 10px;
   perspective: 1000px;
   font-family: sans-serif;
@@ -18,7 +16,7 @@
 .flipCardInner {
   position: relative;
   width: 100%;
-  height: 100%; /* Cambiado de 250px a 100% para que use toda la altura del padre */
+  height: 100%; 
   text-align: center;
   transition: transform 0.6s;
   transition-timing-function: cubic-bezier(0.61, 0.98, 0.48, 1.01);
@@ -81,16 +79,16 @@
   color: #d1d5db;
   text-align: left;
   font-family: sans-serif;
-  flex-shrink: 0; /* No se encoge */
+  flex-shrink: 0; 
 }
 
 /* IMAGEN  */
 .cardImageContainer {
   background: #000;
-  flex: 1; /* Ocupa el espacio disponible */
+  flex: 1; 
   overflow: hidden;
   position: relative;
-  min-height: 150px; /* Altura mínima */
+  min-height: 150px; 
 }
 
 .cardImage {
@@ -109,7 +107,7 @@
   font-weight: bold;
   color: #fff;
   border-top: none;
-  flex-shrink: 0; /* No se encoge */
+  flex-shrink: 0;
   display: flex;
   align-items: center;
 }
@@ -134,7 +132,7 @@
   overflow-y: auto; 
 }
 
-/* Marco dorado en el dorso */
+/* MARCO DORSO */
 .flipCardBack::before {
   content: '';
   position: absolute;
@@ -214,7 +212,7 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Scrollbar personalizado */
+/* SCROLLBAR */
 .backDescription::-webkit-scrollbar {
   width: 4px;
 }
@@ -232,3 +230,152 @@
 .backDescription::-webkit-scrollbar-thumb:hover {
   background: rgba(201, 176, 55, 0.8);
 }
+
+/* PANTALLAS MEDIANAS  */
+@media (min-width: 1400px) {
+  .col-xxl-2-4 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .flipCard {
+    width: 220px;
+    height: 310px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .typeBox {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .rarityBox {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .cardImageContainer {
+    min-height: 120px;
+  }
+
+  .backTitle {
+    font-size: 16px;
+  }
+
+  .backDescription {
+    font-size: 12px;
+  }
+
+  .itemStats {
+    font-size: 11px;
+  }
+}
+
+/* TABLETS */
+@media (max-width: 768px) {
+  .flipCard {
+    width: 200px;
+    height: 280px;
+  }
+
+  .cardTitle {
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+
+  .cardTitle span:last-child {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .typeBox {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+
+  .rarityBox {
+    font-size: 10px;
+    padding: 3px 6px;
+    height: 1.5rem;
+  }
+
+  .cardImageContainer {
+    min-height: 100px;
+  }
+
+  .flipCardBack {
+    padding: 15px;
+  }
+
+  .backTitle {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .backDescription {
+    font-size: 11px;
+    margin-bottom: 10px;
+    max-height: 120px;
+  }
+
+  .attunementNote {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .itemStats {
+    font-size: 10px;
+    margin-bottom: 3px;
+    padding-left: 5px;
+  }
+
+  .btnPrimary {
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+
+  .buttonContainer {
+    padding-top: 10px;
+  }
+}
+
+/* MOVILES */
+@media (max-width: 480px) {
+  .flipCard {
+    width: 200px;  
+    height: 180px; 
+  }
+
+  .cardTitle {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  .cardTitle span:last-child {
+    width: 18px;
+    height: 18px;
+    font-size: 8px;
+  }
+
+  .typeBox {
+    font-size: 8px;
+    padding: 2px 5px;
+  }
+
+  .rarityBox {
+    font-size: 8px;
+    padding: 2px 5px;
+  }
+
+  .cardImageContainer {
+    min-height: 60px;
+  }
+}
+

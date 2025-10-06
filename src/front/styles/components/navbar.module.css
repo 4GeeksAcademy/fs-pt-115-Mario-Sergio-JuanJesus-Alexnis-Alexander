@@ -10,22 +10,20 @@
 
 .button {
   background: linear-gradient(135deg, #d19d0e 0%, #ffed4e 100%);
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 25px;
   color: black;
   font-weight: 500;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
   cursor: pointer;
+  border: none;
 }
 
 .button:hover {
   box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
-  
 }
 
 .btnDropdown {
-  margin: 0;
-  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,7 +32,77 @@
   padding: 0;
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 15px;
+  transform: translateX(-50%);
 }
 
+/* ========== MEDIA QUERIES ========== */
+
+/* Bootstrap collapse breakpoint */
+@media (max-width: 991px) {
+  #navbar {
+    padding: 8px 0;
+  }
+
+  .logoNavbar {
+    width: 4.5rem;
+    height: 2.2rem;
+  }
+
+  .btnDropdown {
+    position: static !important;
+    transform: none !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    width: 100%;
+    padding: 10px;
+    gap: 8px;
+    justify-content: center;
+  }
+
+    .button {
+    width: auto !important;
+    flex: 0 1 auto;
+    text-align: center;
+    padding: 6px 10px;     /* Más pequeño */
+    font-size: 10px;       /* Más pequeño */
+    white-space: nowrap; 
+  }
+}
+
+
+/* Tablets */
+@media (max-width: 768px) {
+  .logoNavbar {
+    width: 4rem;
+    height: 2rem;
+  }
+
+  .button {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  #navbar {
+    padding: 5px 0;
+  }
+
+  .logoNavbar {
+    width: 3.5rem;
+    height: 1.8rem;
+  }
+
+  .btnDropdown {
+    padding: 8px 5px;
+    gap: 5px;
+  }
+
+  .button {
+    padding: 6px 10px;
+    font-size: 10px;
+    border-radius: 20px;
+  }
+}

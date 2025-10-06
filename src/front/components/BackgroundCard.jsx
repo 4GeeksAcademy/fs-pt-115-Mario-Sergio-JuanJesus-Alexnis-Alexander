@@ -15,7 +15,7 @@ export const BackgroundCard = ({ item }) => {
         payload: id,
       });
     } else {
-      setError(deleteBackground.error);
+      setError(deleteBackgroundApi.error);
     }
   };
 
@@ -32,7 +32,7 @@ export const BackgroundCard = ({ item }) => {
             <button className="btn btn-primary" disabled>✏️</button>
             <button
               className="btn btn-primary"
-              onClick={() => handleOnDelete(item.background_id)}
+              onClick={() => handleOnDelete(item.id)}
             >
               ❌
             </button>
