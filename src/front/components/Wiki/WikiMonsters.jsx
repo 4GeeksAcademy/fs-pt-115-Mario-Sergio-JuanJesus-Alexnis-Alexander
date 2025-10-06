@@ -51,6 +51,9 @@ export const WikiMonsters = () => {
   }, [currentList]);
 
   const renderValue = (value) => {
+    if (value == null) return null;
+
+    // Arrays
     if (Array.isArray(value)) {
       const filteredArray = value.filter(
         (v) =>
@@ -63,17 +66,30 @@ export const WikiMonsters = () => {
       if (typeof filteredArray[0] === "object") {
         return (
           <ul className="mb-1">
-            {filteredArray.map((v, idx) => (
-              <li key={idx}>
-                {Object.entries(v)
-                  .filter(([k, val]) => !["url", "index", "updated_at"].includes(k) && val != null)
-                  .map(([k, val]) => (
-                    <span key={k}>
-                      <strong>{k}:</strong> {val?.name ?? val?.toString()}{" "}
-                    </span>
-                  ))}
-              </li>
-            ))}
+            {filteredArray.map((v, idx) => {
+              const entries = Object.entries(v).filter(
+                ([k, val]) =>
+                  !["url", "index", "updated_at"].includes(k) &&
+                  val != null &&
+                  (!Array.isArray(val) || val.length > 0) &&
+                  (typeof val !== "object" || Object.keys(val).length > 0)
+              );
+              if (entries.length === 0) return null;
+
+              return (
+                <li key={idx}>
+                  {entries.map(([k, val]) => {
+                    const rendered = renderValue(val);
+                    if (!rendered) return null;
+                    return (
+                      <span key={k}>
+                        <strong>{k}:</strong> {rendered}{" "}
+                      </span>
+                    );
+                  })}
+                </li>
+              );
+            })}
           </ul>
         );
       }
@@ -81,35 +97,45 @@ export const WikiMonsters = () => {
       return filteredArray.join(", ");
     }
 
-    if (value && typeof value === "object") {
+    // Objetos
+    if (typeof value === "object") {
       const filteredObj = Object.entries(value).filter(
         ([k, v]) =>
           !["url", "index", "updated_at"].includes(k) &&
-          (v != null && (typeof v !== "object" || Object.keys(v).length > 0))
+          v != null &&
+          (!Array.isArray(v) || v.length > 0) &&
+          (typeof v !== "object" || Object.keys(v).length > 0)
       );
       if (filteredObj.length === 0) return null;
 
       return (
         <div style={{ marginLeft: "10px" }}>
-          {filteredObj.map(([k, v]) => (
-            <div key={k}>
-              <strong>{k}:</strong> {renderValue(v)}
-            </div>
-          ))}
+          {filteredObj.map(([k, v]) => {
+            const rendered = renderValue(v);
+            if (!rendered) return null;
+            return (
+              <div key={k}>
+                <strong>{k}:</strong> {rendered}
+              </div>
+            );
+          })}
         </div>
       );
     }
 
-    return value !== null && value !== undefined ? value.toString() : null;
+    return value.toString();
   };
 
-  
-
-  // VISTA EXPANDED
+  // Vista EXPANDED
   if (expanded) {
     const details = detailsByIndex[expanded];
     return (
       <div className="container mt-4">
+        {/* Banner */}
+        <div className="page-title text-center py-3 mb-4">
+          <h1>Monsters</h1>
+        </div>
+
         <div className="card p-3">
           <h3>{details?.name}</h3>
           {details?.image && (
@@ -126,7 +152,11 @@ export const WikiMonsters = () => {
           )}
           <div>
             {Object.entries(details)
-              .filter(([k, v]) => !["url", "index", "updated_at", "image"].includes(k) && v != null)
+              .filter(
+                ([k, v]) =>
+                  !["url", "index", "updated_at", "image"].includes(k) &&
+                  v != null
+              )
               .map(([k, v]) => {
                 const rendered = renderValue(v);
                 if (!rendered) return null;
@@ -150,9 +180,14 @@ export const WikiMonsters = () => {
     );
   }
 
-  // VISTA GRID
+  // Vista GRID
   return (
     <div className="container mt-4">
+      {/* Banner */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Monsters</h1>
+      </div>
+
       <div className="row">
         {currentList.map((mon) => {
           const details = detailsByIndex[mon.index];
@@ -182,28 +217,33 @@ export const WikiMonsters = () => {
                         }}
                       />
                     ) : (
-                      <div style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        background: "#ccc"
-                      }}>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          background: "#ccc",
+                        }}
+                      >
                         {mon.name}
                       </div>
                     )}
-                    <div className="titleBtn" style={{
-                      position: "absolute",
-                      bottom: "0",
-                      width: "100%",
-                      textAlign: "center",
-                      backgroundColor: "rgba(0,0,0,0.6)",
-                      color: "white",
-                      padding: "5px",
-                      fontWeight: "bold",
-                      fontSize: "1rem"
-                    }}>
+                    <div
+                      className="titleBtn"
+                      style={{
+                        position: "absolute",
+                        bottom: "0",
+                        width: "100%",
+                        textAlign: "center",
+                        backgroundColor: "rgba(0,0,0,0.6)",
+                        color: "white",
+                        padding: "5px",
+                        fontWeight: "bold",
+                        fontSize: "1rem",
+                      }}
+                    >
                       {mon.name}
                     </div>
                   </div>

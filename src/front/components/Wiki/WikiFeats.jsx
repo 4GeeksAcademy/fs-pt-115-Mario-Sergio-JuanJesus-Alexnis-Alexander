@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getFeatsList, getFeatDetails } from "../../serviceApi/WikiAPI/WikiFeatsAPI";
+import "./WikiFeats.css"; // Importamos estilos con .page-title
 
 export const WikiFeats = () => {
   const [feats, setFeats] = useState([]);
@@ -10,7 +11,7 @@ export const WikiFeats = () => {
     const fetchFeats = async () => {
       setLoading(true);
       const list = await getFeatsList();
-      setFeats(list); 
+      setFeats(list);
       setLoading(false);
     };
     fetchFeats();
@@ -23,10 +24,15 @@ export const WikiFeats = () => {
 
   if (loading) return <div className="text-center mt-5">Cargando feats...</div>;
 
-  // Vista de detalle de un feat
+  // Vista detalle de un feat
   if (selectedFeat) {
     return (
       <div className="container mt-4">
+        {/* Banner principal */}
+        <div className="page-title text-center py-3 mb-4">
+          <h1>Wiki Feats</h1>
+        </div>
+
         <div className="card">
           <div className="card-body">
             <h4 className="card-title">{selectedFeat.name}</h4>
@@ -34,7 +40,7 @@ export const WikiFeats = () => {
               <p key={i}>{d}</p>
             ))}
             <button className="btn btn-secondary mt-3" onClick={() => setSelectedFeat(null)}>
-              ← Volver a todos los feats
+               Volver a todos los feats
             </button>
           </div>
         </div>
@@ -42,9 +48,14 @@ export const WikiFeats = () => {
     );
   }
 
-
+  // Vista lista de feats
   return (
     <div className="container mt-4">
+      {/* Banner principal */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Wiki Feats</h1>
+      </div>
+
       <div className="row">
         {feats.map(feat => (
           <div key={feat.index} className="col-md-12 mb-3">

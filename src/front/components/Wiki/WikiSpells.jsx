@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchSpellsList, fetchSpellDetails } from "../../serviceApi/WikiAPI/WikiSpellsAPI.js";
+import "./WikiSpells.css"; // Importamos estilos con .page-title
 
 export const WikiSpells = () => {
   const [spellsList, setSpellsList] = useState([]); 
@@ -24,7 +25,6 @@ export const WikiSpells = () => {
   const currentList = spellsList.slice(indexOfFirstSpell, indexOfLastSpell);
   const totalPages = Math.ceil(spellsList.length / SPELLS_PER_PAGE);
 
-  
   useEffect(() => {
     async function loadDetails() {
       const missingSpells = currentList.filter(sp => !detailsByIndex[sp.index]);
@@ -46,6 +46,11 @@ export const WikiSpells = () => {
 
   return (
     <div className="container mt-4">
+      {/* Banner principal */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Spells</h1>
+      </div>
+
       {/* Headers */}
       <div style={{
         display: "grid",
