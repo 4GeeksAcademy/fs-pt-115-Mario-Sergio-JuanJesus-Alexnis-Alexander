@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { getBackgroundsList, getBackgroundDetails } from "../../serviceApi/WikiAPI/WikiBackgroundsAPI";
+import "./WikiBackgrounds.css"; // para banner y estilos generales
 
 export const WikiBackgrounds = () => {
-  console.log("WikiBackgrounds component loaded"); // <--- esto debe aparecer
+  console.log("WikiBackgrounds component loaded");
 
   const [backgrounds, setBackgrounds] = useState([]);
   const [selectedBackground, setSelectedBackground] = useState(null);
@@ -13,10 +14,8 @@ export const WikiBackgrounds = () => {
       try {
         setLoading(true);
 
-        // Obtener la lista de backgrounds
         const list = await getBackgroundsList();
 
-        // Obtener detalles preliminares para la vista de listado
         const listWithPrelimDetails = await Promise.all(
           list.map(async (bg) => {
             const details = await getBackgroundDetails(bg.index);
@@ -42,14 +41,12 @@ export const WikiBackgrounds = () => {
 
   const handleSelectBackground = async (bg) => {
     try {
-      // Cargar todos los detalles completos al hacer click
       const details = await getBackgroundDetails(bg.index);
 
-      // Mapear campos que queremos mostrar en detalle
       const detailedBg = {
         name: details.name,
-        ability_scores: details.ability_scores || [], 
-        feat: details.feat || null,                   
+        ability_scores: details.ability_scores || [],
+        feat: details.feat || null,
         skill_proficiencies: details.skill_proficiencies || [],
         tool_proficiencies: details.tool_proficiencies || [],
         equipment: details.equipment || [],
@@ -68,6 +65,11 @@ export const WikiBackgrounds = () => {
   if (selectedBackground) {
     return (
       <div className="container mt-4">
+        {/* Banner principal */}
+        <div className="page-title text-center py-3 mb-4">
+          <h1>Wiki Backgrounds</h1>
+        </div>
+
         <div className="card">
           <div className="card-body">
             <h4 className="card-title">{selectedBackground.name}</h4>
@@ -97,7 +99,7 @@ export const WikiBackgrounds = () => {
             )}
 
             <button className="btn btn-secondary mt-3" onClick={() => setSelectedBackground(null)}>
-              ← Volver a todos los backgrounds
+              Volver a todos los backgrounds
             </button>
           </div>
         </div>
@@ -105,9 +107,14 @@ export const WikiBackgrounds = () => {
     );
   }
 
-  // Vista de listado con detalles preliminares
+  // Vista de listado
   return (
     <div className="container mt-4">
+      {/* Banner principal */}
+      <div className="page-title text-center py-3 mb-4">
+        <h1>Backgrounds</h1>
+      </div>
+
       <div className="row">
         {backgrounds.map(bg => (
           <div key={bg.index} className="col-md-12 mb-3">
