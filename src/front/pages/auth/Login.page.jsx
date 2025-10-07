@@ -68,7 +68,7 @@ export const LoginPage = () => {
         </Link>
       </p>
       <div className={styles.buttonsContainer}>
-        <div className={styles.googleLoginButton}>
+        <div onClick={loginWithGoogle} className={styles.googleLoginButton}>
           <svg
             stroke="currentColor"
             fill="currentColor"
@@ -104,7 +104,7 @@ export const LoginPage = () => {
 	c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"
             />
           </svg>
-          <span onClick={loginWithGoogle}>Log in with Google</span>
+          <span>Log in with Google</span>
         </div>
         {error && <div className="alert alert-danger">{error}</div>}
       </div>
