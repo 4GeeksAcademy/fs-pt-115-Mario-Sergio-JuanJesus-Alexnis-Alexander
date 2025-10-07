@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createNewSpecie } from "../serviceApi/specieApi";
+import "../styles/forms/specieForms.css"
 
 export const FormularioSpecie = () => {
 

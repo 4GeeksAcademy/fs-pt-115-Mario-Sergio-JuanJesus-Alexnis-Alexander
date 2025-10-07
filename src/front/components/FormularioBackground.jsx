@@ -342,7 +342,7 @@ export const FormularioBackground = () => {
 
                 {
                     page === 3 &&
-                    <div className="col-12 text-center mt-4">
+                    <div className="button-create-background">
                         <button type="submit" className="btn btn-primary">Create Background</button>
                     </div>
                 }
