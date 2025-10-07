@@ -13,7 +13,7 @@ export const SignupPage = () => {
     e.preventDefault(e);
 
     if (input.password != input.confirmPassword) {
-      setError("Las contraseñas no coinciden");
+      setError("The passwords do not match");
       return;
     } else {
       setError(null);

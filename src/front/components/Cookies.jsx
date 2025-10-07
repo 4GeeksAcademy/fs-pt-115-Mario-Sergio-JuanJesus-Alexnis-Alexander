@@ -10,7 +10,7 @@ export const Cookies = () => {
 
   const rejectCookies = () => {
     localStorage.setItem("cookies", "No");
-    setShowCookies(true);
+    setShowCookies(false);
   };
 
   useEffect(() => {
@@ -25,8 +25,7 @@ export const Cookies = () => {
     <>
       {showCookies && (
         <>
-
-        {/* FONO BORROSO */}
+          {/* FONO BORROSO */}
           <div
             style={{
               position: "fixed",
@@ -40,7 +39,7 @@ export const Cookies = () => {
             }}
           ></div>
 
-          {/* MODAL PARA COOKIES */}
+          {/* MODAL FOR COOKIES */}
           <div
             className="modal show"
             tabIndex={-1}
@@ -59,7 +58,7 @@ export const Cookies = () => {
                     borderBottom: "2px solid #f1c40f",
                   }}
                 >
-                  <h5 className="modal-title">🍪 Política de Cookies</h5>
+                  <h5 className="modal-title">🍪 Cookie Policy</h5>
                 </div>
                 <div
                   className="modal-body"
@@ -70,17 +69,17 @@ export const Cookies = () => {
                   }}
                 >
                   <p style={{ marginBottom: "15px" }}>
-                    <strong>¡Hola!</strong> Para ofrecerte la mejor experiencia,
-                    utilizamos cookies para:
+                    <strong>Hello!</strong> To offer you the best experience, we
+                    use cookies to:
                   </p>
                   <ul style={{ marginBottom: "20px", paddingLeft: "20px" }}>
-                    <li>🧐 Analizar cómo usas nuestra web</li>
-                    <li>✏️ Personalizar contenido</li>
-                    <li>⚡ Mejorar el rendimiento</li>
-                    <li>🔒 Mantener tu sesión segura</li>
+                    <li>🧐 Analyze how you use our website</li>
+                    <li>✏️ Personalize content</li>
+                    <li>⚡ Improve performance</li>
+                    <li>🔒 Keep your session secure</li>
                   </ul>
                   <p style={{ fontWeight: "bold", color: "#f1c40f" }}>
-                    ⚠️ Sin cookies, directamente no entras ⚠️.
+                    ⚠️ Accept to help us improve and offer you the best ⚠️.
                   </p>
                 </div>
                 <div
