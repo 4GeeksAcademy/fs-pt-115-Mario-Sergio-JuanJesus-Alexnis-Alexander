@@ -142,7 +142,7 @@ export const FormularioSubclasses = () => {
           </>
         }
 
-                <div className="number-page-ubclasses">
+                <div className="number-page-subclasses">
                     <button type="button" disabled={page === 1} onClick={() => setPage((p) => Math.max(p - 1, 1))}>prev</button>
                     <span>{page} / 2</span>
                     <button type="button" disabled={page === 2} onClick={() => setPage((p) => Math.min(p + 1, 2))}>next</button>
